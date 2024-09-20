@@ -1,0 +1,7 @@
+requests
+pandas
+transformers
+torch
+faiss-cpu
+farm-haystack[faiss,crawler]==1.15.0
+spacy
