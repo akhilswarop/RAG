@@ -1,7 +1,4 @@
-requests
-pandas
-transformers
-torch
-faiss-cpu
-farm-haystack[faiss,crawler]==1.15.0
-spacy
+pandas==2.1.1
+scikit-learn==1.3.0
+nltk==3.9.1
+matplotlib==3.8.0
