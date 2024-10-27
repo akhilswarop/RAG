@@ -2,6 +2,7 @@ import streamlit as st
 from PyPDF2 import PdfReader
 import docx2txt
 import spacy
+import openai
 import pandas as pd
 from selenium import webdriver
 from linkedin_scraper import JobSearch, actions
