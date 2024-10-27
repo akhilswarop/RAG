@@ -16,6 +16,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 import pickle
 import os
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium import webdriver
+from linkedin_scraper import JobSearch, actions
 
 # Download necessary NLTK data
 nltk.download('stopwords')
@@ -141,30 +144,31 @@ def preprocess_text(text):
     tokens = [token for token in tokens if len(token) > 2]  # Remove short words
     return tokens
 
-# Function to perform job search using Arbeitnow API
-def search_jobs_arbeitnow(keywords: List[str], location: str = ""):
+# Function to perform LinkedIn job search using LinkedinScraper
+def perform_linkedin_job_search(job_titles: List[str], location: str, email="akhiltheswarop@gmail.com", password="Vaazhkai@12"):
+
+    driver = webdriver.Chrome()
+    actions.login(driver, email, password)
+
+    st.info("Please complete the login process in the browser window that has opened.")
+    input("Press Enter to continue after successful login")
+
+    job_search = JobSearch(driver=driver, close_on_complete=False, scrape=False)
     jobs_data = []
-    for keyword in keywords:
-        params = {
-            'description': keyword,
-            'location': location,
-        }
-        try:
-            response = requests.get("https://arbeitnow.com/api/job-board-api", params=params)
-            if response.status_code == 200:
-                data = response.json()
-                for job in data.get('data', []):
-                    jobs_data.append({
-                        'Job Title': job.get('title'),
-                        'Company': job.get('company_name'),
-                        'Location': job.get('location'),
-                        'Job URL': job.get('url'),
-                        'Job Sector': keyword
-                    })
-            else:
-                st.error(f"Failed to fetch jobs for {keyword}. Status Code: {response.status_code}")
-        except Exception as e:
-            st.error(f"An error occurred while fetching jobs for {keyword}: {e}")
+
+    for title in job_titles[:1]:
+        job_listings = job_search.search(title)
+        for job in job_listings:
+            jobs_data.append({
+                'Job Title': job.job_title,
+                'Company': job.company,
+                'Location': job.location,
+                'Job URL': job.linkedin_url,
+                'Job Sector': title
+            })
+
+    df = pd.DataFrame(jobs_data)
+    df.to_csv('linkedin_job_listings.csv', mode='a', index=False)
     return jobs_data
 
 # Function to display job listings in Streamlit
@@ -378,6 +382,7 @@ with st.form("career_guidance_form"):
     st.subheader("Upload Your Resume")
     uploaded_file = st.file_uploader("Upload your resume (PDF or DOCX)", type=["pdf", "docx"], key="resume_upload")
     
+    
     # Location Preference
     st.subheader("Job Location Preference")
     location = st.text_input("Enter preferred job location (e.g., New York, NY) or leave blank for any location:", key="location")
@@ -392,6 +397,7 @@ if submit:
         st.error("Please fill in all the required profile fields.")
     elif not uploaded_file:
         st.error("Please upload your resume.")
+
     else:
         # Process academic history
         academic_history = f"Degree: {degree}, Institution: {institution}, Graduation Year: {graduation_year}, Certifications: {certifications}"
@@ -422,7 +428,7 @@ if submit:
         
             # Search Jobs and Generate Guidance
             with st.spinner("Searching for jobs and generating career guidance..."):
-                job_results = search_jobs_arbeitnow(top_job_titles, location)
+                job_results = perform_linkedin_job_search(top_job_titles, location)
                 
                 # Display jobs
                 if job_results:

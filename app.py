@@ -77,33 +77,31 @@ def rank_job_titles(skills, onet_titles):
     return top_job_titles
 
 # Function to perform LinkedIn job search using Selenium
-def perform_linkedin_job_search(job_titles: List[str], email, password):
+def perform_linkedin_job_search(job_titles: List[str], email="akhiltheswarop@gmail.com", password="Vaazhkai@12"):
     driver = webdriver.Chrome()
-    actions.login(driver, email, password) 
+    actions.login(driver, email, password)
 
-    # Wait for manual login if two-factor authentication is enabled
     st.info("Please complete the login process in the browser window that has opened.")
     input("Press Enter to continue after successful login")
 
     job_search = JobSearch(driver=driver, close_on_complete=False, scrape=False)
-
     jobs_data = []
 
     for title in job_titles:
-        job_listings = job_search.search(title)  
-
+        job_listings = job_search.search(title)
         for job in job_listings:
             jobs_data.append({
                 'Job Title': job.job_title,
                 'Company': job.company,
                 'Location': job.location,
                 'Job URL': job.linkedin_url,
-                'Job Sector': title  # The job title that was used for the search
+                'Job Sector': title
             })
 
     df = pd.DataFrame(jobs_data)
     df.to_csv('linkedin_job_listings.csv', mode='a', index=False)
     return jobs_data
+
 
 # Function to display job listings in Streamlit
 def display_jobs(jobs_data):
