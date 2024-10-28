@@ -419,7 +419,7 @@ if submit:
                 st.warning("No skills were extracted from the resume.")
         
             # Rank job titles using semantic similarity
-            top_job_titles = rank_job_titles_semantic(skills, onet_titles, onet_title_embeddings, top_k=5)
+            top_job_titles = rank_job_titles_semantic(skills, onet_titles, onet_title_embeddings, top_k=2)
             if top_job_titles:
                 st.subheader("Top 5 Job Titles Based on Your Resume:")
                 st.write(", ".join(top_job_titles))
