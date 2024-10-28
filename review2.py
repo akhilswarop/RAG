@@ -19,6 +19,7 @@ import os
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from linkedin_scraper import JobSearch, actions
+import subprocess
 
 # Download necessary NLTK data
 nltk.download('stopwords')
@@ -310,20 +311,10 @@ def visualize_skill_gaps(missing_skills):
 
 # Function to generate personalized career guidance using OpenAI
 def generate_career_guidance(skills, academic_history, psychometric_profile, top_job_titles, job_listings):
-    if skills:
-        skills_text = ', '.join(skills)
-    else:
-        skills_text = "No skills provided"
-    
-    if top_job_titles:
-        top_job_titles_text = ', '.join(top_job_titles)
-    else:
-        top_job_titles_text = "No job titles provided"
-    
-    if job_listings:
-        job_listings_text = job_listings
-    else:
-        job_listings_text = "No job listings available"
+    # Formatting input details into a structured prompt
+    skills_text = ', '.join(skills) if skills else "No skills provided"
+    top_job_titles_text = ', '.join(top_job_titles) if top_job_titles else "No job titles provided"
+    job_listings_text = job_listings if job_listings else "No job listings available"
 
     prompt = f"""
     Based on the following information, provide personalized career guidance:
@@ -346,20 +337,22 @@ def generate_career_guidance(skills, academic_history, psychometric_profile, top
     - Next steps for job applications
     """
 
+    # Running the ollama CLI with subprocess to send the prompt to the model
     try:
-        response = openai.Completion.create(
-            engine="text-davinci-003",  # Choose appropriate engine
-            prompt=prompt,
-            max_tokens=500,
-            n=1,
-            stop=None,
-            temperature=0.7,
+        result = subprocess.run(
+            ["ollama", "run", "mistral", prompt],
+            stderr=subprocess.DEVNULL,  # Suppresses error output
+            capture_output=True,
+            text=True,
+            check=True
         )
-        guidance = response.choices[0].text.strip()
-    except Exception as e:
+        guidance = result.stdout.strip()
+    except subprocess.CalledProcessError as e:
         guidance = f"An error occurred while generating guidance: {e}"
 
     return guidance
+
+
 
 # Combined User Profile, Resume Upload, and Location Form
 with st.form("career_guidance_form"):
