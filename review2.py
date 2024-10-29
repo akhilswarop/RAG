@@ -341,7 +341,6 @@ def generate_career_guidance(skills, academic_history, psychometric_profile, top
     try:
         result = subprocess.run(
             ["ollama", "run", "mistral", prompt],
-            stderr=subprocess.DEVNULL,  # Suppresses error output
             capture_output=True,
             text=True,
             check=True
