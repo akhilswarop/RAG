@@ -270,7 +270,7 @@ def calculate_skill_match(skills, job_titles, onet_titles_df):
         else:
             match_scores[job] = 0.0
     
-    return match_scores, job_skills
+    return match_scores, job_skills 
 
 # Function to visualize skill match
 def visualize_skill_match(match_scores):
