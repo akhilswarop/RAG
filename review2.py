@@ -1,6 +1,5 @@
 import streamlit as st
-from PyPDF2 import PdfReader
-import docx2txt
+import torch  # Make sure to import torch
 import spacy
 import pandas as pd
 from typing import List
@@ -9,8 +8,6 @@ from gensim.models.ldamodel import LdaModel
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-import openai
-import requests
 import plotly.express as px
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
@@ -21,12 +18,15 @@ from selenium import webdriver
 from linkedin_scraper import JobSearch, actions
 import subprocess
 
+# Added Imports for pyresparser
+import sys
+sys.path.append('C:/Users/swaro/OneDrive/Documents/GitHub/RAG/pyresparser')  # Adjust the path as needed
+from pyresparser import ResumeParser
+
 # Download necessary NLTK data
 nltk.download('stopwords')
 nltk.download('punkt')  # Ensure this is 'punkt'
 
-# Set OpenAI API key
-openai.api_key = st.secrets["openai"]["api_key"]
 
 # Set page configuration
 st.set_page_config(page_title="Career Guidance System using RAG", layout="wide")
@@ -38,7 +38,7 @@ skills = []
 academic_history = ""
 psychometric_profile = ""
 
-# Load spaCy model for skill extraction
+# Load spaCy model for skill extraction (can be retained if needed elsewhere)
 @st.cache_resource
 def load_spacy_model():
     return spacy.load('en_core_web_sm')
@@ -69,21 +69,24 @@ onet_titles = onet_titles_df['Title'].tolist()
 embeddings_file = 'onet_title_embeddings.pkl'
 
 @st.cache_resource
+# Function to load or compute embeddings
+# Function to load or compute embeddings
+# Function to load or compute embeddings
 def load_or_compute_embeddings(job_titles, embeddings_file):
     if not os.path.exists(embeddings_file):
         with st.spinner("Computing job title embeddings..."):
+            # Compute embeddings using the model (assuming model.encode() returns a tensor)
             onet_title_embeddings = model.encode(job_titles, convert_to_tensor=True)
-            with open(embeddings_file, 'wb') as f:
-                pickle.dump(onet_title_embeddings, f)
+            
+            # Save the embeddings as a torch tensor file
+            torch.save(onet_title_embeddings, embeddings_file)
     else:
-        with open(embeddings_file, 'rb') as f:
-            onet_title_embeddings = pickle.load(f)
+        # Set device to GPU if available, otherwise use CPU
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        # Load the embeddings as a torch tensor, specifying the device
+        onet_title_embeddings = torch.load(embeddings_file, map_location=device)
+    
     return onet_title_embeddings
-
-if not onet_titles_df.empty:
-    onet_title_embeddings = load_or_compute_embeddings(onet_titles, embeddings_file)
-else:
-    onet_title_embeddings = None
 
 # Function to rank job titles based on semantic similarity to provided skills
 def rank_job_titles_semantic(skills, job_titles, job_title_embeddings, top_k=5):
@@ -108,47 +111,22 @@ def rank_job_titles_semantic(skills, job_titles, job_title_embeddings, top_k=5):
     
     return top_job_titles
 
-# Function to extract text from resume
-def extract_text(file):
+# Removed existing extract_text and extract_skills functions
+
+# New Function to process the resume using pyresparser
+def process_resume(file_path):
     try:
-        if file.type == "application/pdf":
-            reader = PdfReader(file)
-            text = ""
-            for page in reader.pages:
-                extracted_text = page.extract_text()
-                if extracted_text:
-                    text += extracted_text + " "
-        elif file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-            text = docx2txt.process(file)
-        else:
-            st.error("Unsupported file type. Please upload a PDF or DOCX file.")
-            text = ""
-        return text
+        # Parse the resume using pyresparser
+        data = ResumeParser(file_path).get_extracted_data()
+        return data
     except Exception as e:
-        st.error(f"An error occurred while extracting text: {e}")
-        return ""
-
-# Function to extract skills or keywords from the text
-def extract_skills(text):
-    doc = nlp(text)
-    skills = set()
-    for token in doc:
-        if not token.is_stop and not token.is_punct and token.pos_ in ['NOUN', 'PROPN']:
-            skills.add(token.lemma_.lower())
-    return list(skills)
-
-# Function for preprocessing text
-def preprocess_text(text):
-    tokens = word_tokenize(text.lower())  # Ensure 'word_tokenize' is used correctly
-    tokens = [token for token in tokens if token.isalpha()]  # Remove punctuation and numbers
-    tokens = [token for token in tokens if token not in stopwords.words('english')]  # Remove stop words
-    tokens = [token for token in tokens if len(token) > 2]  # Remove short words
-    return tokens
+        st.error(f"An error occurred while parsing the resume: {e}")
+        return {}
 
 # Function to perform LinkedIn job search using LinkedinScraper
 def perform_linkedin_job_search(job_titles: List[str], location: str, email="akhiltheswarop@gmail.com", password="Vaazhkai@12"):
 
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     actions.login(driver, email, password)
 
     st.info("Please complete the login process in the browser window that has opened.")
@@ -247,6 +225,14 @@ def perform_lda_on_onet(onet_titles_df):
         st.error(f"An error occurred while performing LDA: {e}")
         return None
 
+# Function to perform text preprocessing
+def preprocess_text(text):
+    tokens = word_tokenize(text.lower())  # Ensure 'word_tokenize' is used correctly
+    tokens = [token for token in tokens if token.isalpha()]  # Remove punctuation and numbers
+    tokens = [token for token in tokens if token not in stopwords.words('english')]  # Remove stop words
+    tokens = [token for token in tokens if len(token) > 2]  # Remove short words
+    return tokens
+
 # Function to calculate skill match
 def calculate_skill_match(skills, job_titles, onet_titles_df):
     # For each job title, find required skills from O*NET data
@@ -271,6 +257,15 @@ def calculate_skill_match(skills, job_titles, onet_titles_df):
             match_scores[job] = 0.0
     
     return match_scores, job_skills 
+
+# Function to extract skills or keywords from the text
+def extract_skills(text):
+    doc = nlp(text)
+    skills = set()
+    for token in doc:
+        if not token.is_stop and not token.is_punct and token.pos_ in ['NOUN', 'PROPN']:
+            skills.add(token.lemma_.lower())
+    return list(skills)
 
 # Function to visualize skill match
 def visualize_skill_match(match_scores):
@@ -309,7 +304,6 @@ def visualize_skill_gaps(missing_skills):
         st.subheader("Great Job!")
         st.write("You possess all the skills required for the recommended job titles.")
 
-# Function to generate personalized career guidance using OpenAI
 def generate_career_guidance(skills, academic_history, psychometric_profile, top_job_titles, job_listings):
     # Formatting input details into a structured prompt
     skills_text = ', '.join(skills) if skills else "No skills provided"
@@ -351,8 +345,6 @@ def generate_career_guidance(skills, academic_history, psychometric_profile, top
 
     return guidance
 
-
-
 # Combined User Profile, Resume Upload, and Location Form
 with st.form("career_guidance_form"):
     st.header("Complete Your Profile and Generate Guidance")
@@ -374,7 +366,6 @@ with st.form("career_guidance_form"):
     st.subheader("Upload Your Resume")
     uploaded_file = st.file_uploader("Upload your resume (PDF or DOCX)", type=["pdf", "docx"], key="resume_upload")
     
-    
     # Location Preference
     st.subheader("Job Location Preference")
     location = st.text_input("Enter preferred job location (e.g., New York, NY) or leave blank for any location:", key="location")
@@ -389,7 +380,6 @@ if submit:
         st.error("Please fill in all the required profile fields.")
     elif not uploaded_file:
         st.error("Please upload your resume.")
-
     else:
         # Process academic history
         academic_history = f"Degree: {degree}, Institution: {institution}, Graduation Year: {graduation_year}, Certifications: {certifications}"
@@ -399,11 +389,20 @@ if submit:
         
         st.success("Profile information submitted successfully!")
         
-        # Process the uploaded resume
-        resume_text = extract_text(uploaded_file)
-        if resume_text:
-            # Extract skills
-            skills = extract_skills(resume_text)
+        # Save the uploaded file temporarily for pyresparser
+        with open(uploaded_file.name, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+
+        # Process the resume using pyresparser
+        resume_data = process_resume(uploaded_file.name)
+        if resume_data:
+            st.success("Resume processed successfully!")
+            st.subheader("Extracted Information from Resume:")
+            for key, value in resume_data.items():
+                st.write(f"**{key.capitalize()}:** {value}")
+            
+            # Extract skills from the parsed data
+            skills = resume_data.get("skills", [])
             if skills:
                 st.subheader("Extracted Skills and Interests from Resume:")
                 st.write(", ".join(skills))
@@ -413,7 +412,7 @@ if submit:
             # Rank job titles using semantic similarity
             top_job_titles = rank_job_titles_semantic(skills, onet_titles, onet_title_embeddings, top_k=2)
             if top_job_titles:
-                st.subheader("Top 5 Job Titles Based on Your Resume:")
+                st.subheader("Top Job Titles Based on Your Resume:")
                 st.write(", ".join(top_job_titles))
             else:
                 st.warning("No job titles could be ranked based on the extracted skills.")
@@ -442,7 +441,7 @@ if submit:
                 missing_skills = identify_skill_gaps(skills, job_skills)
                 visualize_skill_gaps(missing_skills)
         else:
-            st.warning("Failed to extract text from the uploaded resume.")
+            st.warning("Failed to extract data from the uploaded resume.")
     
     # Perform LDA unsupervised clustering and display the results
     if not onet_titles_df.empty:
