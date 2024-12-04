@@ -33,7 +33,7 @@ class JobSearch(Scraper):
 
 
     def scrape_job_card(self, base_element) -> Job:
-        job_div = self.wait_for_element_to_load(name="job-card-list__title", base=base_element)
+        job_div = self.wait_for_element_to_load(name="artdeco-entity-lockup__title", base=base_element)
         job_title = job_div.text.strip()
         linkedin_url = job_div.get_attribute("href")
         company = base_element.find_element(By.CLASS_NAME, "artdeco-entity-lockup__subtitle").text
@@ -71,7 +71,7 @@ class JobSearch(Scraper):
         self.focus()
         sleep(self.WAIT_FOR_ELEMENT_TIMEOUT)
 
-        job_listing_class_name = "jobs-search-results-list"
+        job_listing_class_name = "rpuUwTbCXZmEmyRgfcblpSOKuAgMXKFek"
         job_listing = self.wait_for_element_to_load(name=job_listing_class_name)
 
         self.scroll_class_name_element_to_page_percent(job_listing_class_name, 0.3)

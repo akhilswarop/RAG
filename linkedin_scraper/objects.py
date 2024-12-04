@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from time import sleep
+from selenium.common.exceptions import TimeoutException
 
 from selenium.webdriver import Chrome
 
@@ -78,15 +79,17 @@ class Scraper:
         action.move_to_element(elem).perform()
 
     def wait_for_element_to_load(self, by=By.CLASS_NAME, name="pv-top-card", base=None):
+
         base = base or self.driver
-        return WebDriverWait(base, self.WAIT_FOR_ELEMENT_TIMEOUT).until(
-            EC.presence_of_element_located(
-                (
-                    by,
-                    name
-                )
+        try:
+            element = WebDriverWait(base, self.WAIT_FOR_ELEMENT_TIMEOUT).until(
+                EC.presence_of_element_located((by, name))
             )
-        )
+            return element
+        except TimeoutException:
+            print(f"Timeout waiting for element: {name} using {by}")
+            self.driver.save_screenshot("timeout_error.png")  # Save a screenshot for debugging
+            return None
 
     def wait_for_all_elements_to_load(self, by=By.CLASS_NAME, name="pv-top-card", base=None):
         base = base or self.driver
