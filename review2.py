@@ -13,11 +13,13 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 import pickle
 import os
-from webdriver_manager.chrome import ChromeDriverManager
+from linkedin_scraper import actions
 from selenium import webdriver
-from linkedin_scraper import JobSearch, actions
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from linkedin_scraper import JobSearch
 import subprocess
-
 # Added Imports for pyresparser
 import sys
 sys.path.append('C:/Users/swaro/OneDrive/Documents/GitHub/RAG/pyresparser')  # Adjust the path as needed
@@ -73,18 +75,20 @@ embeddings_file = 'onet_title_embeddings.pkl'
 # Function to load or compute embeddings
 # Function to load or compute embeddings
 def load_or_compute_embeddings(job_titles, embeddings_file):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
     if not os.path.exists(embeddings_file):
         with st.spinner("Computing job title embeddings..."):
             # Compute embeddings using the model (assuming model.encode() returns a tensor)
             onet_title_embeddings = model.encode(job_titles, convert_to_tensor=True)
             
+            onet_title_embeddings = onet_title_embeddings.to(device)
+
             # Save the embeddings as a torch tensor file
             torch.save(onet_title_embeddings, embeddings_file)
     else:
-        # Set device to GPU if available, otherwise use CPU
-        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         # Load the embeddings as a torch tensor, specifying the device
-        onet_title_embeddings = torch.load(embeddings_file, map_location=device)
+        onet_title_embeddings = torch.load(embeddings_file, map_location=device, weights_only=True)
     
     return onet_title_embeddings
 
@@ -123,32 +127,51 @@ def process_resume(file_path):
         st.error(f"An error occurred while parsing the resume: {e}")
         return {}
 
-# Function to perform LinkedIn job search using LinkedinScraper
-def perform_linkedin_job_search(job_titles: List[str], location: str, email="akhiltheswarop@gmail.com", password="Vaazhkai@12"):
+def perform_linkedin_job_search(job_titles: List[str], email: str, password: str):
+    chrome_options = Options()
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--disable-software-rasterizer")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--no-sandbox")
+    # Initialize WebDriver
+    driver = webdriver.Chrome(
+        service=Service(ChromeDriverManager().install()),
+        options=chrome_options)
+    
+    
+    try:
+        # Log in to LinkedIn
+        actions.login(driver, email, password)
 
-    driver = webdriver.Chrome(ChromeDriverManager().install())
-    actions.login(driver, email, password)
+        # Wait for the user to confirm manual login
+        print("Please complete the login process in the browser window.")
+        input("Press Enter to continue after successful login")
 
-    st.info("Please complete the login process in the browser window that has opened.")
-    input("Press Enter to continue after successful login")
+        # Start scraping
 
-    job_search = JobSearch(driver=driver, close_on_complete=False, scrape=False)
-    jobs_data = []
+        job_search = JobSearch(driver=driver, close_on_complete=True, scrape=True)
+        jobs_data = []
 
-    for title in job_titles[:1]:
-        job_listings = job_search.search(title)
-        for job in job_listings:
-            jobs_data.append({
-                'Job Title': job.job_title,
-                'Company': job.company,
-                'Location': job.location,
-                'Job URL': job.linkedin_url,
-                'Job Sector': title
-            })
+        for title in job_titles:
+            job_listings = job_search.search(title)
+            for job in job_listings:
+                jobs_data.append({
+                    'Job Title': job.job_title,
+                    'Company': job.company,
+                    'Location': job.location,
+                    'Job URL': job.linkedin_url,
+                    'Job Sector': title
+                })
 
-    df = pd.DataFrame(jobs_data)
-    df.to_csv('linkedin_job_listings.csv', mode='a', index=False)
-    return jobs_data
+        # Save results to CSV
+        df = pd.DataFrame(jobs_data)
+        df.to_csv('linkedin_job_listings.csv', mode='a', index=False)
+
+        return jobs_data
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        driver.quit()  # Ensure the driver is properly closed
 
 # Function to display job listings in Streamlit
 def display_jobs(jobs_data):
@@ -259,13 +282,21 @@ def calculate_skill_match(skills, job_titles, onet_titles_df):
     return match_scores, job_skills 
 
 # Function to extract skills or keywords from the text
+# Function to extract skills or keywords from the text using spaCy's NER
 def extract_skills(text):
+    # Use spaCy's NLP model to process the text
     doc = nlp(text)
-    skills = set()
-    for token in doc:
-        if not token.is_stop and not token.is_punct and token.pos_ in ['NOUN', 'PROPN']:
-            skills.add(token.lemma_.lower())
-    return list(skills)
+    
+    # Extract entities recognized as skills or related terms
+    skills = [ent.text for ent in doc.ents if ent.label_ in ['ORG', 'PRODUCT', 'SKILL', 'TECHNOLOGY']]
+    
+    # You can refine this to use specific patterns or domain-specific terms
+    if not skills:  # Fallback: Split text into words and filter out stopwords
+        words = word_tokenize(text.lower())
+        skills = [word for word in words if word not in stopwords.words('english') and len(word) > 2]
+    
+    return skills
+
 
 # Function to visualize skill match
 def visualize_skill_match(match_scores):
@@ -408,7 +439,10 @@ if submit:
                 st.write(", ".join(skills))
             else:
                 st.warning("No skills were extracted from the resume.")
-        
+            
+            
+            onet_title_embeddings = load_or_compute_embeddings(onet_titles, embeddings_file)
+            
             # Rank job titles using semantic similarity
             top_job_titles = rank_job_titles_semantic(skills, onet_titles, onet_title_embeddings, top_k=2)
             if top_job_titles:
@@ -419,7 +453,8 @@ if submit:
         
             # Search Jobs and Generate Guidance
             with st.spinner("Searching for jobs and generating career guidance..."):
-                job_results = perform_linkedin_job_search(top_job_titles, location)
+                job_results = job_results = perform_linkedin_job_search(top_job_titles, email="akhiltheswarop@gmail.com", password="Vaazhkai@12")
+
                 
                 # Display jobs
                 if job_results:
