@@ -11,19 +11,19 @@ from nltk.tokenize import word_tokenize
 import plotly.express as px
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
-import pickle
 import os
-from linkedin_scraper import actions
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from linkedin_scraper import JobSearch
 import subprocess
 # Added Imports for pyresparser
 import sys
 sys.path.append('C:/Users/swaro/OneDrive/Documents/GitHub/RAG/pyresparser')  # Adjust the path as needed
+sys.path.append('C:/Users/swaro/OneDrive/Documents/GitHub/RAG/linkedin_scraper')  # Adjust the path as needed
 from pyresparser import ResumeParser
+from linkedin_scraper import actions
+from linkedin_scraper import JobSearch
 
 # Download necessary NLTK data
 nltk.download('stopwords')
@@ -127,51 +127,30 @@ def process_resume(file_path):
         st.error(f"An error occurred while parsing the resume: {e}")
         return {}
 
-def perform_linkedin_job_search(job_titles: List[str], email: str, password: str):
-    chrome_options = Options()
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--disable-software-rasterizer")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--no-sandbox")
-    # Initialize WebDriver
-    driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()),
-        options=chrome_options)
-    
-    
-    try:
-        # Log in to LinkedIn
-        actions.login(driver, email, password)
+# Function to perform LinkedIn job search using LinkedinScraper
+def perform_linkedin_job_search(job_titles: List[str], email="akhiltheswarop@gmail.com", password="Vaazhkai@12"):
 
-        # Wait for the user to confirm manual login
-        print("Please complete the login process in the browser window.")
-        input("Press Enter to continue after successful login")
+    driver = webdriver.Chrome()
+    actions.login(driver, email, password)
+    input("Press Enter to continue after successful login")
 
-        # Start scraping
+    job_search = JobSearch(driver=driver, close_on_complete=False, scrape=False)
+    jobs_data = []
 
-        job_search = JobSearch(driver=driver, close_on_complete=True, scrape=True)
-        jobs_data = []
+    for title in job_titles[:1]:
+        job_listings = job_search.search(title)
+        for job in job_listings:
+            jobs_data.append({
+                'Job Title': job.job_title,
+                'Company': job.company,
+                'Location': job.location,
+                'Job URL': job.linkedin_url,
+                'Job Sector': title
+            })
 
-        for title in job_titles:
-            job_listings = job_search.search(title)
-            for job in job_listings:
-                jobs_data.append({
-                    'Job Title': job.job_title,
-                    'Company': job.company,
-                    'Location': job.location,
-                    'Job URL': job.linkedin_url,
-                    'Job Sector': title
-                })
-
-        # Save results to CSV
-        df = pd.DataFrame(jobs_data)
-        df.to_csv('linkedin_job_listings.csv', mode='a', index=False)
-
-        return jobs_data
-    except Exception as e:
-        print(f"An error occurred: {e}")
-    finally:
-        driver.quit()  # Ensure the driver is properly closed
+    df = pd.DataFrame(jobs_data)
+    df.to_csv('linkedin_job_listings.csv', mode='a', index=False)
+    return jobs_data
 
 # Function to display job listings in Streamlit
 def display_jobs(jobs_data):

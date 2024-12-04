@@ -1,6 +1,7 @@
 import os
 from typing import List
 from time import sleep
+import urllib
 from urllib.parse import urljoin
 from .objects import Scraper
 from . import constants as c
