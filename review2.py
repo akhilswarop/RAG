@@ -33,10 +33,6 @@ nltk.download('punkt')
 st.set_page_config(page_title="Career Guidance System using RAG", layout="wide")
 st.title("Career Guidance System using RAG")
 
-# Add paths to custom modules
-sys.path.append('path_to_pyresparser')  # Replace with your actual path
-sys.path.append('path_to_linkedin_scraper')  # Replace with your actual path
-
 from pyresparser import ResumeParser
 from linkedin_scraper import actions, JobSearch
 

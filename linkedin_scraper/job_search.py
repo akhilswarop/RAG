@@ -71,7 +71,7 @@ class JobSearch(Scraper):
         self.focus()
         sleep(self.WAIT_FOR_ELEMENT_TIMEOUT)
 
-        job_listing_class_name = "rpuUwTbCXZmEmyRgfcblpSOKuAgMXKFek"
+        job_listing_class_name = "eZacFsWnFAJDCKfxzptJaeZOauuHSuFyLAFHiw"
         job_listing = self.wait_for_element_to_load(name=job_listing_class_name)
 
         self.scroll_class_name_element_to_page_percent(job_listing_class_name, 0.3)
