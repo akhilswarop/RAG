@@ -1,4 +1,5 @@
 streamlit
+torch
 spacy
 pandas
 gensim
@@ -6,9 +7,7 @@ nltk
 plotly
 scikit-learn
 sentence-transformers
+faiss-cpu
 selenium
 webdriver-manager
-linkedin-scraper
-numpy==2.0.0
-blis==1.0.1
-thinc==8.3.2
+pyresparser
