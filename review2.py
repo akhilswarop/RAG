@@ -367,8 +367,8 @@ if uploaded_file:
         st.session_state.email = resume_data.get("email", "")
         st.session_state.mobile_number = resume_data.get("mobile_number", "")
         st.session_state.skills = resume_data.get("skills", [])
-        st.session_state.degree = "\n".join(resume_data.get("degree", []))
-        st.session_state.experience = "\n".join(resume_data.get("experience", []))
+        st.session_state.degree = resume_data.get("degree", [])
+        st.session_state.experience = resume_data.get("experience", [])
         st.session_state.college_name = resume_data.get("college_name", "")
         st.success("Resume processed successfully!")
     else:
@@ -435,40 +435,40 @@ if submit:
             st.warning("No job titles could be ranked based on the provided skills.")
 
         # Search Jobs and Generate Guidance
-        with st.spinner("Searching for jobs and generating career guidance..."):
-            job_results = perform_linkedin_job_search(top_job_titles)
+        # with st.spinner("Searching for jobs and generating career guidance..."):
+        #     job_results = perform_linkedin_job_search(top_job_titles)
 
-            # Display jobs
-            if job_results:
-                display_jobs(job_results)
-            else:
-                st.write("No job listings found.")
+        #     # Display jobs
+        #     if job_results:
+        #         display_jobs(job_results)
+        #     else:
+        #         st.write("No job listings found.")
 
-            # Generate career guidance
-            job_listings_text = "\n".join([f"{job['Job Title']} at {job['Company']} in {job['Location']}" for job in job_results])
-            guidance = generate_career_guidance(user_skills, academic_history, psychometric_profile, top_job_titles, job_listings_text)
-            st.subheader("Personalized Career Guidance:")
-            st.write(guidance)
+        #     # Generate career guidance
+        #     job_listings_text = "\n".join([f"{job['Job Title']} at {job['Company']} in {job['Location']}" for job in job_results])
+        #     guidance = generate_career_guidance(user_skills, academic_history, psychometric_profile, top_job_titles, job_listings_text)
+        #     st.subheader("Personalized Career Guidance:")
+        #     st.write(guidance)
 
-            # Skill Match Visualization
-            match_scores, job_skills = calculate_skill_match(user_skills, top_job_titles, onet_titles_df)
-            visualize_skill_match(match_scores)
+        #     # Skill Match Visualization
+        #     match_scores, job_skills = calculate_skill_match(user_skills, top_job_titles, onet_titles_df)
+        #     visualize_skill_match(match_scores)
 
-            # Skill Gap Analysis
-            missing_skills = identify_skill_gaps(user_skills, job_skills)
-            visualize_skill_gaps(missing_skills)
+        #     # Skill Gap Analysis
+        #     missing_skills = identify_skill_gaps(user_skills, job_skills)
+        #     visualize_skill_gaps(missing_skills)
 
-        # Perform LDA unsupervised clustering and display the results
-        if not onet_titles_df.empty:
-            st.subheader("LDA Unsupervised Clustering on O*NET Data")
-            st.write("Performing LDA to find topics in O*NET occupations...")
-            topics = perform_lda_on_onet(onet_titles_df)
+        # # Perform LDA unsupervised clustering and display the results
+        # if not onet_titles_df.empty:
+        #     st.subheader("LDA Unsupervised Clustering on O*NET Data")
+        #     st.write("Performing LDA to find topics in O*NET occupations...")
+        #     topics = perform_lda_on_onet(onet_titles_df)
 
-            if topics:
-                st.write("Here are the topics found:")
-                for idx, topic in enumerate(topics):
-                    st.write(f"**Topic {idx+1}:** {topic}")
-            else:
-                st.write("LDA could not be performed due to insufficient data or errors.")
-        else:
-            st.write("O*NET data is unavailable. Please check the data file.")
+        #     if topics:
+        #         st.write("Here are the topics found:")
+        #         for idx, topic in enumerate(topics):
+        #             st.write(f"**Topic {idx+1}:** {topic}")
+        #     else:
+        #         st.write("LDA could not be performed due to insufficient data or errors.")
+        # else:
+        #     st.write("O*NET data is unavailable. Please check the data file.")
