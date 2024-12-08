@@ -70,9 +70,10 @@ def preprocess_documents(df, text_column='Description'):
         for sentence in sentences:
             documents.append({
                 'job_title': row['Title'],
-                'sector': row.get('Sector', 'Unknown'),
+                'soc_code': row['O*NET-SOC Code'],  # Include the SOC code
                 'text': sentence
             })
+        
     return pd.DataFrame(documents)
 
 @st.cache_resource
@@ -118,7 +119,14 @@ def retrieve_relevant_documents(query, top_k=10):
     # Search the index
     distances, indices = index.search(query_embedding, top_k)
     retrieved_docs = documents_df.iloc[indices[0]]
-    return retrieved_docs['text'].tolist()
+        # Collect the SOC Code, Title, and Text
+    
+    results = []
+    for _, row in retrieved_docs.iterrows():
+        results.append(
+        f"SOC Code: {row['soc_code']}, Title: {row['job_title']}, Description: {row['text']}"
+        )
+    return results
 
 # Function to process the resume using pyresparser
 def process_resume(file_path):
@@ -156,7 +164,7 @@ Top Recommended Job Titles: {top_job_titles_text}
 
 
 Provide a comprehensive analysis including:
-- Recommended career paths
+- Recommended career paths with SOC codes and titles
 - Skill development suggestions
 - Potential industries to explore
 - Next steps for job applications

@@ -9,7 +9,7 @@
             "console": "integratedTerminal",
             "args": [
                 "run",
-                "review2.py"
+                "app.py"
             ]
         },
         {
