@@ -1,10 +1,9 @@
-# Author: Omkar Pathak
-
 import os
 import multiprocessing as mp
 import io
 import spacy
 import pprint
+import csv
 from spacy.matcher import Matcher
 from . import utils
 
@@ -62,9 +61,6 @@ class ResumeParser(object):
                     self.__noun_chunks,
                     self.__skills_file
                 )
-        # edu = utils.extract_education(
-        #               [sent.string.strip() for sent in self.__nlp.sents]
-        #       )
         entities = utils.extract_entity_sections_grad(self.__text_raw)
 
         # extract name
@@ -134,7 +130,7 @@ if __name__ == '__main__':
 
     resumes = []
     data = []
-    for root, directories, filenames in os.walk('resumes/'):
+    for root, directories, filenames in os.walk('resumes'):
         for filename in filenames:
             file = os.path.join(root, filename)
             resumes.append(file)
@@ -148,4 +144,10 @@ if __name__ == '__main__':
 
     results = [p.get() for p in results]
 
-    pprint.pprint(results)
+    # Save results to a CSV file
+    with open('resume_data.csv', mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.DictWriter(file, fieldnames=results[0].keys())
+        writer.writeheader()
+        writer.writerows(results)
+
+    #pprint.pprint(results)
