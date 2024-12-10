@@ -1,0 +1,12 @@
+2024-12-10 21:32:04,226 - INFO - Added pyresparser to sys.path
+2024-12-10 21:32:05,680 - INFO - Successfully processed: resumes\Aman Subash resume.pdf
+2024-12-10 21:32:06,864 - INFO - Successfully processed: resumes\GaneshkaranM_RESUME (1).pdf
+2024-12-10 21:32:08,035 - INFO - Successfully processed: resumes\GOPIKRISHNA_K_RESUME.pdf
+2024-12-10 21:32:09,267 - INFO - Successfully processed: resumes\Hariharan_Arul_Resume.pdf
+2024-12-10 21:32:10,449 - INFO - Successfully processed: resumes\Keerthivasan_S_V_Resume_V2.pdf
+2024-12-10 21:32:11,464 - INFO - Successfully processed: resumes\Resume.pdf
+2024-12-10 21:32:12,575 - INFO - Successfully processed: resumes\sai_nivedh_resume.pdf
+2024-12-10 21:32:13,672 - INFO - Successfully processed: resumes\Vishal_S___Resume (1).pdf
+2024-12-10 21:32:14,679 - INFO - Successfully processed: resumes\Yash Bardia_Resume.pdf
+2024-12-10 21:32:15,734 - INFO - Successfully processed: resumes\Yashwanth_Resume.pdf
+2024-12-10 21:32:15,743 - INFO - Extracted data saved to extracted_resume_data.csv
