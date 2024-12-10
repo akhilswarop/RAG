@@ -172,18 +172,25 @@ Provide a comprehensive analysis including:
 
     try:
         with st.spinner("Generating personalized career guidance..."):
-            result = subprocess.run(
+            result_mistral = subprocess.run(
                 ["ollama", "run", "mistral", prompt],
                 capture_output=True,
                 text=True,
                 check=True
             )
-            guidance = result.stdout.strip()
+            result_gemma_2b = subprocess.run(
+                ["ollama", "run", "gemma2:2b", prompt],
+                capture_output=True,
+                text=True,
+                check=True
+            )
+            guidance_mistral = result_mistral.stdout.strip()
+            guidance_gemma_2b = result_gemma_2b.stdout.strip()
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
         guidance = "We're sorry, but we couldn't generate your career guidance at this time. Please try again later."
 
-    return guidance
+    return guidance_mistral, guidance_gemma_2b
 
 # Main application logic
 
@@ -282,12 +289,15 @@ if submit:
         user_skills = [skill.strip() for skill in skills.split(',')] if skills else []
 
         # Generate career guidance using RAG with Mistral
-        guidance = generate_career_guidance_rag_mistral(
+        guidance_mistral, guidance_gemma_2b = generate_career_guidance_rag_mistral(
             skills=user_skills,
             academic_history=academic_history,
             psychometric_profile=psychometric_profile,
             top_job_titles=[],  # Since skill matching is removed
         )
 
-        st.subheader("Career Guidance:")
-        st.write(guidance)
+        st.subheader("Career Guidance [Mistral]:")
+        st.write(guidance_mistral)
+
+        st.subheader("Career Guidance [Gemma 2B]:")
+        st.write(guidance_gemma_2b)
