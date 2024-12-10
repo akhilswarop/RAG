@@ -159,7 +159,6 @@ Context:
 User Profile:
 Skills: {skills_text}
 Academic History: {academic_history}
-Psychometric Profile: {psychometric_profile}
 Top Recommended Job Titles: {top_job_titles_text}
 
 
@@ -184,13 +183,20 @@ Provide a comprehensive analysis including:
                 text=True,
                 check=True
             )
+            result_gemma_9b = subprocess.run(
+                ["ollama", "run", "gemma2:9b", prompt],
+                capture_output=True,
+                text=True,
+                check=True
+            )
             guidance_mistral = result_mistral.stdout.strip()
             guidance_gemma_2b = result_gemma_2b.stdout.strip()
+            guidance_gemma_9b = result_gemma_9b.stdout.strip()
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
         guidance = "We're sorry, but we couldn't generate your career guidance at this time. Please try again later."
 
-    return guidance_mistral, guidance_gemma_2b
+    return guidance_mistral, guidance_gemma_2b, guidance_gemma_9b
 
 # Main application logic
 
@@ -258,30 +264,19 @@ with st.form("career_guidance_form"):
     st.subheader("Experience")
     experience = st.text_area("Experience", value=st.session_state.experience)
 
-    # Psychometric Profile
-    st.subheader("Psychometric Profile")
-    personality_traits = st.text_input("Personality Traits (e.g., Analytical, Creative)", value="")
-    strengths = st.text_input("Strengths (e.g., Problem-solving, Leadership)", value="")
-    preferences = st.text_area("Work Preferences (e.g., Remote work, Team-oriented)", value="")
-
-    # Location Preference
-    st.subheader("Job Location Preference")
-    location = st.text_input("Preferred job location (e.g., New York, NY) or leave blank for any location:")
-
     # Submit Button
     submit = st.form_submit_button("Submit and Generate Guidance")
 
 
 # Handle form submission
 if submit:
-    if not (degree and institution and graduation_year and personality_traits and strengths and preferences):
+    if not (degree and institution and graduation_year):
         st.error("Please fill in all the required profile fields.")
     else:
         # Process academic history
         academic_history = f"Degree: {degree}, Institution: {institution}, Graduation Year: {graduation_year}"
 
         # Process psychometric profile
-        psychometric_profile = f"Personality Traits: {personality_traits}, Strengths: {strengths}, Preferences: {preferences}"
 
         st.success("Profile information submitted successfully!")
 
@@ -289,7 +284,7 @@ if submit:
         user_skills = [skill.strip() for skill in skills.split(',')] if skills else []
 
         # Generate career guidance using RAG with Mistral
-        guidance_mistral, guidance_gemma_2b = generate_career_guidance_rag_mistral(
+        guidance_mistral, guidance_gemma_2b, guidance_gemma_9b = generate_career_guidance_rag_mistral(
             skills=user_skills,
             academic_history=academic_history,
             psychometric_profile=psychometric_profile,
@@ -301,3 +296,6 @@ if submit:
 
         st.subheader("Career Guidance [Gemma 2B]:")
         st.write(guidance_gemma_2b)
+
+        st.subheader("Career Guidance [Gemma 9B]:")
+        st.write(guidance_gemma_9b)

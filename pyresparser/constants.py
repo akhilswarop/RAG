@@ -6,7 +6,7 @@ NAME_PATTERN = [{'POS': 'PROPN'}, {'POS': 'PROPN'}]
 # Education (Upper Case Mandatory)
 EDUCATION = [
             'BE', 'B.E.', 'B.E', 'BS', 'B.S', 'ME', 'M.E',
-            'M.E.', 'MS', 'M.S', 'BTECH', 'MTECH',
+            'M.E.', 'MS', 'M.S', 'B.TECH', 'M.TECH',
             'SSC', 'HSC', 'CBSE', 'ICSE', 'X', 'XII'
         ]
 
