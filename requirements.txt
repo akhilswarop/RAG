@@ -11,3 +11,5 @@ faiss-cpu
 selenium
 webdriver-manager
 pyresparser
+gensim==4.3.3
+torch==2.5.1
