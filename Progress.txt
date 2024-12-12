@@ -1,0 +1,12 @@
+DONE:
+    1. Gemma 2b, 9b, Mistral LLMs with FAISS as Retriever
+    2. Retriever retrieves Job titles and desc from O*NET dataset
+    3. Resume Parser for feeding content to LLM as a prompt
+
+ISSUES:
+    1. Degeree, Institutions and Year of Graduation is not being parsed properly
+
+TO DO:
+    1. Fix issues in Resume Parser 
+    2. Collect Dataset for fine tuning
+    3. Introduction and Related Works to be written.
