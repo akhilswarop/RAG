@@ -8,7 +8,7 @@ import pandas as pd
 import docx2txt
 from datetime import datetime
 from dateutil import relativedelta
-from . import constants as cs
+import constants as cs
 from pdfminer.converter import TextConverter
 from pdfminer.pdfinterp import PDFPageInterpreter
 from pdfminer.pdfinterp import PDFResourceManager
