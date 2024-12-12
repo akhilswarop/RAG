@@ -14,6 +14,8 @@ import subprocess
 import sys
 import faiss
 import numpy as np
+import time
+
 
 # Added Imports for pyresparser
 sys.path.append('C:/Users/swaro/OneDrive/Documents/GitHub/RAG/pyresparser')  # Adjust the path as needed
@@ -283,6 +285,8 @@ if submit:
         # Ensure skills are in list format
         user_skills = [skill.strip() for skill in skills.split(',')] if skills else []
 
+        start_time = time.time()
+
         # Generate career guidance using RAG with Mistral
         guidance_mistral, guidance_gemma_2b, guidance_gemma_9b = generate_career_guidance_rag_mistral(
             skills=user_skills,
@@ -291,6 +295,13 @@ if submit:
             top_job_titles=[],  # Since skill matching is removed
         )
 
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+
+# Format elapsed time in minutes and seconds
+        minutes, seconds = divmod(elapsed_time, 60)
+
+# Display the formatted time in the Streamlit app
         st.subheader("Career Guidance [Mistral]:")
         st.write(guidance_mistral)
 
@@ -299,3 +310,5 @@ if submit:
 
         st.subheader("Career Guidance [Gemma 9B]:")
         st.write(guidance_gemma_9b)
+
+        st.write(f"Time taken for generation: {int(minutes)} minutes and {seconds:.2f} seconds")
