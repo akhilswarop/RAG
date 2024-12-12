@@ -6,7 +6,7 @@ import io
 import spacy
 import pprint
 from spacy.matcher import Matcher
-import utils
+from . import utils
 
 
 class ResumeParser(object):
