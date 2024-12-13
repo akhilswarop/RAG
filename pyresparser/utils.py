@@ -50,6 +50,10 @@ def extract_text_from_pdf(pdf_path):
                     page_interpreter.process_page(page)
 
                     text = fake_file_handle.getvalue()
+                    print("======================== Extracted Text: ====================================")
+                    print(text)
+                    print("================================================================================")
+
                     yield text
 
                     # close open handles
