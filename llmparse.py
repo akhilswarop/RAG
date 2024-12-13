@@ -194,7 +194,13 @@ if __name__ == "__main__":
 
         if extracted_data:
             print("Extracted Resume Data in JSON:")
-            print(json.dumps(extracted_data, indent=4))
+            print(json.dumps(extracted_data, indent=4))       
+            # Write the extracted data to a JSON file
+            output_file = "parsed_data.json"
+            with open(output_file, 'w') as f:
+                json.dump(extracted_data, f, indent=4)
+            print(f"Data written to {output_file}")
+        
         else:
             print("No valid JSON extracted.")
     except Exception as e:
