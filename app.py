@@ -24,7 +24,8 @@ from pdfminer.pdfparser import PDFSyntaxError
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 import docx2txt
-
+import unicodedata
+from pdfminer.high_level import extract_text
 
 
 # Ensure NLTK data is downloaded
@@ -135,84 +136,42 @@ def retrieve_relevant_documents(query, top_k=10):
         )
     return results
 
-def extract_text_from_pdf(pdf_path):
-    '''
-    Helper function to extract the plain text from .pdf files
 
-    :param pdf_path: path to PDF file to be extracted (remote or local)
-    :return: iterator of string of extracted text
-    '''
-    if not isinstance(pdf_path, io.BytesIO):
-        # Extract text from local pdf file
-        with open(pdf_path, 'rb') as fh:
-            try:
-                for page in PDFPage.get_pages(
-                        fh,
-                        caching=True,
-                        check_extractable=True
-                ):
-                    resource_manager = PDFResourceManager()
-                    fake_file_handle = io.StringIO()
-                    converter = TextConverter(
-                        resource_manager,
-                        fake_file_handle,
-                        laparams=LAParams()
-                    )
-                    page_interpreter = PDFPageInterpreter(
-                        resource_manager,
-                        converter
-                    )
-                    page_interpreter.process_page(page)
-
-                    text = fake_file_handle.getvalue()
-
-                    yield text
-
-                    # Close open handles
-                    converter.close()
-                    fake_file_handle.close()
-            except PDFSyntaxError:
-                print(f"Error: PDFSyntaxError encountered while processing {pdf_path}")
-                return
-    else:
-        # Extract text from remote pdf file
-        try:
-            for page in PDFPage.get_pages(
-                    pdf_path,
-                    caching=True,
-                    check_extractable=True
-            ):
-                resource_manager = PDFResourceManager()
-                fake_file_handle = io.StringIO()
-                converter = TextConverter(
-                    resource_manager,
-                    fake_file_handle,
-                    laparams=LAParams()
-                )
-                page_interpreter = PDFPageInterpreter(
-                    resource_manager,
-                    converter
-                )
-                page_interpreter.process_page(page)
-
-                text = fake_file_handle.getvalue()
-                yield text
-
-                converter.close()
-                fake_file_handle.close()
-        except PDFSyntaxError:
-            print("Error: PDFSyntaxError encountered while processing remote PDF")
-            return
         
-def get_resume_text(file_path):
-    '''
-    Helper function to return all text from pdf
-    '''
+def clean_text(text: str) -> str:
+    """
+    Cleans the input text by normalizing and removing unwanted characters.
+    """
+    # Normalize the text to NFKC form
+    normalized_text = unicodedata.normalize('NFKC', text)
+    
+    # Remove non-printable characters
+    cleaned_text = ''.join(c for c in normalized_text if c.isprintable())
+    
+    return cleaned_text
+
+def get_resume_text(file_path: str) -> str:
+    """
+    Extracts and cleans text from a PDF resume.
+
+    Parameters:
+    - file_path (str): Path to the PDF file.
+
+    Returns:
+    - str: Cleaned text extracted from the PDF.
+    """
     if file_path.lower().endswith('.pdf'):
-        full_text = []
-        for page_text in extract_text_from_pdf(file_path):
-            full_text.append(page_text)
-        return "\n".join(full_text)
+        try:
+            # Extract text using pdfminer.high_level.extract_text
+            text = extract_text(file_path)
+            
+            # Clean the extracted text
+            cleaned_text = clean_text(text)
+            
+            return cleaned_text
+        except Exception as e:
+            print(f"Error extracting text from PDF: {e}")
+            return ""
     else:
         raise ValueError("Unsupported file format. Only .pdf is supported.")
     
@@ -262,6 +221,7 @@ Extract the requested information from the resume text and return only one valid
             result = subprocess.run(
                 ["ollama", "run", "gemma2:2b"],
                 input=prompt,
+                encoding='utf-8',
                 text=True,
                 capture_output=True,
                 check=True  # This will raise CalledProcessError if the command fails
@@ -292,10 +252,22 @@ Extract the requested information from the resume text and return only one valid
         return parsed
     except json.JSONDecodeError as e:
         print("JSON parsing failed:")
-        print(e)
-        print("Extracted JSON:")
-        print(cleaned_text)
-        return None
+        print("Retrying with strict JSON parsing...")
+        with st.spinner('Refining Output'):
+            try:
+                result = subprocess.run(
+                    ["ollama", "run", "gemma2:2b"],
+                    input=f"No. You made a mistake. Please try again and make sure to return a valid JSON object. Here's the JSON you returned: {cleaned_text}",
+                    text=True,
+                    capture_output=True,
+                    check=True  # This will raise CalledProcessError if the command fails
+                )
+                parsed = json.loads(cleaned_text)
+                return parsed
+            except e:
+                print("Error:", e)
+                return None
+        
 
 
     
@@ -402,7 +374,8 @@ if uploaded_file:
         st.session_state.mobile_number = resume_data.get("phone", "")
         st.session_state.skills = resume_data.get("skills", [])
         st.session_state.degree = resume_data.get("education", [{}])[0].get("degree", "")
-        st.session_state.college_name = resume_data.get("education", [{}])[0].get("institution", "")
+        st.session_state.college_name = resume_data.get("education", [{}])[0].get("institution", "")     
+        st.session_state.experience = resume_data.get("experience", [{}])
      
         st.success("Resume processed successfully!")
     else:
@@ -417,7 +390,6 @@ with st.form("career_guidance_form"):
     mobile_number = st.text_input("Mobile Number", value=st.session_state.mobile_number)
     degree = st.text_area("Degree", value=', '.join(st.session_state.degree) if isinstance(st.session_state.degree, list) else st.session_state.degree)
     institution = st.text_input("Institution", value=st.session_state.college_name)
-    graduation_year = st.number_input("Graduation Year", min_value=1950, max_value=2100, step=1)
 
     # Skills Autofill
     st.subheader("Skills")
@@ -433,11 +405,11 @@ with st.form("career_guidance_form"):
 
 # Handle form submission
 if submit:
-    if not (degree and institution and graduation_year):
+    if not (degree and institution):
         st.error("Please fill in all the required profile fields.")
     else:
         # Process academic history
-        academic_history = f"Degree: {degree}, Institution: {institution}, Graduation Year: {graduation_year}"
+        academic_history = f"Degree: {degree}, Institution: {institution}"
 
         # Process psychometric profile
 
