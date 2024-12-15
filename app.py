@@ -15,12 +15,17 @@ import sys
 import faiss
 import numpy as np
 import time
+import io
+import subprocess
+import json
+from pdfminer.pdfpage import PDFPage
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+from pdfminer.pdfparser import PDFSyntaxError
+from pdfminer.converter import TextConverter
+from pdfminer.layout import LAParams
+import docx2txt
 
 
-# Added Imports for pyresparser
-sys.path.append('C:/Users/swaro/OneDrive/Documents/GitHub/RAG/pyresparser')  # Adjust the path as needed
-sys.path.append('C:/Users/swaro/OneDrive/Documents/GitHub/RAG/linkedin_scraper')  # Adjust the path as needed
-from pyresparser import ResumeParser
 
 # Ensure NLTK data is downloaded
 nltk.download('stopwords')
@@ -130,14 +135,170 @@ def retrieve_relevant_documents(query, top_k=10):
         )
     return results
 
+def extract_text_from_pdf(pdf_path):
+    '''
+    Helper function to extract the plain text from .pdf files
+
+    :param pdf_path: path to PDF file to be extracted (remote or local)
+    :return: iterator of string of extracted text
+    '''
+    if not isinstance(pdf_path, io.BytesIO):
+        # Extract text from local pdf file
+        with open(pdf_path, 'rb') as fh:
+            try:
+                for page in PDFPage.get_pages(
+                        fh,
+                        caching=True,
+                        check_extractable=True
+                ):
+                    resource_manager = PDFResourceManager()
+                    fake_file_handle = io.StringIO()
+                    converter = TextConverter(
+                        resource_manager,
+                        fake_file_handle,
+                        laparams=LAParams()
+                    )
+                    page_interpreter = PDFPageInterpreter(
+                        resource_manager,
+                        converter
+                    )
+                    page_interpreter.process_page(page)
+
+                    text = fake_file_handle.getvalue()
+
+                    yield text
+
+                    # Close open handles
+                    converter.close()
+                    fake_file_handle.close()
+            except PDFSyntaxError:
+                print(f"Error: PDFSyntaxError encountered while processing {pdf_path}")
+                return
+    else:
+        # Extract text from remote pdf file
+        try:
+            for page in PDFPage.get_pages(
+                    pdf_path,
+                    caching=True,
+                    check_extractable=True
+            ):
+                resource_manager = PDFResourceManager()
+                fake_file_handle = io.StringIO()
+                converter = TextConverter(
+                    resource_manager,
+                    fake_file_handle,
+                    laparams=LAParams()
+                )
+                page_interpreter = PDFPageInterpreter(
+                    resource_manager,
+                    converter
+                )
+                page_interpreter.process_page(page)
+
+                text = fake_file_handle.getvalue()
+                yield text
+
+                converter.close()
+                fake_file_handle.close()
+        except PDFSyntaxError:
+            print("Error: PDFSyntaxError encountered while processing remote PDF")
+            return
+        
+def get_resume_text(file_path):
+    '''
+    Helper function to return all text from pdf
+    '''
+    if file_path.lower().endswith('.pdf'):
+        full_text = []
+        for page_text in extract_text_from_pdf(file_path):
+            full_text.append(page_text)
+        return "\n".join(full_text)
+    else:
+        raise ValueError("Unsupported file format. Only .pdf is supported.")
+    
+
 # Function to process the resume using pyresparser
-def process_resume(file_path):
+def parse_resume_with_ollama(resume_text):
+    '''
+    Function to parse resume text using Ollama's gemma2:2b model and return structured JSON data.
+    '''
+
+   
+            # Use pyresparser to extract data from the resume text
+    extracted_data = get_resume_text(resume_text)
+    # Define the prompt with strict instructions
+    prompt = f"""
+You are a helpful assistant that extracts structured data from the given resume text.
+
+Important Instructions:
+1. Output Format: Return only a single JSON object that strictly follows the requested structure.
+2. No Extra Text: Do not include any additional text, explanations, code fences, triple backticks, or any formatting beyond the JSON object.
+3. No Missing Keys: Include all keys listed below, even if their values are empty or blank.
+4. No Trailing Commas: Ensure that there are no trailing commas after the last item in arrays or objects.
+5. Data Structure:
+   - name: string
+   - location: string
+   - email: string
+   - phone: string
+   - linkedin: string
+   - skills: an array of strings
+   - experience: an array of objects, each with keys "role", "company", "location", "start_date", "end_date", "description"
+   - projects: an array of objects, each with keys "title", "start_date", "end_date", "description", "tech_stack" (where "tech_stack" is an array of strings)
+   - education: an array of objects, each with keys "degree", "institution", "start_date", "end_date", "gpa"
+   - extracurricular_activities: an array of objects, each with keys "activity" and "description"
+
+If a field is not found in the resume, return an empty string "" for strings or an empty array [] for lists.
+
+Resume Text:
+{extracted_data}
+
+Your task:
+Extract the requested information from the resume text and return only one valid JSON object, strictly following the structure and instructions above. Do not add extra fields or omit the ones given in the structure.
+"""
+
+    # Call Ollama's gemma2:2b model via subprocess
+    with st.spinner('Parsing resume...'):
+        try:
+            result = subprocess.run(
+                ["ollama", "run", "gemma2:2b"],
+                input=prompt,
+                text=True,
+                capture_output=True,
+                check=True  # This will raise CalledProcessError if the command fails
+            )
+        except subprocess.CalledProcessError as e:
+            print("Error running ollama:", e.stderr)
+            return None
+
+    # The model should return JSON. We can load it directly.
+    response_text = result.stdout.strip()
+
+    # Debug: Print the raw response
+    print("=======")
+    print(response_text)
+    print("=======")
+
+    # Clean the response by removing any code fences or markdown formatting
+    cleaned_text = response_text.replace("```json", "").replace("```", "").strip()
+
+    # Debug: Print the cleaned JSON
+    print("Cleaned JSON:")
+    print(cleaned_text)
+    print("=======")
+
+    # Try to parse the cleaned JSON
     try:
-        data = ResumeParser(file_path).get_extracted_data()
-        return data
-    except Exception as e:
-        st.error(f"An error occurred while parsing the resume: {e}")
-        return {}
+        parsed = json.loads(cleaned_text)
+        return parsed
+    except json.JSONDecodeError as e:
+        print("JSON parsing failed:")
+        print(e)
+        print("Extracted JSON:")
+        print(cleaned_text)
+        return None
+
+
+    
 
 # Function to generate career guidance using RAG with Mistral
 def generate_career_guidance_rag_mistral(skills, academic_history, psychometric_profile, top_job_titles):
@@ -233,16 +394,16 @@ if uploaded_file:
         f.write(uploaded_file.getbuffer())
 
     # Extract resume data
-    resume_data = process_resume(uploaded_file.name)
+    resume_data = parse_resume_with_ollama(uploaded_file.name)
     if resume_data:
         st.session_state.resume_data = resume_data
         st.session_state.name = resume_data.get("name", "")
         st.session_state.email = resume_data.get("email", "")
-        st.session_state.mobile_number = resume_data.get("mobile_number", "")
+        st.session_state.mobile_number = resume_data.get("phone", "")
         st.session_state.skills = resume_data.get("skills", [])
-        st.session_state.degree = resume_data.get("degree", [])
-        st.session_state.experience = resume_data.get("experience", "")
-        st.session_state.college_name = resume_data.get("college_name", "")
+        st.session_state.degree = resume_data.get("education", [{}])[0].get("degree", "")
+        st.session_state.college_name = resume_data.get("education", [{}])[0].get("institution", "")
+     
         st.success("Resume processed successfully!")
     else:
         st.error("Failed to process the resume. Please try again.")

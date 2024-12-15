@@ -1,0 +1,88 @@
+{
+    "name": "Akhil Swarop",
+    "location": "Coimbatore, Tamil Nadu",
+    "email": "akhiltheswarop@gmail.com",
+    "phone": "8072337567",
+    "linkedin": "https://linkedin.com/in/akhil-swarop-a5ba91185",
+    "experience": [
+        {
+            "role": "Flutter App Developer",
+            "company": "Metatroncube Software Solutions",
+            "location": "Remote",
+            "start_date": "05/2024",
+            "end_date": "07/2024",
+            "description": "Developed and optimized Flutter applications, adhering to best practices in workflow management, version control, and the software development life cycle. Ensured high performance and consistency across platforms through continuous refinement and proactive troubleshooting."
+        }
+    ],
+    "projects": [
+        {
+            "title": "AI-Powered Career Guidance System with Resume Analysis and Job Matching",
+            "start_date": "08/2024",
+            "end_date": "Present",
+            "description": "Developed an AI-driven web app using Streamlit to analyze resumes, extracting skills via NLP (spaCy) and ranking job titles using TF-IDF and cosine similarity. Automated LinkedIn job searches with Selenium, matching users to over 1,000 job titles and providing top 5 recommendations based on their skills.",
+            "tech_stack": [
+                "Python",
+                "Streamlit",
+                "spaCy",
+                "TF-IDF",
+                "cosine similarity"
+            ]
+        },
+        {
+            "title": "howzit!",
+            "start_date": "05/2024",
+            "end_date": "07/2024",
+            "description": "Developed a cross-platform Flutter application connecting celebrities and fans, achieving 30% faster data retrieval using AWS LightSail for backend services. Implemented optimized data structures, improving user engagement by 25%. Currently managing the app's advertising phase across major platforms.",
+            "tech_stack": [
+                "Flutter",
+                "AWS LightSail",
+                "optimizing data structures",
+                "improving user engagement",
+                "advertising management"
+            ]
+        },
+        {
+            "title": "AR Anatomy",
+            "start_date": "03/2024",
+            "end_date": "04/2024",
+            "description": "Developed an interactive AR anatomy app using Vuforia SDK with marker-based detection, achieving 95% model overlay accuracy. Designed an intuitive UI for model explosion and subcomponent labeling, enhancing learning engagement by 40%. Demonstrated expertise in AR principles, 3D modeling, and UX design.",
+            "tech_stack": [
+                "Vuforia SDK",
+                "AR",
+                "marker-based detection",
+                "UX Design"
+            ]
+        }
+    ],
+    "education": [
+        {
+            "degree": "Bachelor of Technology - BTech in Computer Science and Engineering",
+            "institution": "Amrita Vishwa Vidyapeetham",
+            "start_date": "09/2021",
+            "end_date": "09/2025",
+            "gpa": 7.65
+        },
+        {
+            "degree": "Class 12",
+            "institution": "KCS CBSE",
+            "start_date": null,
+            "end_date": null,
+            "gpa": 95.2
+        },
+        {
+            "degree": "Class 10",
+            "institution": "KCS CBSE",
+            "start_date": null,
+            "end_date": null,
+            "gpa": null
+        }
+    ],
+    "skills": [
+        "Programming Languages: Python, Java, C++",
+        "Frameworks and Libraries: Flutter, React Native",
+        "Cloud Computing Platforms: AWS, Azure",
+        "Databases: SQL, MongoDB",
+        "Data Structures & Algorithms",
+        "Machine Learning"
+    ]
+}
