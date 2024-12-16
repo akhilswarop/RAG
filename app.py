@@ -300,23 +300,7 @@ Extract the requested information from the resume text and return only one valid
         return parsed
     except json.JSONDecodeError as e:
         print("JSON parsing failed:")
-        print("Retrying with strict JSON parsing...")
-        with st.spinner('Refining Output'):
-            try:
-                result = subprocess.run(
-                    ["ollama", "run", "gemma2:2b"],
-                    input=f"No. You made a mistake. Please try again and make sure to return a valid JSON object. Here's the JSON you returned: {cleaned_text}",
-                    text=True,
-                    capture_output=True,
-                    check=True  # This will raise CalledProcessError if the command fails
-                )
-                refined_response = result.stdout.strip()
-                refined_response = refined_response.replace("```json", "").replace("```", "").strip()
-                refined = json.loads(refined_response)
-                return refined
-            except json.JSONDecodeError as e:
-                print("Error:", e)
-                return None
+        print(e)
         
 
 
@@ -388,7 +372,7 @@ def google_jobs_search(job_title, location):
     "engine": "google_jobs",
     "q": f"{job_title} in {location}",
     "hl": "en",
-    "api_key": os.getenv("GOOGLE_JOB_SEARCH")   
+    "api_key": "22c744e7201db68cce330bf72f58d1c9a81529af3361865d333daa41a32e1551" 
     }
 
     
@@ -423,6 +407,8 @@ uploaded_file = st.file_uploader("Upload your resume (PDF or DOCX)", type=["pdf"
 # Initialize session state variables
 if "resume_data" not in st.session_state:
     st.session_state.resume_data = {}
+if "resume_file" not in st.session_state:
+    st.session_state.resume_file = ""
 if "name" not in st.session_state:
     st.session_state.name = ""
 if "email" not in st.session_state:
@@ -439,26 +425,36 @@ if "college_name" not in st.session_state:
     st.session_state.college_name = ""
 
 # Process the resume and update session state
-if uploaded_file:
-    st.success("Resume uploaded successfully!")
-    with open(uploaded_file.name, "wb") as f:
-        f.write(uploaded_file.getbuffer())
 
-    # Extract resume data
-    resume_data = parse_resume_with_ollama(uploaded_file.name)
-    if resume_data:
-        st.session_state.resume_data = resume_data
-        st.session_state.name = resume_data.get("name", "")
-        st.session_state.email = resume_data.get("email", "")
-        st.session_state.mobile_number = resume_data.get("phone", "")
-        st.session_state.skills = resume_data.get("skills", [])
-        st.session_state.degree = resume_data.get("education", [{}])[0].get("degree", "")
-        st.session_state.college_name = resume_data.get("education", [{}])[0].get("institution", "")     
-        st.session_state.experience = resume_data.get("experience", [{}])
-     
-        st.success("Resume processed successfully!")
+if uploaded_file:
+    # Check if the uploaded file is different from the previously processed one
+    if st.session_state.resume_file != uploaded_file.name:
+        st.success("Resume uploaded successfully!")
+        
+                # Save the file temporarily for processing
+        with open(uploaded_file.name, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+
+        # Extract resume data
+        resume_data = parse_resume_with_ollama(uploaded_file.name)
+
+        if resume_data:
+            st.session_state.resume_data = resume_data
+            st.session_state.resume_file = uploaded_file.name  
+            st.session_state.name = resume_data.get("name", "")
+            st.session_state.email = resume_data.get("email", "")
+            st.session_state.mobile_number = resume_data.get("phone", "")
+            st.session_state.skills = resume_data.get("skills", [])
+            st.session_state.degree = resume_data.get("education", [{}])[0].get("degree", "")
+            st.session_state.college_name = resume_data.get("education", [{}])[0].get("institution", "")     
+            st.session_state.experience = resume_data.get("experience", [{}])
+        
+            st.success("Resume processed successfully!")
+        else:
+            st.error("Failed to process the resume. Please try again.")
     else:
-        st.error("Failed to process the resume. Please try again.")
+        # Optional: Inform the user that the resume has already been processed
+        st.info("Resume already processed.")
 
 # Combined User Profile and Location Form
 with st.form("career_guidance_form"):
@@ -505,8 +501,6 @@ if submit:
         guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, top_job_titles = generate_career_guidance_rag_mistral(
             skills=user_skills,
             academic_history=academic_history,
-            psychometric_profile=psychometric_profile,
-            top_job_titles=[],  # Since skill matching is removed
         )
 
         end_time = time.time()
@@ -526,3 +520,27 @@ if submit:
 
         
         st.write(f"Time taken for generation: {int(minutes)} minutes and {seconds:.2f} seconds")
+
+        st.write("Top Job Titles:")
+        relevant_job_titles = [job[title] for job in top_job_titles]
+        for title in relevant_job_titles:
+            st.write(title)
+        
+        st.title("Job Listings")
+        jobs_data = google_jobs_search(relevant_job_titles[0], location)
+        for job in jobs_data:
+            st.subheader(job["Title"])
+            st.write(f"**Company:** {job['Company']}")
+            st.write(f"**Location:** {job['Location']}")
+            st.write(f"**Via:** {job['Via']}")
+            st.write(job["Description (truncated)"])
+            
+            # Render each apply option as a clickable link
+            if job["Apply Options"]:
+                st.write("**Apply Links:**")
+                for option in job["Apply Options"]:
+                    title = option.get("title", "Apply Here")
+                    link = option.get("link", "#")
+                    st.write(f"[{title}]({link})")
+            
+            st.markdown("---")  # A line to separate jobs
