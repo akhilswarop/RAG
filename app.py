@@ -205,7 +205,8 @@ Important Instructions:
    - projects: an array of objects, each with keys "title", "start_date", "end_date", "description", "tech_stack" (where "tech_stack" is an array of strings)
    - education: an array of objects, each with keys "degree", "institution", "start_date", "end_date", "gpa"
    - extracurricular_activities: an array of objects, each with keys "activity" and "description"
-
+6. Strictly follow the structure in step 5. Do not create new keys by yourself. Use only the keys I mentioned in step 5. 
+7. You are part of a resume parsing pipeline so it's really important you return a json only object and again. Strictly follow the key names in step 5. 
 If a field is not found in the resume, return an empty string "" for strings or an empty array [] for lists.
 
 Resume Text:
@@ -262,9 +263,11 @@ Extract the requested information from the resume text and return only one valid
                     capture_output=True,
                     check=True  # This will raise CalledProcessError if the command fails
                 )
-                parsed = json.loads(cleaned_text)
-                return parsed
-            except e:
+                refined_response = result.stdout.strip()
+                refined_response = refined_response.replace("```json", "").replace("```", "").strip()
+                refined = json.loads(refined_response)
+                return refined
+            except json.JSONDecodeError as e:
                 print("Error:", e)
                 return None
         
