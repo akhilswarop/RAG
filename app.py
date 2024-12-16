@@ -26,6 +26,8 @@ from pdfminer.layout import LAParams
 import docx2txt
 import unicodedata
 from pdfminer.high_level import extract_text
+from serpapi import GoogleSearch
+from dotenv import load_dotenv
 
 
 # Ensure NLTK data is downloaded
@@ -39,7 +41,6 @@ st.title("Career Guidance System using RAG with Mistral")
 # Initialize variables with default values
 skills = []
 academic_history = ""
-psychometric_profile = ""
 jobs_data = []
 
 # Load spaCy model for NLP tasks
@@ -130,11 +131,57 @@ def retrieve_relevant_documents(query, top_k=10):
         # Collect the SOC Code, Title, and Text
     
     results = []
+    results_json = []
     for _, row in retrieved_docs.iterrows():
         results.append(
         f"SOC Code: {row['soc_code']}, Title: {row['job_title']}, Description: {row['text']}"
         )
-    return results
+        results_json.append({
+            "soc_code": row['soc_code'],
+            "title": row['job_title'],
+            "description": row['text']
+        })
+    return results, results_json
+
+
+        
+def clean_text(text: str) -> str:
+    """
+    Cleans the input text by normalizing and removing unwanted characters.
+    """
+    # Normalize the text to NFKC form
+    normalized_text = unicodedata.normalize('NFKC', text)
+    
+    # Remove non-printable characters
+    cleaned_text = ''.join(c for c in normalized_text if c.isprintable())
+    
+    return cleaned_text
+
+def get_resume_text(file_path: str) -> str:
+    """
+    Extracts and cleans text from a PDF resume.
+
+    Parameters:
+    - file_path (str): Path to the PDF file.
+
+    Returns:
+    - str: Cleaned text extracted from the PDF.
+    """
+    if file_path.lower().endswith('.pdf'):
+        try:
+            # Extract text using pdfminer.high_level.extract_text
+            text = extract_text(file_path)
+            
+            # Clean the extracted text
+            cleaned_text = clean_text(text)
+            
+            return cleaned_text
+        except Exception as e:
+            print(f"Error extracting text from PDF: {e}")
+            return ""
+    else:
+        raise ValueError("Unsupported file format. Only .pdf is supported.")
+    
 
 
         
@@ -276,15 +323,14 @@ Extract the requested information from the resume text and return only one valid
     
 
 # Function to generate career guidance using RAG with Mistral
-def generate_career_guidance_rag_mistral(skills, academic_history, psychometric_profile, top_job_titles):
+def generate_career_guidance_rag_mistral(skills, academic_history):
     skills_text = ', '.join(skills) if skills else "No skills provided"
-    top_job_titles_text = ', '.join(top_job_titles) if top_job_titles else "No job titles provided"
 
     # Create a comprehensive query based on user profile
-    query = f"Skills: {skills_text}. Academic History: {academic_history}. Psychometric Profile: {psychometric_profile}. Top Job Titles: {top_job_titles_text}."
+    query = f"Skills: {skills_text}. Academic History: {academic_history}."
 
     # Retrieve relevant documents
-    retrieved_docs = retrieve_relevant_documents(query, top_k=10)
+    retrieved_docs, top_job_titles = retrieve_relevant_documents(query, top_k=10)
     context = "\n".join(retrieved_docs)
 
     # Construct the prompt for Mistral
@@ -297,7 +343,6 @@ Context:
 User Profile:
 Skills: {skills_text}
 Academic History: {academic_history}
-Top Recommended Job Titles: {top_job_titles_text}
 
 
 Provide a comprehensive analysis including:
@@ -332,10 +377,41 @@ Provide a comprehensive analysis including:
             guidance_gemma_9b = result_gemma_9b.stdout.strip()
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
-        guidance = "We're sorry, but we couldn't generate your career guidance at this time. Please try again later."
 
-    return guidance_mistral, guidance_gemma_2b, guidance_gemma_9b
 
+    return guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, top_job_titles
+
+def google_jobs_search(job_title, location):
+    load_dotenv()
+
+    params = {
+    "engine": "google_jobs",
+    "q": f"{job_title} in {location}",
+    "hl": "en",
+    "api_key": os.getenv("GOOGLE_JOB_SEARCH")   
+    }
+
+    
+
+    search = GoogleSearch(params)
+    results = search.get_dict()
+    st.write(results)
+    search_results = results["jobs_results"]
+
+    jobs_data = []
+    for job in search_results:
+        jobs_data.append({
+            "Title": job.get("title", ""),
+            "Company": job.get("company_name", ""),
+            "Location": job.get("location", ""),
+            "Via": job.get("via", ""),
+            "Description (truncated)": job.get("description", "")[:100] + "...",
+            "Apply Options": job.get("apply_options", "")
+        })
+
+    return jobs_data
+
+    
 # Main application logic
 
 # File Upload and Automatic Resume Processing
@@ -402,13 +478,15 @@ with st.form("career_guidance_form"):
     st.subheader("Experience")
     experience = st.text_area("Experience", value=st.session_state.experience)
 
+    location = st.text_input("Location", value="Remote")
+
     # Submit Button
     submit = st.form_submit_button("Submit and Generate Guidance")
 
 
 # Handle form submission
 if submit:
-    if not (degree and institution):
+    if not (degree and institution and location):
         st.error("Please fill in all the required profile fields.")
     else:
         # Process academic history
@@ -424,7 +502,7 @@ if submit:
         start_time = time.time()
 
         # Generate career guidance using RAG with Mistral
-        guidance_mistral, guidance_gemma_2b, guidance_gemma_9b = generate_career_guidance_rag_mistral(
+        guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, top_job_titles = generate_career_guidance_rag_mistral(
             skills=user_skills,
             academic_history=academic_history,
             psychometric_profile=psychometric_profile,
@@ -437,7 +515,6 @@ if submit:
 # Format elapsed time in minutes and seconds
         minutes, seconds = divmod(elapsed_time, 60)
 
-# Display the formatted time in the Streamlit app
         st.subheader("Career Guidance [Mistral]:")
         st.write(guidance_mistral)
 
@@ -447,4 +524,5 @@ if submit:
         st.subheader("Career Guidance [Gemma 9B]:")
         st.write(guidance_gemma_9b)
 
+        
         st.write(f"Time taken for generation: {int(minutes)} minutes and {seconds:.2f} seconds")
