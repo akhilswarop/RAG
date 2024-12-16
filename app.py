@@ -522,7 +522,7 @@ if submit:
         st.write(f"Time taken for generation: {int(minutes)} minutes and {seconds:.2f} seconds")
 
         st.write("Top Job Titles:")
-        relevant_job_titles = [job[title] for job in top_job_titles]
+        relevant_job_titles = [job["title"] for job in top_job_titles]
         for title in relevant_job_titles:
             st.write(title)
         
