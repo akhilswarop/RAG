@@ -224,17 +224,40 @@ def get_resume_text(file_path: str) -> str:
         raise ValueError("Unsupported file format. Only .pdf is supported.")
 
 
+
+class Experience(BaseModel):
+    role: str
+    company: str
+    description: str
+
+
+class Project(BaseModel):
+    title: str
+    description: str
+
+
+class Education(BaseModel):
+    degree: str
+    institution: str
+
+
+class ExtracurricularActivity(BaseModel):
+    activity: str
+    description: str
+
+
 class Resume(BaseModel):
     name: str
     location: str
     email: str
     phone: str
     linkedin: str
-    skills: list[str]
-    experience: list[dict]
-    projects: list[dict]
-    education: list[dict]
-    extracurricular_activities: list[dict]
+    skills: List[str]
+    experience: List[Experience]
+    projects: List[Project]
+    education: List[Education]
+    extracurricular_activities: List[ExtracurricularActivity]
+
 
 # Function to process the resume using pyresparser
 def parse_resume_with_ollama(resume_text):
@@ -394,7 +417,62 @@ def google_jobs_search(job_title, location):
 
     return jobs_data
 
-    
+
+def display_resume(resume_data):
+    st.title("Resume Details")
+
+    # Display personal information
+    st.header("Personal Information")
+    st.write(f"**Name:** {resume_data.name if resume_data.name else 'Not specified'}")
+    st.write(f"**Email:** {resume_data.email if resume_data.email else 'Not specified'}")
+    st.write(f"**Phone:** {resume_data.phone if resume_data.phone else 'Not specified'}")
+    st.write(f"**Location:** {resume_data.location if resume_data.location else 'Not specified'}")
+    st.write(f"**LinkedIn:** {resume_data.linkedin if resume_data.linkedin else 'Not specified'}")
+
+    # Display skills
+    st.header("Skills")
+    if resume_data.skills:
+        st.write(", ".join(resume_data.skills))
+    else:
+        st.write("No skills specified")
+
+    # Display experience
+    st.header("Experience")
+    if resume_data.experience:
+        for exp in resume_data.experience:
+            st.subheader(exp.role)
+            st.write(f"**Company:** {exp.company}")
+            st.write(f"**Description:** {exp.description}")
+    else:
+        st.write("No experience listed")
+
+    # Display projects
+    st.header("Projects")
+    if resume_data.projects:
+        for proj in resume_data.projects:
+            st.subheader(proj.title)
+            st.write(f"**Description:** {proj.description}")
+    else:
+        st.write("No projects listed")
+
+    # Display education
+    st.header("Education")
+    if resume_data.education:
+        for edu in resume_data.education:
+            st.subheader(edu.degree)
+            st.write(f"**Institution:** {edu.institution}")
+    else:
+        st.write("No education details available")
+
+    # Display extracurricular activities
+    st.header("Extracurricular Activities")
+    if resume_data.extracurricular_activities:
+        for activity in resume_data.extracurricular_activities:
+            st.subheader(activity.activity)
+            st.write(f"**Description:** {activity.description}")
+    else:
+        st.write("No extracurricular activities listed")
+
 # Main application logic
 
 # File Upload and Automatic Resume Processing
@@ -436,6 +514,7 @@ if uploaded_file:
 
         # Extract resume data
         resume_data = parse_resume_with_ollama(uploaded_file.name)
+        display_resume(resume_data)
 
         if resume_data:
             st.session_state.resume_data = resume_data
@@ -444,9 +523,9 @@ if uploaded_file:
             st.session_state.email = resume_data.email if resume_data.email else "Not specified"
             st.session_state.mobile_number = resume_data.phone if resume_data.phone else "Not specified"
             st.session_state.skills = resume_data.skills if resume_data.skills else []
-            st.session_state.degree = resume_data.education if resume_data.education else "Not specified"
-            st.session_state.college_name = resume_data.education if resume_data.education else "Not specified"   
-            st.session_state.experience = resume_data.experience if resume_data.experience else "No experience listed"        
+            st.session_state.degree = resume_data.education[0].degree if resume_data.education else "Not specified"
+            st.session_state.college_name = resume_data.education[0].institution if resume_data.education else "Not specified"   
+            st.session_state.experience = [f"Role:{exp.role} Company: {exp.company} Description: {exp.description}" for exp in resume_data.experience] if resume_data.experience else "No experience listed"        
             st.success("Resume processed successfully!")
         else:
             st.error("Failed to process the resume. Please try again.")
