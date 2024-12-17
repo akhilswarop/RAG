@@ -514,6 +514,8 @@ if uploaded_file:
 
         # Extract resume data
         resume_data = parse_resume_with_ollama(uploaded_file.name)
+
+        # DEBUG LINE: Print the resume data. DELETE IF PRODUCTION. 
         display_resume(resume_data)
 
         if resume_data:
