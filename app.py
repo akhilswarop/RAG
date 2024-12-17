@@ -370,7 +370,7 @@ def google_jobs_search(job_title, location):
 
     params = {
     "engine": "google_jobs",
-    "q": f"{job_title} in {location}",
+    "q": f"{job_title} jobs in {location}",
     "hl": "en",
     "api_key": "22c744e7201db68cce330bf72f58d1c9a81529af3361865d333daa41a32e1551" 
     }
@@ -379,7 +379,6 @@ def google_jobs_search(job_title, location):
 
     search = GoogleSearch(params)
     results = search.get_dict()
-    st.write(results)
     search_results = results["jobs_results"]
 
     jobs_data = []
