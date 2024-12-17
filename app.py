@@ -28,7 +28,8 @@ import unicodedata
 from pdfminer.high_level import extract_text
 from serpapi import GoogleSearch
 from dotenv import load_dotenv
-
+from ollama import chat
+from pydantic import BaseModel
 
 # Ensure NLTK data is downloaded
 nltk.download('stopwords')
@@ -221,7 +222,19 @@ def get_resume_text(file_path: str) -> str:
             return ""
     else:
         raise ValueError("Unsupported file format. Only .pdf is supported.")
-    
+
+
+class Resume(BaseModel):
+    name: str
+    location: str
+    email: str
+    phone: str
+    linkedin: str
+    skills: list[str]
+    experience: list[dict]
+    projects: list[dict]
+    education: list[dict]
+    extracurricular_activities: list[dict]
 
 # Function to process the resume using pyresparser
 def parse_resume_with_ollama(resume_text):
@@ -266,37 +279,24 @@ Extract the requested information from the resume text and return only one valid
     # Call Ollama's gemma2:2b model via subprocess
     with st.spinner('Parsing resume...'):
         try:
-            result = subprocess.run(
-                ["ollama", "run", "gemma2:2b"],
-                input=prompt,
-                encoding='utf-8',
-                text=True,
-                capture_output=True,
-                check=True  # This will raise CalledProcessError if the command fails
-            )
+            response = chat(
+                    messages=[
+                        {
+                        'role': 'user',
+                        'content': prompt,
+                        }
+                    ],
+                    model='gemma2:2b',
+                    format=Resume.model_json_schema(),
+                    )
+            result = Resume.model_validate_json(response.message.content)
+            st.write(result)
         except subprocess.CalledProcessError as e:
             print("Error running ollama:", e.stderr)
             return None
-
-    # The model should return JSON. We can load it directly.
-    response_text = result.stdout.strip()
-
-    # Debug: Print the raw response
-    print("=======")
-    print(response_text)
-    print("=======")
-
-    # Clean the response by removing any code fences or markdown formatting
-    cleaned_text = response_text.replace("```json", "").replace("```", "").strip()
-
-    # Debug: Print the cleaned JSON
-    print("Cleaned JSON:")
-    print(cleaned_text)
-    print("=======")
-
     # Try to parse the cleaned JSON
     try:
-        parsed = json.loads(cleaned_text)
+        parsed = result
         return parsed
     except json.JSONDecodeError as e:
         print("JSON parsing failed:")
@@ -440,14 +440,13 @@ if uploaded_file:
         if resume_data:
             st.session_state.resume_data = resume_data
             st.session_state.resume_file = uploaded_file.name  
-            st.session_state.name = resume_data.get("name", "")
-            st.session_state.email = resume_data.get("email", "")
-            st.session_state.mobile_number = resume_data.get("phone", "")
-            st.session_state.skills = resume_data.get("skills", [])
-            st.session_state.degree = resume_data.get("education", [{}])[0].get("degree", "")
-            st.session_state.college_name = resume_data.get("education", [{}])[0].get("institution", "")     
-            st.session_state.experience = resume_data.get("experience", [{}])
-        
+            st.session_state.name = resume_data.name if resume_data.name else "Not specified"
+            st.session_state.email = resume_data.email if resume_data.email else "Not specified"
+            st.session_state.mobile_number = resume_data.phone if resume_data.phone else "Not specified"
+            st.session_state.skills = resume_data.skills if resume_data.skills else []
+            st.session_state.degree = resume_data.education if resume_data.education else "Not specified"
+            st.session_state.college_name = resume_data.education if resume_data.education else "Not specified"   
+            st.session_state.experience = resume_data.experience if resume_data.experience else "No experience listed"        
             st.success("Resume processed successfully!")
         else:
             st.error("Failed to process the resume. Please try again.")
@@ -462,7 +461,7 @@ with st.form("career_guidance_form"):
     name = st.text_input("Name", value=st.session_state.name)
     email = st.text_input("Email", value=st.session_state.email)
     mobile_number = st.text_input("Mobile Number", value=st.session_state.mobile_number)
-    degree = st.text_area("Degree", value=', '.join(st.session_state.degree) if isinstance(st.session_state.degree, list) else st.session_state.degree)
+    degree = st.text_area("Degree", st.session_state.degree)
     institution = st.text_input("Institution", value=st.session_state.college_name)
 
     # Skills Autofill
