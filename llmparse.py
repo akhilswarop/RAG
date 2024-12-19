@@ -178,14 +178,13 @@ def main():
 
         # Iterate through each PDF file in the resume folder
         for filename in os.listdir(resume_folder):
-                file_path = os.path.join(resume_folder, filename)
+            try:
                 print(f"Processing: {filename}")
-
 
                 # Parse the resume text to JSON
                 resume_text, parsed_json = parse_resume_with_ollama(f"dataset/resumes/{filename}")
 
-                    # Convert the Pydantic model to JSON string with indentation for readability
+                # Convert the Pydantic model to JSON string with indentation for readability
                 try:
                     answer_json = parsed_json.model_dump_json(indent=2)
                 except Exception as e:
@@ -199,6 +198,10 @@ def main():
                     'Answer': answer_json
                 })
                 print(f"Successfully parsed: {filename}")
+                
+            except Exception as e:
+                print(f"Error processing {filename}: {e}")
+                continue
 
     print(f"\nAll resumes processed. Output saved to '{output_csv}'.")
 
