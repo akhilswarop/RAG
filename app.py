@@ -145,83 +145,43 @@ def retrieve_relevant_documents(query, top_k=10):
     return results, results_json
 
 
-        
 def clean_text(text: str) -> str:
-    """
-    Cleans the input text by normalizing and removing unwanted characters.
-    """
-    # Normalize the text to NFKC form
-    normalized_text = unicodedata.normalize('NFKC', text)
-    
-    # Remove non-printable characters
-    cleaned_text = ''.join(c for c in normalized_text if c.isprintable())
-    
-    return cleaned_text
+            """
+            Cleans the input text by normalizing and removing unwanted characters.
+            """
+            # Normalize the text to NFKC form
+            normalized_text = unicodedata.normalize('NFKC', text)
+
+            # Remove non-printable characters
+            cleaned_text = ''.join(c for c in normalized_text if c.isprintable())
+
+            return cleaned_text
+
 
 def get_resume_text(file_path: str) -> str:
-    """
-    Extracts and cleans text from a PDF resume.
+            """
+            Extracts and cleans text from a PDF resume.
 
-    Parameters:
-    - file_path (str): Path to the PDF file.
+            Parameters:
+            - file_path (str): Path to the PDF file.
 
-    Returns:
-    - str: Cleaned text extracted from the PDF.
-    """
-    if file_path.lower().endswith('.pdf'):
-        try:
-            # Extract text using pdfminer.high_level.extract_text
-            text = extract_text(file_path)
-            
-            # Clean the extracted text
-            cleaned_text = clean_text(text)
-            
-            return cleaned_text
-        except Exception as e:
-            print(f"Error extracting text from PDF: {e}")
-            return ""
-    else:
-        raise ValueError("Unsupported file format. Only .pdf is supported.")
-    
-
-
+            Returns:
+            - str: Cleaned text extracted from the PDF.
+            """
+            if file_path.lower().endswith('.pdf'):
+                try:
+                    # Extract text using pdfminer.high_level.extract_text
+                    text = extract_text(file_path)
         
-def clean_text(text: str) -> str:
-    """
-    Cleans the input text by normalizing and removing unwanted characters.
-    """
-    # Normalize the text to NFKC form
-    normalized_text = unicodedata.normalize('NFKC', text)
-    
-    # Remove non-printable characters
-    cleaned_text = ''.join(c for c in normalized_text if c.isprintable())
-    
-    return cleaned_text
-
-def get_resume_text(file_path: str) -> str:
-    """
-    Extracts and cleans text from a PDF resume.
-
-    Parameters:
-    - file_path (str): Path to the PDF file.
-
-    Returns:
-    - str: Cleaned text extracted from the PDF.
-    """
-    if file_path.lower().endswith('.pdf'):
-        try:
-            # Extract text using pdfminer.high_level.extract_text
-            text = extract_text(file_path)
-            
-            # Clean the extracted text
-            cleaned_text = clean_text(text)
-            
-            return cleaned_text
-        except Exception as e:
-            print(f"Error extracting text from PDF: {e}")
-            return ""
-    else:
-        raise ValueError("Unsupported file format. Only .pdf is supported.")
+                    # Clean the extracted text
+                    cleaned_text = clean_text(text)
+        
+                    return cleaned_text
+                except Exception as e:
+                    print(f"Error extracting text from PDF: {e}")
+                    return ""
+            else:
+                raise ValueError("Unsupported file format. Only .pdf is supported.")
 
 
 
