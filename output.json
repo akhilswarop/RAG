@@ -23,11 +23,6 @@
       ],
       "experience": [
         {
-          "role": "Internship",
-          "company": "Metatroncube Software Solutions",
-          "description": "Flutter App Developer"
-        },
-        {
           "role": "Flutter App Developer",
           "company": "Metatroncube Software Solutions",
           "description": "Developed and optimized Flutter applications, adhering to best practices in workflow management, version control, and the software development life cycle."
@@ -35,16 +30,16 @@
       ],
       "projects": [
         {
-          "title": "SAI-Powered Career Guidance System with Resume Analysis and Job Matching",
-          "description": "AI-Powered Career Guidance System with Resume Analysis and Job Matching"
+          "title": "AI-Powered Career Guidance System with Resume Analysis and Job Matching",
+          "description": " Developed an AI-driven web app using Streamlit to analyze resumes, extracting skills via NLP (spaCy) and ranking job titles using TF-IDF and cosine similarity. Automated LinkedIn job searches with Selenium, matching users to over 1,000 jobtitles and providing top 5 recommendations based on their skills."
         },
         {
           "title": "howzit!",
-          "description": "howzit!"
+          "description": " Developed a cross-platform Flutter application connecting celebrities and fans, achieving 30% faster data retrieval using AWS LightSail for backend services.Implemented optimized data structures, improving user engagement by 25%.Currently managing the app's advertising phase across major platforms"
         },
         {
           "title": "AR Anatomy",
-          "description": "AR Anatomy"
+          "description": "Developed an interactive AR anatomy app using Vuforia SDK with marker-based detection, achieving 95% model overlay accuracy. Designed an intuitive UI for model explosion and subcomponent labeling, enhancing learning engagement by 40%. Demonstrated expertise in AR principles, 3D modeling, and UX design."
         }
       ],
       "education": [
@@ -61,12 +56,7 @@
           "institution": "KCS CBSE"
         }
       ],
-      "extracurricular_activities": [
-        {
-          "activity": "AR games using Vuforia SDK",
-          "description": ""
-        }
-      ]
+      "extracurricular_activities": []
     }
   },
   {
@@ -112,45 +102,35 @@
       "experience": [
         {
           "role": "Flutter App Developer",
-          "company": "Meta Data Analyst Professional Certificate",
-          "description": ""
-        },
-        {
-          "role": "Intern",
-          "company": "Metatroncube Software Solutions",
+          "company": " Metatroncube Software Solutions",
           "description": "Developed and optimized Flutter applications, adhering to best practices in workflow management, version control, and the software development life cycle."
         }
       ],
       "projects": [
         {
           "title": "Predictive Analytics and Recommender Systems for Food Data",
-          "description": "Predictive Analytics and Recommender Systems for Food Data"
+          "description": " Developed and visualized data insights using tools like Plotly, Bokeh, and Tableau. Applied market basket analysis using Eclat, FP Growth, Apriori, and AIS algorithms. Built advanced recommender systems using content-based and collaborative filtering approaches. Performed time series analysis with ARIMA and Auto ARIMA models for accurate forecasting. Conducted preprocessing and pattern identification in time series data for prediction enhancement."
         },
         {
-          "title": "RESTful Application",
-          "description": "RESTful application facilitating connections between celebrities and fans"
+          "title": " howzit!",
+          "description": "Developed a cross-platform Flutter application connecting celebrities and fans, achieving 30% faster data retrieval using AWS LightSail for backend services. Implemented optimized data structures, improving user engagement by 25%. Currently managing the app's advertising phase across major platforms."
         }
       ],
       "education": [
         {
-          "degree": "Bachelor of Technology",
-          "institution": "BTech in Computer Science and Engineering,"
+          "degree": "BTech in Computer Science and Engineering",
+          "institution": " Amrita Vishwa Vidyapeetham"
         },
         {
           "degree": "Class 12",
-          "institution": "KCS CBSEGPA: 95.2 % Class 10KCS CBSEGPA: 93.2 %"
-        }
-      ],
-      "extracurricular_activities": [
-        {
-          "activity": "AR Anatomy",
-          "description": "Developed an interactive augmented reality anatomy application using Vuforia SDK. Implemented marker-based detection for accurate model overlay on real-world objects. Designed user interaction to explode models, revealing labeled subcomponents."
+          "institution": "KCS CBSE"
         },
         {
-          "activity": "Internship Project",
-          "description": ""
+          "degree": "Class 10",
+          "institution": "KCS CBSE"
         }
-      ]
+      ],
+      "extracurricular_activities": []
     }
   },
   {
@@ -160,8 +140,8 @@
       "name": "Akhil Swarop",
       "location": "Coimbatore, Tamil Nadu",
       "email": "akhiltheswarop@gmail.com",
-      "phone": "+8072337567",
-      "linkedin": "linkedin.com/in/akhil-swarop-a5ba91185SKILLSAlgorithms, Cascading StyleSheets (CSS), ChatGPT, Dart,Dart, Data Wrangling, DeepLearning, Embedded Systems,Excel, Flutter,Git,Github, Hive,HTML,HTML5, JavaScript, Keras,Machine Learning, MongoDB,MySQL, PostgreSQL, Python,PyTorch, R,React.js, Spark,SQL, TensorFlow, Unity,Vuforia Augmented RealitySDK",
+      "phone": "8072337567",
+      "linkedin": "linkedin.com/in/akhil-swarop-a5ba91185",
       "skills": [
         "Algorithms",
         "Cascading StyleSheets (CSS)",
@@ -195,34 +175,37 @@
       ],
       "experience": [
         {
-          "role": "Flutter App Developer Intern",
+          "role": " Flutter App Developer Intern",
           "company": "Metatroncube Software Solutions",
-          "description": "Flutter App Developer"
-        },
-        {
-          "role": "",
-          "company": "Metatroncube Software Solutions",
-          "description": ""
+          "description": " Developed and optimized Flutter applications, adhering to best practices in workflow management, version control, and the software development life cycle. Ensured high performance and consistency across platforms through continuous refinement and proactive troubleshooting."
         }
       ],
       "projects": [
         {
           "title": "Predictive Analytics and Recommender Systems for Food Data",
-          "description": ""
+          "description": "Developed and visualized data insights using tools like Plotly, Bokeh, and Tableau. Applied market basket analysis using Eclat, FP Growth, Apriori, and AIS algorithms. Built advanced recommender systems using content-based and collaborative filtering approaches. Performed time series analysis with ARIMA and Auto ARIMA models for accurate forecasting. Conducted prepprocessing and pattern identification in time series data for prediction enhancement."
+        },
+        {
+          "title": " Internship Project ",
+          "description": " Developed a RESTful application facilitating connections between celebrities and fans. Utilized efficient data structures to optimize connectivity and enhance user experience. Implemented AWS LightSail for backend services, ensuring rapid data replication and efficient storage/retrieval. Leveraged Flutter for cross-platform frontend development, delivering a seamless user interface across multiple devices"
         },
         {
           "title": "AR Anatomy",
-          "description": "Built an interactive AR anatomy application using Vuforia SDK."
+          "description": "Developed an interactive augmented reality anatomy application using Vuforia SDK. Implemented marker-based detection for accurate model overlay on real-world objects. Designed user interaction to explode models, revealing labeled subcomponents. Demonstrates strong understanding of AR principles, 3D modeling, and user interface design"
         }
       ],
       "education": [
         {
-          "degree": "Bachelor of Technology",
-          "institution": "BTech in Computer Science and Engineering Amrita Vishwa Vidyapeetham"
+          "degree": "BTech in Computer Science and Engineering",
+          "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
-          "degree": "",
-          "institution": ""
+          "degree": "Class 12",
+          "institution": " KCS CBSE"
+        },
+        {
+          "degree": "Class 10",
+          "institution": " KCS CBSE"
         }
       ],
       "extracurricular_activities": []
@@ -264,15 +247,15 @@
       ],
       "experience": [
         {
-          "role": "Intern",
+          "role": "Flutter App Developer Intern",
           "company": "Metatroncube Software Solutions",
-          "description": "Flutter App Developer"
+          "description": "Developed and optimized Flutter applications, adhering to best practices in workflow management, version control, and the software development life cycle. Ensured high performance and consistency across platforms through continuous refinement and proactive troubleshooting"
         }
       ],
       "projects": [
         {
-          "title": "Showzit!,",
-          "description": "Showzit!"
+          "title": "howzit!,",
+          "description": "howzit!"
         },
         {
           "title": "RESTful Application",
@@ -307,7 +290,7 @@
     "Answer": {
       "name": "AMAN SUBASH",
       "location": "Kozhikode, Kerala",
-      "email": "mansubash8@gmail.com",
+      "email": "amansubash8@gmail.com",
       "phone": "+91 6282622239",
       "linkedin": "www.linkedin.com/in/aman-subash-834ab1289",
       "skills": [
@@ -445,7 +428,7 @@
     "Filename": "GaneshkaranM_RESUME (1).pdf",
     "Question": "Ganeshkaran MPondicherry, India | ganeshkaran2008@gmail.com | +91 9444291052linkedin.com/in/ganeshkaran-mouralidaran-929b7a176ExperienceSummer Intern, Movate – Chennai, IndiaClassification of songs based on genre• Scraped a dataset of 1500+ songs spread across 10 genres to create a unique dataset. The dataset was split intoAugust 2024 – October 2024train, test and validation parts for optimizing model performance.• Extracted features and performed feature engineering techniques like RFE to identify the most relevant features.• Extracted mel-spectrogram images for each song.• Trained an ensemble model with the extracted features and mel-spectrograms and the model achieved anaccuracy of 85%.ProjectsExplainable AI for Glaucoma Detection• An automated Glaucoma Detection System using a novel deep learning technique, a hybrid VGG-19 CNN modelJune 2024 - August 2024achieving 82.17% accuracy.• The decisions made by the model is interpreted by SHAP and Lime explainable AI• Tech Stack: Python, TensorFlow, Keras, SHAP, Lime.July 2024 - PresentMetadata• Developed an intuitive Pre-processing and Deep Learning system that enables students to access, customize, andtrain Deep Learning models with their required pre-processing functions applied to their datasets.• Enhanced hands-on learning experiences through interactive model experimentation and real-time feedback.• Collaborated with educators to align the system with curriculum goals, employed Agile methodologies to quicklyrespond to stakeholder needs.• Tech Stack: Stack: Python, Flask, TensorFlow, Keras, HTML, CSS, JavaScript, MySQL, Docker, Git.RAG Based Career Guidance Chatbot• Developed a career guidance chat bot which leverages RAG to give personalized career guidance and jobAug 2024 - Presentopenings based on resumes provided by the user.• Tech Stack: Python, LLM, SpaCy, Selenium, Node.js, HTML, CSS.EducationAmrita Vishwa Vidyapeetham, B.Tech in Computer Science Engineering• GPA: 7.7Aditya Vidyashram, Class 12th• GPA: 95.2%June 2021 – June 2025April 2020 – April 2021TechnologiesLanguages and Tools: Python, C++, C, Java, SQL, HTML, CSS, JavaScript, TensorFlow, Keras, HuggingFace,Node.js, Azure, MongoDB, OpenGLFields of Interest: Deep Learning, Natural Language Processing, Computer Vision, Data AnalyticsExtra Curricular ActivitiesQuizzing:• Winner in several national level and Open Category quizzes in school and college level.• Conducted quizzes for my peers in school and college.Sports:• Played Cricket at the Under-16 level for the Pondicherry State cricket team• Runner up in the 2023 intra-college 7s football tournament",
     "Answer": {
-      "name": "Ganeshkaran MPondicherry",
+      "name": "Ganeshkaran M",
       "location": "Chennai, India",
       "email": "ganeshkaran2008@gmail.com",
       "phone": "+91 9444291052",
@@ -522,7 +505,7 @@
       "name": "GOPIKRISHNA K",
       "location": "MALAPPURAM",
       "email": "gopikrishna-k-442bb6251@gmail.com",
-      "phone": "+91",
+      "phone": "+91 7306206061",
       "linkedin": "",
       "skills": [
         "Programming",
@@ -576,11 +559,48 @@
       "location": "India",
       "email": "hariharan.14107@gmail.com",
       "phone": "+91 8248025355",
-      "linkedin": "https://www.linkedin.com/",
+      "linkedin": "",
       "skills": [
+        "Real Time Systems",
+        "Internet Of Things",
         "C",
         "C++",
-        "], </b> </b>] </b> </b> </b> </b> </b> </b> </b> </b> </b> </b> </b> </b> </b> </b> </b> </b> </b> </b> </b>  "
+        "Python",
+        "Java",
+        "SQL",
+        "Bootstrap",
+        "Embedded-C",
+        "Haskell",
+        "MIPS-assembly",
+        "ARM-assembly",
+        "Kotlin",
+        "React",
+        "Linux",
+        "Scala",
+        "AntLR",
+        "GoLang",
+        "TIGStack",
+        "Solidity",
+        "Next.js",
+        "Bash",
+        "HTML",
+        "JavaScript",
+        "Git",
+        "WSL",
+        "Figma",
+        "Eclipse",
+        "Visual Studio",
+        "Arduino",
+        "Jupyter",
+        "WireShark",
+        "Keil vision",
+        "QTspim",
+        "AutoCAD",
+        "STM32Cube",
+        "Android Studio",
+        "Jira",
+        "Jenkins",
+        "Streamlit"
       ],
       "experience": [
         {
@@ -744,7 +764,7 @@
     "Answer": {
       "name": "PRIYANSH NARANG",
       "location": "Coimbatore, India",
-      "email": "✉️Outlook",
+      "email": "",
       "phone": "+91 8320396828",
       "linkedin": "LinkedIn",
       "skills": [
@@ -805,11 +825,11 @@
     "Filename": "resume_1734602517.pdf",
     "Question": "Mantri Vardhanvardhanmantri1@gmail.com+91 8790075669Visakhapatnam, Andhrapradeshlinkedin.com/in/mantri-vardhan-014821304ProfileA cross-disciplinary team player passionate about Embedded Systems, IoT, Antenna Design, VLSI. Beyond technical expertise, a suiteof valuable soft skills, including effective communication, teamwork, adaptability, and a keen problem-solving mindset, are my strengths.Education2021 – 2025IndiaProjectsBachelor of Technology in Electronics and Communication, Amrita Vishwa VidyapeethamCGPA:9.4211/2023 – 01/2024Enhanced Mutual Coupling Reduction Through E-Shaped Resonators in MIMO antenna array systems (5G,RF engineering)•Objective: To design and implement an E-shaped resonator-assisted MIMO antenna design for mutualcoupling reduction in order to improve antenna efficiency and performance.•Tools Used: ANSYS HFSS for simulation.•Outcome:  Achieved  considerable  reduction  in  mutual  coupling,  confirmed  through  simulations  andexperimental tests, significantly improving antenna efficiency and performance.05/2024 – 07/2024Real time-Voice Based Gender Recognition using MATLAB (Signal Processing)•Objective: To develop a real-time gender recognition system using voice input, leveraging power spectraldensity analysis in MATLAB for security-related applications.•Tools  Used:  MATLAB  for  signal  processing,  power  spectral  density  analysis,  and  real-time  voice  inputhandling.•Outcome: Successfully implemented a gender recognition system that accurately classifies gender basedon voice input, offering potential applications in security and authentication systems.05/2022 – 07/2022Waste Management, An IoT-Based Smart Dustbin System for Waste Segregation•Objective: To develope a smart dustbin that segregates waste into organic, recyclable and non recyclableand also an alert system to alert the sanity workers when the bin is full.•Tools used: Sensors(Ultrasonic sensor, color sensor), Actuators(Servo motors), Communication(Bluetooth module), Buzzer. Arduino UNO•Outcome: Successfully created a system that automatically sorts waste based on bag color and notifiessanitary  cleaners  via  Bluetooth  when  bins  are  full  enabling  more  efficient  waste  management  andensuring timely disposal of waste.11/2023Interactive 4-Bit Adder and Subtractor Simulation using LPC2148 and Proteus, Mini Project•Objective: Designed a  circuit integrating addition and subtraction functionality with dynamic mode selection.•Outcome: Achieved a functional and interactive simulation of a 4-bit adder/subtractor, demonstrating efficient use of microcontroller and circuit design principles.03/2024 – 04/2024Smart and Sustainable: Verilog HDL Integration in Laundry Machine Control (VLSI,FPGA)•Objective:  To  design  and  implement  a  smart  and  sustainable  laundry  machine  (Mealy  finite  statemachine)  control  system  using  Verilog  HDL,  incorporating  weight  sensing  and  safety  mechanisms  tooptimize performance and resource efficiency.•Tools Used: Xilinx Vivado Suite, Model Sim for simulation and synthesis, FPGA Board (Digilent Basys3Xilinx Artix-7), Verilog Hardware description language.•Outcome: Successfully designed a laundry mealy state machine control system.10/2023 – 03/2024Comparative Analysis of Various Adder Architectures using FPGA: Evaluating Delay, Area, Temperature and Power Efficiency Across 4-32 Bit Widths (FPGA,VLSI)•Objective:  To  compare  and  evaluate  various  adder  architectures  based  on  delay,  area,  and  powerefficiency across varying bit widths to determine the most suitable design for different applications usingFPGA.•Tools  Used:  Xilinx  Vivado  Suite  for  simulation,  synthesis  and  Implementation,  FPGA  Board  (DigilentBasys3 Xilinx Artix-7), Verilog Hardware description language.•Outcome: Successfully identified the most efficient FPGA adder designs for each specific bit-width.09/2024 – presentLow Power-Programmable Feedback Shift Register for Cryptographic Applications•Objective:  To  develope  a  Programmable  Feedback  Shift  Register  (PFSR)  inorder  to  achieveunpredictability and statistical randomness, outperforming traditional LFSRs in sequence generation andsecurity.Internships08/2023 – 09/2023Training in Ansys HFSS, Piezo and MEMS, ARK INFOSOLUTION PVT. LTD.•Gained comprehensive proficiency in the ANSYS software.2023Telecommunications Intern, BSNL Visakhapatnam•Through my internship at BSNL, I gained experience in telecom network operations, encompassing maindistribution frames, power plants, switching centers, and more. This exposure provided valuable insightsinto the intricacies of telecommunications infrastructure and industry practices.Research Publications (IEEE)06/29/202408/24/202409/21/2024Comparative Analysis of FPGA Adder Architectures: Evaluating Delay, Area, and Power Efficiency Across Different Bit Widths, IEEE International Conference on “ Information Science, Computing, Communication, Instrumentation and Automation” 2024•The paper presents a comprehensive evaluation of various adder architectures using FPGA, focusing on key metrics such as delay, area, and power efficiency. It analyzes performance across different bit widths to identify the most efficient designs for specific applications.Smart and Sustainable: Verilog HDL Integration in Laundry Machine, 4h IEEE International conference ASIANCON 2024 ,Pune, India  and Sponsored by AICTE New Delhi•The paper explores the integration of Verilog HDL in laundry machines to enhance smart and sustainable functionalities. It examines how Verilog HDL can optimize control systems, improve energy efficiency, and provide advanced features in modern laundry appliances.A Comparative analysis of Electrical Characteristics in Bulk, PD, FD and Optimized SOI MOSFETs, 2024 IEEE International Conference on Communication, Computing and Energy Efficient Technologies•The paper offers a detailed comparative analysis of various characteristics of Bulk, Partially Depleted (PD), Fully Depleted (FD), and Optimized SOI MOSFETs. It evaluates their performance metrics to highlight the advantages and limitations of each type for various applications in semiconductor technology.Areas of InterestMicrocontrollers and MicroprocessorsIoTAnalog ElectronicsDigital ElectronicsTechnical skillsDigital Circuit DesignVLSI DesignSoftware's usedAnsys HFSSModelSim-Intel®ProteusProgramming LanguagesC ProgrammingReal time OSVLSILinear Integrated CircuitsRadio Frequency EngineeringAnalog Circuit DesignAntenna DesignArduino IDEEDA PlaygroundCADENCE Xilinx Vivado Design SuiteKeil μVisionLtspiceARM Assembly Level LanguageVerilog Hardware Description languageEmbedded CCertificates and AchievementsC for Everyone, CourseraAMCAT, Certified in 8 different fields which include both technical and non technical.Springfield International Mathematics Olympiad (SIMO), Secured all India rank 47th.Association of Mathematics Teachers of India(AMTI), Maths olympiad, where i qualified consecutively for 3 years to the final round in 7th, 8th, and 9th grade.Responsibilities Discharged04/2024 – presentIEEE-ComSoc Student Society Chairperson, Special Interest Group in Humanitarian TechnologyHeading an IEEE student body group with a core interest in Humanitarian technologyfor improving lives and problem solving through Electronics.",
     "Answer": {
-      "name": "NA",
-      "location": "NA",
-      "email": "NA",
-      "phone": "NA",
-      "linkedin": "NA",
+      "name": "Mantri Vardhan",
+      "location": "Visakhapatnam, Andhrapradesh",
+      "email": "vardhanmantri1@gmail.com",
+      "phone": "+91 8790075669",
+      "linkedin": "https://www.linkedin.com/in/mantri-vardhan-014821304",
       "skills": [
         "Microcontrollers and Microprocessors",
         "IoT",
@@ -856,12 +876,8 @@
       ],
       "education": [
         {
-          "degree": "Bachelor's degree",
-          "institution": "NA"
-        },
-        {
-          "degree": "Master's degree",
-          "institution": "NA"
+          "degree": " Bachelor of Technology in Electronics and Communication",
+          "institution": "Amrita Vishwa Vidyapeetham"
         }
       ],
       "extracurricular_activities": [
@@ -876,11 +892,11 @@
     "Filename": "resume_1734602518.pdf",
     "Question": "HARSHITHA DUDDU Bangalore, KA, India +91 (756) 967-4724 http://www.linkedin.com/in/harshiduddu2002 harshitha.duddu1@gmail.com SUMMARY: - •  Strong foundation in parallel programming, software design, and the C language. •  Proficiency with communication protocols for device control, including SPI, I2C, and UART. •  A solid grasp of data structures, algorithms, optimization strategies, and OS architecture. •  Skilled in the design, development, debugging, testing, and hardware optimization of embedded SW. •  Able to debug hardware using datasheets, schematics, oscilloscopes, and multimeters. EDUCATION Bachelor’s Degree in Electronics and Communication Engineering – Amrita School of Engineering, Bangalore       08/2021 – 05/2025 RELEVANT COURSE WORK Embedded Systems Data Structures & Algorithms KEY ACADEMIC PROJECTS Microcontrollers & Interfacing Machine Learning Computer Architecture Multimedia Wireless N/W Image Compression and Processing | C Language 05/2024 • A 704x536 color JPEG image was compressed with 24 bits per pixel. Algorithms: Simple row and column replication and linear interpolation are used to up sample, followed by a 4:2:0 down sample, then a comparison. • The final RGB image was 2.8 times smaller than it was initially. The up-sampled linear interpolated image's MSE was 0.0761 in the absence of quantization. Socket Programming | TCP/IP, C Language • Designed and implemented a data transfer link between two LAN-connected university servers. • Developed client/server scripts to construct a server architecture and two clients utilizing UDP sockets. Multithreading vs Multitasking for a Robotic Assembly Line | Linux, RTOS, C Language 07/2023 10/2022 • Using the C programming language, an RTOS solution for a robotic assembly line was developed. This included task definition, the creation of distinct threads with distinct priority levels for each robot, task synchronization via semaphores and mutexes, task timing management, and the implementation of error handling mechanisms. • Moreover, message queues utilizing the inter-process communication (IPC) approach were employed to facilitate communication among the various robots and guarantee coordinated operation. • With a difference of roughly 40% and 15%, respectively, multithreading has a high average throughput and a shorter delay. WORK EXPERIENCE SAEINDIA – Battery Systems Firmware Engineer, India 08/2023 – 05/2025 •  Energy Storage was a member of a competitive design team that helped create, build, test, and race an electric vehicle in the style of Formula One. took part in the 2023 SAEINDIA. •  Fixed the overcharging problem detected by the high voltage energy storage box by coding Embedded C. Additionally, the circuit  is  designed  to  shut  down  using  an  STM32  when  a  relay  to  GPIO  detects  a  defined  high  temperature.  TMS communications are accomplished by CAN to the Master Panel Control Module, and CANalyzer is used for analysis. To keep an eye on all seven battery segments, VMS uses serial communication with three satellite modules. TECHNICAL SKILLS Languages: Python, C, C++, Kernel C, MATLAB & Simulink. Interface Protocols: SPI, I2C, TCP/IP, ADC, DAC. Technical Skills : RTOS, TCP/IP. Software Skills & Tools: LabView, MATLAB, Git, Visual Studio, MS Office, Oscilloscope, Logic Analyzer. CERTIFICATIONS •  Programming with C and C++: Internshala trainings, 2022 •  Programming with Python: Internshala trainings, 2022 Certificate no. : CEFE890B-7AFD-3CE4-A30E-56114B3A7E9C Certificate no. : 48B1C712-FA94-E7FE-5F82-0CD17A9373E8 AWARDS •  Co-Secretary in Racing club – SAEINDIA •  Secured 1st and 2nd prize in Relay Race •  Executive in Avishkara club (Science Club) •  Executive in Prerana Club (Social Outreach Club) •  Volunteer in Prakalp event",
     "Answer": {
-      "name": "",
-      "location": "",
+      "name": "HARSHITHA DUDDU",
+      "location": "Bangalore, KA, India",
       "email": "harshit@gmail.com",
-      "phone": "",
-      "linkedin": "",
+      "phone": "+91 (756) 967-4724",
+      "linkedin": "http://www.linkedin.com/in/harshiduddu2002",
       "skills": [
         "Embedded C",
         "Arduino",
@@ -1046,45 +1062,25 @@
         "HTML",
         "CSS"
       ],
-      "experience": [
-        {
-          "role": "Engineer in Progress",
-          "company": " ",
-          "description": ""
-        },
-        {
-          "role": "Engineer in Progress",
-          "company": " ",
-          "description": ""
-        },
-        {
-          "role": "Engineer in Progress",
-          "company": " ",
-          "description": ""
-        }
-      ],
+      "experience": [],
       "projects": [
         {
           "title": "Village 4.0- Automatic Food Distribution System",
-          "description": "Village 4.0- Automatic Food Distribution System"
+          "description": "This project utilizes IoT (Internet of Things) to create a secure and user friendly food distribution system with keypad access, servo control, and real-time feedback for improved convenience and efficiency."
         },
         {
           "title": "Fake Currency Detectors",
-          "description": "Fake Currency Detectors"
+          "description": "It checks the currency note threshold value by its RGB colour format using matlab."
         },
         {
           "title": "A Multifunctioning alarms",
-          "description": "A Multifunctioning alarms"
-        },
-        {
-          "title": "",
-          "description": ""
+          "description": "In tinkercad by integrating the components like breadboard, Sensors, potentiometer, DC motor created a multiple alarm set in a single project."
         }
       ],
       "education": [
         {
-          "degree": "B.Tech",
-          "institution": "Amrita VishwaVidyapeetham, Bangalore, India  , "
+          "degree": "B.Tech in Electronics & Communication",
+          "institution": "Amrita Vishwa Vidyapeetham, Bangalore, India"
         },
         {
           "degree": "XII",
@@ -1094,7 +1090,7 @@
       "extracurricular_activities": [
         {
           "activity": "Executive Member",
-          "description": ""
+          "description": "Squad Club"
         }
       ]
     }
@@ -1103,10 +1099,10 @@
     "Filename": "resume_1734602520.pdf",
     "Question": "Harsha Vardhan RMadurai, Tamil Nadu# harshavardhanramanathan@gmail.com I (+91) 9843956617(cid:239) linkedin.com/in/harshvardEXPERIENCESUMMARYVappco Automations Solutions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Jun 2024 - Jul 2024, Tamil NaduDesign Engineer Intern- Hands on experience on embedded systems and task automation.- Developed an automatic water level detection to alert low and over-flowing water level in water tank .- Designed a miniature,cost-effective,OTP-based security system toprotect critical vaults containing valuable resources .Final year Electrical and Computer En-gineering student at Amrita VishwaVidyapeetham with a passion for learn-ing latest technologies . Enthusiasticabout coding and web development, and thrive in collaborative environ-ments to create impactful solutions.PROJECTSCustomer insight prediction. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .May - Jun 2023, BTechPython, Google-colab- Developed a ML model that efficiently improves the services offeredby financial institutions.Surveillance Camera. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Feb - May 2024, BTechESP32 Cam module- Ultra-low power,camera with live feed on web-page.Location tracking system. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Sep - Oct 2023, BTechEmbedded C, MP LAB- Compact location tracking system with GSM capabilites.Neem. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .May - Jun 2024, BTechWeb development- Yelpcamp based web application that provides login fea-tures,authentication and authorization ,along with CRUD function-alities .Rotor fault analysis. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Nov - Dec 2022, BTechMATLAB- Analysed an IM with defects in performance and deduced the faultsfrom signal processing techniques.Data log and cloud-controlled actuation. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Nov - Dec 2022, BTechRaspberry Pi- Developed a Pi model with the ability to transmit data from multiplesensors to cloud platforms.CERTIFICATIONS- Circuit development and PCB crash course by Udemy- Introduction to python by UdemyACHIEVEMENTS- District level Spelling bee champion-2016- Certification of merit for consistently holding top rank-2022,2023SKILLSLanguages Python,Embedded C,C++, Assembly LanguageConcepts Microcontrollers,Electroniccircuits,ControlSystem,Sensors andactuatorsPowerPoint, WordMATLAB, Arduino, KeiluVision4, Proteus, LTspice,SimbaSoft Skills Adaptivity, CreativityOfficeToolsEDUCATIONTamil NaduAmrita VishwaVidyapeethamBTech - Electrical and Computer Engineer-ing - GPA: 9.03/10.00Velammal BodhiCampusHSC - Percentage: 93Vikaasa SchoolSSC - GPA: 9.13/10.0Tamil NaduTamil NaduLANGUAGES- Tamil (Native)- English (Advanced)- Hindi (Intermediate)INTERESTS- Task Automation- Embedded Systems- Software Development- Circuit design and simulation",
     "Answer": {
-      "name": "Harsha Vardhan RMadurai",
-      "location": "Tamil Nadu",
+      "name": "Harsha Vardhan R",
+      "location": "Madurai, Tamil Nadu",
       "email": "harshavardhanramanathan@gmail.com",
-      "phone": "+91 9843956617(cid:239)",
+      "phone": "+91 9843956617",
       "linkedin": "linkedin.com/in/harshvard",
       "skills": [
         "Python",
@@ -1156,8 +1152,8 @@
       ],
       "education": [
         {
-          "degree": "BTech",
-          "institution": "Amrita VishwaVidyapeetham"
+          "degree": "BTech Electrical and Computer Engineering",
+          "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
           "degree": "HSC",
@@ -1187,44 +1183,38 @@
         "Microsoft Office",
         "Java",
         "SQL",
-        "My SQL",
-        "], ",
-        "roles_and_responsibilities"
+        "My SQL"
       ],
       "experience": [],
       "projects": [
         {
           "title": "Cost-Effective Battery Management System with Predictive Analysis",
-          "description": "Cost-Effective Battery Management System with Predictive Analysis"
+          "description": "Designed a battery management system (BMS) utilizing cost-effective sensors to monitor battery health and, algorithms to forecast battery degradation and optimize charging/discharging strategies."
         },
         {
           "title": "Wireless Parameter Monitoring of Solar-Powered Electric Vehicles",
-          "description": "Wireless Parameter Monitoring of Solar-Powered Electric Vehicles"
+          "description": "To track key parameters of solar-powered electric vehicles (EVs), such as battery charge level, solar panel output, and vehicle location, enabling remote monitoring and management."
         },
         {
           "title": "Smart Power Module and Additional Power Distribution Board for Unmanned Aerial Vehicles",
-          "description": "Smart Power Module and Additional Power Distribution Board for Unmanned Aerial Vehicles"
+          "description": "Designing a smart power module and distribution board for UAVs with integrated sensors and GSM-based data transmission for APM 2.8 Flight Controllers"
         },
         {
           "title": "Intelligent Remote Motor Control and Solenoid Valve Control for Optimized Borewell Irrigation",
-          "description": "Intelligent Remote Motor Control and Solenoid Valve Control for Optimized Borewell Irrigation"
+          "description": "This project aims to optimize borewell irrigation by using intelligent remote motor control and solenoid valve integration for efficient and automated water distribution in agriculture"
         }
       ],
       "education": [
         {
-          "degree": "B.Tech.",
-          "institution": "Electrical and Electronics Engineering,"
+          "degree": "B.Tech. Electrical and Electronics Engineering",
+          "institution": "Amrita Vishwa Vidyapeetham, Bengaluru, Karnataka"
         },
         {
           "degree": "Intermediate-12th",
-          "institution": "Board of Intermediate Education, Andhra Pradesh"
+          "institution": "Tirumala Junior College, Visakhapatnam, A.P"
         },
         {
           "degree": "High School – 10th",
-          "institution": "Indian Certificate of Secondary Education"
-        },
-        {
-          "degree": "Elementary - 8th",
           "institution": "Alwar Das Public School, Visakhapatnam, A.P."
         }
       ],
@@ -1294,7 +1284,7 @@
       ],
       "education": [
         {
-          "degree": "Bachelor of Technology",
+          "degree": "Bachelor of Technology ",
           "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
@@ -2795,14 +2785,20 @@
       "location": "Chennai, India",
       "email": "shrivarshini2104@gmail.com",
       "phone": "+91 9150213222",
-      "linkedin": "www.linkedin.com/in/ shrivarshini-kannan",
+      "linkedin": "www.linkedin.com/in/shrivarshini-kannan",
       "skills": [
-        "Programming Languages — Python",
-        "Web Technologies — HTML, CSS, JavaScript",
-        "Security — Network Security,Cryptography",
-        "Tools — Wireshark, Burpsuite, Kali Linux",
-        "Operating Systems — Windows, Linux",
-        "Database — MySQL"
+        "Python",
+        "HTML", 
+        "CSS", 
+        "JavaScript",
+        "Network Security",
+        "Cryptography",
+        "Wireshark",
+        "Burpsuite",
+        "Kali Linux",
+        "Windows",
+        "Linux",
+        "MySQL"
       ],
       "experience": [
         {
@@ -2856,20 +2852,17 @@
     "Filename": "resume_1734602610.pdf",
     "Question": "Mantri Vardhanvardhanmantri1@gmail.com+91 8790075669Visakhapatnam, Andhrapradeshlinkedin.com/in/mantri-vardhan-014821304ProfileA cross-disciplinary team player passionate about Embedded Systems, IoT, Antenna Design, VLSI. Beyond technical expertise, a suiteof valuable soft skills, including effective communication, teamwork, adaptability, and a keen problem-solving mindset, are my strengths.Education2021 – 2025IndiaProjectsBachelor of Technology in Electronics and Communication, Amrita Vishwa VidyapeethamCGPA:9.4211/2023 – 01/2024Enhanced Mutual Coupling Reduction Through E-Shaped Resonators in MIMO antenna array systems (5G,RF engineering)•Objective: To design and implement an E-shaped resonator-assisted MIMO antenna design for mutualcoupling reduction in order to improve antenna efficiency and performance.•Tools Used: ANSYS HFSS for simulation.•Outcome:  Achieved  considerable  reduction  in  mutual  coupling,  confirmed  through  simulations  andexperimental tests, significantly improving antenna efficiency and performance.05/2024 – 07/2024Real time-Voice Based Gender Recognition using MATLAB (Signal Processing)•Objective: To develop a real-time gender recognition system using voice input, leveraging power spectraldensity analysis in MATLAB for security-related applications.•Tools  Used:  MATLAB  for  signal  processing,  power  spectral  density  analysis,  and  real-time  voice  inputhandling.•Outcome: Successfully implemented a gender recognition system that accurately classifies gender basedon voice input, offering potential applications in security and authentication systems.05/2022 – 07/2022Waste Management, An IoT-Based Smart Dustbin System for Waste Segregation•Objective: To develope a smart dustbin that segregates waste into organic, recyclable and non recyclableand also an alert system to alert the sanity workers when the bin is full.•Tools used: Sensors(Ultrasonic sensor, color sensor), Actuators(Servo motors), Communication(Bluetooth module), Buzzer. Arduino UNO•Outcome: Successfully created a system that automatically sorts waste based on bag color and notifiessanitary  cleaners  via  Bluetooth  when  bins  are  full  enabling  more  efficient  waste  management  andensuring timely disposal of waste.11/2023Interactive 4-Bit Adder and Subtractor Simulation using LPC2148 and Proteus, Mini Project•Objective: Designed a  circuit integrating addition and subtraction functionality with dynamic mode selection.•Outcome: Achieved a functional and interactive simulation of a 4-bit adder/subtractor, demonstrating efficient use of microcontroller and circuit design principles.03/2024 – 04/2024Smart and Sustainable: Verilog HDL Integration in Laundry Machine Control (VLSI,FPGA)•Objective:  To  design  and  implement  a  smart  and  sustainable  laundry  machine  (Mealy  finite  statemachine)  control  system  using  Verilog  HDL,  incorporating  weight  sensing  and  safety  mechanisms  tooptimize performance and resource efficiency.•Tools Used: Xilinx Vivado Suite, Model Sim for simulation and synthesis, FPGA Board (Digilent Basys3Xilinx Artix-7), Verilog Hardware description language.•Outcome: Successfully designed a laundry mealy state machine control system.10/2023 – 03/2024Comparative Analysis of Various Adder Architectures using FPGA: Evaluating Delay, Area, Temperature and Power Efficiency Across 4-32 Bit Widths (FPGA,VLSI)•Objective:  To  compare  and  evaluate  various  adder  architectures  based  on  delay,  area,  and  powerefficiency across varying bit widths to determine the most suitable design for different applications usingFPGA.•Tools  Used:  Xilinx  Vivado  Suite  for  simulation,  synthesis  and  Implementation,  FPGA  Board  (DigilentBasys3 Xilinx Artix-7), Verilog Hardware description language.•Outcome: Successfully identified the most efficient FPGA adder designs for each specific bit-width.09/2024 – presentLow Power-Programmable Feedback Shift Register for Cryptographic Applications•Objective:  To  develope  a  Programmable  Feedback  Shift  Register  (PFSR)  inorder  to  achieveunpredictability and statistical randomness, outperforming traditional LFSRs in sequence generation andsecurity.Internships08/2023 – 09/2023Training in Ansys HFSS, Piezo and MEMS, ARK INFOSOLUTION PVT. LTD.•Gained comprehensive proficiency in the ANSYS software.2023Telecommunications Intern, BSNL Visakhapatnam•Through my internship at BSNL, I gained experience in telecom network operations, encompassing maindistribution frames, power plants, switching centers, and more. This exposure provided valuable insightsinto the intricacies of telecommunications infrastructure and industry practices.Research Publications (IEEE)06/29/202408/24/202409/21/2024Comparative Analysis of FPGA Adder Architectures: Evaluating Delay, Area, and Power Efficiency Across Different Bit Widths, IEEE International Conference on “ Information Science, Computing, Communication, Instrumentation and Automation” 2024•The paper presents a comprehensive evaluation of various adder architectures using FPGA, focusing on key metrics such as delay, area, and power efficiency. It analyzes performance across different bit widths to identify the most efficient designs for specific applications.Smart and Sustainable: Verilog HDL Integration in Laundry Machine, 4h IEEE International conference ASIANCON 2024 ,Pune, India  and Sponsored by AICTE New Delhi•The paper explores the integration of Verilog HDL in laundry machines to enhance smart and sustainable functionalities. It examines how Verilog HDL can optimize control systems, improve energy efficiency, and provide advanced features in modern laundry appliances.A Comparative analysis of Electrical Characteristics in Bulk, PD, FD and Optimized SOI MOSFETs, 2024 IEEE International Conference on Communication, Computing and Energy Efficient Technologies•The paper offers a detailed comparative analysis of various characteristics of Bulk, Partially Depleted (PD), Fully Depleted (FD), and Optimized SOI MOSFETs. It evaluates their performance metrics to highlight the advantages and limitations of each type for various applications in semiconductor technology.Areas of InterestMicrocontrollers and MicroprocessorsIoTAnalog ElectronicsDigital ElectronicsTechnical skillsDigital Circuit DesignVLSI DesignSoftware's usedAnsys HFSSModelSim-Intel®ProteusProgramming LanguagesC ProgrammingReal time OSVLSILinear Integrated CircuitsRadio Frequency EngineeringAnalog Circuit DesignAntenna DesignArduino IDEEDA PlaygroundCADENCE Xilinx Vivado Design SuiteKeil μVisionLtspiceARM Assembly Level LanguageVerilog Hardware Description languageEmbedded CCertificates and AchievementsC for Everyone, CourseraAMCAT, Certified in 8 different fields which include both technical and non technical.Springfield International Mathematics Olympiad (SIMO), Secured all India rank 47th.Association of Mathematics Teachers of India(AMTI), Maths olympiad, where i qualified consecutively for 3 years to the final round in 7th, 8th, and 9th grade.Responsibilities Discharged04/2024 – presentIEEE-ComSoc Student Society Chairperson, Special Interest Group in Humanitarian TechnologyHeading an IEEE student body group with a core interest in Humanitarian technologyfor improving lives and problem solving through Electronics.",
     "Answer": {
-      "name": "Your Name",
-      "location": "Visakhapatnam",
-      "email": "",
-      "phone": "",
-      "linkedin": "",
+      "name": "Mantri Vardhan",
+      "location": "Visakhapatnam ,Andhrapradesh",
+      "email": "vardhanmantri1@gmail.com",
+      "phone": "+91 8790075669",
+      "linkedin": "https://linkedin.com/in/mantri-vardhan-014821304",
       "skills": [
         "Microcontrollers",
         "Microprocessors",
         "IoT",
         "Analog Electronics",
         "Digital Electronics",
-        "Technical Skills",
-        "\n",
-        "Software's used:\n",
         "Ansys HFSS",
         "ModelSim-Intel®",
         "Proteus",
@@ -2879,8 +2872,7 @@
         "Radio Frequency Engineering",
         "Analog Circuit Design",
         "Antenna Design",
-        "Arduino IDE",
-        "EDA Playground"
+        "Arduino IDE"
       ],
       "experience": [
         {
@@ -2910,12 +2902,8 @@
       ],
       "education": [
         {
-          "degree": "Bachelor of Technology",
-          "institution": "XXX"
-        },
-        {
-          "degree": "Diploma in Electronics and Communication Engineering",
-          "institution": "XXX"
+          "degree": "Bachelor of Technology in Electronics and Communication",
+          "institution": "Amrita Vishwa Vidyapeetham"
         }
       ],
       "extracurricular_activities": [
@@ -2938,7 +2926,7 @@
     "Filename": "resume_1734602611.pdf",
     "Question": "KORADA KALYAN VARUN KUMARkalyanvarunkumarkorada@gmail.com 7780595289 Chennai,India linkedin.com/in/kalyan-varun-kumar github.com/Varun182003 EducationBtech-Electronics and Communication EngineeringAmrita Vishwa Vidyapeetham-ChennaiProfessional ExperienceIEEE, Amrita Vishea Vidyapeetham IEEE Student BranchChair of IEEE Student BranchIntern, IIT Madras 5G TestBed LabIntern, Nokia Solution and NetworksProjectsSignature and Face Authorization Using MatlabApplied  Normalized  Cross-Correlation  (NCC):  Leveraged  NCC  for  precise  face  and  signaturematching, improving system accuracy.Implemented  Eigenfaces:  Utilized  dimensionality  reduction  techniques  (PCA)  for  robust  facerecognition, enhancing computational efficiency.Integrated  Dynamic  Time  Warping  (DTW):  Employed  DTW  for  signature  verification  to  handletime-series variations, ensuring high precision in signature authentication.Traffic Light Controller using LFSR (Linear Feedback Shift Register) Feedback PolynomialPseudo-Random  Number  Generator  (LFSR):  Designed  and  implemented  a  pseudo-randomnumber generator using Linear Feedback Shift Register (LFSR) for dynamic traffic light timing.VHDL-Based  Controller  Development:  Developed  and  verified  the  controller  logic  in  VHDL,utilizing Xilinx Vivado for FPGA simulation, synthesis, and optimization.Traffic Flow Optimization: Integrated non-deterministic timing intervals in traffic light control toenhance traffic flow efficiency, reducing congestion and improving throughput.Obstacle avoidance robot using raspberry pi 4 BDeveloped  an  object  detection  system  using  ultrasonic  sensors  to  identify  and  track  obstacles,optimizing  navigation  and  path  planning.  Utilized  Thonny  IDE,  Raspberry  Pi  Imager,  RealVNCViewer,  and  network  analyzers  to  design,  prototype,  and  remotely  monitor  the  system,  ensuringseamless functionality and real-time performanceCoal Mine Safety Monitoring and Alerting SystemDesigned  and  executed  a  multi-sensor  monitoring  system  to  track  gas  levels,  temperature,  andhumidity in coal mines. Integrated real-time data transmission to a central system for continuousmonitoring,  triggering  automated  alarms  and  notifications  during  hazardous  conditions.Enhanced  safety  protocols  through  early  detection  and  prevention  of  potential  risks,  ensuringtimely alerts and reducing accident occurrence.SkillsPythonIOT5G technologyCST StudioAltiumCircuit Design and Analysis (Arduino IDE, Proteus, LTSpice, Multisim, TinkerCAD)2021 – presentChennai, IndiaOct 2023 – Oct 2024Chennai, IndiaApr 2024 – Jun 2024Chennai, IndiaJun 2023Chennai, IndiaJan 2024 – Apr 2024Jan 2024 – Apr 2024Sep 2023 – Dec 2023Oct 2022 – Dec 2022Digital Design (VHDL, Verilog, Keil μVision)Ansys HFSSMatlabXilinx VivadoJupyter NotebookGoogle ColabCertificatesDSAYoung professionalPeople and Soft Skills Assessment|||||||||||",
     "Answer": {
-      "name": "Kalyan Varun Kumar",
+      "name": "KORADA KALYAN VARUN KUMAR",
       "location": "Chennai, India",
       "email": "kalyanvarunkumarkorada@gmail.com",
       "phone": "7780595289",
@@ -2955,7 +2943,8 @@
         "TinkerCAD",
         "Jupyter Notebook",
         "Google Colab",
-        "Matlab"
+        "Matlab",
+        "Xilinx Vivado"
       ],
       "experience": [
         {
@@ -2982,8 +2971,8 @@
       ],
       "education": [
         {
-          "degree": "Btech",
-          "institution": "Electronics and Communication Engineering"
+          "degree": "Btech-Electronics and Communication Engineering",
+          "institution": "Amrita Vishwa Vidyapeetham"
         }
       ],
       "extracurricular_activities": [
@@ -3004,9 +2993,6 @@
       "phone": "9597207145",
       "linkedin": "",
       "skills": [
-        "collaboration",
-        "adaptable",
-        "driven to make a positive impact in diverse team environments",
         "VHDL",
         "VERILOG",
         "C(Beginner level)",
@@ -3051,8 +3037,8 @@
       ],
       "education": [
         {
-          "degree": "Bachelor of technology",
-          "institution": "Electronics and communication engineering:Amrita school of engineering , Amrita  Vishwa Vidyapeetham"
+          "degree": "Bachelor of technology - Electronics and communication engineering",
+          "institution": "Amrita school of engineering , Amrita  Vishwa Vidyapeetham"
         },
         {
           "degree": "Higher secondary education",
@@ -3066,11 +3052,11 @@
     "Filename": "resume_1734602613.pdf",
     "Question": "Dharunjayavinayak R CB.EN.U4EEE21113 +91-9159634510 dharunjayavinayakwork@gmail.com linkedin.dharunjayavinayakObjective: A trustworthy and innovative B. Tech student in Electrical and Electronics Engineering, demonstrating robust leadership qualities and a strong work ethic. With a commitment to inclusivity and excellence, eager to learn from every situation, and have a keen interest in embedded systems, control systems, and electronics. Passionate about leveraging my technical skills to drive technological advancements and contribute to organizational growth. Education: 2021 – present Ettimadai, India. 2020 – 2021 Hosur, India 2018 – 2019 Hosur, India Bachelor of Technology in Electrical and Electronics Engineering Amrita Vishwa Vidyapeetham CGPA: 8.66 (6th sem) Higher Secondary, Physics-Chemistry-Maths-Computer, State Board Mark: 564/600 (94%) Sri Vijay Vidyalaya Secondary Education, State Board St. Josephs Matric Higher Secondary Mark: 475/500 (95%) Area of Interest: •  Embedded systems. •  Electronics.  Other technical qualifications: Software skills   LabVIEW (Beginner) | Matlab & Simulink (Intermediate) MPLab (Beginner) | STM32 (Beginner)                                                               Codesys (Intermediate)     Programming skills C (Intermediate) | C++ (Intermediate) Hardware knowledge   PYTHON (Intermediate) (with ML) PLC programming (Ladder logic) (Beginner) Raspberry pi Arduino UNO, ESP8266 and ESP32 PIC16F877A Internship: Jan-2024 Hosur, India. certification Titan Engineering and Automation Limited (TEAL) Intern (1 Week) Acquired knowledge of the industry's workflow and gained experience in panel assembly and PLC programming in the automation  field.  Also  gained  practical  knowledge  by working on a fully automated project.     Page | 1                                                                        JUL-2024 Hosur, India. certification Inplant Training: August-2023 Hosur, India certification Publications: Jun-2024 Kannur, India certification Projects: Micro-controller March – 2024 Titan Company Limited – Jewellery Division. Intern  Experienced the  company's  power  generation, consumption, and BMS system. Worked on the company’s future dependence on automation and IIoT. in Titan Company Limited Inplant Training (1 Week) Got to know smart technologies in watch manufacturing. Learned critical role and selection of electrical components, amplifying expertise in the intersection of technology and watch production processes. Review on a smart solar-powered greenhouse system using IoT sensors for automated internal climate control and crop monitoring. International Conference on Advancement in Power, Communication and Intelligent Systems. This  paper  briefly  reviews  solar  powered  systems implemented in greenhouses for their functioning. This review also includes existing  models  that  have  been  implemented  and  future trends in greenhouse systems. in  greenhouses  and  sensors  used Smart Solar Greenhouse using IoT for internal Climate control. Integrating various sensors with ESP8266 to control the internal climate of the greenhouse and integrate IoT for remote Monitoring and Control. Embedded Systems Smart street light system for a community. March – 2024 With the help of Ldr sensor and NodeMCU have achieved control of street lights with IoT integrated. Machine Learning Nov – 2023. Prediction of energy consumption in smart solar Greenhouse. Have used different techniques to predict the DC power output. Extra-Curricular Activities: o  Attended a one-day workshop on Electric Vehicles by BOSCH. 📎. o  Active participation in NSS – Government School, KG Chavadi. o  Achieved proficiency by clearing all 8 levels in Dakshina Bharat Hindi Prachar Sabha Hindi exams. Languages:  English, Tamil, Hindi. Proficiency in reading, writing, and speaking Mailing Address: Plot no:13, Guru Sai Garden, Kamaraj Nagar, Hosur-635123 Page | 2",
     "Answer": {
-      "name": "Dharunjayavinayak R CB.EN.U4EEE21113",
+      "name": "Dharunjayavinayak R",
       "location": "Hosur-635123",
       "email": "dharunjayavinayakwork@gmail.com",
       "phone": "+91-9159634510",
-      "linkedin": "dharunjayavinayak",
+      "linkedin": "http://www.linkedin.com/in/dharunjayavinayakr",
       "skills": [
         "LabVIEW",
         "Matlab & Simulink",
@@ -3082,8 +3068,7 @@
         "Python (with ML)",
         "PLC programming (Ladder logic)",
         "Raspberry pi",
-        "Arduino UNO, ESP8266 and ESP32",
-        "PIC16F877A"
+        "Arduino UNO, ESP8266 and ESP32"
       ],
       "experience": [
         {
@@ -3099,29 +3084,22 @@
       ],
       "projects": [
         {
-          "title": "Micro-controller",
-          "description": ""
+          "title": "Micro-controller-Smart street light system for a community",
+          "description": "Integrating various sensors with ESP8266 to control ,the internal climate of the greenhouse and integrate IoT for remote Monitoring and Control."
         },
-        {
-          "title": "Smart street light system for a community",
-          "description": ""
-        },
+        
         {
           "title": "Embedded Systems Smart street light system for a community",
-          "description": ""
+          "description": "With the help of Ldr sensor and NodeMCU have achieved control of street lights with IoT integrated"
         },
         {
           "title": "Machine Learning",
-          "description": ""
-        },
-        {
-          "title": "Prediction of energy consumption in smart solar Greenhouse",
-          "description": ""
+          "description": "Prediction of energy consumption in smart solar Greenhouse-Have used different techniques to predict the DC power output."
         }
       ],
       "education": [
         {
-          "degree": "Bachelor of Technology",
+          "degree": "Bachelor of Technology  in Electrical and Electronics Engineering",
           "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
@@ -3194,7 +3172,7 @@
       ],
       "education": [
         {
-          "degree": "Bachelor of Technology",
+          "degree": "Bachelor of Technology in Computer Science and Artificial Intelligence",
           "institution": "AMRITA VISHWA VIDYAPEETHAM Kollam, IN"
         },
         {
@@ -3222,7 +3200,7 @@
       "location": "Bangalore",
       "email": "srinidhikannan816@gmail.com",
       "phone": "+91 7483022659",
-      "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/srinidhi-kannan-62086222a/",
       "skills": [
         "Python",
         "Java",
@@ -3236,13 +3214,6 @@
         "NLP",
         "Power BI",
         "Prompt Engineering",
-        "Adaptability",
-        "Team Player",
-        "Organized",
-        "Homomorphic Encryption Compiler for MBP Prediction",
-        "Emotion Categorization for Text Data using ML and Ensemble Techniques",
-        "Speaker Identification Using CNN-LSTM Model on RAVDESS Dataset: A Deep Learning Approach",
-        "Detecting Plant Disease at Scale: A Distributed CNN Approach with PySpark and Hadoop",
         "Power BI",
         "Prompt Engineering",
         "Adaptability",
@@ -3253,19 +3224,19 @@
       "projects": [
         {
           "title": "Homomorphic Encryption Compiler for MBP Prediction",
-          "description": "Homomorphic Encryption Compiler for MBP Prediction"
+          "description": "Developed a secure Homomorphic Encryption framework with Paillier cryptosystem for encrypted mean blood pressure (MBP) calculations for 50 patients, ensuring 100% data confidentiality and compliance with privacy regulations."
         },
         {
           "title": "Emotion Categorization for Text Data using ML and Ensemble Techniques",
-          "description": "Emotion Categorization for Text Data using ML and Ensemble Techniques"
+          "description": "Developed an emotion recognition model using NLP and machine learning classifiers, achieving 90% accuracy and F-measure with an SVM and XGBoost ensemble, enhancing emotion detection on the WASSA dataset."
         },
         {
           "title": "Speaker Identification Using CNN-LSTM Model on RAVDESS Dataset: A Deep Learning Approach",
-          "description": "Speaker Identification Using CNN-LSTM Model on RAVDESS Dataset: A Deep Learning Approach"
+          "description": "Developed a speaker identification model using CNN and LSTM, achieving 96.52% accuracy and 97% F1 score, outperforming GMM and SVM models on the RAVDESS dataset, significantly improving speaker recognition efficiency by capturing both spatial and temporal features in audio data."
         },
         {
           "title": "Detecting Plant Disease at Scale: A Distributed CNN Approach with PySpark and Hadoop",
-          "description": "Detecting Plant Disease at Scale: A Distributed CNN Approach with PySpark and Hadoop"
+          "description": "Developed a CNN-based model with a Tkinter GUI that achieved 95.76% accuracy in diagnosing plant diseases,thereby optimizing crop health and yield."
         }
       ],
       "education": [
@@ -3298,19 +3269,22 @@
     "Filename": "resume_1734602616.pdf",
     "Question": "Vishnu Kasilya P(cid:131) +91 9600671171 (cid:128) Portfolio # vishnulakshya2018@gmail.com (cid:239) Vishnu Kasilya P § VishnuAmitEducationAmrita Vishwa VidyapeethamBachelor of Technology in Computer Science and Engineering (Artificial Intelligence) | CGPA: 8.81Oct 2021 – PresentChennai, IndiaSPJ Matriculation Higher Secondary SchoolHSE (Class XII), Aggregate: 87%Technical SkillsFull Stack: ReactJS, NodeJS, HTML/CSS, JavaScript, MongoDB, MYSQLLanguages: Python, Java, C++Developer Tools: VS Code, Git, GitHub, APIs, LinuxOthers: Machine Learning, Web Development, Open source, FigmaExperienceFreelanceFront-End DeveloperJun 2019 - Mar 2020Madurai, IndiaJun 2022 – Sep 2022Chennai, India• Designed custom websites with HTML, CSS, JavaScript, and React with 100% consistent in meeting deadlines.• Elevated website responsiveness and functionality across all projects, ensuring exceptional user experiences.• Delivered 5-star quality, earning positive feedback from satisfied clients.ProjectsEnhanced Kidney Analysis | Python, Deep LearningOct 2023• Utilized the SEDenseNet architecture to optimize kidney disease analysis through image processing techniques.• Demonstrated precision in classifying kidney conditions, covering normal, tumorous, and stone-affected kidneys.• Attained a remarkable 99.34% accuracy rate in outcome measurement.AgroLedger | Solidity, MetaMaskApr 2023• Engineered a website to tackle agro-food transparency challenges by integrating blockchain and sensors.• Empowered consumers to scan a QR code on food packaging for comprehensive product information.• Reduced waste and fraud while promoting sustainable practices.Rice Crop Yield Prediction | Python, Microsoft Planetary Hub APIFeb 2023• Developed and optimized an ML model utilizing Microsoft Planetary Hub satellite data for rice yield predictions.• Attained an impressive accuracy rate of 77.8%, demonstrating the model’s exceptional forecasting capabilities.• Recognized in the EY Data Science Challenge 2023, ranking 43rd globally for accuracy of the model andagricultural impact.Academic and Extracurricular Achievements• Secured AIR 362 out of 100,000+ participants in CodeKaze-2023.• Best Paper Award in IEEE ICBDS’23 under Blockchain technology.• Finalist (Smart Digital Hackathon’22).• Top 15 in 50 teams (Amrita BlockCamp’23).• Secured the 4th position out of 20+ teams (CodeSwap ’24).Positions of ResponsibilityAWS Cloud Clubs Coordinator | Student-led User GroupMay 2024 - Present• Conducted and led over 10 interviews to recruit qualified mentors for the club.• Handled presentations and guided discussions for a wide range of audiences.• Collaborated closely with mentors to organize events, engaging students across all departments within our college.Publications[1] Vishnu. K and A. Rao and R. George, “Agro-ledger: Blockchain-based framework for transparency in agri-foodsupply chain,” in IEEE ICBDS’23, IIIT Naya Raipur, Chhattisgarh. 2023.",
     "Answer": {
-      "name": "Vishnu Kasilya",
+      "name": "Vishnu Kasilya P",
       "location": "Chennai, India",
       "email": "vishnulakshya2018@gmail.com",
       "phone": "+91 9600671171",
-      "linkedin": "N/A",
+      "linkedin": "https://www.linkedin.com/in/vishnukasilya//",
       "skills": [
         "Full Stack: ReactJS, NodeJS, HTML/CSS, JavaScript, MongoDB, MYSQLLanguages: Python, Java, C++",
-        "Developer Tools: VS Code, Git, GitHub, APIs, Linux",
+        "VS Code",
+        "Git", 
+        "GitHub",
+        "APIs",
+        "Linux",
         "Machine Learning",
         "Web Development",
         "Open source",
-        "Figma",
-        "Technical Skills"
+        "Figma"
       ],
       "experience": [
         {
@@ -3335,12 +3309,12 @@
       ],
       "education": [
         {
-          "degree": "Bachelor of Technology",
+          "degree": "Bachelor of Technology in Computer Science and Engineering (Artificial Intelligence) ",
           "institution": "Amrita Vishwa Vidyapeetham,"
         },
         {
-          "degree": "CGPA",
-          "institution": "Artificial Intelligence"
+          "degree":"HSE (Class XII)",
+          "institution":"SPJ Matriculation Higher Secondary School "
         }
       ],
       "extracurricular_activities": [
@@ -3355,11 +3329,11 @@
     "Filename": "resume_1734602617.pdf",
     "Question": "Khambampati Subhash+ Sathupally, Telangana # subhashkhambampati74@gmail.com (cid:132) +91 6300101199SummaryAI enthusiast with hands-on experience in developing solutions using machine learning, deep learning, and naturallanguage processing. Worked on healthcare AI projects, winning awards in hackathons and contributing toresearch. I’m committed to advancing AI for practical use, combining technical expertise with a strong drive formeaningful change. Always eager to contribute to transformative projects.EducationAmrita Vishwa VidyapeethamBTech in Artificial Intelligence - Amritapuri, KeralaSri Chaitanya junior CollegeIntermediate MPC - Hyderabad, TelanganaInternshipAI InternMargati09/2021 – 05/2025GPA: 8.903/2019 – 06/2021Percentage: 97Remote08/2024 – Present◦ Developed a retrieval system to optimize output and reduce OpenAI calls, significantly reducing cost.◦ Extracted relevant information from web content, integrating it seamlessly with core software.◦ Optimized prompts for improved search results and employed DeepEval for LLM output evaluation.Healthcare AI Club MemberAmrita WNAAmritapuri, Kerala04/2023 – Present◦ Secured 18th globally in the PhysioNet Challenge 2023 for healthcare AI research.◦ Engaged in hackathons, paper publications, and AI projects in healthcare.◦ Currently doing a final year project under the mentorship of a club professor, focused on healthcare AI.AchievementsSustainable Development Ideathon | 1st Prize06/2024◦ Proposed an AI-powered system, automating pest control and soil analysis, increasing yields by 20%.◦ Provided market forecasts and personalized support for 50+ farmers to optimize productivity.Google Build with AI GDG Kochi 2024 | 2nd Runner Up04/2024◦ Built a Streamlit app using Gemini and Google Cloud with features like an AI tutor, quiz generator, andPDF chatbot, completed in 24 hours during a hackathon.GE Healthcare Hackathon | 1st Runner Up08/2023◦ Created an AI solution balancing precision and explainability, achieving 60% accuracy in ECG classification.◦ Leveraged explainable methods for interpretability, improving decision-making in healthcare.SkillsProgramming Languages: PythonArtificial Intelligence: Machine Learning, Deep Learning, Computer Vision, Natural Language Processing,Large Language Models, LangChain, Pytorch, TensorflowDevelopment: HTML, CSS, JavaScript, React, NodeJS, FastAPI, FlaskTools and Databases: Github, Docker, RabbitMQ, Linux, MongoDB, redisSoft Skills: Teamwork and Collaboration, Continuous Learning, Calm Personality1ProjectsFine-Tuned LLaMA-3 on Medical Data using Unsloth05/2024◦ Fine-tuned LLaMA-3 with Unsloth and SFT Trainer, increasing model efficiency for medical tasks by 15%.◦ Leveraged Hugging Face dataset, improving medical dialogue accuracy by 20% in context-specific responses.Saraswati AI◦ Developed an AI platform using Gemini and Streamlit for personalized tutoring and quizzes.◦ Created a path planner and interview assistant for tailored learning experiences.◦ Aims to enhance education access in low-income nations by affordable, personalized learning tools.A Prompt Based XAI Tool◦ Built a Streamlit app that uses a CNN 1D model to classify ECG data with 60% accuracy.◦ Included a Falcon 7B LLM chatbot to improve access to medical information.◦ Helps patients and doctors understand health data better and make informed decisions.PublicationsCureNet: Improving Explainability of AI Diagnosis Using Custom Large Language ModelsIEEE SmartGen Con Link 2Frequency and Time Domain EEG Analysis for Prognostication of Postanoxic Comatose PatientsIEEE CINC, Scopus Index Link 2WorkshopAI in Healthcare04/202408/202303/202412/202304/2023◦ Led hands-on sessions, mentoring over 40 students in practical exercises and troubleshooting.◦ Organized materials and resources for an optimal learning environment during the 3-day workshop.◦ Built connections with students and learned valuable teaching experience.Community OutreachStudent Social Responsibility (SSR)09/2023◦ Contributed to AI awareness initiatives at Queen Mary High School and ZPHS Ethamukkala.◦ Empowered over 150 students with AI fundamentals and showcased real-world applications such as GPT,humanoid robots, AI image generators, voice cloning, and DeepFake technology.◦ Our primary goal is to raise AI awareness among children, encouraging them to use AI for future innovation.Certificates◦ Intermediate Deep Learning with PyTorch DataCamp 2◦ Introduction to TensorFlow in Python DataCamp 2◦ Introduction to Deep Learning in Python DataCamp 2Final Year Project05/202204/202403/2024MediScribe09/2024◦ Currently developing a healthcare application that enables patients to book appointments and access per-sonal health records seamlessly. The project leverages AI for voice transcription and summarization toreduce documentation time by over 50% and minimize error rates from 10-15% to below 5%.Contact Me◦ LinkedIn: linkedin.com/in/subhash-khambampati 2◦ GitHub: github.com/subhash137 2◦ Twitter: twitter.com/SubhashKhambam1 22",
     "Answer": {
-      "name": "Khambampati Subhash+ Sathupally",
-      "location": "Telangana, India",
+      "name": "Khambampati Subhash",
+      "location": "Sathupally, Telangana",
       "email": "subhashkhambampati74@gmail.com",
       "phone": "+91 6300101199",
-      "linkedin": "linkedin.com/in/subhash137",
+      "linkedin": "https://www.linkedin.com/in/subhash-khambampati",
       "skills": [
         "Deep Learning",
         "TensorFlow",
@@ -3407,9 +3381,14 @@
       ],
       "education": [
         {
-          "degree": "BTech",
-          "institution": "Artificial Intelligence - Amritapuri, Kerala, Sri Chaitanya junior CollegeIntermediate MPC - Hyderabad, Telangana, Amrita Vishwa Vidyapeetham"
+          "degree": "BTech in Artificial Intelligence",
+          "institution": "Amrita Vishwa Vidyapeetham-Amritapuri,Kerala"
+        },
+        {
+          "degree": "Intermediate MPC ",
+          "institution": "Sri Chaitanya junior College"
         }
+
       ],
       "extracurricular_activities": [
         {
@@ -3423,11 +3402,11 @@
     "Filename": "resume_1734602618.pdf",
     "Question": "Chinni Krishna Kowsik Pkowsikperumalla@gmail.com +91 9000021892 Guntur, Andhra Pradesh Github LinkedIn Leetcode EDUCATIONB.Tech in Computer Science, specialized in Cyber SecurityOct 2021 – Present  |  Chennai, IndiaAmrita Vishwa Vidyapeetham deemed to be university, CGPA: 8.78 (upto VII semester)SKILLSProgramming LanguagesC, C++, Python, MySQL, MongoDB HTML, CSS, JavaScript.Technologies/FrameworksLinux, Networking, CryptographyPROJECTSTools and SoftwareGit/GitHub, Wireshark, Burp suite, Docker, N-mapFace Attendance Management SystemJan 2024 – Apr 2024•Architected a real-time Face Detection and Recognition system leveraging deep learning, ensuring precision in high-traffic environments, benefiting over 500+ users in pilot implementation.•Orchestrated attendance tracking by integrating time-stamped Excel logs, saving 15+ hours per month for educators and administrators.•Harnessed hardware acceleration on Jetson Nano, reducing processing time by up to 30%, enhancing usability in high-demand scenarios.Fake News detectionAug 2023 – Nov 2023•Engineered a fake news detection system tailored to Indian news, scrutinizing content across 20+ languages to cover 95% of the nation’s linguistic diversity.•Incorporated a language translation tool to process multilingual content, bolstering accuracy and enhancing reliability in identifying fake news.•Devised a robust data pipeline to aggregate and preprocess diverse news sources, enabling efficient handling of  multilingual datasets for seamless analysis.Cyber HuntJan 2023 – Apr 2023•Conceived an interactive cybersecurity game centered on social engineering attacks, impacting 100+ users through engaging gameplay.•Embedded quizzes and zestful visualizations to educate users on identifying attack threats and employing preventive measures to reduce risks effectively.•Leveraged HTML, CSS for the front-end, while deployed the Flask framework for seamless connectivity and structured the backend with MySQL, enhancing system performance and response time.Responsive Game StorefrontAug 2022 – Nov 2022•Formulated a potent game store interface featuring real-time inventory updates and personalized recommendations, increasing user engagement by 25% and retention rates by 20% in beta testing.•Streamlined deployment of the frontend using Nginx, handling 70+ daily active users efficiently without downtime.•Revamped the interface with vibrant visuals and seamless transitions, achieving a 60% user satisfaction rate in post-deployment feedback surveys.CERTIFICATES AND COURSESCertified Blockchain Basics Practitioner, Great LearningOct 2024 – Nov 2024•Acquired knowledge of blockchain architecture, consensus algorithms, and cryptocurrency applications.•Explored distributed ledger technology for enhancing transparency and security in decentralized systems.AWS Cloud Engineer, Trainee (Amrita)May 2024 – Jun 2024•Gained foundational knowledge of AWS Cloud concepts, services, and best practices, including cloud security, architecture, pricing, and support.NPTEL Online Certification (Ethical Hacking), NPTELJan 2023 – Apr 2023•Network Security fundamentals: Understanding of network protocols and Vulnerabilities. •Cryptography: Knowledge of encryption algorithms and hashing functions.ORGANISATIONAmrita Cyber Nation (ACN), MentorSep 2023 – Oct 2023•Orchestrated logistics for the ACN Event by facilitating clear communication and collaborating with internal teams, ensuring smooth execution through strategic planning and seamless coordination.",
     "Answer": {
-      "name": "Chinni Krishna Kowsik Pkowsikperumalla",
-      "location": "Chennai, India",
-      "email": "Chinni Krishna Kowsik Pkowsikperumalla@gmail.com",
+      "name": "Chinni Krishna Kowsik P",
+      "location": "Guntur, Andhra Pradesh",
+      "email": "kowsikperumalla@gmail.com",
       "phone": "+91 9000021892",
-      "linkedin": "https://www.linkedin.com/in/chinni-krishna-kowsik-pkowsikperumalla",
+      "linkedin": "https://www.linkedin.com/in/kowsik-perumalla-306595223",
       "skills": [
         "C",
         "C++",
@@ -3446,18 +3425,7 @@
         "Docker",
         "N-map"
       ],
-      "experience": [
-        {
-          "role": "Student",
-          "company": "Amrita Vishwa Vidyapeetham deemed to be university",
-          "description": "Cyber Security"
-        },
-        {
-          "role": "None",
-          "company": "None",
-          "description": "None"
-        }
-      ],
+      "experience": [],
       "projects": [
         {
           "title": "Face Attendance Management System",
@@ -3466,12 +3434,8 @@
       ],
       "education": [
         {
-          "degree": "B.Tech",
+          "degree": "B.Tech in Computer Science, specialized in Cyber Security",
           "institution": "Amrita Vishwa Vidyapeetham deemed to be university,"
-        },
-        {
-          "degree": "None",
-          "institution": "None"
         }
       ],
       "extracurricular_activities": [
@@ -3486,16 +3450,15 @@
     "Filename": "resume_1734602619.pdf",
     "Question": "Yaraboina Anooshaanooshareddy2003@gmail.com 7981170046 Andhra Pradesh, India https://www.linkedin.com/in/anoosha-reddy EDUCATIONB.Tech CSE Cyber SecurityAmrita Vishwa Vidyapeetham - 7.03Higher Secondary EducationNarayana Junior College - 9.8SKILLSProgramming LanguagesC, Java, Python2021 – presentChennai, India2020 – 2021Vijayawada, IndiaWeb DevelopmentHTML, CSS, JavaScript, MySQL202420222022ToolsWireshark, Burpsuite, Cisco Packet Tracer, AutopsyOtherLinux, Cryptography, NetworkingPROJECTSFederated Learning for IOTNetwork Intrusion Detection System•Pioneered a federated learning architecture to secure IoT networks, achieving anexceptional 89% intrusion detection accuracy while preserving data privacy.•Developed an innovative integration of NIDS into a decentralized training framework that increased anomaly detection efficiency by processing over 500 concurrent connections from diverse IoT devices in real-time.•Created a predictive analytics model using the Gemini API that generated 50+ actionable insights on system vulnerabilities; this initiative reduced incident response times by 40%, improving overall system reliability.SMS Spam DetectionText Malware Detection•Developed  a  sophisticated  SMS  spam  detection  system  utilizing  K-NearestNeighbors,  Random  Forest,  and  Naive  Bayes  algorithms,  resulting  in  animpressive reduction of 2,000 fraudulent messages within the first month. A•chieving an impressive 94% accuracy.•Engineered  an  interactive  user-input  system  for  SMS  classification,  utilizingadvanced machine learning algorithms, resulting in an 89% precision rate.Better Hidden - Camouflaged Data using SteganographyConcealed Text, Audio, and Image data and created Secret Channel•Employed  5  Cryptography  techniques  with  Password  Security  and  accomplishedPSNR value 42.5329 which proved the credibility of the Algorithms.• Administered ReactJS and Flask, built the one required website, and performed data hiding on various file types.CERTIFICATESGoogle Cloud Computing CourseCertificate course by GoogleDeep Learning Model Optimization and DevelopmentBy INTEL FICETCS ion Career Edge Young Professionalcompleting 40+ hours of online training modules and assessmentsAWARDSCoordinated Technical Club being a Core Member - AMCFOSS Coordinated Technical Club being a Core  Member - AMCFOSSAmrita Vishwa Vidyapeetham, Chennai",
     "Answer": {
-      "name": "Yaraboina Anooshaanooshareddy",
+      "name": "Yaraboina Anoosha",
       "location": "Andhra Pradesh, India",
-      "email": "Yaraboina Anooshaanooshareddy2003@gmail.com",
-      "phone": "7981170046",
+      "email": "anooshareddy2003@gmail.com",
+      "phone": "+91 7981170046",
       "linkedin": "https://www.linkedin.com/in/anoosha-reddy",
       "skills": [
         "C",
         "Java",
-        "Python",
-        "],"
+        "Python"
       ],
       "experience": [
         {
@@ -3526,8 +3489,8 @@
       ],
       "education": [
         {
-          "degree": "B.Tech",
-          "institution": "CSE Cyber Security Amrita Vishwa Vidyapeetham"
+          "degree": "B.Tech CSE Cyber Security",
+          "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
           "degree": "Higher Secondary Education",
@@ -3546,23 +3509,24 @@
     "Filename": "resume_1734602624.pdf",
     "Question": "Mantri Vardhanvardhanmantri1@gmail.com+91 8790075669Visakhapatnam, Andhrapradeshlinkedin.com/in/mantri-vardhan-014821304ProfileA cross-disciplinary team player passionate about Embedded Systems, IoT, Antenna Design, VLSI. Beyond technical expertise, a suiteof valuable soft skills, including effective communication, teamwork, adaptability, and a keen problem-solving mindset, are my strengths.Education2021 – 2025IndiaProjectsBachelor of Technology in Electronics and Communication, Amrita Vishwa VidyapeethamCGPA:9.4211/2023 – 01/2024Enhanced Mutual Coupling Reduction Through E-Shaped Resonators in MIMO antenna array systems (5G,RF engineering)•Objective: To design and implement an E-shaped resonator-assisted MIMO antenna design for mutualcoupling reduction in order to improve antenna efficiency and performance.•Tools Used: ANSYS HFSS for simulation.•Outcome:  Achieved  considerable  reduction  in  mutual  coupling,  confirmed  through  simulations  andexperimental tests, significantly improving antenna efficiency and performance.05/2024 – 07/2024Real time-Voice Based Gender Recognition using MATLAB (Signal Processing)•Objective: To develop a real-time gender recognition system using voice input, leveraging power spectraldensity analysis in MATLAB for security-related applications.•Tools  Used:  MATLAB  for  signal  processing,  power  spectral  density  analysis,  and  real-time  voice  inputhandling.•Outcome: Successfully implemented a gender recognition system that accurately classifies gender basedon voice input, offering potential applications in security and authentication systems.05/2022 – 07/2022Waste Management, An IoT-Based Smart Dustbin System for Waste Segregation•Objective: To develope a smart dustbin that segregates waste into organic, recyclable and non recyclableand also an alert system to alert the sanity workers when the bin is full.•Tools used: Sensors(Ultrasonic sensor, color sensor), Actuators(Servo motors), Communication(Bluetooth module), Buzzer. Arduino UNO•Outcome: Successfully created a system that automatically sorts waste based on bag color and notifiessanitary  cleaners  via  Bluetooth  when  bins  are  full  enabling  more  efficient  waste  management  andensuring timely disposal of waste.11/2023Interactive 4-Bit Adder and Subtractor Simulation using LPC2148 and Proteus, Mini Project•Objective: Designed a  circuit integrating addition and subtraction functionality with dynamic mode selection.•Outcome: Achieved a functional and interactive simulation of a 4-bit adder/subtractor, demonstrating efficient use of microcontroller and circuit design principles.03/2024 – 04/2024Smart and Sustainable: Verilog HDL Integration in Laundry Machine Control (VLSI,FPGA)•Objective:  To  design  and  implement  a  smart  and  sustainable  laundry  machine  (Mealy  finite  statemachine)  control  system  using  Verilog  HDL,  incorporating  weight  sensing  and  safety  mechanisms  tooptimize performance and resource efficiency.•Tools Used: Xilinx Vivado Suite, Model Sim for simulation and synthesis, FPGA Board (Digilent Basys3Xilinx Artix-7), Verilog Hardware description language.•Outcome: Successfully designed a laundry mealy state machine control system.10/2023 – 03/2024Comparative Analysis of Various Adder Architectures using FPGA: Evaluating Delay, Area, Temperature and Power Efficiency Across 4-32 Bit Widths (FPGA,VLSI)•Objective:  To  compare  and  evaluate  various  adder  architectures  based  on  delay,  area,  and  powerefficiency across varying bit widths to determine the most suitable design for different applications usingFPGA.•Tools  Used:  Xilinx  Vivado  Suite  for  simulation,  synthesis  and  Implementation,  FPGA  Board  (DigilentBasys3 Xilinx Artix-7), Verilog Hardware description language.•Outcome: Successfully identified the most efficient FPGA adder designs for each specific bit-width.09/2024 – presentLow Power-Programmable Feedback Shift Register for Cryptographic Applications•Objective:  To  develope  a  Programmable  Feedback  Shift  Register  (PFSR)  inorder  to  achieveunpredictability and statistical randomness, outperforming traditional LFSRs in sequence generation andsecurity.Internships08/2023 – 09/2023Training in Ansys HFSS, Piezo and MEMS, ARK INFOSOLUTION PVT. LTD.•Gained comprehensive proficiency in the ANSYS software.2023Telecommunications Intern, BSNL Visakhapatnam•Through my internship at BSNL, I gained experience in telecom network operations, encompassing maindistribution frames, power plants, switching centers, and more. This exposure provided valuable insightsinto the intricacies of telecommunications infrastructure and industry practices.Research Publications (IEEE)06/29/202408/24/202409/21/2024Comparative Analysis of FPGA Adder Architectures: Evaluating Delay, Area, and Power Efficiency Across Different Bit Widths, IEEE International Conference on “ Information Science, Computing, Communication, Instrumentation and Automation” 2024•The paper presents a comprehensive evaluation of various adder architectures using FPGA, focusing on key metrics such as delay, area, and power efficiency. It analyzes performance across different bit widths to identify the most efficient designs for specific applications.Smart and Sustainable: Verilog HDL Integration in Laundry Machine, 4h IEEE International conference ASIANCON 2024 ,Pune, India  and Sponsored by AICTE New Delhi•The paper explores the integration of Verilog HDL in laundry machines to enhance smart and sustainable functionalities. It examines how Verilog HDL can optimize control systems, improve energy efficiency, and provide advanced features in modern laundry appliances.A Comparative analysis of Electrical Characteristics in Bulk, PD, FD and Optimized SOI MOSFETs, 2024 IEEE International Conference on Communication, Computing and Energy Efficient Technologies•The paper offers a detailed comparative analysis of various characteristics of Bulk, Partially Depleted (PD), Fully Depleted (FD), and Optimized SOI MOSFETs. It evaluates their performance metrics to highlight the advantages and limitations of each type for various applications in semiconductor technology.Areas of InterestMicrocontrollers and MicroprocessorsIoTAnalog ElectronicsDigital ElectronicsTechnical skillsDigital Circuit DesignVLSI DesignSoftware's usedAnsys HFSSModelSim-Intel®ProteusProgramming LanguagesC ProgrammingReal time OSVLSILinear Integrated CircuitsRadio Frequency EngineeringAnalog Circuit DesignAntenna DesignArduino IDEEDA PlaygroundCADENCE Xilinx Vivado Design SuiteKeil μVisionLtspiceARM Assembly Level LanguageVerilog Hardware Description languageEmbedded CCertificates and AchievementsC for Everyone, CourseraAMCAT, Certified in 8 different fields which include both technical and non technical.Springfield International Mathematics Olympiad (SIMO), Secured all India rank 47th.Association of Mathematics Teachers of India(AMTI), Maths olympiad, where i qualified consecutively for 3 years to the final round in 7th, 8th, and 9th grade.Responsibilities Discharged04/2024 – presentIEEE-ComSoc Student Society Chairperson, Special Interest Group in Humanitarian TechnologyHeading an IEEE student body group with a core interest in Humanitarian technologyfor improving lives and problem solving through Electronics.",
     "Answer": {
-      "name": "Not specified",
-      "location": "Not specified",
-      "email": "Not specified",
-      "phone": "Not specified",
-      "linkedin": "Not specified",
+      "name": "Mantri Vardhan",
+      "location": "Visakhapatnam, Andhrapradesh",
+      "email": "vardhanmantri1@gmail.com",
+      "phone": "+91 8790075669",
+      "linkedin": "https://linkedin.com/in/mantri-vardhan-014821304",
       "skills": [
         "C Programming",
         "Real time OS",
         "Digital Circuit Design",
         "VLSI Design",
-        "Software's used: Ansys HFSS, ModelSim-Intel® Proteus, Programming Languages",
+        "Ansys HFSS", 
+        "ModelSim-Intel® Proteus",
+        "Programming Languages",
         "Microcontrollers and Microprocessors",
         "Analog Electronics",
         "Digital Electronics",
         "Technical skills",
         "Embedded CCertificate",
-        "IEEE-ComSoc Student Society",
         "IoT",
         "Antenna Design",
         "Linear Integrated Circuits",
@@ -3570,32 +3534,44 @@
       ],
       "experience": [
         {
-          "role": "Not specified",
+          "role": "Intern",
           "company": "BSNL Visakhapatnam",
           "description": "Telecommunications Intern"
         },
         {
-          "role": "Not specified",
+          "role": "Intern",
           "company": "ARK INFOSOLUTION PVT. LTD.",
           "description": "Training in Ansys HFSS, Piezo and MEMS"
         }
       ],
       "projects": [
         {
-          "title": "Not specified",
-          "description": "Not specified"
+          "title": "Comparative Analysis of FPGA Adder Architectures: Evaluating Delay, Area, and Power Efficiency Across Different Bit Widths",
+          "description": "Comparative Analysis of Various Adder Architectures: Evaluating Delay, Area, and Power Efficiency Across Different Bit Widths, IEEE International Conference on “ Information Science, Computing, Communication, Instrumentation and Automation” 2024"
+        },
+        {
+          "title": "Smart and Sustainable: Verilog HDL Integration in Laundry Machine",
+          "description": "Smart and Sustainable: Verilog HDL Integration in Laundry Machine, 4h IEEE International conference ASIANCON 2024 , Pune, India  and Sponsored by AICTE New Delhi"
+        },
+        {
+          "title": "A Comparative Analysis of Electrical Characteristics in Bulk, PD, FD and Optimized SOI MOSFETs",
+          "description": "A Comparative analysis of Electrical Characteristics in Bulk, PD, FD and Optimized SOI MOSFETs, 2024 IEEE International Conference on Communication, Computing and Energy Efficient Technologies"
         }
       ],
       "education": [
         {
-          "degree": "Not specified",
-          "institution": "Not specified"
+          "degree": "Bachelor of Technology in Electronics and Communication",
+          "institution": "Amrita Vishwa Vidyapeetham"
         }
       ],
       "extracurricular_activities": [
         {
-          "activity": "IEEE-ComSoc Student Society Chairperson",
-          "description": "Heading an IEEE student body group with a core interest in Humanitarian technology for improving lives and problem solving through Electronics"
+          "activity": "IEEE-ComSoc Student Society Chairperson, Special Interest Group in Humanitarian Technology",
+          "description": "Heading an IEEE student body group with a core interest in Humanitarian technology for improving lives and problem solving through Electronics."
+        },
+        {
+          "activity": "Springfield International Mathematics Olympiad (SIMO)",
+          "description": "Secured all India rank 47th."
         },
         {
           "activity": "Association of Mathematics Teachers of India(AMTI)",
@@ -3612,22 +3588,18 @@
       "location": "Chennai,India",
       "email": "kalyanvarunkumarkorada@gmail.com",
       "phone": "7780595289",
-      "linkedin": "linkedin.com/in/kalyan-varun-kumar",
+      "linkedin": "https://linkedin.com/in/kalyan-varun-kumar",
       "skills": [
         "Python",
         "IOT",
         "5G technology",
         "CST Studio",
-        "AltiumCircuit Design and Analysis (Arduino IDE, Proteus, LTSpice, Multisim, TinkerCAD)",
-        "2021 – presentChennai, IndiaOct 2023 – Oct 2024 Chennai, IndiaApr 2024 – Jun 2024 Chennai, IndiaJun 2023 Chennai, IndiaJan 2024 – Apr 2024 Jan 2024 – Apr 2024 Sep 2023 – Dec 2023 Oct 2022 – Dec 2022 Digital Design (VHDL, Verilog, Keil μVision), ",
         "Ansys HFSS",
         "Matlab",
         "Xilinx Vivado",
         "Jupyter Notebook",
         "Google Colab",
-        "DSA",
-        "Young professional",
-        "People and Soft Skills Assessment"
+        "DSA"
       ],
       "experience": [
         {
@@ -3662,20 +3634,11 @@
       ],
       "education": [
         {
-          "degree": "Btech",
-          "institution": "Electronics and Communication EngineeringAmrita Vishwa Vidyapeetham-Chennai"
-        },
-        {
-          "degree": "",
-          "institution": ""
+          "degree": "Btech in Electronics and Communication Engineering",
+          "institution": "Amrita Vishwa Vidyapeetham-Chennai"
         }
       ],
-      "extracurricular_activities": [
-        {
-          "activity": " ",
-          "description": " "
-        }
-      ]
+      "extracurricular_activities": []
     }
   },
   {
@@ -3685,7 +3648,7 @@
       "name": "Y . C . A M A N D I N   S E L S I A",
       "location": "coimbatore",
       "email": "amandinselsia@gmail.com",
-      "phone": "9597207145",
+      "phone": "+91 9597207145",
       "linkedin": "",
       "skills": [
         "collaboration",
@@ -3728,8 +3691,8 @@
       ],
       "education": [
         {
-          "degree": "Bachelor of technology",
-          "institution": "Electronics and communication engineering"
+          "degree": "Bachelor of technology Electronics and communication engineering",
+          "institution": "Amrita  Vishwa Vidyapeetham"
         },
         {
           "degree": "Higher secondary education",
@@ -3752,17 +3715,16 @@
     "Filename": "resume_1734602627.pdf",
     "Question": "Dharunjayavinayak R CB.EN.U4EEE21113 +91-9159634510 dharunjayavinayakwork@gmail.com linkedin.dharunjayavinayakObjective: A trustworthy and innovative B. Tech student in Electrical and Electronics Engineering, demonstrating robust leadership qualities and a strong work ethic. With a commitment to inclusivity and excellence, eager to learn from every situation, and have a keen interest in embedded systems, control systems, and electronics. Passionate about leveraging my technical skills to drive technological advancements and contribute to organizational growth. Education: 2021 – present Ettimadai, India. 2020 – 2021 Hosur, India 2018 – 2019 Hosur, India Bachelor of Technology in Electrical and Electronics Engineering Amrita Vishwa Vidyapeetham CGPA: 8.66 (6th sem) Higher Secondary, Physics-Chemistry-Maths-Computer, State Board Mark: 564/600 (94%) Sri Vijay Vidyalaya Secondary Education, State Board St. Josephs Matric Higher Secondary Mark: 475/500 (95%) Area of Interest: •  Embedded systems. •  Electronics.  Other technical qualifications: Software skills   LabVIEW (Beginner) | Matlab & Simulink (Intermediate) MPLab (Beginner) | STM32 (Beginner)                                                               Codesys (Intermediate)     Programming skills C (Intermediate) | C++ (Intermediate) Hardware knowledge   PYTHON (Intermediate) (with ML) PLC programming (Ladder logic) (Beginner) Raspberry pi Arduino UNO, ESP8266 and ESP32 PIC16F877A Internship: Jan-2024 Hosur, India. certification Titan Engineering and Automation Limited (TEAL) Intern (1 Week) Acquired knowledge of the industry's workflow and gained experience in panel assembly and PLC programming in the automation  field.  Also  gained  practical  knowledge  by working on a fully automated project.     Page | 1                                                                        JUL-2024 Hosur, India. certification Inplant Training: August-2023 Hosur, India certification Publications: Jun-2024 Kannur, India certification Projects: Micro-controller March – 2024 Titan Company Limited – Jewellery Division. Intern  Experienced the  company's  power  generation, consumption, and BMS system. Worked on the company’s future dependence on automation and IIoT. in Titan Company Limited Inplant Training (1 Week) Got to know smart technologies in watch manufacturing. Learned critical role and selection of electrical components, amplifying expertise in the intersection of technology and watch production processes. Review on a smart solar-powered greenhouse system using IoT sensors for automated internal climate control and crop monitoring. International Conference on Advancement in Power, Communication and Intelligent Systems. This  paper  briefly  reviews  solar  powered  systems implemented in greenhouses for their functioning. This review also includes existing  models  that  have  been  implemented  and  future trends in greenhouse systems. in  greenhouses  and  sensors  used Smart Solar Greenhouse using IoT for internal Climate control. Integrating various sensors with ESP8266 to control the internal climate of the greenhouse and integrate IoT for remote Monitoring and Control. Embedded Systems Smart street light system for a community. March – 2024 With the help of Ldr sensor and NodeMCU have achieved control of street lights with IoT integrated. Machine Learning Nov – 2023. Prediction of energy consumption in smart solar Greenhouse. Have used different techniques to predict the DC power output. Extra-Curricular Activities: o  Attended a one-day workshop on Electric Vehicles by BOSCH. 📎. o  Active participation in NSS – Government School, KG Chavadi. o  Achieved proficiency by clearing all 8 levels in Dakshina Bharat Hindi Prachar Sabha Hindi exams. Languages:  English, Tamil, Hindi. Proficiency in reading, writing, and speaking Mailing Address: Plot no:13, Guru Sai Garden, Kamaraj Nagar, Hosur-635123 Page | 2",
     "Answer": {
-      "name": "Dharunjayavinayak R CB.EN.U4EEE21113",
-      "location": "Hosur-635123",
+      "name": "Dharunjayavinayak R",
+      "location": "Hosur ",
       "email": "dharunjayavinayakwork@gmail.com",
       "phone": "+91-9159634510",
-      "linkedin": "linkedin.dharunjayavinayak",
+      "linkedin": "http://www.linkedin.com/in/dharunjayavinayakr",
       "skills": [
         "LabVIEW",
         "Matlab & Simulink",
         "MPLab",
-        "STM32",
-        "], "
+        "STM32"
       ],
       "experience": [
         {
@@ -3802,7 +3764,7 @@
       ],
       "education": [
         {
-          "degree": "Bachelor of Technology",
+          "degree": "Bachelor of Technology  in Electrical and Electronics Engineering ",
           "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
@@ -3831,7 +3793,7 @@
     "Question": "Maram Prathibha Reddymaramprathibhareddy18@gmail.com | +91 9392044161 | Ongole, India https://www.linkedin.com/in/prathibhareddymaram/ | github.com/Prathibha28 EducationB.Tech in Electronics and Communication EngineeringAmrita Vishwa Vidyapeetham, CGPA 8.59/10Intermediate EducationNarayana Junior Collage, 936/1000September 2021 – Present  |  Chennai, IndiaJune 2019 – May 2021  |  Vijayawada, IndiaWork ExperienceEmbedded System InternCentre for Development of Advanced Computing Chennai, IndiaJune 2023 – July 2023  |  Chennai, India•Conducted extensive literature review and techno-commercial survey, evaluating 20+ components for the selection process of a Smart bed for paralyzed patients, ensuring thorough research and informed decision-making with all available alternatives.•Successfully implemented and demonstrated a simulation of the smart bed system, showcasing its efficacy in a controlled environment and validating its functionality in preventing and managing pressure ulcers.ProjectColor Image Encryption using FPGAJune 2024 – present•Currently developing an advanced color image encryption scheme incorporating novel scrambling techniques and a modified 2D logistic cascade map.•Focusing on FPGA implementation to achieve real-time encryption with high efficiency and security. •Designing hardware architecture to handle complex encryption operations, optimizing for speed and resource utilization.•Aiming to enhance the security of image data transmission through innovative cryptographic techniques.Forest Fire Detection and Alert SystemAugust 2023 – October 2023•Integrated Arduino IDE with STM32 and LoRa modules for hardware development, demonstrating proficiency in combining various technologies to create cohesive systems.•Engineered a groundbreaking LoRa-based peer-to-peer communication system, showcasing innovation in long-range, low-power wireless communication, and achieved a remarkable 100-meter accessible range.•Developed a wireless sensor-based end device for deployment across different forest locations, capable of continuously monitoring dry and hot weather conditions, detecting thunder strikes and fires, and utilizing a buzzer to alert animals and nearby villages.Audio Encryption and DecryptionJuly 2022 – November 2022•Incorporated Jupyter Notebook into the workflow, resulting in an enhanced data-driven decision-making; contributed to increase in project-efficiency.•Streamlined an idea for secure data transmission via converting audio inputs into ASCII codes, results in a code efficiency and reducing the time required for bug fixes.Positions Of ResponsibilityVice Chair | Women In EngineeringIEEE Student BranchSeptember 2023 – present•Conducted in-depth research for scholarships offered by IEEE, identifying potential funding opportunities to support educational and professional development.•Coordinated the technical event \"TinkerIT\" at Tantrosav'24, successfully managing participation of 25 teams showcasing their innovative ideas, ensuring smooth event execution and high engagement.•Volunteered at several events, including guest lectures by industry professionals, contributing to the organization and facilitation of knowledge-sharing sessions.Coding Languages: C++, Python, Embedded C, VHDL.Tools: VS Code, Jupyter Notebook, Google Colab, LTspice, Arduino IDE, Code Blocks, Keil μVision, Xilinx Vivado.Technical Skills•Participated in IEEEXtreme 17.0 Programming Competition (ranked 1900 out of 7091).•Took Part in Passive Hack event and Circuital Dilemma event of Tantrotsavʼ23.•Cognizance Club Member focused on coding, solving Kaggle problems.ExtracurricularCertificates and other documents can be viewed at  Other Information",
     "Answer": {
       "name": "Maram Prathibha Reddy",
-      "location": "Chennai, India",
+      "location": "Ongole, India",
       "email": "maramprathibhareddy18@gmail.com",
       "phone": "+91 9392044161",
       "linkedin": "https://www.linkedin.com/in/prathibhareddymaram/",
@@ -3860,8 +3822,8 @@
       ],
       "education": [
         {
-          "degree": "B.Tech",
-          "institution": "Electronics and Communication EngineeringAmrita Vishwa Vidyapeetham"
+          "degree": "B.Tech Electronics and Communication Engineering",
+          "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
           "degree": "Intermediate Education",
@@ -3882,8 +3844,8 @@
     "Answer": {
       "name": "MARPU SAI MAHESH",
       "location": "Andhra Pradesh, India",
-      "email": "marpumaheshchintusaimaheshmarpu@gmail.com",
-      "phone": "9502342564",
+      "email": "chintusaimaheshmarpu@gmail.com",
+      "phone": "+91 9502342564",
       "linkedin": "https://www.linkedin.com/in/marpumahesh/",
       "skills": [
         "Python",
@@ -3892,11 +3854,7 @@
         "Android",
         "MYSQL",
         "AWS Cloud",
-        "Web and Project Technologies",
-        "Contact Management System",
-        "Web Scraping tool",
-        "Number Guessing Game",
-        "Temperature Conversion Website"
+        "Web Scraping tool"
       ],
       "experience": [
         {
@@ -3936,18 +3894,18 @@
       ],
       "education": [
         {
-          "degree": "B-Tech",
+          "degree": "B-Tech Computer Science and Engineering with Specialization in Cyber Security",
           "institution": "Amrita Vishwa Vidyapeetham,"
-        },
-        {
-          "degree": "NPTEL course",
-          "institution": "NPTEL"
         }
       ],
       "extracurricular_activities": [
         {
           "activity": "None",
           "description": "None"
+        },
+        {
+          "activity": "NPTEL course",
+          "description": "NPTEL"
         }
       ]
     }
@@ -3956,13 +3914,17 @@
     "Filename": "resume_1734602630.pdf",
     "Question": "Raaghavi K Rkrraaghavi@gmail.com +91 9384494798 https://www.linkedin.com/in/raaghavi-k-r/ github.com/Raaghavi-K-R EducationB.Tech (Computer Science and Engineering - Cyber Security), Amrita Vishwa VidyapeethamCurrent CGPA - 7.75SkillsProgramming Languages — Python  C Solving | Analytical Thinking | Communication | Team Collaboration | Adaptability Java, Web Development — HTML  CSS ProjectsFile carving tool using Java, Java | SHA-2562021 – present  |  Chennai, India JavaScript, Soft Skills — Problem2024•Developed a Java-based file carving tool for recovering deleted or corrupted files from storage devices.•Successfully recovered various file types, improving data retrieval efficiency and accuracy in forensic investigations.Multi-Tool Web Vulnerability Scanner, Python 3.x | HTML | Kali Linux2023•Developed Python3 web vulnerability scanner detecting Remote Code Execution, Reflected XSS, Template Injection, and SQL Injection attacks.Semantic Segmentation of Road Objects, Python | Google Colab | TensorFlow | Keras2023•Constructed pixel-wise classification of road objects using UNet, SegNet, and DeepLab architectures in Google Colab.•Employed outstanding accuracy, with UNet surpassing other CNN architectures at 95%.Detection of Malicious URLs using Machine Learning, Python | NLTK | RE | Google Colab2022•Built a model using lexical features and tokenization of URL strings.•Achieved an impressive result with an accuracy rate of 92% in distinguishing between malicious and benign URLs.InternshipCyber Security Intern, Prasunet Pvt. Ltd.06/2024 – 07/2024  |  Remote•Developed and implemented encryption tools, deepening understanding of cryptographic principles and security measures.•Enhanced understanding of network security protocols and ethical considerations.Certifications and CoursesPwC Cybersecurity LaunchpadNPTEL certification in Ethical HackingJul-Sep, 2023Machine Learning masterclass at Pantech e Learning Pvt Ltd, ChennaiCISSP® - Certified Information Systems Security Professional by Simplilearn — Jan-Apr, 2023 — July, 2024 — Jan-Feb, 2023 — 25th Oct 2022Young Professional certification from TCS iON Career Edge. —Technical EventsParticipated in AmritaBlock Camp as a part of  Vidyut at Amrita School of ComputingInnovated \"Cryptonnect\" website development, addressing crypto accessibility and transaction speed challenges in this National Blockchain Hackathon.2023  |  Amritapuri, IndiaPresented a paper on \"Cybersecurity Threats in Automated Cars\" at the Cyber Carnival23 at SRM University,  RamapuramExamined and deliberated critical vulnerabilities and advocated mitigation strategies for the emerging challenges in autonomous vehicle security.2023  |  Chennai, IndiaAttended Workshop on Ethical Hacking with Cyber Security led by Techobyte at IIT Madras Research ParkAcquired hands-on experience in the latest techniques and tools, thereby enhancing skills in cybersecurity practices.2021  |  Chennai, India||||||||",
     "Answer": {
-      "name": "Raaghavi K Rkrraaghavi",
+      "name": "Raaghavi K R",
       "location": "Chennai, India",
-      "email": "raaghavi@gmail.com",
+      "email": "krraaghavi@gmail.com",
       "phone": "+91 9384494798",
       "linkedin": "https://www.linkedin.com/in/raaghavi-k-r/",
       "skills": [
-        "Programming Languages — Python  C Solving | Analytical Thinking | Communication | Team Collaboration | Adaptability Java, Web Development — HTML  CSS"
+        "Python",
+        "C Solving" ,
+         "Java",
+         "HTML",
+          "CSS"
       ],
       "experience": [
         {
@@ -3996,12 +3958,8 @@
       ],
       "education": [
         {
-          "degree": "B.Tech",
-          "institution": "Computer Science and Engineering - Cyber Security,"
-        },
-        {
-          "degree": "Cyber Security",
-          "institution": "Amrita Vishwa Vidyapeetham"
+          "degree": "B.Tech Computer Science and Engineering - Cyber Security",
+          "institution": "Amrita  Vishwa Vidyapeetham"
         }
       ],
       "extracurricular_activities": [
@@ -4020,11 +3978,11 @@
     "Filename": "resume_1734602631.pdf",
     "Question": "Khambampati Subhash+ Sathupally, Telangana # subhashkhambampati74@gmail.com (cid:132) +91 6300101199SummaryAI enthusiast with hands-on experience in developing solutions using machine learning, deep learning, and naturallanguage processing. Worked on healthcare AI projects, winning awards in hackathons and contributing toresearch. I’m committed to advancing AI for practical use, combining technical expertise with a strong drive formeaningful change. Always eager to contribute to transformative projects.EducationAmrita Vishwa VidyapeethamBTech in Artificial Intelligence - Amritapuri, KeralaSri Chaitanya junior CollegeIntermediate MPC - Hyderabad, TelanganaInternshipAI InternMargati09/2021 – 05/2025GPA: 8.903/2019 – 06/2021Percentage: 97Remote08/2024 – Present◦ Developed a retrieval system to optimize output and reduce OpenAI calls, significantly reducing cost.◦ Extracted relevant information from web content, integrating it seamlessly with core software.◦ Optimized prompts for improved search results and employed DeepEval for LLM output evaluation.Healthcare AI Club MemberAmrita WNAAmritapuri, Kerala04/2023 – Present◦ Secured 18th globally in the PhysioNet Challenge 2023 for healthcare AI research.◦ Engaged in hackathons, paper publications, and AI projects in healthcare.◦ Currently doing a final year project under the mentorship of a club professor, focused on healthcare AI.AchievementsSustainable Development Ideathon | 1st Prize06/2024◦ Proposed an AI-powered system, automating pest control and soil analysis, increasing yields by 20%.◦ Provided market forecasts and personalized support for 50+ farmers to optimize productivity.Google Build with AI GDG Kochi 2024 | 2nd Runner Up04/2024◦ Built a Streamlit app using Gemini and Google Cloud with features like an AI tutor, quiz generator, andPDF chatbot, completed in 24 hours during a hackathon.GE Healthcare Hackathon | 1st Runner Up08/2023◦ Created an AI solution balancing precision and explainability, achieving 60% accuracy in ECG classification.◦ Leveraged explainable methods for interpretability, improving decision-making in healthcare.SkillsProgramming Languages: PythonArtificial Intelligence: Machine Learning, Deep Learning, Computer Vision, Natural Language Processing,Large Language Models, LangChain, Pytorch, TensorflowDevelopment: HTML, CSS, JavaScript, React, NodeJS, FastAPI, FlaskTools and Databases: Github, Docker, RabbitMQ, Linux, MongoDB, redisSoft Skills: Teamwork and Collaboration, Continuous Learning, Calm Personality1ProjectsFine-Tuned LLaMA-3 on Medical Data using Unsloth05/2024◦ Fine-tuned LLaMA-3 with Unsloth and SFT Trainer, increasing model efficiency for medical tasks by 15%.◦ Leveraged Hugging Face dataset, improving medical dialogue accuracy by 20% in context-specific responses.Saraswati AI◦ Developed an AI platform using Gemini and Streamlit for personalized tutoring and quizzes.◦ Created a path planner and interview assistant for tailored learning experiences.◦ Aims to enhance education access in low-income nations by affordable, personalized learning tools.A Prompt Based XAI Tool◦ Built a Streamlit app that uses a CNN 1D model to classify ECG data with 60% accuracy.◦ Included a Falcon 7B LLM chatbot to improve access to medical information.◦ Helps patients and doctors understand health data better and make informed decisions.PublicationsCureNet: Improving Explainability of AI Diagnosis Using Custom Large Language ModelsIEEE SmartGen Con Link 2Frequency and Time Domain EEG Analysis for Prognostication of Postanoxic Comatose PatientsIEEE CINC, Scopus Index Link 2WorkshopAI in Healthcare04/202408/202303/202412/202304/2023◦ Led hands-on sessions, mentoring over 40 students in practical exercises and troubleshooting.◦ Organized materials and resources for an optimal learning environment during the 3-day workshop.◦ Built connections with students and learned valuable teaching experience.Community OutreachStudent Social Responsibility (SSR)09/2023◦ Contributed to AI awareness initiatives at Queen Mary High School and ZPHS Ethamukkala.◦ Empowered over 150 students with AI fundamentals and showcased real-world applications such as GPT,humanoid robots, AI image generators, voice cloning, and DeepFake technology.◦ Our primary goal is to raise AI awareness among children, encouraging them to use AI for future innovation.Certificates◦ Intermediate Deep Learning with PyTorch DataCamp 2◦ Introduction to TensorFlow in Python DataCamp 2◦ Introduction to Deep Learning in Python DataCamp 2Final Year Project05/202204/202403/2024MediScribe09/2024◦ Currently developing a healthcare application that enables patients to book appointments and access per-sonal health records seamlessly. The project leverages AI for voice transcription and summarization toreduce documentation time by over 50% and minimize error rates from 10-15% to below 5%.Contact Me◦ LinkedIn: linkedin.com/in/subhash-khambampati 2◦ GitHub: github.com/subhash137 2◦ Twitter: twitter.com/SubhashKhambam1 22",
     "Answer": {
-      "name": "Khambampati Subhash+ Sathupally",
-      "location": "Telangana",
+      "name": "Khambampati Subhash",
+      "location": "Sathupally, Telangana",
       "email": "subhashkhambampati74@gmail.com",
       "phone": "+91 6300101199",
-      "linkedin": "https://www.linkedin.com/in/subhash137",
+      "linkedin": "https://www.linkedin.com/in/subhash-khambampati",
       "skills": [
         "Deep Learning",
         "XAI",
@@ -4032,15 +3990,11 @@
         "Computer Vision (CV)"
       ],
       "experience": [
-        {
-          "role": "AI Intern",
-          "company": "",
-          "description": "Developed a retrieval system to optimize output and reduce OpenAI calls, significantly reducing cost."
-        },
+        
         {
           "role": "AI Intern",
           "company": "Margati",
-          "description": "Extracted relevant information from web content, integrating it seamlessly with core software."
+          "description": "Developed a retrieval system to optimize output and reduce OpenAI calls, significantly reducing cost ,Extracted relevant information from web content, integrating it seamlessly with core software."
         }
       ],
       "projects": [
@@ -4059,9 +4013,14 @@
       ],
       "education": [
         {
-          "degree": "BTech",
-          "institution": "Artificial Intelligence - Amritapuri, Kerala, Sri Chaitanya junior CollegeIntermediate MPC - Hyderabad, TelanganaInternshipAI InternMargati09/2021 – 05/2025GPA: 8.903/2019 – 06/2021Percentage: 97Remote08/2024 – Present"
+          "degree": "BTech Artificial Intelligence",
+          "institution": "Amrita Vishwa Vidyapeetham- Amritapuri, Kerala"
+        },
+        {
+          "degree":"Intermediate MPC",
+          "institution":"Sri Chaitanya junior College - Hyderabad, Telangana"
         }
+        
       ],
       "extracurricular_activities": [
         {
@@ -4083,7 +4042,7 @@
       "location": "",
       "email": "devikakrishna03@gmail.com",
       "phone": "+91 9895386292",
-      "linkedin": "",
+      "linkedin": "https://linkedin.com/in/devika-k-471181261",
       "skills": [
         "Python",
         "HTML",
@@ -4116,16 +4075,16 @@
       ],
       "education": [
         {
-          "degree": "Artificial Intelligence Engineering",
+          "degree": "B.Tech Artificial Intelligence Engineering",
           "institution": "Amrita Vishwa Vidyapeetham, Coimbatore"
         },
         {
-          "degree": "Bioscience",
-          "institution": "Class XII"
+          "degree": "Class XII",
+          "institution": "Excel Public School, Mahe, Pondicherry"
         },
         {
-          "degree": "CBSE",
-          "institution": "Class X"
+          "degree": "Class X",
+          "institution": "Amrutha Public School, Vadakara, Kerala"
         }
       ],
       "extracurricular_activities": [
@@ -4140,28 +4099,17 @@
     "Filename": "resume_1734602633.pdf",
     "Question": "Yaraboina Anooshaanooshareddy2003@gmail.com 7981170046 Andhra Pradesh, India https://www.linkedin.com/in/anoosha-reddy EDUCATIONB.Tech CSE Cyber SecurityAmrita Vishwa Vidyapeetham - 7.03Higher Secondary EducationNarayana Junior College - 9.8SKILLSProgramming LanguagesC, Java, Python2021 – presentChennai, India2020 – 2021Vijayawada, IndiaWeb DevelopmentHTML, CSS, JavaScript, MySQL202420222022ToolsWireshark, Burpsuite, Cisco Packet Tracer, AutopsyOtherLinux, Cryptography, NetworkingPROJECTSFederated Learning for IOTNetwork Intrusion Detection System•Pioneered a federated learning architecture to secure IoT networks, achieving anexceptional 89% intrusion detection accuracy while preserving data privacy.•Developed an innovative integration of NIDS into a decentralized training framework that increased anomaly detection efficiency by processing over 500 concurrent connections from diverse IoT devices in real-time.•Created a predictive analytics model using the Gemini API that generated 50+ actionable insights on system vulnerabilities; this initiative reduced incident response times by 40%, improving overall system reliability.SMS Spam DetectionText Malware Detection•Developed  a  sophisticated  SMS  spam  detection  system  utilizing  K-NearestNeighbors,  Random  Forest,  and  Naive  Bayes  algorithms,  resulting  in  animpressive reduction of 2,000 fraudulent messages within the first month. A•chieving an impressive 94% accuracy.•Engineered  an  interactive  user-input  system  for  SMS  classification,  utilizingadvanced machine learning algorithms, resulting in an 89% precision rate.Better Hidden - Camouflaged Data using SteganographyConcealed Text, Audio, and Image data and created Secret Channel•Employed  5  Cryptography  techniques  with  Password  Security  and  accomplishedPSNR value 42.5329 which proved the credibility of the Algorithms.• Administered ReactJS and Flask, built the one required website, and performed data hiding on various file types.CERTIFICATESGoogle Cloud Computing CourseCertificate course by GoogleDeep Learning Model Optimization and DevelopmentBy INTEL FICETCS ion Career Edge Young Professionalcompleting 40+ hours of online training modules and assessmentsAWARDSCoordinated Technical Club being a Core Member - AMCFOSS Coordinated Technical Club being a Core  Member - AMCFOSSAmrita Vishwa Vidyapeetham, Chennai",
     "Answer": {
-      "name": "Yaraboina Anooshaanoosha",
+      "name": "Yaraboina Anoosha",
       "location": "Andhra Pradesh, India",
-      "email": "Yaraboina Anooshaanooshareddy2003@gmail.com",
-      "phone": "7981170046",
+      "email": "anooshareddy2003@gmail.com",
+      "phone": "+91 7981170046",
       "linkedin": "https://www.linkedin.com/in/anoosha-reddy",
       "skills": [
         "C",
         "Java",
         "Python"
       ],
-      "experience": [
-        {
-          "role": "Pioneered a federated learning architecture to secure IoT networks, achieving an exceptional 89% intrusion detection accuracy while preserving data privacy.",
-          "company": " ",
-          "description": " "
-        },
-        {
-          "role": "",
-          "company": " ",
-          "description": "Developed an innovative integration of NIDS into a decentralized training framework that increased anomaly detection efficiency by processing over 500 concurrent connections from diverse IoT devices in real-time."
-        }
-      ],
+      "experience": [],
       "projects": [
         {
           "title": "Federated Learning for IOT Network Intrusion Detection System",
@@ -4198,69 +4146,71 @@
     "Filename": "resume_1734602635.pdf",
     "Question": "Mantri Vardhanvardhanmantri1@gmail.com+91 8790075669Visakhapatnam, Andhrapradeshlinkedin.com/in/mantri-vardhan-014821304ProfileA cross-disciplinary team player passionate about Embedded Systems, IoT, Antenna Design, VLSI. Beyond technical expertise, a suiteof valuable soft skills, including effective communication, teamwork, adaptability, and a keen problem-solving mindset, are my strengths.Education2021 – 2025IndiaProjectsBachelor of Technology in Electronics and Communication, Amrita Vishwa VidyapeethamCGPA:9.4211/2023 – 01/2024Enhanced Mutual Coupling Reduction Through E-Shaped Resonators in MIMO antenna array systems (5G,RF engineering)•Objective: To design and implement an E-shaped resonator-assisted MIMO antenna design for mutualcoupling reduction in order to improve antenna efficiency and performance.•Tools Used: ANSYS HFSS for simulation.•Outcome:  Achieved  considerable  reduction  in  mutual  coupling,  confirmed  through  simulations  andexperimental tests, significantly improving antenna efficiency and performance.05/2024 – 07/2024Real time-Voice Based Gender Recognition using MATLAB (Signal Processing)•Objective: To develop a real-time gender recognition system using voice input, leveraging power spectraldensity analysis in MATLAB for security-related applications.•Tools  Used:  MATLAB  for  signal  processing,  power  spectral  density  analysis,  and  real-time  voice  inputhandling.•Outcome: Successfully implemented a gender recognition system that accurately classifies gender basedon voice input, offering potential applications in security and authentication systems.05/2022 – 07/2022Waste Management, An IoT-Based Smart Dustbin System for Waste Segregation•Objective: To develope a smart dustbin that segregates waste into organic, recyclable and non recyclableand also an alert system to alert the sanity workers when the bin is full.•Tools used: Sensors(Ultrasonic sensor, color sensor), Actuators(Servo motors), Communication(Bluetooth module), Buzzer. Arduino UNO•Outcome: Successfully created a system that automatically sorts waste based on bag color and notifiessanitary  cleaners  via  Bluetooth  when  bins  are  full  enabling  more  efficient  waste  management  andensuring timely disposal of waste.11/2023Interactive 4-Bit Adder and Subtractor Simulation using LPC2148 and Proteus, Mini Project•Objective: Designed a  circuit integrating addition and subtraction functionality with dynamic mode selection.•Outcome: Achieved a functional and interactive simulation of a 4-bit adder/subtractor, demonstrating efficient use of microcontroller and circuit design principles.03/2024 – 04/2024Smart and Sustainable: Verilog HDL Integration in Laundry Machine Control (VLSI,FPGA)•Objective:  To  design  and  implement  a  smart  and  sustainable  laundry  machine  (Mealy  finite  statemachine)  control  system  using  Verilog  HDL,  incorporating  weight  sensing  and  safety  mechanisms  tooptimize performance and resource efficiency.•Tools Used: Xilinx Vivado Suite, Model Sim for simulation and synthesis, FPGA Board (Digilent Basys3Xilinx Artix-7), Verilog Hardware description language.•Outcome: Successfully designed a laundry mealy state machine control system.10/2023 – 03/2024Comparative Analysis of Various Adder Architectures using FPGA: Evaluating Delay, Area, Temperature and Power Efficiency Across 4-32 Bit Widths (FPGA,VLSI)•Objective:  To  compare  and  evaluate  various  adder  architectures  based  on  delay,  area,  and  powerefficiency across varying bit widths to determine the most suitable design for different applications usingFPGA.•Tools  Used:  Xilinx  Vivado  Suite  for  simulation,  synthesis  and  Implementation,  FPGA  Board  (DigilentBasys3 Xilinx Artix-7), Verilog Hardware description language.•Outcome: Successfully identified the most efficient FPGA adder designs for each specific bit-width.09/2024 – presentLow Power-Programmable Feedback Shift Register for Cryptographic Applications•Objective:  To  develope  a  Programmable  Feedback  Shift  Register  (PFSR)  inorder  to  achieveunpredictability and statistical randomness, outperforming traditional LFSRs in sequence generation andsecurity.Internships08/2023 – 09/2023Training in Ansys HFSS, Piezo and MEMS, ARK INFOSOLUTION PVT. LTD.•Gained comprehensive proficiency in the ANSYS software.2023Telecommunications Intern, BSNL Visakhapatnam•Through my internship at BSNL, I gained experience in telecom network operations, encompassing maindistribution frames, power plants, switching centers, and more. This exposure provided valuable insightsinto the intricacies of telecommunications infrastructure and industry practices.Research Publications (IEEE)06/29/202408/24/202409/21/2024Comparative Analysis of FPGA Adder Architectures: Evaluating Delay, Area, and Power Efficiency Across Different Bit Widths, IEEE International Conference on “ Information Science, Computing, Communication, Instrumentation and Automation” 2024•The paper presents a comprehensive evaluation of various adder architectures using FPGA, focusing on key metrics such as delay, area, and power efficiency. It analyzes performance across different bit widths to identify the most efficient designs for specific applications.Smart and Sustainable: Verilog HDL Integration in Laundry Machine, 4h IEEE International conference ASIANCON 2024 ,Pune, India  and Sponsored by AICTE New Delhi•The paper explores the integration of Verilog HDL in laundry machines to enhance smart and sustainable functionalities. It examines how Verilog HDL can optimize control systems, improve energy efficiency, and provide advanced features in modern laundry appliances.A Comparative analysis of Electrical Characteristics in Bulk, PD, FD and Optimized SOI MOSFETs, 2024 IEEE International Conference on Communication, Computing and Energy Efficient Technologies•The paper offers a detailed comparative analysis of various characteristics of Bulk, Partially Depleted (PD), Fully Depleted (FD), and Optimized SOI MOSFETs. It evaluates their performance metrics to highlight the advantages and limitations of each type for various applications in semiconductor technology.Areas of InterestMicrocontrollers and MicroprocessorsIoTAnalog ElectronicsDigital ElectronicsTechnical skillsDigital Circuit DesignVLSI DesignSoftware's usedAnsys HFSSModelSim-Intel®ProteusProgramming LanguagesC ProgrammingReal time OSVLSILinear Integrated CircuitsRadio Frequency EngineeringAnalog Circuit DesignAntenna DesignArduino IDEEDA PlaygroundCADENCE Xilinx Vivado Design SuiteKeil μVisionLtspiceARM Assembly Level LanguageVerilog Hardware Description languageEmbedded CCertificates and AchievementsC for Everyone, CourseraAMCAT, Certified in 8 different fields which include both technical and non technical.Springfield International Mathematics Olympiad (SIMO), Secured all India rank 47th.Association of Mathematics Teachers of India(AMTI), Maths olympiad, where i qualified consecutively for 3 years to the final round in 7th, 8th, and 9th grade.Responsibilities Discharged04/2024 – presentIEEE-ComSoc Student Society Chairperson, Special Interest Group in Humanitarian TechnologyHeading an IEEE student body group with a core interest in Humanitarian technologyfor improving lives and problem solving through Electronics.",
     "Answer": {
-      "name": "Not Provided",
-      "location": "Visakhapatnam, India",
-      "email": "Not Provided",
-      "phone": "Not Provided",
-      "linkedin": "Not Provided",
+      "name": "Mantri Vardhan",
+      "location": "Visakhapatnam, Andhrapradesh",
+      "email": "vardhanmantri1@gmail.com",
+      "phone": "+91 8790075669",
+      "linkedin": "https://linkedin.com/in/mantri-vardhan-014821304",
       "skills": [
-        "Microcontrollers",
-        "Microprocessors",
-        "IoT",
+        "C Programming",
+        "Real time OS",
+        "Digital Circuit Design",
+        "VLSI Design",
+        "Microcontrollers and Microprocessors",
         "Analog Electronics",
         "Digital Electronics",
         "Technical skills",
-        "Digital Circuit Design",
-        "VLSI Design",
-        "Software's used",
-        "Ansys HFSS",
-        "ModelSim-Intel®",
-        "Proteus",
-        "C Programming",
-        "Real time OS",
-        "VLSILinear Integrated Circuits",
-        "Radio Frequency Engineering",
-        "Analog Circuit Design",
+        "Embedded CCertificate",
+        "IEEE-ComSoc Student Society",
+        "IoT",
         "Antenna Design",
-        "Arduino IDE",
-        "EDA Playground",
-        "CADENCE Xilinx Vivado Design Suite",
-        "Keil μVision",
-        "ARM Assembly Level Language",
-        "Verilog Hardware Description language"
+        "Linear Integrated Circuits",
+        "Radio Frequency Engineering"
       ],
       "experience": [
         {
-          "role": "Internship",
+          "role": "Intern",
           "company": "BSNL Visakhapatnam",
-          "description": "Telecommunications Intern, 2023"
+          "description": "Telecommunications Intern"
         },
         {
-          "role": "Internship",
+          "role": "Intern",
           "company": "ARK INFOSOLUTION PVT. LTD.",
           "description": "Training in Ansys HFSS, Piezo and MEMS"
         }
       ],
       "projects": [
         {
-          "title": "IEEE International Conference ASIANCON 2024",
-          "description": "Smart and Sustainable: Verilog HDL Integration in Laundry Machine"
+          "title": "Comparative Analysis of FPGA Adder Architectures: Evaluating Delay, Area, and Power Efficiency Across Different Bit Widths",
+          "description": "Comparative Analysis of Various Adder Architectures: Evaluating Delay, Area, and Power Efficiency Across Different Bit Widths, IEEE International Conference on “ Information Science, Computing, Communication, Instrumentation and Automation” 2024"
+        },
+        {
+          "title": "Smart and Sustainable: Verilog HDL Integration in Laundry Machine",
+          "description": "Smart and Sustainable: Verilog HDL Integration in Laundry Machine, 4h IEEE International conference ASIANCON 2024 , Pune, India  and Sponsored by AICTE New Delhi"
+        },
+        {
+          "title": "A Comparative Analysis of Electrical Characteristics in Bulk, PD, FD and Optimized SOI MOSFETs",
+          "description": "A Comparative analysis of Electrical Characteristics in Bulk, PD, FD and Optimized SOI MOSFETs, 2024 IEEE International Conference on Communication, Computing and Energy Efficient Technologies"
         }
       ],
       "education": [
         {
-          "degree": "Bachelor of Technology",
-          "institution": "Not Provided"
-        },
-        {
-          "degree": "Certificate",
-          "institution": "Coursera - C for Everyone"
+          "degree": "Bachelor of Technology in Electronics and Communication",
+          "institution": "Amrita Vishwa Vidyapeetham"
         }
       ],
       "extracurricular_activities": [
         {
-          "activity": "IEEE-ComSoc Student Society",
-          "description": "Chairperson of IEEE student body group with a focus on Humanitarian technology for improving lives and problem solving through Electronics"
+          "activity": "IEEE-ComSoc Student Society Chairperson, Special Interest Group in Humanitarian Technology",
+          "description": "Heading an IEEE student body group with a core interest in Humanitarian technology for improving lives and problem solving through Electronics."
+        },
+        {
+          "activity": "Springfield International Mathematics Olympiad (SIMO)",
+          "description": "Secured all India rank 47th."
+        },
+        {
+          "activity": "Association of Mathematics Teachers of India(AMTI)",
+          "description": "Maths olympiad, where i qualified consecutively for 3 years to the final round in 7th, 8th, and 9th grade."
         }
       ]
     }
@@ -4288,10 +4238,10 @@
         "RTOS",
         "Linux",
         "Communication Protocols",
-        "Software Skills & Tools: LabView, MATLAB",
-        "Technical Skills: Oscilloscope, Logic Analyzer",
-        "Certificates: Programming with C and C++: Internshala trainings, 2022; Programming with Python: Internshala trainings, 2022",
-        "Awards: Co-Secretary in Racing club - SAEINDIA, Secured 1st and 2nd prize in Relay Race, Executive in Avishkara club (Science Club), Executive in Prerana Club (Social Outreach Club)"
+        "LabView",
+        "MATLAB",
+        "Oscilloscope",
+        "Logic Analyzer"
       ],
       "experience": [
         {
@@ -4321,12 +4271,8 @@
       ],
       "education": [
         {
-          "degree": "Bachelor’s Degree",
+          "degree": "Bachelor’s Degree in Electronics and Communication Engineering",
           "institution": "Amrita School of Engineering, Bangalore"
-        },
-        {
-          "degree": "N/A",
-          "institution": "N/A"
         }
       ],
       "extracurricular_activities": [
@@ -4356,7 +4302,7 @@
       "name": "S V S Poojitha",
       "location": "Bangalore, Karnataka",
       "email": "sirigireddysivapoojitha3@gmail.com",
-      "phone": "+919014752501",
+      "phone": "+91 9014752501",
       "linkedin": "www.linkedin.com/in/poojitha-sirigireddy-b760b8324",
       "skills": [
         "Software:Keil vision",
@@ -4365,22 +4311,11 @@
         "MATLAB",
         "Aurdino IDE",
         "TinkerCAD",
-        "Coding Language:C",
+        "C",
         "Verilog",
         "HTML,CSS"
       ],
-      "experience": [
-        {
-          "role": "N/A",
-          "company": "N/A",
-          "description": "N/A"
-        },
-        {
-          "role": "N/A",
-          "company": "N/A",
-          "description": "N/A"
-        }
-      ],
+      "experience": [],
       "projects": [
         {
           "title": "Village 4.0- Automatic Food Distribution System (May 2024)",
@@ -4393,7 +4328,7 @@
       ],
       "education": [
         {
-          "degree": "B.Tech",
+          "degree": "B.Tech in Electronics & Communication",
           "institution": "Amrita VishwaVidyapeetham, Bangalore"
         },
         {
@@ -4421,21 +4356,20 @@
     "Filename": "resume_1734602638.pdf",
     "Question": "Harsha Vardhan RMadurai, Tamil Nadu# harshavardhanramanathan@gmail.com I (+91) 9843956617(cid:239) linkedin.com/in/harshvardEXPERIENCESUMMARYVappco Automations Solutions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Jun 2024 - Jul 2024, Tamil NaduDesign Engineer Intern- Hands on experience on embedded systems and task automation.- Developed an automatic water level detection to alert low and over-flowing water level in water tank .- Designed a miniature,cost-effective,OTP-based security system toprotect critical vaults containing valuable resources .Final year Electrical and Computer En-gineering student at Amrita VishwaVidyapeetham with a passion for learn-ing latest technologies . Enthusiasticabout coding and web development, and thrive in collaborative environ-ments to create impactful solutions.PROJECTSCustomer insight prediction. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .May - Jun 2023, BTechPython, Google-colab- Developed a ML model that efficiently improves the services offeredby financial institutions.Surveillance Camera. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Feb - May 2024, BTechESP32 Cam module- Ultra-low power,camera with live feed on web-page.Location tracking system. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Sep - Oct 2023, BTechEmbedded C, MP LAB- Compact location tracking system with GSM capabilites.Neem. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .May - Jun 2024, BTechWeb development- Yelpcamp based web application that provides login fea-tures,authentication and authorization ,along with CRUD function-alities .Rotor fault analysis. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Nov - Dec 2022, BTechMATLAB- Analysed an IM with defects in performance and deduced the faultsfrom signal processing techniques.Data log and cloud-controlled actuation. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Nov - Dec 2022, BTechRaspberry Pi- Developed a Pi model with the ability to transmit data from multiplesensors to cloud platforms.CERTIFICATIONS- Circuit development and PCB crash course by Udemy- Introduction to python by UdemyACHIEVEMENTS- District level Spelling bee champion-2016- Certification of merit for consistently holding top rank-2022,2023SKILLSLanguages Python,Embedded C,C++, Assembly LanguageConcepts Microcontrollers,Electroniccircuits,ControlSystem,Sensors andactuatorsPowerPoint, WordMATLAB, Arduino, KeiluVision4, Proteus, LTspice,SimbaSoft Skills Adaptivity, CreativityOfficeToolsEDUCATIONTamil NaduAmrita VishwaVidyapeethamBTech - Electrical and Computer Engineer-ing - GPA: 9.03/10.00Velammal BodhiCampusHSC - Percentage: 93Vikaasa SchoolSSC - GPA: 9.13/10.0Tamil NaduTamil NaduLANGUAGES- Tamil (Native)- English (Advanced)- Hindi (Intermediate)INTERESTS- Task Automation- Embedded Systems- Software Development- Circuit design and simulation",
     "Answer": {
-      "name": "Harsha Vardhan RMadurai",
-      "location": "Tamil Nadu",
+      "name": "Harsha Vardhan R",
+      "location": "Madurai, Tamil Nadu",
       "email": "harshvardhanramanathan@gmail.com",
       "phone": "+91 9843956617",
       "linkedin": "linkedin.com/in/harshvard",
       "skills": [
         "Python",
         "Embedded C",
-        "C++",
-        ","
+        "C++"
       ],
       "experience": [
         {
           "role": "Design Engineer Intern",
-          "company": "appco Automations Solutions",
+          "company": "Vappco Automations Solutions",
           "description": "Design Engineer Intern - Hands on experience on embedded systems and task automation."
         },
         {
@@ -4456,16 +4390,16 @@
       ],
       "education": [
         {
-          "degree": "BTech",
-          "institution": "Amrita VishwaVidyapeetham"
+          "degree": "BTech - Electrical and Computer Engineering",
+          "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
           "degree": "HSC",
-          "institution": "Vikaasa School"
+          "institution": "Velammal Bodhi Campus"
         },
         {
           "degree": "SSC",
-          "institution": "Tamil Nadu"
+          "institution": "Vikaasa School"
         }
       ],
       "extracurricular_activities": []
@@ -4475,10 +4409,10 @@
     "Filename": "resume_1734602639.pdf",
     "Question": "Harshini Mharshini.m73@gmail.comNamakkal, TamilnaduProfile098842454412004/03/29Electronics and Tech EnthusiastA highly motivated and creative engineering graduate with a strong passion for innovation and problem-solving. Interested inexploring real world opportunities on electronics sector. Considered to be Hard-working, good communication skills and goodteam  management  skills  and  good  circuit  solving  and  programming  skills.  Eager  to  contribute  to  cutting-edge  projects  andcollaborate with cross-functional teams to deliver world-class technology solutions.Education2021/08 – presentCoimbatore2019/06 – 2021/07NamakkalBachelor of technology [Electronics and Communication Engineering]Amrita Vishwa VidyapeethamCurrent CGPA of 8.9High School DiplomaTrinity International SchoolScored 94.2% in Intermediate educationProfessional ExperienceSummer internship at Amrita Racing team [SAE]Electrical lead •Worked with a cross functional team of 25 members from various department in the development of first ever formula standard electric car from our college.•Engineered and simulated essential electrical circuits for the safe and efficient operation of electric vehicles. This includes circuits for the Accelerator Pedal Position Sensor (APPS), Ready to Drive Sound (RTDS), Traction System Active Light (TSAL). These circuits ensure precise vehicle control, prevent accidental startup movements, indicate system readiness, and protect high-voltage components and also good knowledge on battery calculation and connection .• Made PCB designs using Altium software and also assisted in inventory management and purchasing and also Integrated a range of sensors with microcontroller, gaining experience in sensor interfacing and data acquisition.ProjectsSquare root analog calculator using op-amps.Performed Square root operation with low error( 0% to 2%) under a specific range of input voltages using with the help of LTspice and Proteus software.Integration of FPGA and Bluetooth module.The project aims to establish communication between two Field-Programmable Gate Arrays (FPGAs) using Bluetooth modules for transmitting arithmetic operation results ang implemented using Basys 3 , Vivado , HC 05 Bluetooth module and tera term.Alcohol based ignition system using ARM LPC2148ARM based vehicle ignition control  system that disables the ignition system using LPC2148  microcontroller when the driver is drunk and the location of the car is immediately tracked using GPS module.Brain Tumor DetectionDetection of brain tumor using image processing and Random forest classifier from the MRI scans and acheived a result of 84% accuracy with the usage of GLCM feature extraction.AcheivementsParticipated in SAE SUPRA 2024Won first prize in the Static events in the EV category and overall second position in the EV categorySecretary of Amrita Racing team SAEManaged team activities and conducted and organised team meetings to enhance team progress.Anokha 2024 Technical Event - Event Head (ECE)Planned and organised intersting and mind bending activities and tech events with exciting cash prizes.LV Electrical Lead of SAE teamGuiding the electrical members to learn new skills and sharing knowledge with each others to aid team work.SkillsPCB designing                                         MATLABpython and C language                              VerilogTesting and prototyping.                            Altium SoftwareInterestsAnalog electronicsVLSI System designEmbedded systems",
     "Answer": {
-      "name": "Harshini Mharshini",
+      "name": "Harshini M",
       "location": "Namakkal, Tamilnadu",
-      "email": "Harshini Mharshini.m73@gmail.com",
-      "phone": "+91 09884245441",
+      "email": "harshini.m73@gmail.com",
+      "phone": "+91 9884245441",
       "linkedin": "",
       "skills": [
         "PCB designing",
@@ -4515,7 +4449,7 @@
       ],
       "education": [
         {
-          "degree": "Bachelor of technology",
+          "degree": "Bachelor of technology in Electronics and Communication Engineering",
           "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
@@ -4545,9 +4479,19 @@
       "phone": "+91 6300200562",
       "linkedin": "",
       "skills": [
-        "TensorFlow, PyTorch, SQL, Javascript, HTML/CSS, MATLAB, Python, Data Analysis, Machine Learning, Deep Learning, Computer Vision, Natural Language Processing, Reinforcement Learning, Generative AI",
-        "Languages: Fluent in Telugu, English; Conversational Proficiency in Hindi",
-        "],  "
+        "TensorFlow", 
+        "PyTorch",
+         "SQL", 
+         "Javascript",
+          "HTML/CSS", 
+          "MATLAB",
+           "Python",
+            "Data Analysis", 
+            "Machine Learning", 
+            "Deep Learning", 
+            "Computer Vision",
+             "Natural Language Processing", 
+             "Reinforcement Learning"
       ],
       "experience": [
         {
@@ -4573,7 +4517,7 @@
       ],
       "education": [
         {
-          "degree": "Bachelor of Technology",
+          "degree": "Bachelor of Technology in Computer Science and Artificial Intelligence",
           "institution": "AMRITA VISHWA VIDYAPEETHAM"
         },
         {
@@ -4603,8 +4547,8 @@
     "Answer": {
       "name": "Marpu Sai Mahesh",
       "location": "Andhra Pradesh, India",
-      "email": "marpumahesh@gmail.com",
-      "phone": "9502342564",
+      "email": "chintusaimaheshmarpu@gmail.com",
+      "phone": "+91 9502342564",
       "linkedin": "https://www.linkedin.com/in/marpumahesh/",
       "skills": [
         "Python",
@@ -4658,7 +4602,7 @@
       ],
       "education": [
         {
-          "degree": "B-Tech",
+          "degree": "B-Tech in Computer Science and Engineering with Specialization in Cyber Security",
           "institution": "Amrita Vishwa Vidyapeetham"
         }
       ],
@@ -4682,33 +4626,22 @@
     "Filename": "resume_1734602642.pdf",
     "Question": "",
     "Answer": {
-      "name": "",
+      "name": "Koushitha Gottipati",
       "location": "",
-      "email": "",
-      "phone": "",
-      "linkedin": "",
+      "email": "koushu0403@gmail.com",
+      "phone": "+91 6302779384",
+      "linkedin": "https://www.linkedin.com/in/koushitha-gottipati/",
       "skills": [],
-      "experience": [
-        {
-          "role": "Software Engineer I-III (depending on experience level) at Google",
-          "company": "Google",
-          "description": "Software Engineer"
-        },
-        {
-          "role": "Product Manager",
-          "company": "Netflix",
-          "description": "Senior Software Engineer"
-        }
-      ],
+      "experience": [],
       "projects": [],
       "education": [
         {
-          "degree": "Bachelor of Arts",
-          "institution": "University of California, Berkeley"
+          "degree": "Bachelors of Technology - Computer Science and Engineering (Artificial Intelligence)",
+          "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
-          "degree": "Master of Science",
-          "institution": "Stanford University"
+          "degree": "XII",
+          "institution": "Sri Chaitanya Junior College"
         }
       ],
       "extracurricular_activities": [
@@ -4727,9 +4660,9 @@
     "Filename": "resume_1734602643.pdf",
     "Question": "S A I   M A N A S A   S O W M Y A     HU N D E R G R A D U A T E+91  7382969332PROFILEsaimanasasowmyahasavathu@gmail.comSathupally,507303SKILLSDatabase ManagementWireframe CreationProblem SolvingNode jsPythonJavaMachine LearningJavaScriptEDUCATIONSECONDARY SCHOOLSri chaitanya jr college2019 - 2021Highly motivated and results-oriented Artificial Intelligenceundergraduate with a passion for problem-solving and acommitment to continuous learning. Known for my strongpositive thinking, adaptability, and effective communication skills,My leadership abilities and creativity have been honed throughvarious academic and extracurricular experiences, allowing me tolead teams to innovative solutions and drive positive change. I amexcited to leverage my expertise in AI and my personal strengthsto make a meaningful impact in the field of technology PROJECTSAPPLICATIONS DEVELOPERWorking on developing an e-commerce app for SHG’sFACE SWAPPING USING DLThis project recognises a human face and swaps it with asuperhero's using deep learning algorithms.This is a component ofa tabletop robot project that benefits kids with autism.DIABETIC RETINOPATHY DETECTIONThis project aids in determining whether a patient has diabetes byutilising machine learning algorithms.SONG RECOMMENDATION SYSTEMA machine learning model that uses the user's past musicalpreferences to suggest songs. Matrix filtering, NTLK vectorization,and vectorization techniques were used in its construction. ItBACHELOR OF TECHNOLOGYsuggests according to the previous song's lyrics. .Amrita Viswa Vidyapeetham2021 - 2025",
     "Answer": {
-      "name": "SAIM A S A SW MYA",
+      "name": "SAI MANASA SOWMYA  H",
       "location": "Sathupally",
-      "email": "sathupally@gmail.com",
+      "email": "saimanasasowmyahasavathu@gmail.com",
       "phone": "+91 7382969332",
       "linkedin": "",
       "skills": [
@@ -4812,7 +4745,7 @@
       "location": "Trivandrum, India",
       "email": "nandanaajoy@gmail.com",
       "phone": "+91 7012237649",
-      "linkedin": "linkedIn.com/in/nandana-ajoygithub.com/Nandana-Ajoy",
+      "linkedin": "linkedIn.com/in/nandana-ajoy",
       "skills": [
         "MATLAB",
         "Machine Learning",
@@ -4856,20 +4789,16 @@
       ],
       "education": [
         {
-          "degree": "B.Tech",
-          "institution": "Computer Science Engineering - Artificial Intelligence at Amrita Vishwa Vidyapeetham Amritapuri CGPA - 6.98"
+          "degree": "B.Tech  Computer Science Engineering-Artificial Intelligence",
+          "institution": "Amrita Vishwa Vidyapeetham ,Amritapuri"
         },
         {
           "degree": "Higher Secondary School",
           "institution": "Carmel Girls Higher Secondary School, Trivandrum"
         },
         {
-          "degree": "SCERT",
-          "institution": "L’ecole Chempaka, Trivandrum"
-        },
-        {
           "degree": "ICSE",
-          "institution": "Carmel Girls Higher Secondary School, Trivandrum"
+          "institution": "L’ecole Chempaka, Trivandrum"
         }
       ],
       "extracurricular_activities": [
@@ -4888,7 +4817,7 @@
       "location": "Bangalore, India",
       "email": "thadakalurujaswanthi229@gmail.com",
       "phone": "+91 9032467229",
-      "linkedin": "https://www.linkedin.com/in/thadakalurujaswanthi/",
+      "linkedin": "https://www.linkedin.com/in/thadakaluru-jaswanthi-607061256/",
       "skills": [
         "OOPS",
         "DSA",
@@ -4897,41 +4826,28 @@
         "Deep Learning",
         "Python",
         "Java",
-        "Web Development: HTML, CSS",
-        "English",
-        "Telugu",
-        "Hindi"
+        "HTML",
+        "CSS"
       ],
-      "experience": [
-        {
-          "role": "Student",
-          "company": "CGPA: 7.27",
-          "description": "Oct 2021 - Present"
-        },
-        {
-          "role": "Student",
-          "company": "CGPA: 9.2",
-          "description": "Jun 2018 - Apr 2019"
-        }
-      ],
+      "experience": [],
       "projects": [
         {
           "title": "Driver Drowsiness Detection Using Machine Learning",
-          "description": "Driver Drowsiness Detection Using Machine Learning"
+          "description": "Created a driver drowsiness detection system leveraging facial recognition, eye tracking, and machine learning to prevent accidents proactively.–Implemented features like real-time monitoring of facial expressions and blink patterns using computer vision."
         },
         {
           "title": "Hyperspectral Imaging in Brain Tumor Detection using Machine Learning Techniques",
-          "description": "Hyperspectral Imaging in Brain Tumor Detection using Machine Learning Techniques"
+          "description": "Hyperspectral imaging enhances brain tumor detection and diagnosis by providing detailed spectral, biochemical, and morphological tissue analysis, surpassing traditional MRI and CT methods.Developed a machine learning-based approach for precise classification and detection of tumor tissues"
         },
         {
           "title": "Malicious URL Detection: Comparative Study of Machine Learning Algorithms",
-          "description": "Malicious URL Detection: Comparative Study of Machine Learning Algorithms"
+          "description": "Conducted a comparative study of machine learning algorithms for detecting malicious URLs using lexical analysis and pattern recognition .Evaluated and optimized various models (e.g., Random Forest, Gradient Boosting) for accuracy and efficiency"
         }
       ],
       "education": [
         {
-          "degree": "Bachelor of Engineering",
-          "institution": "Amrita Vishwa Vidyapeetham, Bangalore, India Computer Science and Engineering with Specialization in Artificial Intelligence"
+          "degree": "B-Tech Computer Science and Engineering with Specialization in Artificial Intelligence",
+          "institution": "Amrita Vishwa Vidyapeetham, Bangalore, India"
         },
         {
           "degree": "Senior Secondary (XII)",
@@ -4966,51 +4882,66 @@
     "Filename": "resume_1734602648.pdf",
     "Question": "Mantri Vardhanvardhanmantri1@gmail.com+91 8790075669Visakhapatnam, Andhrapradeshlinkedin.com/in/mantri-vardhan-014821304ProfileA cross-disciplinary team player passionate about Embedded Systems, IoT, Antenna Design, VLSI. Beyond technical expertise, a suiteof valuable soft skills, including effective communication, teamwork, adaptability, and a keen problem-solving mindset, are my strengths.Education2021 – 2025IndiaProjectsBachelor of Technology in Electronics and Communication, Amrita Vishwa VidyapeethamCGPA:9.4211/2023 – 01/2024Enhanced Mutual Coupling Reduction Through E-Shaped Resonators in MIMO antenna array systems (5G,RF engineering)•Objective: To design and implement an E-shaped resonator-assisted MIMO antenna design for mutualcoupling reduction in order to improve antenna efficiency and performance.•Tools Used: ANSYS HFSS for simulation.•Outcome:  Achieved  considerable  reduction  in  mutual  coupling,  confirmed  through  simulations  andexperimental tests, significantly improving antenna efficiency and performance.05/2024 – 07/2024Real time-Voice Based Gender Recognition using MATLAB (Signal Processing)•Objective: To develop a real-time gender recognition system using voice input, leveraging power spectraldensity analysis in MATLAB for security-related applications.•Tools  Used:  MATLAB  for  signal  processing,  power  spectral  density  analysis,  and  real-time  voice  inputhandling.•Outcome: Successfully implemented a gender recognition system that accurately classifies gender basedon voice input, offering potential applications in security and authentication systems.05/2022 – 07/2022Waste Management, An IoT-Based Smart Dustbin System for Waste Segregation•Objective: To develope a smart dustbin that segregates waste into organic, recyclable and non recyclableand also an alert system to alert the sanity workers when the bin is full.•Tools used: Sensors(Ultrasonic sensor, color sensor), Actuators(Servo motors), Communication(Bluetooth module), Buzzer. Arduino UNO•Outcome: Successfully created a system that automatically sorts waste based on bag color and notifiessanitary  cleaners  via  Bluetooth  when  bins  are  full  enabling  more  efficient  waste  management  andensuring timely disposal of waste.11/2023Interactive 4-Bit Adder and Subtractor Simulation using LPC2148 and Proteus, Mini Project•Objective: Designed a  circuit integrating addition and subtraction functionality with dynamic mode selection.•Outcome: Achieved a functional and interactive simulation of a 4-bit adder/subtractor, demonstrating efficient use of microcontroller and circuit design principles.03/2024 – 04/2024Smart and Sustainable: Verilog HDL Integration in Laundry Machine Control (VLSI,FPGA)•Objective:  To  design  and  implement  a  smart  and  sustainable  laundry  machine  (Mealy  finite  statemachine)  control  system  using  Verilog  HDL,  incorporating  weight  sensing  and  safety  mechanisms  tooptimize performance and resource efficiency.•Tools Used: Xilinx Vivado Suite, Model Sim for simulation and synthesis, FPGA Board (Digilent Basys3Xilinx Artix-7), Verilog Hardware description language.•Outcome: Successfully designed a laundry mealy state machine control system.10/2023 – 03/2024Comparative Analysis of Various Adder Architectures using FPGA: Evaluating Delay, Area, Temperature and Power Efficiency Across 4-32 Bit Widths (FPGA,VLSI)•Objective:  To  compare  and  evaluate  various  adder  architectures  based  on  delay,  area,  and  powerefficiency across varying bit widths to determine the most suitable design for different applications usingFPGA.•Tools  Used:  Xilinx  Vivado  Suite  for  simulation,  synthesis  and  Implementation,  FPGA  Board  (DigilentBasys3 Xilinx Artix-7), Verilog Hardware description language.•Outcome: Successfully identified the most efficient FPGA adder designs for each specific bit-width.09/2024 – presentLow Power-Programmable Feedback Shift Register for Cryptographic Applications•Objective:  To  develope  a  Programmable  Feedback  Shift  Register  (PFSR)  inorder  to  achieveunpredictability and statistical randomness, outperforming traditional LFSRs in sequence generation andsecurity.Internships08/2023 – 09/2023Training in Ansys HFSS, Piezo and MEMS, ARK INFOSOLUTION PVT. LTD.•Gained comprehensive proficiency in the ANSYS software.2023Telecommunications Intern, BSNL Visakhapatnam•Through my internship at BSNL, I gained experience in telecom network operations, encompassing maindistribution frames, power plants, switching centers, and more. This exposure provided valuable insightsinto the intricacies of telecommunications infrastructure and industry practices.Research Publications (IEEE)06/29/202408/24/202409/21/2024Comparative Analysis of FPGA Adder Architectures: Evaluating Delay, Area, and Power Efficiency Across Different Bit Widths, IEEE International Conference on “ Information Science, Computing, Communication, Instrumentation and Automation” 2024•The paper presents a comprehensive evaluation of various adder architectures using FPGA, focusing on key metrics such as delay, area, and power efficiency. It analyzes performance across different bit widths to identify the most efficient designs for specific applications.Smart and Sustainable: Verilog HDL Integration in Laundry Machine, 4h IEEE International conference ASIANCON 2024 ,Pune, India  and Sponsored by AICTE New Delhi•The paper explores the integration of Verilog HDL in laundry machines to enhance smart and sustainable functionalities. It examines how Verilog HDL can optimize control systems, improve energy efficiency, and provide advanced features in modern laundry appliances.A Comparative analysis of Electrical Characteristics in Bulk, PD, FD and Optimized SOI MOSFETs, 2024 IEEE International Conference on Communication, Computing and Energy Efficient Technologies•The paper offers a detailed comparative analysis of various characteristics of Bulk, Partially Depleted (PD), Fully Depleted (FD), and Optimized SOI MOSFETs. It evaluates their performance metrics to highlight the advantages and limitations of each type for various applications in semiconductor technology.Areas of InterestMicrocontrollers and MicroprocessorsIoTAnalog ElectronicsDigital ElectronicsTechnical skillsDigital Circuit DesignVLSI DesignSoftware's usedAnsys HFSSModelSim-Intel®ProteusProgramming LanguagesC ProgrammingReal time OSVLSILinear Integrated CircuitsRadio Frequency EngineeringAnalog Circuit DesignAntenna DesignArduino IDEEDA PlaygroundCADENCE Xilinx Vivado Design SuiteKeil μVisionLtspiceARM Assembly Level LanguageVerilog Hardware Description languageEmbedded CCertificates and AchievementsC for Everyone, CourseraAMCAT, Certified in 8 different fields which include both technical and non technical.Springfield International Mathematics Olympiad (SIMO), Secured all India rank 47th.Association of Mathematics Teachers of India(AMTI), Maths olympiad, where i qualified consecutively for 3 years to the final round in 7th, 8th, and 9th grade.Responsibilities Discharged04/2024 – presentIEEE-ComSoc Student Society Chairperson, Special Interest Group in Humanitarian TechnologyHeading an IEEE student body group with a core interest in Humanitarian technologyfor improving lives and problem solving through Electronics.",
     "Answer": {
-      "name": "Your Name",
-      "location": "Visakhapatnam, India",
-      "email": "",
-      "phone": "+91-XXXXXXXXXX",
-      "linkedin": "https://www.linkedin.com/in/",
+     "name": "Mantri Vardhan",
+      "location": "Visakhapatnam, Andhrapradesh",
+      "email": "vardhanmantri1@gmail.com",
+      "phone": "+91 8790075669",
+      "linkedin": "https://linkedin.com/in/mantri-vardhan-014821304",
       "skills": [
         "C Programming",
+        "Real time OS",
         "Digital Circuit Design",
         "VLSI Design",
-        "Software's used",
-        "Ansys HFSS",
-        "ModelSim-Intel®",
-        "Proteus",
-        "Real Time OS",
-        "VLSILinear Integrated Circuits",
-        "Radio Frequency Engineering",
-        "Analog Circuit Design",
+        "Ansys HFSS", 
+        "ModelSim-Intel® Proteus",
+        "Programming Languages",
+        "Microcontrollers and Microprocessors",
+        "Analog Electronics",
+        "Digital Electronics",
+        "Technical skills",
+        "Embedded CCertificate",
+        "IoT",
         "Antenna Design",
-        "Arduino IDE",
-        "EDA Playground",
-        "CADENCE Xilinx Vivado Design Suite",
-        "Keil μVision",
-        "ARM Assembly Level Language",
-        "Verilog Hardware Description language"
+        "Linear Integrated Circuits",
+        "Radio Frequency Engineering"
       ],
       "experience": [
         {
           "role": "Intern",
           "company": "BSNL Visakhapatnam",
-          "description": "Telecommunications Intern, 2023"
+          "description": "Telecommunications Intern"
         },
         {
           "role": "Intern",
           "company": "ARK INFOSOLUTION PVT. LTD.",
-          "description": "Training in Ansys HFSS, Piezo and MEMS, 2023 - 2024"
-        },
-        {
-          "role": "Chairperson",
-          "company": "IEEE-ComSoc Student Society",
-          "description": "IEEE-ComSoc Student Society Chairperson, Special Interest Group in Humanitarian Technology 2024 - Present"
+          "description": "Training in Ansys HFSS, Piezo and MEMS"
         }
       ],
-      "projects": [],
-      "education": [],
+      "projects": [
+        {
+          "title": "Comparative Analysis of FPGA Adder Architectures: Evaluating Delay, Area, and Power Efficiency Across Different Bit Widths",
+          "description": "Comparative Analysis of Various Adder Architectures: Evaluating Delay, Area, and Power Efficiency Across Different Bit Widths, IEEE International Conference on “ Information Science, Computing, Communication, Instrumentation and Automation” 2024"
+        },
+        {
+          "title": "Smart and Sustainable: Verilog HDL Integration in Laundry Machine",
+          "description": "Smart and Sustainable: Verilog HDL Integration in Laundry Machine, 4h IEEE International conference ASIANCON 2024 , Pune, India  and Sponsored by AICTE New Delhi"
+        },
+        {
+          "title": "A Comparative Analysis of Electrical Characteristics in Bulk, PD, FD and Optimized SOI MOSFETs",
+          "description": "A Comparative analysis of Electrical Characteristics in Bulk, PD, FD and Optimized SOI MOSFETs, 2024 IEEE International Conference on Communication, Computing and Energy Efficient Technologies"
+        }
+      ],
+      "education": [
+        {
+          "degree": "Bachelor of Technology in Electronics and Communication",
+          "institution": "Amrita Vishwa Vidyapeetham"
+        }
+      ],
       "extracurricular_activities": [
+        {
+          "activity": "IEEE-ComSoc Student Society Chairperson, Special Interest Group in Humanitarian Technology",
+          "description": "Heading an IEEE student body group with a core interest in Humanitarian technology for improving lives and problem solving through Electronics."
+        },
         {
           "activity": "Springfield International Mathematics Olympiad (SIMO)",
           "description": "Secured all India rank 47th."
@@ -5029,8 +4960,8 @@
       "name": "Boosi Mouneswara Reddy",
       "location": "India",
       "email": "reddymouneshwar761@gmail.com",
-      "phone": "+91-9392606971",
-      "linkedin": "linkedin.com/in/mouneshwar -reddy| ",
+      "phone": "+91 9392606971",
+      "linkedin": "linkedin.com/in/mouneshwar-reddy",
       "skills": [
         "C",
         "basics of python",
@@ -5042,7 +4973,7 @@
         {
           "role": "Research and Design Intern",
           "company": "Singapore University of Technology and Design (SUTD)",
-          "description": "Research and Design Intern"
+          "description": "Worked  in  the  research  field  of  Swarm  Robotics  in  collaboration  with  SUTD  and  Wefa  Robotics  and  as  a  part  of develpment of smorphi imaginary application and the hardware assembly of the smorphi robot. Worked on gesture of the smorphi robot using the Haskylens."
         },
         {
           "role": "Student Intern",
@@ -5074,7 +5005,7 @@
       ],
       "education": [
         {
-          "degree": "Bachelor of Technology",
+          "degree": "Bachelor of Technology in Electronics and Communication Engineering",
           "institution": "Amrita Vishwa Vidyapeetham, Amritapuri, India"
         },
         {
@@ -5105,7 +5036,7 @@
       "name": "Charugundla Bhavathi",
       "location": "Dharmavaram, Ananthapur, Andhra Pradesh 515671",
       "email": "bhavithacharugundla@gmail.com",
-      "phone": "9440012751",
+      "phone": "+91 9440012751",
       "linkedin": "",
       "skills": [
         "MATLAB",
@@ -5141,7 +5072,7 @@
       ],
       "education": [
         {
-          "degree": "B.tech",
+          "degree": "B.tech Electronic and Communication Engineering",
           "institution": "Amrita School of Engineering"
         },
         {
@@ -5182,91 +5113,73 @@
     "Question": "Dharunjayavinayak R CB.EN.U4EEE21113 +91-9159634510 dharunjayavinayakwork@gmail.com linkedin.dharunjayavinayakObjective: A trustworthy and innovative B. Tech student in Electrical and Electronics Engineering, demonstrating robust leadership qualities and a strong work ethic. With a commitment to inclusivity and excellence, eager to learn from every situation, and have a keen interest in embedded systems, control systems, and electronics. Passionate about leveraging my technical skills to drive technological advancements and contribute to organizational growth. Education: 2021 – present Ettimadai, India. 2020 – 2021 Hosur, India 2018 – 2019 Hosur, India Bachelor of Technology in Electrical and Electronics Engineering Amrita Vishwa Vidyapeetham CGPA: 8.66 (6th sem) Higher Secondary, Physics-Chemistry-Maths-Computer, State Board Mark: 564/600 (94%) Sri Vijay Vidyalaya Secondary Education, State Board St. Josephs Matric Higher Secondary Mark: 475/500 (95%) Area of Interest: •  Embedded systems. •  Electronics.  Other technical qualifications: Software skills   LabVIEW (Beginner) | Matlab & Simulink (Intermediate) MPLab (Beginner) | STM32 (Beginner)                                                               Codesys (Intermediate)     Programming skills C (Intermediate) | C++ (Intermediate) Hardware knowledge   PYTHON (Intermediate) (with ML) PLC programming (Ladder logic) (Beginner) Raspberry pi Arduino UNO, ESP8266 and ESP32 PIC16F877A Internship: Jan-2024 Hosur, India. certification Titan Engineering and Automation Limited (TEAL) Intern (1 Week) Acquired knowledge of the industry's workflow and gained experience in panel assembly and PLC programming in the automation  field.  Also  gained  practical  knowledge  by working on a fully automated project.     Page | 1                                                                        JUL-2024 Hosur, India. certification Inplant Training: August-2023 Hosur, India certification Publications: Jun-2024 Kannur, India certification Projects: Micro-controller March – 2024 Titan Company Limited – Jewellery Division. Intern  Experienced the  company's  power  generation, consumption, and BMS system. Worked on the company’s future dependence on automation and IIoT. in Titan Company Limited Inplant Training (1 Week) Got to know smart technologies in watch manufacturing. Learned critical role and selection of electrical components, amplifying expertise in the intersection of technology and watch production processes. Review on a smart solar-powered greenhouse system using IoT sensors for automated internal climate control and crop monitoring. International Conference on Advancement in Power, Communication and Intelligent Systems. This  paper  briefly  reviews  solar  powered  systems implemented in greenhouses for their functioning. This review also includes existing  models  that  have  been  implemented  and  future trends in greenhouse systems. in  greenhouses  and  sensors  used Smart Solar Greenhouse using IoT for internal Climate control. Integrating various sensors with ESP8266 to control the internal climate of the greenhouse and integrate IoT for remote Monitoring and Control. Embedded Systems Smart street light system for a community. March – 2024 With the help of Ldr sensor and NodeMCU have achieved control of street lights with IoT integrated. Machine Learning Nov – 2023. Prediction of energy consumption in smart solar Greenhouse. Have used different techniques to predict the DC power output. Extra-Curricular Activities: o  Attended a one-day workshop on Electric Vehicles by BOSCH. 📎. o  Active participation in NSS – Government School, KG Chavadi. o  Achieved proficiency by clearing all 8 levels in Dakshina Bharat Hindi Prachar Sabha Hindi exams. Languages:  English, Tamil, Hindi. Proficiency in reading, writing, and speaking Mailing Address: Plot no:13, Guru Sai Garden, Kamaraj Nagar, Hosur-635123 Page | 2",
     "Answer": {
       "name": "Dharunjayavinayak R",
-      "location": "Hosur-635123",
+      "location": "Hosur ",
       "email": "dharunjayavinayakwork@gmail.com",
       "phone": "+91-9159634510",
-      "linkedin": "linkedin.dharunjayavinayak",
+      "linkedin": "http://www.linkedin.com/in/dharunjayavinayakr",
       "skills": [
         "LabVIEW",
         "Matlab & Simulink",
         "MPLab",
-        "STM32",
-        "Codesys",
-        "Python",
-        "C",
-        "C++",
-        "Hardware knowledge",
-        "PLC programming (Ladder logic)",
-        "Raspberry Pi",
-        "Arduino UNO",
-        "ESP8266",
-        "ESP32",
-        "PIC16F877A"
+        "STM32"
       ],
       "experience": [
         {
           "role": "Intern",
-          "company": "Titan Engineering and Automation Limited",
-          "description": "Intern (1 Week)"
+          "company": "Titan Engineering and Automation Limited (TEAL)",
+          "description": "Acquired knowledge of the industry's workflow and gained experience in panel assembly and PLC programming in the automation field."
         },
         {
           "role": "Intern",
-          "company": "Titan Company Limited - Jewellery Division",
-          "description": "Experienced the  company's power generation, consumption, and BMS system."
+          "company": "Titan Company Limited – Jewellery Division",
+          "description": "Experienced the company's power generation, consumption, and BMS system. Worked on the company’s future dependence on automation and IIoT."
+        },
+        {
+          "role": "Intern",
+          "company": "Internship Titan Engineering and Automation Limited (TEAL)",
+          "description": "Intern (1 Week) "
         },
         {
           "role": "Inplant Training",
-          "company": "Titan Company Limited",
-          "description": "Inplant Training (1 Week)"
+          "company": "Titan Company Limited – Jewellery Division",
+          "description": "Got to know smart technologies in watch manufacturing. Learned critical role and selection of electrical components, amplifying expertise in the intersection of technology and watch production processes."
         }
       ],
       "projects": [
         {
-          "title": "Project Title",
+          "title": "Micro-controller (Project Name)",
           "description": "Micro-controller"
         },
         {
-          "title": "IoT Integrated Street Light System",
-          "description": "Smart street light system for a community"
+          "title": "Smart Street Light System",
+          "description": "Smart Street light system for a community.  "
         },
         {
-          "title": "Smart Solar Greenhouse Using IoT",
+          "title": "Project Name: Review of Smart Solar Greenhouse",
           "description": "Review on a smart solar-powered greenhouse system using IoT sensors for automated internal climate control and crop monitoring."
-        },
-        {
-          "title": "IoT Integrated Smart Street Light System",
-          "description": "Embedded Systems Smart street light system for a community. "
         }
       ],
       "education": [
         {
-          "degree": "Bachelor of Technology",
-          "institution": "Amrita Vishwa Vidyapeetham University, Coimbatore India (India)  (India) "
+          "degree": "Bachelor of Technology  in Electrical and Electronics Engineering ",
+          "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
           "degree": "Higher Secondary",
-          "institution": "Sri Vijay Vidyalaya Secondary Education, Hosur, India"
+          "institution": "Sri Vijay Vidyalaya Secondary Education"
         },
         {
-          "degree": "Secondary Education",
-          "institution": "St. Joseph's Matric Higher Secondary School, Hosur, India"
-        },
-        {
-          "degree": "State Board Mark",
-          "institution": "State Board Mark: 564/600 (94%) Sri Vijay Vidyalaya Secondary Education, State Board  "
+          "degree": "Higher Secondary",
+          "institution": "St. Josephs Matric Higher Secondary"
         }
       ],
       "extracurricular_activities": [
         {
-          "activity": "Electric Vehicles Workshop by BOSCH",
+          "activity": "One-day workshop on Electric Vehicles by BOSCH",
           "description": ""
         },
         {
-          "activity": "NSS - Government School, KG Chavadi",
-          "description": ""
-        },
-        {
-          "activity": "Dakshina Bharat Hindi Prachar Sabha Hindi exams",
+          "activity": "Active participation in NSS – Government School, KG Chavadi",
           "description": ""
         }
       ]
@@ -5277,7 +5190,7 @@
     "Question": "Maram Prathibha Reddymaramprathibhareddy18@gmail.com | +91 9392044161 | Ongole, India https://www.linkedin.com/in/prathibhareddymaram/ | github.com/Prathibha28 EducationB.Tech in Electronics and Communication EngineeringAmrita Vishwa Vidyapeetham, CGPA 8.59/10Intermediate EducationNarayana Junior Collage, 936/1000September 2021 – Present  |  Chennai, IndiaJune 2019 – May 2021  |  Vijayawada, IndiaWork ExperienceEmbedded System InternCentre for Development of Advanced Computing Chennai, IndiaJune 2023 – July 2023  |  Chennai, India•Conducted extensive literature review and techno-commercial survey, evaluating 20+ components for the selection process of a Smart bed for paralyzed patients, ensuring thorough research and informed decision-making with all available alternatives.•Successfully implemented and demonstrated a simulation of the smart bed system, showcasing its efficacy in a controlled environment and validating its functionality in preventing and managing pressure ulcers.ProjectColor Image Encryption using FPGAJune 2024 – present•Currently developing an advanced color image encryption scheme incorporating novel scrambling techniques and a modified 2D logistic cascade map.•Focusing on FPGA implementation to achieve real-time encryption with high efficiency and security. •Designing hardware architecture to handle complex encryption operations, optimizing for speed and resource utilization.•Aiming to enhance the security of image data transmission through innovative cryptographic techniques.Forest Fire Detection and Alert SystemAugust 2023 – October 2023•Integrated Arduino IDE with STM32 and LoRa modules for hardware development, demonstrating proficiency in combining various technologies to create cohesive systems.•Engineered a groundbreaking LoRa-based peer-to-peer communication system, showcasing innovation in long-range, low-power wireless communication, and achieved a remarkable 100-meter accessible range.•Developed a wireless sensor-based end device for deployment across different forest locations, capable of continuously monitoring dry and hot weather conditions, detecting thunder strikes and fires, and utilizing a buzzer to alert animals and nearby villages.Audio Encryption and DecryptionJuly 2022 – November 2022•Incorporated Jupyter Notebook into the workflow, resulting in an enhanced data-driven decision-making; contributed to increase in project-efficiency.•Streamlined an idea for secure data transmission via converting audio inputs into ASCII codes, results in a code efficiency and reducing the time required for bug fixes.Positions Of ResponsibilityVice Chair | Women In EngineeringIEEE Student BranchSeptember 2023 – present•Conducted in-depth research for scholarships offered by IEEE, identifying potential funding opportunities to support educational and professional development.•Coordinated the technical event \"TinkerIT\" at Tantrosav'24, successfully managing participation of 25 teams showcasing their innovative ideas, ensuring smooth event execution and high engagement.•Volunteered at several events, including guest lectures by industry professionals, contributing to the organization and facilitation of knowledge-sharing sessions.Coding Languages: C++, Python, Embedded C, VHDL.Tools: VS Code, Jupyter Notebook, Google Colab, LTspice, Arduino IDE, Code Blocks, Keil μVision, Xilinx Vivado.Technical Skills•Participated in IEEEXtreme 17.0 Programming Competition (ranked 1900 out of 7091).•Took Part in Passive Hack event and Circuital Dilemma event of Tantrotsavʼ23.•Cognizance Club Member focused on coding, solving Kaggle problems.ExtracurricularCertificates and other documents can be viewed at  Other Information",
     "Answer": {
       "name": "Maram Prathibha Reddy",
-      "location": "Chennai, India",
+      "location": "Ongole, India",
       "email": "maramprathibhareddy18@gmail.com",
       "phone": "+91 9392044161",
       "linkedin": "https://www.linkedin.com/in/prathibhareddymaram/",
@@ -5296,7 +5209,7 @@
       ],
       "projects": [
         {
-          "title": "Color Image Encryption using FPGA",
+          "title": "Project Color Image Encryption using FPGA",
           "description": "Color Image Encryption using FPGA"
         },
         {
@@ -5306,26 +5219,18 @@
       ],
       "education": [
         {
-          "degree": "B.Tech",
+          "degree": "B.Tech Electronics and Communication Engineering",
           "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
-          "degree": "Intermediate",
+          "degree": "Intermediate Education",
           "institution": "Narayana Junior Collage"
         }
       ],
       "extracurricular_activities": [
         {
-          "activity": "Vice Chair",
-          "description": "Women In EngineeringIEEE Student Branch"
-        },
-        {
-          "activity": "Guest lectures by industry professionals",
-          "description": ""
-        },
-        {
-          "activity": "Coding, solving Kaggle problems",
-          "description": ""
+          "activity": "Vice Chair | Women In EngineeringIEEE Student Branch",
+          "description": "Vice Chair | Women In EngineeringIEEE Student Branch"
         }
       ]
     }
@@ -5334,15 +5239,19 @@
     "Filename": "resume_1734602653.pdf",
     "Question": "MARPU SAI MAHESHchintusaimaheshmarpu@gmail.com 9502342564 Andhra Pradesh, India https://www.linkedin.com/in/marpumahesh/ https://github.com/saimahesh19 EDUCATIONAmrita Vishwa VidyapeethamB-Tech | Computer Science and Engineering with Specialization in Cyber Security        Oct 2021 – May 2025Chennai, Tamil Nadu, India | CGPA:9.01SKILLSProgramming Languages•Python, C++INTERNSHIPSWeb and Project Technologies•HTML, Android, MYSQL, AWS CloudProdigy: Software Developer InternMay 2024 – Jun 2024  |  Remote•Created four softwares: Temperature Conversion Website, Number Guessing Game, Contact Management System, and Web Scraping tool.•Received a letter of recommendation for outstanding performance.Corizo: Ethical Hacking InternJun 2023 – Aug 2023  |  Remote•Demonstrated proficiency with over three different hacking tools for network security.•Collaborated on diagnosing and neutralizing threats, completed 2 projects.Oasis Infobyte: Web development InternJun 2023 – Jul 2023  |  Remote•Created three web pages, including an exceptional portfolio and a comprehensive web-based temperature calculator.•Designed a cybersecurity-centric advertisement page.PROJECTSFedEx Scam Detection Android application for Phone CallsJun 2024 – present•Established text and audio analysis models, achieving 81% accuracy in sentence-level classification.•Generated decision-based two text models using word-level and sentence-level classification techniques.MirrorVerse: A VR-based SmartMirror SoftwareDec 2023 – Mar 2024•Implemented real-time video analysis software with two types of mirrors: a smart mirror and a cartoon mirror.•Integrated DeepFace's emotion detection library and a Spotify music recommendation system based on facial emotions.Vericall: A DeepFake Call Detection Software Prototype•Trained a deepfake call detection model using Python, ML, and Flask API, achieving 97.65% accuracy.•Assessed four ML algorithms and selected Random Forest as the optimal choice.Static-Fortify: A Static Web Application Testing ToolDec 2023 – Mar 2024Jun 2023 – Jan 2024•Revamped security protocols, achieving 97% accuracy in security assessments.•Enhanced detection through 5-level evaluation: XSS detection, contextual analysis, behavioral analysis, NLP, and malicious function call detection.Paywave: A Secure Payment Android ApplicationJul 2023 – Nov 2023•Pioneered seamless security integration with 5-level verification, including URL malware checks, TLD validation, VirusTotal validation, certificate validation, and length validation.•Leveraged Python, Flask, and logistic regression to achieve 97% accuracy.Credspot:  A Cyber Attacks protection SoftwareJan 2023 – Apr 2023•Developed software to protect against five cyber attacks: spam mail, fake news, spam URLs, password strength, and clickbait detection.•Achieved 96% accuracy using random forest. Utilized Python, Sklearn, React.js, and Flask frameworks.CERTIFICATIONSCLF-C02 AWS Cloud PractitionerNPTEL course on Foundation of Cloud IoT Edge MLIntroduction to Hadoop at Great learningIntroduction to Cybersecurity by CISCOTCS iON Career Edge:Azure AI-102: AI Engineer AssociateJourney to cloud by IBMEthical Hacking Essentials from EC CouncilAzure AI-900: Fundamentals of AIPUBLICATIONSGeneralized Multilingual AI-Powered System for Detecting Fake News in India: A Comparative Analysis of Machine Learning Algorithms•Achieved 99% accuracy in detecting fake news through cross-dataset experimentation.•Implemented web scraping for real-time data acquisition, tested with 5 ML algorithms using HTML, CSS, JS.•Validated the authenticity of multilingual news (58 languages) via URL.17 Apr 2024||||||||",
     "Answer": {
-      "name": "MARPU SAI MAHESH",
+      "name": "Marpu Sai Mahesh",
       "location": "Andhra Pradesh, India",
-      "email": "marpumahesh@gmail.com",
-      "phone": "9502342564",
+      "email": "chintusaimaheshmarpu@gmail.com",
+      "phone": "+91 9502342564",
       "linkedin": "https://www.linkedin.com/in/marpumahesh/",
       "skills": [
-        "Python, C++",
-        "HTML, Android, MYSQL, AWS Cloud",
-        "Not Provided"
+        "Python",
+        "C++",
+        "HTML",
+        "Android",
+        "MYSQL",
+        "AWS Cloud",
+        "Facebook"
       ],
       "experience": [
         {
@@ -5359,48 +5268,50 @@
           "role": "Web development Intern",
           "company": "Oasis Infobyte",
           "description": "Web development Intern"
+        },
+        {
+          "role": "Deepfake call detection software prototype",
+          "company": "Vericall",
+          "description": "DeepFake Call Detection Software Prototype"
+        },
+        {
+          "role": "Static Web Application Testing Tool",
+          "company": "Static-Fortify",
+          "description": "A Static Web Application Testing Tool"
         }
       ],
       "projects": [
         {
           "title": "FedEx Scam Detection Android application for Phone Calls",
-          "description": "Not Provided"
+          "description": "FedEx Scam Detection Android application for Phone Calls"
         },
         {
           "title": "MirrorVerse: A VR-based SmartMirror Software",
-          "description": "Not Provided"
+          "description": "MirrorVerse: A VR-based SmartMirror Software"
         },
         {
           "title": "Vericall: A DeepFake Call Detection Software Prototype",
-          "description": "Not Provided"
-        },
-        {
-          "title": "Static-Fortify: A Static Web Application Testing Tool",
-          "description": "Not Provided"
-        },
-        {
-          "title": "Paywave: A Secure Payment Android Application",
-          "description": "Not Provided"
+          "description": "Vericall: A DeepFake Call Detection Software Prototype"
         }
       ],
       "education": [
         {
-          "degree": "B-Tech",
-          "institution": "Amrita Vishwa Vidyapeetham,"
-        },
-        {
-          "degree": "Not Provided",
-          "institution": "Not Provided"
-        },
-        {
-          "degree": "GPA:9.01",
-          "institution": "Not Provided"
+          "degree": "B-Tech in Computer Science and Engineering with Specialization in Cyber Security",
+          "institution": "Amrita Vishwa Vidyapeetham"
         }
       ],
       "extracurricular_activities": [
         {
-          "activity": "Not Provided",
-          "description": "Not Provided"
+          "activity": "Projects",
+          "description": ""
+        },
+        {
+          "activity": "Github Projects",
+          "description": ""
+        },
+        {
+          "activity": "Online Learning",
+          "description": ""
         }
       ]
     }
@@ -5409,16 +5320,34 @@
     "Filename": "resume_1734602654.pdf",
     "Question": "",
     "Answer": {
-      "name": "",
+      "name": "Koushitha Gottipati",
       "location": "",
-      "email": "",
-      "phone": "",
-      "linkedin": "",
+      "email": "koushu0403@gmail.com",
+      "phone": "+91 6302779384",
+      "linkedin": "https://www.linkedin.com/in/koushitha-gottipati/",
       "skills": [],
       "experience": [],
       "projects": [],
-      "education": [],
-      "extracurricular_activities": []
+      "education": [
+        {
+          "degree": "Bachelors of Technology - Computer Science and Engineering (Artificial Intelligence)",
+          "institution": "Amrita Vishwa Vidyapeetham"
+        },
+        {
+          "degree": "XII",
+          "institution": "Sri Chaitanya Junior College"
+        }
+      ],
+      "extracurricular_activities": [
+        {
+          "activity": "Volunteer at a local soup kitchen",
+          "description": ""
+        },
+        {
+          "activity": "Organize and participate in coding competitions",
+          "description": ""
+        }
+      ]
     }
   },
   {
@@ -5464,12 +5393,12 @@
       ],
       "education": [
         {
-          "degree": "Bachelor of Technology",
-          "institution": "Amrita Vishwa Vidyapeetham CSE AI8.93 ASC Independent PU College Karnataka Board for Pre-University - PCMC 99%"
+          "degree": "Bachelor of Technology CSE AI",
+          "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
           "degree": "Indian Certificate of Secondary Education",
-          "institution": "SJR Kengeri Public School Indian Certificate of Secondary Education92.6%"
+          "institution": "SJR Kengeri Public School Indian"
         }
       ],
       "extracurricular_activities": [
@@ -5492,27 +5421,19 @@
       "location": "Trivandrum, India",
       "email": "hariaum2003@gmail.com",
       "phone": "+91 9446479094",
-      "linkedin": "",
+      "linkedin": "https://www.linkedin.com/in/s-hariharasubramaniam-69a1a926a/",
       "skills": [
         "Python",
         "ReactJS",
-        "JSPostgreSQLAudacitySOFT SKILLSCommunicationPresentation skills"
+        "JS",
+        "PostgreSQL",
+        "Audacity"
       ],
       "experience": [
         {
           "role": "AI/ML Intern",
           "company": "Zoho Corporation",
           "description": "AI/ML intern - predicted churn using user and transaction data to help the company take proactive measures for business profitability."
-        },
-        {
-          "role": "Project: Network Scanner",
-          "company": "Amrita Institute of Medical Sciences (AIMS)",
-          "description": "To develop an automated pipeline for the entire preprocessing procedure of the DICOM images till classification; To create a doctor-friendly design for a DICOM viewer tool so as to process MRI images and classify brain-tumors."
-        },
-        {
-          "role": "Project: Sleep Apnea Detection Using ECG",
-          "company": "Amrita Institute of Medical Sciences (AIMS)",
-          "description": "Cost-effective sleep apnea detection system using real-world ECG data from AIMS."
         }
       ],
       "projects": [
@@ -5527,8 +5448,8 @@
       ],
       "education": [
         {
-          "degree": "Bachelors",
-          "institution": "Artificial Intelligence, Amrita Viswa Vidyapeetham, Amritapuri"
+          "degree": "Bachelors in Artificial Intelligence",
+          "institution": "Amrita Viswa Vidyapeetham, Amritapuri"
         },
         {
           "degree": "Higher Secondary Education",
