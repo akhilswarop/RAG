@@ -339,14 +339,23 @@ Provide a comprehensive analysis including:
                 text=True,
                 check=True
             )
+            result_gpt35 = subprocess.run(
+                ["ollama", "run", "Eomer/gpt-3.5-turbo", prompt],
+                capture_output=True,
+                text=True,
+                check=True
+            )
+
             guidance_mistral = result_mistral.stdout.strip()
             guidance_gemma_2b = result_gemma_2b.stdout.strip()
             guidance_gemma_9b = result_gemma_9b.stdout.strip()
+            guidance_gpt35 = result_gpt35.stdout.strip()
+
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
 
 
-    return guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, top_job_titles
+    return guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, guidance_gpt35, top_job_titles
 
 def google_jobs_search(job_title, location):
     load_dotenv()
@@ -537,7 +546,7 @@ if submit:
         start_time = time.time()
 
         # Generate career guidance using RAG with Mistral
-        guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, top_job_titles = generate_career_guidance_rag_mistral(
+        guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, guidance_gpt35, top_job_titles = generate_career_guidance_rag_mistral(
             skills=user_skills,
             academic_history=academic_history,
         )
@@ -556,6 +565,9 @@ if submit:
 
         st.subheader("Career Guidance [Gemma 9B]:")
         st.write(guidance_gemma_9b)
+
+        st.subheader("Career Guidance [GPT 3.5]:")
+        st.write(guidance_gpt35)
 
         
         st.write(f"Time taken for generation: {int(minutes)} minutes and {seconds:.2f} seconds")
