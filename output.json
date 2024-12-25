@@ -1344,8 +1344,8 @@
       ],
       "education": [
         {
-          "degree": "Bachelor of Technology",
-          "institution": "Amrita Vishwa Vidyapeetham Computer Science - Artificial Intelligence Engineering Department"
+          "degree": "Bachelor of Technology, Computer Science - Artificial Intelligence Engineering",
+          "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
           "degree": "Intermediate Education",
@@ -1370,7 +1370,7 @@
     "Answer": {
       "name": "Sangeethi Maheswarla",
       "location": "Nellore - 524002",
-      "email": "Sangeethi Maheswarlasangeethimaheswarla@gmail.com",
+      "email": "sangeethimaheswarla@gmail.com",
       "phone": "",
       "linkedin": " ",
       "skills": [
@@ -1434,6 +1434,10 @@
         {
           "activity": "Primary Executive - Dastaan",
           "description": "Coordinated hospitality and transportation for guests, ensuring smooth operations and positive experiences."
+        },
+        {
+          "activity": "Event Management- Amritotsavam",
+          "description": "Organized event scheduling, and volunteer coordination to ensure a successful event."
         }
       ]
     }
@@ -1475,8 +1479,8 @@
       ],
       "education": [
         {
-          "degree": "B.Tech",
-          "institution": "Computer Science Engineering Artificial Intelligence - Amrita Vishwa Vidyapeetham, AmritapuriCGPA - 6.98"
+          "degree": "B.Tech Computer Science Engineering Artificial Intelligence" ,
+          "institution": "Amrita Vishwa Vidyapeetham, Amritapuri"
         },
         {
           "degree": "Higher Secondary School",
@@ -1486,7 +1490,7 @@
       "extracurricular_activities": [
         {
           "activity": "Student Social Responsibility - SSR",
-          "description": ""
+          "description": "Published an 8-chapter e-Book 'Wellness Journey-Preserving Elderly Heritage' based on information collectively gathered after visiting an elderly home as well as interviewing diverse age groups on holistic traditional wellness practices"
         }
       ]
     }
