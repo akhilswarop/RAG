@@ -5841,7 +5841,7 @@
     "Question": "Y . C . A M A N D I N   S E L S I AContact : 9597207145Gmail:amandinselsia@gmail.com96, kutty gounder street , rathinapuri , coimbatoreAs a fresh hardware engineering graduate with a passion for learning and contributing to project success.Skilled in collaboration, adaptable, and driven to make a positive impact in diverse team environments.CAREER OBJECTIVETECHNICAL SKILLS :LANGUAGE: VHDL,VERILOG , C(Beginner level) STRENGTHS AND EXPERTISESIMULATION TOOLS:ELECTRONICS EXPERTISE:Xilinx Vivado, Modelsim, LTspice,Ansys,VS code , MS word ,MSPowerPoint , MS excelDigital electronicsAnalog electronicsVLSI designCERTIFICATIONS:AWS FUNDAMENTALSAWS CLOUD PRACTIONER*LABVIEW*PROFESSIONAL EXPERIENCEROOTS INDUSTRIES INDIA PRIVATE LIMITEDJUNE 2024 - JULY 2024Completion of internship with Experience in manufacturing and testing automotive components, focusing onelectronic horn systems from prototyping to final testing, improving problem-solving, circuit design, andcollaborative skills in quality-controlled environments.BHARAT SANCHAR NIGAM LIMITED JUNE 2024 - JUNE  2024Completion of internship with gaining practical knowledge in telecommunications infrastructure and networkmanagement, specializing in troubleshooting and maintaining telecommunication systems and equipment.Bachelor of technology - Electronics and communication engineering:AUGUST 2021 - JUNE 2025EDUCATION:Amrita school of engineering , Amrita  Vishwa VidyapeethamCGPA: 6.54/10Higher secondary education:Avila convent Matric Higher secondary schoolmarks: 548.20/600 secondary education:Avila convent Matric Higher secondary schoolmarks: 466/500MAY 2019-MAY 2021MAY 2018-MAY 20191.) Topic: Analog audio equalizerDeveloped an audio equalizer where bass and treble of the audio input can be modified .PROJECTS:2.)Topic: Tic Tac Toe Game using VHDLCreated a Tic Tac Toe game with physical interface3.)Topic: Digital Seat belt indicator using Digital IC’sMarch 2024December 2023January 2023 Successfully designed a car alarm circuit that detects seat occupancy and unfastened seat belts, enhancing vehicle safety",
     "Answer": {
       "name": "Y C Amandin Selsia",
-      "location": "coimbatore",
+      "location": "Coimbatore",
       "email": "amandinselsia@gmail.com",
       "phone": "9597207145",
       "linkedin": "null",
@@ -6135,7 +6135,7 @@
       "location": "Hyderabad, India",
       "email": "muramuttlaharshitha@gmail.com",
       "phone": "+91 7731890157",
-      "linkedin": "https://www.linkedin.com/",
+      "linkedin": "null",
       "skills": [
         "OOPS",
         "Data structures",
@@ -6148,29 +6148,8 @@
         "Anaconda",
         "Eclipse",
         "TensorFlow",
-        "Keras",
-        "OpenCV",
-        "MobileNet",
-        "Transfer learning",
-        "XGBoost",
-        "VGG",
-        "ResNet",
-        "Random Forest",
-        "Convolutional Neural Networks (CNN)",
-        "VGG-16",
-        "VGG with XGBoost",
-        "FER2013",
-        "CK+",
-        "Emotion Detection",
-        "Music Playlist Customization",
-        "Real Time Emotion Detection",
-        "Streamlit",
         "MongoDB",
-        "React.js",
-        "Backend Operations",
-        "Data Handling",
-        "Web Interface",
-        "Performance Degradation"
+        "React.js"
       ],
       "experience": [
         {
@@ -6224,12 +6203,18 @@
     "Filename": "resume_1734602682.pdf",
     "Question": "",
     "Answer": {
-      "name": "",
-      "location": "",
-      "email": "",
-      "phone": "",
-      "linkedin": "",
-      "skills": [],
+      "name": "P Yagnitha",
+      "location": "Hyderbad, India",
+      "email": "pyagnitha@gmail.com",
+      "phone": "+91 8309240451",
+      "linkedin": "https://www.linkedin.com/in/yagnitha/",
+      "skills": [
+        "Java",
+        "Matlab",
+        "MYSQL",
+        "CSS",
+        "HTML"
+      ],
       "experience": [
         {
           "role": "Software Engineer,",
@@ -6264,27 +6249,9 @@
         "Python",
         "Java",
         "MySQL",
-        "Programming Languages: Python, Java",
-        "Development Tools/Frameworks: VS Code, Git, GitHub,Tensorflow,Pytorch",
         "Machine Learning",
         "Data Science",
-        "Computer Vision",
-        "Other Skills: Machine Learning, Data Science, Computer Vision",
-        "Artificial Intelligence",
-        "Body Weight Prediction of Goat: A Computer Vision Approach",
-        "Body Weight Prediction of Goat: A Computer Vision Approach",
-        "Parkinson’s Disease Detection: Comparative Analysis of ML Models",
-        "Machine Learning",
-        "Logistic Regression (LR) 83.67% , k Nearest Neighbors (KNN) 97.95%, Decision Tree(DT)95.91%, Multi-layer Perceptron (MLP) 97.95%, and Gradient Boost (GB) 95.91%",
-        "Rouge, BLEU, Cosine similarity score metrics",
-        "YOLO V8",
-        "Roboflow software",
-        "mAP: 90.2%",
-        "Test Set: 88.2%",
-        "MDVP:Fo(Hz), MDVP:Jitter(%), MDVP:Shimmer, NHR",
-        "18 other features",
-        "Project Title: Parkinson’s Disease Detection: Comparative Analysis of ML Models",
-        "Project Type: Machine Learning"
+        "Computer Vision"
       ],
       "experience": [
         {
@@ -6346,20 +6313,7 @@
         "Matlab",
         "JavaScript",
         "Java",
-        "MySQL",
-        "Front-End Engineering",
-        "Generative AI",
-        "Natural Language Processing",
-        "Computer Vision",
-        "Deep Learning",
-        "Problem-Solving",
-        "Communication skills",
-        "Adaptability",
-        "Leadership quality",
-        "Teamwork",
-        "Interpersonal Skills",
-        "Analytical Skills",
-        "Multitasking"
+        "MySQL"
       ],
       "experience": [
         {
@@ -6406,11 +6360,9 @@
       "linkedin": "www.linkedin.com/in/ shrivarshini-kannan",
       "skills": [
         "Python",
-        "Web Technologies - HTML, CSS, JavaScript",
-        "Security - Network Security, Cryptography",
-        "Tools - Wireshark, Burpsuite, Kali Linux",
-        "Operating Systems - Windows, Linux",
-        "Database - MySQL"
+        "HTML, CSS, JavaScript",
+        " Network Security, Cryptography",
+        "MySQL"
       ],
       "experience": [
         {
@@ -6452,14 +6404,14 @@
       "name": "Korada Kalyan Varun Kumar",
       "location": "Chennai, India",
       "email": "kalyanvarunkumarkorada@gmail.com",
-      "phone": "+7780595289",
+      "phone": "+91 7780595289",
       "linkedin": "linkedin.com/in/kalyan-varun-kumar",
       "skills": [
         "Python",
         "IOT",
         "5G technology",
         "CST Studio",
-        "Altium Circuit Design and Analysis (Arduino IDE, Proteus, LTSpice, Multisim, TinkerCAD)",
+        "Altium","Circuit Design and Analysis (Arduino IDE, Proteus, LTSpice, Multisim, TinkerCAD)",
         "Digital Design (VHDL, Verilog, Keil μVision) ",
         "Ansys HFSS",
         "Matlab",
@@ -6529,12 +6481,18 @@
     "Filename": "resume_1734602733.pdf",
     "Question": "Sai Dikshith Varanasi Email: Dikshith0307@gmail.com | Location: Andhra Pradesh, India | Phone: +91 9494502424 LinkedIn: linkedin.com/in/saidikshithvaranasi EDUCATION Amrita Vishwa Vidyapeetham |Bachelor of Engineering                                                                                                                India, Kerala|2021-2025 Major: Electronics and Communication Engineering                                                                                                                                                                              CGPA: 8.08/10  Relevant Coursework: Software Engineering, Digital Electronics, Analog Electronics, FPGA Based System Design, Microcontrollers, IoT, Digital Communication, Computer Networks (TCP/IP, UDP, HTTP, FTP). Sri Chaitanya Junior College| Higher Secondary Education                                                                                    India, Andhra Pradesh|2019-2021 Course subjects: Maths, Physics, Chemistry (MPC)                                                                                                                                                                    Score: 904/1000  Sri Chaitanya EM School| Secondary Education                                                                                                             India, Andhra Pradesh|2017-2019 Board of Secondary Education Andhra Pradesh                                                                                                                                                                                      CGPA:9.8/10  TECHNICAL SKILLS Programming Languages: C++, Python, Verilog, MATLAB, ARM Assembly Communication Protocols: I2C, SPI, UART, TCP/IP Tools: ANSYS HFSS, Cadence Virtuoso, Proteus, TinkerCAD, Arduino IDE, ModelSim. Simulation & Design Tools: ModelSim, Gazebo, ROS, RViz Operating Systems: Unix/Linux, Microsoft Windows Interests: Embedded Systems, VLSI Design, IoT. WORK EXPERIENCE Humanitarian Technologies Labs (HuT Labs) | Student Intern                                                                   India, Amritapuri| June 2022-Present •  Evaluated 3 SLAM algorithms using ROS, improving robotic navigation accuracy by 20%. • •  Authored a publication on robotics and navigation, boosting field engagement by 15%. TECHNICAL PROJECTS MosquitoID: Wingbeat Frequency-Based Species Classification| Machine Learning •  Developing  an  intelligent  mosquito  identification  system  using  machine  learning  to  differentiate  mosquito  species  based  on  wingbeat Integrated 3D Lidar with Arduino and ROS libraries, optimizing data processing for sensor-based applications. frequencies. •  Designing a low-cost embedded system using microcontrollers and sensor arrays for real-time mosquito detection, aimed at improving vector control strategies. Utilizing signal processing and machine learning techniques to classify mosquito species. •  Aiming to enhance public health monitoring and enable targeted mosquito control strategies to support broader disease prevention efforts.  •  Tech Stack: Hardware - Acoustic Sensors, Raspberry Pi; Software - Python, Signal Processing Libraries.  3D LiDAR Prototype for Real-Time Mapping| Robotics •  Developed a custom 3D LiDAR system using TF Luna ToF sensor, Arduino UNO, and Nema 17 stepper motor for real-time mapping and point • cloud generation.   Integrated servo and stepper motors to control elevation and azimuth angles, allowing for full 360-degree horizontal rotation and precise vertical scanning. •  Processed LiDAR data in Python and visualized point clouds using Gazebo to map 3D environments. Achieved coordinate conversion from spherical to Cartesian system for accurate 3D spatial mapping. •  Clinched First Prize at IIC Regional Meet, outperforming 500+ colleges. •  Tech Stack: Hardware - Arduino UNO, TF Luna, Nema 17, MG995 Servo Motor; Software - ROS, Python Arduino IDE; Simulation - Gazebo, Rviz. Efficient Dual-Band 5G Antenna for Millimeter-Wave Applications| Telecommunications •  Designed a compact microstrip patch antenna with dual-band operation at 28GHz and 38GHz for 5G communication. •  Enhanced bandwidth (up to 4.34 GHz) and gain (8.43 dB at 28GHz, 8.39 dB at 38GHz) using an inset-fed technique and dual-slot modifications. •  Utilized Rogers RT Duroid 5880 for improved efficiency and stability in high-frequency applications. •  Modelled and simulated the antenna in ANSYS HFSS, achieving excellent return loss and low VSWR, suitable for high-speed 5G networks. •  Tech Stack: Design - ANSYS EDT; Simulation - HFSS.   Verilog HDL Integration in Laundry Machine | FPGA Systems •  Architected Verilog HDL-based FSM model with multiple modes and sensors. •  Optimized energy efficiency and user safety through innovative design.  •  Tech Stack: Hardware Description - Verilog HDL; Simulation - Model Sim; Sensors - Load sensor, Temperature sensor. Fire Rescue Alarm System | IoT •  Prototyped IoT-based fire alarm system using gas and temperature sensors. •  Tech Stack: Hardware - Arduino, Gas sensors, Temperature sensors; Software - Arduino IDE, C++; IoT Platform - Tinker cad. Tele-Operated Robot | Robotics •  Designed and built robot using Arduino Mega 2560 R3, Fly sky RF remote controller and motor drivers. • •  Tech Stack: Hardware - Arduino Mega 2560 R3, Fly sky Remote controller and Motor drivers; Software - Arduino IDE, C++. Implemented rapid prototyping and iterative refinement techniques.  PUBLICATIONS • \"Robotic Navigation Unveiled: A Comprehensive Study of GMapping, Hector Slam, and Cartographer\" - 3rd International Conference on Innovation in Technology (INOCON). \"Smart and Sustainable: Verilog HDL Integration in Laundry Machine\" - 2024 4th Asian Conference on Innovation in Technology (ASIANCON). (Presented) • • ACHIEVEMENTS •  1st Runner-Up, International Design Competition ROBOCON-23, Chulalongkorn University, Bangkok        •  1st Position, Innovation Exhibition, IIC Regional Meet, Cochin. •  CODECURE- 4th place out of 19 teams in Tech-Med Hackathon which was conducted in AIMS Kochi with Doctors and Engineers. LEADERSHIP AND COMMUNITY OUTREACH •  Chair, IEEE Power and Energy Society, Amrita Vishwa Vidyapeetham IEEE Student Branch, Amritapuri. •  Technical Executive, Embedded Systems and IoT Workshop, Vidyut'23 Techfest. •  Volunteer, Amrita SREE Self Help Groups. •  Co-ordinator, Developed a wellness program for 100+ students at Z P High School, Sirlapalem. Achieved 90% positive feedback by guiding • Mentor, Research and Innovation Summer Camp (RISC). students through yoga poses, breathing exercises. Conducted as part of Student Social Responsibility (SSR).",
     "Answer": {
-      "name": "Dikshith",
-      "location": "",
+      "name": "Sai Dikshith Varanasi",
+      "location": "Andhra Pradesh, India",
       "email": "Dikshith0307@gmail.com",
-      "phone": "",
-      "linkedin": "",
-      "skills": [],
+      "phone": "+91 9494502424 ",
+      "linkedin": "http://linkedin.com/in/saidikshithvaranasi",
+      "skills": [
+        "C++",
+        "Python",
+        "Verilog",
+        "MATLAB",
+        "Arm Assembly"
+      ],
       "experience": [
         {
           "role": "Student Intern",
