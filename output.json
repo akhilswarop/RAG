@@ -2371,14 +2371,10 @@
       "experience": [
         {
           "role": "Embedded System Intern",
-          "company": "Centre for Development of Advanced Computing",
-          "description": "Embedded System Intern"
-        },
-        {
-          "role": "Embedded System Intern",
-          "company": "Centre for Development of Advanced Computing",
-          "description": "  "
+          "company": "Centre for Development of Advanced Computing Chennai, India",
+          "description": "Conducted extensive literature review and techno-commercial survey, evaluating 20+ components for the selection process of a Smart bed for paralyzed patients, ensuring thorough research and informed decision-making with all available alternatives. • Successfully implemented and demonstrated a simulation of the smart bed system, showcasing its efficacy in a controlled environment and validating its functionality in preventing and managing pressure ulcers."
         }
+
       ],
       "projects": [
         {
@@ -2456,7 +2452,7 @@
       ],
       "education": [
         {
-          "degree": "B.Tech",
+          "degree": "B.Tech Computer Science Engineering specialization with Cyber Security",
           "institution": "Amrita Vishwa Vidyapeetham"
         },
         {
@@ -2464,15 +2460,11 @@
           "institution": "Paavai Vidhyashram Global School"
         },
         {
-          "degree": "",
-          "institution": ""
+          "degree": "High School Board",
+          "institution": "Paavai Vidhyashram Global School"
         }
       ],
       "extracurricular_activities": [
-        {
-          "activity": "Web Development",
-          "description": ""
-        }
       ]
     }
   },
@@ -2494,8 +2486,8 @@
       "experience": [
         {
           "role": "AI Engineer Intern",
-          "company": "AI Engineer Intern",
-          "description": "Developed and tested multiple trading strategies for the U.S. stock market using Alpaca, focusing on bullishand bearish trends."
+          "company": "SKXYWTF",
+          "description": "Developed and tested multiple trading strategies for the U.S. stock market using Alpaca, focusing on bullishand bearish trends. Analyzed candlestick patterns and market data to optimize trading decisions and improve profitability."
         }
       ],
       "projects": [
@@ -2514,7 +2506,7 @@
       ],
       "education": [
         {
-          "degree": "B.Tech",
+          "degree": " B.Tech in Computer science and Engineering",
           "institution": "Amrita Vishwa Vidyapeetham "
         }
       ],
@@ -2530,25 +2522,48 @@
     "Filename": "resume_1734602606.pdf",
     "Question": "Khambampati Subhash+ Sathupally, Telangana # subhashkhambampati74@gmail.com (cid:132) +91 6300101199SummaryAI enthusiast with hands-on experience in developing solutions using machine learning, deep learning, and naturallanguage processing. Worked on healthcare AI projects, winning awards in hackathons and contributing toresearch. I’m committed to advancing AI for practical use, combining technical expertise with a strong drive formeaningful change. Always eager to contribute to transformative projects.EducationAmrita Vishwa VidyapeethamBTech in Artificial Intelligence - Amritapuri, KeralaSri Chaitanya junior CollegeIntermediate MPC - Hyderabad, TelanganaInternshipAI InternMargati09/2021 – 05/2025GPA: 8.903/2019 – 06/2021Percentage: 97Remote08/2024 – Present◦ Developed a retrieval system to optimize output and reduce OpenAI calls, significantly reducing cost.◦ Extracted relevant information from web content, integrating it seamlessly with core software.◦ Optimized prompts for improved search results and employed DeepEval for LLM output evaluation.Healthcare AI Club MemberAmrita WNAAmritapuri, Kerala04/2023 – Present◦ Secured 18th globally in the PhysioNet Challenge 2023 for healthcare AI research.◦ Engaged in hackathons, paper publications, and AI projects in healthcare.◦ Currently doing a final year project under the mentorship of a club professor, focused on healthcare AI.AchievementsSustainable Development Ideathon | 1st Prize06/2024◦ Proposed an AI-powered system, automating pest control and soil analysis, increasing yields by 20%.◦ Provided market forecasts and personalized support for 50+ farmers to optimize productivity.Google Build with AI GDG Kochi 2024 | 2nd Runner Up04/2024◦ Built a Streamlit app using Gemini and Google Cloud with features like an AI tutor, quiz generator, andPDF chatbot, completed in 24 hours during a hackathon.GE Healthcare Hackathon | 1st Runner Up08/2023◦ Created an AI solution balancing precision and explainability, achieving 60% accuracy in ECG classification.◦ Leveraged explainable methods for interpretability, improving decision-making in healthcare.SkillsProgramming Languages: PythonArtificial Intelligence: Machine Learning, Deep Learning, Computer Vision, Natural Language Processing,Large Language Models, LangChain, Pytorch, TensorflowDevelopment: HTML, CSS, JavaScript, React, NodeJS, FastAPI, FlaskTools and Databases: Github, Docker, RabbitMQ, Linux, MongoDB, redisSoft Skills: Teamwork and Collaboration, Continuous Learning, Calm Personality1ProjectsFine-Tuned LLaMA-3 on Medical Data using Unsloth05/2024◦ Fine-tuned LLaMA-3 with Unsloth and SFT Trainer, increasing model efficiency for medical tasks by 15%.◦ Leveraged Hugging Face dataset, improving medical dialogue accuracy by 20% in context-specific responses.Saraswati AI◦ Developed an AI platform using Gemini and Streamlit for personalized tutoring and quizzes.◦ Created a path planner and interview assistant for tailored learning experiences.◦ Aims to enhance education access in low-income nations by affordable, personalized learning tools.A Prompt Based XAI Tool◦ Built a Streamlit app that uses a CNN 1D model to classify ECG data with 60% accuracy.◦ Included a Falcon 7B LLM chatbot to improve access to medical information.◦ Helps patients and doctors understand health data better and make informed decisions.PublicationsCureNet: Improving Explainability of AI Diagnosis Using Custom Large Language ModelsIEEE SmartGen Con Link 2Frequency and Time Domain EEG Analysis for Prognostication of Postanoxic Comatose PatientsIEEE CINC, Scopus Index Link 2WorkshopAI in Healthcare04/202408/202303/202412/202304/2023◦ Led hands-on sessions, mentoring over 40 students in practical exercises and troubleshooting.◦ Organized materials and resources for an optimal learning environment during the 3-day workshop.◦ Built connections with students and learned valuable teaching experience.Community OutreachStudent Social Responsibility (SSR)09/2023◦ Contributed to AI awareness initiatives at Queen Mary High School and ZPHS Ethamukkala.◦ Empowered over 150 students with AI fundamentals and showcased real-world applications such as GPT,humanoid robots, AI image generators, voice cloning, and DeepFake technology.◦ Our primary goal is to raise AI awareness among children, encouraging them to use AI for future innovation.Certificates◦ Intermediate Deep Learning with PyTorch DataCamp 2◦ Introduction to TensorFlow in Python DataCamp 2◦ Introduction to Deep Learning in Python DataCamp 2Final Year Project05/202204/202403/2024MediScribe09/2024◦ Currently developing a healthcare application that enables patients to book appointments and access per-sonal health records seamlessly. The project leverages AI for voice transcription and summarization toreduce documentation time by over 50% and minimize error rates from 10-15% to below 5%.Contact Me◦ LinkedIn: linkedin.com/in/subhash-khambampati 2◦ GitHub: github.com/subhash137 2◦ Twitter: twitter.com/SubhashKhambam1 22",
     "Answer": {
-      "name": "Khambampati Subhash Sathupally",
-      "location": "Telangana",
+      "name": "Khambampati Subhash ",
+      "location": "Sathupally, Telangana",
       "email": "subhashkhambampati74@gmail.com",
       "phone": "+91 6300101199",
       "linkedin": "linkedin.com/in/subhash137",
       "skills": [
+        "Python",
+        "Machine Learning",
         "Deep Learning",
-        "], 2"
+        "Computer Vision",
+        "Natural Language Processing",
+        "Large Language Models",
+        "LangChain",
+        "Pytorch",
+        "Tensorflow",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "NodeJS",
+        "FastAPI",
+        "Flask",
+        "Github",
+        "Docker",
+        "RabbitMQ",
+        "Linux",
+        "MongoDB",
+        "Redis",
+        "Teamwork and Collaboration",
+        "Continuous Learning",
+        "Calm Personality"
       ],
       "experience": [
         {
           "role": "AI Intern",
           "company": "Margati",
-          "description": "AI Intern"
+          "description": "◦ Developed a retrieval system to optimize output and reduce OpenAI calls, significantly reducing cost. ◦ Extracted relevant information from web content, integrating it seamlessly with core software. ◦ Optimized prompts for improved search results and employed DeepEval for LLM output evaluation."
         },
         {
           "role": "1st Runner Up in Hackathon",
           "company": "GE Healthcare",
-          "description": "Project: AI solution balancing precision and explainability"
+          "description": "◦ Secured 18th globally in the PhysioNet Challenge 2023 for healthcare AI research. ◦ Engaged in hackathons, paper publications, and AI projects in healthcare.  ◦ Currently doing a final year project under the mentorship of a club professor, focused on healthcare AI."
         }
       ],
       "projects": [
@@ -2563,7 +2578,7 @@
       ],
       "education": [
         {
-          "degree": "BTech",
+          "degree": "BTech in Artificial Intelligence",
           "institution": "Amrita Vishwa Vidyapeetham - Amritapuri, Kerala"
         },
         {
@@ -2629,12 +2644,8 @@
       ],
       "education": [
         {
-          "degree": "B.Tech",
+          "degree": " B.Tech in Computer Science, specialized in Cyber Security",
           "institution": "Amrita Vishwa Vidyapeetham deemed to be university"
-        },
-        {
-          "degree": "",
-          "institution": ""
         }
       ],
       "extracurricular_activities": [
@@ -2678,15 +2689,11 @@
       ],
       "experience": [
         {
-          "role": "Intern",
+          "role": "Cyber Security Intern",
           "company": "Skillsda",
-          "description": "Cyber Security Intern"
-        },
-        {
-          "role": "null",
-          "company": "null",
-          "description": "null"
+          "description": "Executed Android static analysis, fortifying vulnerabilities for system resilience improvement. • Scrutinized SSL/TLS, MITM, and MAC spoofing, implementing measures for network resilience enhancement. • Explored MD2 collisions, RSA Padding Oracle, and Windows policies, enhancing system security."
         }
+
       ],
       "projects": [
         {
