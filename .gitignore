@@ -5,4 +5,5 @@
 *.pyd
 venv/
 env/
+myenv
 .myenv/
