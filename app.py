@@ -23,7 +23,6 @@ from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.pdfparser import PDFSyntaxError
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
-import docx2txt
 import unicodedata
 from pdfminer.high_level import extract_text
 from serpapi import GoogleSearch
