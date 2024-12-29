@@ -6,23 +6,14 @@ from typing import List
 from gensim import corpora
 from gensim.models.ldamodel import LdaModel
 import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize, sent_tokenize
+from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer
-import os
 import subprocess
-import sys
 import faiss
 import numpy as np
 import time
-import io
 import subprocess
 import json
-from pdfminer.pdfpage import PDFPage
-from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
-from pdfminer.pdfparser import PDFSyntaxError
-from pdfminer.converter import TextConverter
-from pdfminer.layout import LAParams
 import unicodedata
 from pdfminer.high_level import extract_text
 from serpapi import GoogleSearch
@@ -268,7 +259,7 @@ Extract the requested information from the resume text and return only one valid
                         'content': prompt,
                         }
                     ],
-                    model='gemma2:2b',
+                    model='finetuned',
                     format=Resume.model_json_schema(),
                     )
             result = Resume.model_validate_json(response.message.content)
