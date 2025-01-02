@@ -1,10 +1,7 @@
 import streamlit as st
-import torch
 import spacy
 import pandas as pd
 from typing import List
-from gensim import corpora
-from gensim.models.ldamodel import LdaModel
 import nltk
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer
