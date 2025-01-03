@@ -355,35 +355,17 @@ Provide a comprehensive analysis including:
 
     try:
         with st.spinner("Generating personalized career guidance..."):
-            result_mistral = subprocess.run(
-                ["ollama", "run", "mistral", prompt],
-                capture_output=True,
-                text=True,
-                check=True
-            )
+
             result_gemma_2b = subprocess.run(
                 ["ollama", "run", "gemma2:2b", prompt],
                 capture_output=True,
                 text=True,
                 check=True
             )
-            result_gemma_9b = subprocess.run(
-                ["ollama", "run", "gemma2:9b", prompt],
-                capture_output=True,
-                text=True,
-                check=True
-            )
-            result_gpt35 = subprocess.run(
-                ["ollama", "run", "Eomer/gpt-3.5-turbo", prompt],
-                capture_output=True,
-                text=True,
-                check=True
-            )
+            
 
-            guidance_mistral = result_mistral.stdout.strip()
             guidance_gemma_2b = result_gemma_2b.stdout.strip()
-            guidance_gemma_9b = result_gemma_9b.stdout.strip()
-            guidance_gpt35 = result_gpt35.stdout.strip()
+
             
             gemma2_2b_score, gemma2_2b_reason = evaluate_llm(prompt, guidance_gemma_2b)
 
@@ -391,7 +373,7 @@ Provide a comprehensive analysis including:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
 
 
-    return guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, guidance_gpt35, top_job_titles, gemma2_2b_score, gemma2_2b_reason
+    return  guidance_gemma_2b, top_job_titles, gemma2_2b_score, gemma2_2b_reason
 
 def google_jobs_search(job_title, location):
     load_dotenv()
@@ -595,7 +577,7 @@ if submit:
         start_time = time.time()
 
         # Generate career guidance using RAG with Mistral
-        guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, guidance_gpt35, top_job_titles, score, reason = generate_career_guidance(
+        guidance_gemma_2b, top_job_titles, score, reason = generate_career_guidance(
             skills=user_skills,
             academic_history=academic_history,
         )
@@ -607,20 +589,14 @@ if submit:
         minutes, seconds = divmod(elapsed_time, 60)
 # Scoring 
 
-        st.subheader("Career Guidance [Mistral]:")
-        st.write(guidance_mistral)
-        st.markdown("---")
-        st.write(f"Score:{score} ")
-        st.write(f"Reason:{reason}")
+
         
         st.subheader("Career Guidance [Gemma 2B]:")
         st.write(guidance_gemma_2b)
-
-        st.subheader("Career Guidance [Gemma 9B]:")
-        st.write(guidance_gemma_9b)
-
-        st.subheader("Career Guidance [GPT 3.5]:")
-        st.write(guidance_gpt35)
+        st.markdown("---")
+        st.write(f"Score:{score} ")
+        st.write(f"Reason:{reason}")
+    
 
         
         st.write(f"Time taken for generation: {int(minutes)} minutes and {seconds:.2f} seconds")
