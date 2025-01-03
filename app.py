@@ -73,7 +73,7 @@ def initialize_evaluator():
         bnb_4bit_use_double_quant=True,
     )
 
-        model = AutoModelForCausalLM.from_pretrained(
+        model_4bit = AutoModelForCausalLM.from_pretrained(
             "meta-llama/Meta-Llama-3-8B-Instruct",
             device_map="auto",
             quantization_config=quantization_config,
@@ -81,7 +81,9 @@ def initialize_evaluator():
         tokenizer = AutoTokenizer.from_pretrained(
             "meta-llama/Meta-Llama-3-8B-Instruct"
         )
-        return model, tokenizer
+
+        llama3_8b = CustomLlama3_8B(model=model_4bit, tokenizer=tokenizer)
+        return llama3_8b
 
 # Ensure NLTK data is downloaded
 nltk.download('stopwords')
