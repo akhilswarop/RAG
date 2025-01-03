@@ -9,14 +9,57 @@ import subprocess
 import faiss
 import numpy as np
 import time
-import subprocess
 import json
 import unicodedata
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from deepeval.models.base_model import DeepEvalBaseLLM
 from pdfminer.high_level import extract_text
 from serpapi import GoogleSearch
 from dotenv import load_dotenv
 from ollama import chat
 from pydantic import BaseModel
+from deepeval.metrics import AnswerRelevancyMetric
+from deepeval import evaluate
+from deepeval.metrics import AnswerRelevancyMetric
+from deepeval.test_case import LLMTestCase
+
+# LLM Evaluation Logic 
+
+class Gemma2_2B(DeepEvalBaseLLM):
+    def __init__(
+        self,
+        model,
+        tokenizer
+    ):
+        self.model = model
+        self.tokenizer = tokenizer
+
+    def load_model(self):
+        return self.model
+
+    def generate(self, prompt: str) -> str:
+        model = self.load_model()
+
+        device = "cuda" # the device to load the model onto
+
+        model_inputs = self.tokenizer([prompt], return_tensors="pt").to(device)
+        model.to(device)
+
+        generated_ids = model.generate(**model_inputs, max_new_tokens=100, do_sample=True)
+        return self.tokenizer.batch_decode(generated_ids)[0]
+
+    async def a_generate(self, prompt: str) -> str:
+        return self.generate(prompt)
+
+    def get_model_name(self):
+        return "Gemma 2 2B"
+
+
+def initialize_evaluator():
+    tokenizer = AutoTokenizer.from_pretrained("google/gemma-2-2b")
+    model = AutoModelForCausalLM.from_pretrained("google/gemma-2-2b")
+    gemma2_2b = Gemma2_2B(model=model, tokenizer=tokenizer)
+    return gemma2_2b
 
 # Ensure NLTK data is downloaded
 nltk.download('stopwords')
@@ -70,7 +113,7 @@ def preprocess_documents(df, text_column='Description'):
                 'soc_code': row['O*NET-SOC Code'],  # Include the SOC code
                 'text': sentence
             })
-        
+
     return pd.DataFrame(documents)
 
 @st.cache_resource
@@ -117,7 +160,8 @@ def retrieve_relevant_documents(query, top_k=10):
     distances, indices = index.search(query_embedding, top_k)
     retrieved_docs = documents_df.iloc[indices[0]]
         # Collect the SOC Code, Title, and Text
-    
+    print("==========RETRIEVED DOCUMENTS===============")
+    print(retrieved_docs)
     results = []
     results_json = []
     for _, row in retrieved_docs.iterrows():
@@ -129,6 +173,8 @@ def retrieve_relevant_documents(query, top_k=10):
             "title": row['job_title'],
             "description": row['text']
         })
+    print("==========TOP K CLOSEST DOCUMENTS===============")
+    print(results_json)
     return results, results_json
 
 
@@ -277,7 +323,7 @@ Extract the requested information from the resume text and return only one valid
     
 
 # Function to generate career guidance using RAG with Mistral
-def generate_career_guidance_rag_mistral(skills, academic_history):
+def generate_career_guidance(skills, academic_history):
     skills_text = ', '.join(skills) if skills else "No skills provided"
 
     # Create a comprehensive query based on user profile
@@ -286,7 +332,8 @@ def generate_career_guidance_rag_mistral(skills, academic_history):
     # Retrieve relevant documents
     retrieved_docs, top_job_titles = retrieve_relevant_documents(query, top_k=10)
     context = "\n".join(retrieved_docs)
-
+    print("=============== CONTEXT ================")
+    print(context)
     # Construct the prompt for Mistral
     prompt = f"""
 You are an AI career advisor. Use the following context to provide personalized career guidance.
@@ -337,12 +384,14 @@ Provide a comprehensive analysis including:
             guidance_gemma_2b = result_gemma_2b.stdout.strip()
             guidance_gemma_9b = result_gemma_9b.stdout.strip()
             guidance_gpt35 = result_gpt35.stdout.strip()
+            
+            gemma2_2b_score, gemma2_2b_reason = evaluate_llm(prompt, guidance_gemma_2b)
 
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
 
 
-    return guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, guidance_gpt35, top_job_titles
+    return guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, guidance_gpt35, top_job_titles, gemma2_2b_score, gemma2_2b_reason
 
 def google_jobs_search(job_title, location):
     load_dotenv()
@@ -429,6 +478,19 @@ def display_resume(resume_data):
     else:
         st.write("No extracurricular activities listed")
 
+
+def evaluate_llm(input, output):
+    gemma2_2b = initialize_evaluator()
+    metric = AnswerRelevancyMetric(model=gemma2_2b, threshold=0.7, include_reason=True)
+    test_case = LLMTestCase(
+    input=input,
+    actual_output=output
+)
+    metric.measure(test_case)
+    return metric.score, metric.reason
+
+
+    
 # Main application logic
 
 # File Upload and Automatic Resume Processing
@@ -533,7 +595,7 @@ if submit:
         start_time = time.time()
 
         # Generate career guidance using RAG with Mistral
-        guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, guidance_gpt35, top_job_titles = generate_career_guidance_rag_mistral(
+        guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, guidance_gpt35, top_job_titles, score, reason = generate_career_guidance(
             skills=user_skills,
             academic_history=academic_history,
         )
@@ -543,10 +605,14 @@ if submit:
 
 # Format elapsed time in minutes and seconds
         minutes, seconds = divmod(elapsed_time, 60)
+# Scoring 
 
         st.subheader("Career Guidance [Mistral]:")
         st.write(guidance_mistral)
-
+        st.markdown("---")
+        st.write(f"Score:{score} ")
+        st.write(f"Reason:{reason}")
+        
         st.subheader("Career Guidance [Gemma 2B]:")
         st.write(guidance_gemma_2b)
 
