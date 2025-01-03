@@ -20,18 +20,35 @@ from ollama import chat
 from pydantic import BaseModel
 from deepeval.metrics import AnswerRelevancyMetric
 from deepeval import evaluate
+from transformers import BitsAndBytesConfig
 from deepeval.metrics import AnswerRelevancyMetric
 from deepeval.test_case import LLMTestCase
-
+import transformers
+import torch
+from transformers import BitsAndBytesConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from deepeval.models import DeepEvalBaseLLM
 # LLM Evaluation Logic 
 
-class Gemma2_2B(DeepEvalBaseLLM):
-    def __init__(
-        self,
-        model,
-        tokenizer
-    ):
-        self.model = model
+class CustomLlama3_8B(DeepEvalBaseLLM):
+    def __init__(self):
+        quantization_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.float16,
+            bnb_4bit_quant_type="nf4",
+            bnb_4bit_use_double_quant=True,
+        )
+
+        model_4bit = AutoModelForCausalLM.from_pretrained(
+            "meta-llama/Meta-Llama-3-8B-Instruct",
+            device_map="auto",
+            quantization_config=quantization_config,
+        )
+        tokenizer = AutoTokenizer.from_pretrained(
+            "meta-llama/Meta-Llama-3-8B-Instruct"
+        )
+
+        self.model = model_4bit
         self.tokenizer = tokenizer
 
     def load_model(self):
@@ -40,26 +57,32 @@ class Gemma2_2B(DeepEvalBaseLLM):
     def generate(self, prompt: str) -> str:
         model = self.load_model()
 
-        device = "cuda" # the device to load the model onto
+        pipeline = transformers.pipeline(
+            "text-generation",
+            model=model,
+            tokenizer=self.tokenizer,
+            use_cache=True,
+            device_map="auto",
+            max_length=2500,
+            do_sample=True,
+            top_k=5,
+            num_return_sequences=1,
+            eos_token_id=self.tokenizer.eos_token_id,
+            pad_token_id=self.tokenizer.eos_token_id,
+        )
 
-        model_inputs = self.tokenizer([prompt], return_tensors="pt").to(device)
-        model.to(device)
-
-        generated_ids = model.generate(**model_inputs, max_new_tokens=100, do_sample=True)
-        return self.tokenizer.batch_decode(generated_ids)[0]
+        return pipeline(prompt)
 
     async def a_generate(self, prompt: str) -> str:
         return self.generate(prompt)
 
     def get_model_name(self):
-        return "Gemma 2 2B"
+        return "Llama-3 8B"
 
 
 def initialize_evaluator():
-    tokenizer = AutoTokenizer.from_pretrained("google/gemma-2-2b")
-    model = AutoModelForCausalLM.from_pretrained("google/gemma-2-2b")
-    gemma2_2b = Gemma2_2B(model=model, tokenizer=tokenizer)
-    return gemma2_2b
+    llama3_8b = CustomLlama3_8B()
+    return llama3_8b
 
 # Ensure NLTK data is downloaded
 nltk.download('stopwords')
@@ -462,8 +485,8 @@ def display_resume(resume_data):
 
 
 def evaluate_llm(input, output):
-    gemma2_2b = initialize_evaluator()
-    metric = AnswerRelevancyMetric(model=gemma2_2b, threshold=0.7, include_reason=True)
+    llama3_8b = initialize_evaluator()
+    metric = AnswerRelevancyMetric(model=llama3_8b, threshold=0.7, include_reason=True)
     test_case = LLMTestCase(
     input=input,
     actual_output=output
