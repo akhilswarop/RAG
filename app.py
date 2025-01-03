@@ -31,24 +31,9 @@ from deepeval.models import DeepEvalBaseLLM
 # LLM Evaluation Logic 
 
 class CustomLlama3_8B(DeepEvalBaseLLM):
-    def __init__(self):
-        quantization_config = BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_compute_dtype=torch.float16,
-            bnb_4bit_quant_type="nf4",
-            bnb_4bit_use_double_quant=True,
-        )
+    def __init__(self, model, tokenizer):
 
-        model_4bit = AutoModelForCausalLM.from_pretrained(
-            "meta-llama/Meta-Llama-3-8B-Instruct",
-            device_map="auto",
-            quantization_config=quantization_config,
-        )
-        tokenizer = AutoTokenizer.from_pretrained(
-            "meta-llama/Meta-Llama-3-8B-Instruct"
-        )
-
-        self.model = model_4bit
+        self.model = model
         self.tokenizer = tokenizer
 
     def load_model(self):
@@ -81,8 +66,22 @@ class CustomLlama3_8B(DeepEvalBaseLLM):
 
 
 def initialize_evaluator():
-    llama3_8b = CustomLlama3_8B()
-    return llama3_8b
+        quantization_config = BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_compute_dtype=torch.float16,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_use_double_quant=True,
+    )
+
+        model = AutoModelForCausalLM.from_pretrained(
+            "meta-llama/Meta-Llama-3-8B-Instruct",
+            device_map="auto",
+            quantization_config=quantization_config,
+        )
+        tokenizer = AutoTokenizer.from_pretrained(
+            "meta-llama/Meta-Llama-3-8B-Instruct"
+        )
+        return model, tokenizer
 
 # Ensure NLTK data is downloaded
 nltk.download('stopwords')
