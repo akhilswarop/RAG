@@ -3,3 +3,8 @@
 *.pyc
 *.pyo
 *.pyd
+venv/
+env/
+myenv
+.myenv/
+models

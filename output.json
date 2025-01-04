@@ -5595,7 +5595,7 @@
         {
           "title": "Sentiment-Driven Predictive Models for Nifty 50 Stock Market Fluctuations",
           "description": "Utilized a comprehensive NIFTY-50 model dataset sourced from the offical NSE India website, exploring various stock attributes for thorough market analysis. Conducted a comprehensive analysis of NIFTY-50 stock data suing ARMA, SARIMAX, LSTM, and XGBoost models, showcasing diverse predictve modeling skills. Achieved high accuracy in stock prise prediction with LSTM achieving a MSE of 24.4 and XGBoost proving precise predictions, refleting meticulous data analysis. Implemented time-series decomposition techniques and visualizations to uncover hidden patterns and trends in the dataset, enhancing the understanding of stock market dynamics."
-        },
+        }
       ],
       "education": [
         {
