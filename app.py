@@ -3,6 +3,7 @@ import spacy
 import pandas as pd
 from typing import List
 import nltk
+from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer
 import subprocess
@@ -390,14 +391,14 @@ Provide a comprehensive analysis including:
 
             guidance_gemma_2b = result_gemma_2b.stdout.strip()
 
-            
-            gemma2_2b_score, gemma2_2b_reason = evaluate_llm(prompt, guidance_gemma_2b)
+            gemma2_2b_score = calculate_bleu_score(context, guidance_gemma_2b)
+            # gemma2_2b_score, gemma2_2b_reason = evaluate_llm(prompt, guidance_gemma_2b)
 
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
 
 
-    return  guidance_gemma_2b, top_job_titles, gemma2_2b_score, gemma2_2b_reason
+    return  guidance_gemma_2b, top_job_titles, gemma2_2b_score
 
 def google_jobs_search(job_title, location):
     load_dotenv()
@@ -483,6 +484,17 @@ def display_resume(resume_data):
             st.write(f"**Description:** {activity.description}")
     else:
         st.write("No extracurricular activities listed")
+
+def calculate_bleu_score(reference, candidate):
+    reference = [nltk.word_tokenize(reference.lower())]
+    candidate = nltk.word_tokenize(candidate.lower())
+    
+    # Use smoothing to handle brevity
+    smoothing = SmoothingFunction().method1
+    
+    # Calculate BLEU score
+    score = sentence_bleu(reference, candidate, smoothing_function=smoothing)
+    return score
 
 
 def evaluate_llm(input, output):
@@ -601,7 +613,7 @@ if submit:
         start_time = time.time()
 
         # Generate career guidance using RAG with Mistral
-        guidance_gemma_2b, top_job_titles, score, reason = generate_career_guidance(
+        guidance_gemma_2b, top_job_titles, score = generate_career_guidance(
             skills=user_skills,
             academic_history=academic_history,
         )
@@ -619,7 +631,6 @@ if submit:
         st.write(guidance_gemma_2b)
         st.markdown("---")
         st.write(f"Score:{score} ")
-        st.write(f"Reason:{reason}")
     
 
         
