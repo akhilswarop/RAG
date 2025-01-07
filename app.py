@@ -29,9 +29,16 @@ import torch
 from transformers import BitsAndBytesConfig
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from deepeval.models import DeepEvalBaseLLM
+import json
+import transformers
+from pydantic import BaseModel
+from lmformatenforcer import JsonSchemaParser
+from lmformatenforcer.integrations.transformers import (
+    build_transformers_prefix_allowed_tokens_fn,
+)
 # LLM Evaluation Logic 
 
-class CustomLlama3_8B(DeepEvalBaseLLM):
+class Gemma2_2B(DeepEvalBaseLLM):
     def __init__(self, model, tokenizer):
 
         self.model = model
@@ -40,9 +47,9 @@ class CustomLlama3_8B(DeepEvalBaseLLM):
     def load_model(self):
         return self.model
 
-    def generate(self, prompt: str) -> str:
+    def generate(self, prompt: str, schema: BaseModel) -> BaseModel:
+        # Same as the previous example above
         model = self.load_model()
-
         pipeline = transformers.pipeline(
             "text-generation",
             model=model,
@@ -57,34 +64,43 @@ class CustomLlama3_8B(DeepEvalBaseLLM):
             pad_token_id=self.tokenizer.eos_token_id,
         )
 
-        return pipeline(prompt)
+        # Create parser required for JSON confinement using lmformatenforcer
+        parser = JsonSchemaParser(schema.model_json_schema())
+        prefix_function = build_transformers_prefix_allowed_tokens_fn(
+            pipeline.tokenizer, parser
+        )
 
-    async def a_generate(self, prompt: str) -> str:
-        return self.generate(prompt)
+        # Output and load valid JSON
+        output_dict = pipeline(prompt, prefix_allowed_tokens_fn=prefix_function)
+        output = output_dict[0]["generated_text"][len(prompt) :]
+        json_result = json.loads(output)
 
+        # Return valid JSON object according to the schema DeepEval supplied
+        return schema(**json_result)
+
+    async def a_generate(self, prompt: str, schema: BaseModel) -> BaseModel:
+        return self.generate(prompt, schema)
+    
     def get_model_name(self):
-        return "Llama-3 8B"
+        return "Gemma-2 2B"
 
 
 def initialize_evaluator():
         quantization_config = BitsAndBytesConfig(
-        load_in_4bit=True,
-        bnb_4bit_compute_dtype=torch.float16,
-        bnb_4bit_quant_type="nf4",
-        bnb_4bit_use_double_quant=True,
+        llm_int8_enable_fp32_cpu_offload=True
     )
 
-        model_4bit = AutoModelForCausalLM.from_pretrained(
-            "meta-llama/Meta-Llama-3-8B-Instruct",
+        model = AutoModelForCausalLM.from_pretrained(
+            "google/gemma-2-2b-it",
             device_map="auto",
             quantization_config=quantization_config,
         )
         tokenizer = AutoTokenizer.from_pretrained(
-            "meta-llama/Meta-Llama-3-8B-Instruct"
+            "google/gemma-2-2b-it"
         )
 
-        llama3_8b = CustomLlama3_8B(model=model_4bit, tokenizer=tokenizer)
-        return llama3_8b
+        gemma2_2b = Gemma2_2B(model=model, tokenizer=tokenizer)
+        return gemma2_2b
 
 # Ensure NLTK data is downloaded
 nltk.download('stopwords')
@@ -391,14 +407,14 @@ Provide a comprehensive analysis including:
 
             guidance_gemma_2b = result_gemma_2b.stdout.strip()
 
-            gemma2_2b_score = calculate_bleu_score(context, guidance_gemma_2b)
-            # gemma2_2b_score, gemma2_2b_reason = evaluate_llm(prompt, guidance_gemma_2b)
+            # gemma2_2b_score = calculate_bleu_score(context, guidance_gemma_2b)
+            gemma2_2b_score, gemma2_2b_reason = evaluate_llm(prompt, guidance_gemma_2b)
 
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
 
 
-    return  guidance_gemma_2b, top_job_titles, gemma2_2b_score
+    return  guidance_gemma_2b, top_job_titles, gemma2_2b_score, gemma2_2b_reason
 
 def google_jobs_search(job_title, location):
     load_dotenv()
@@ -499,7 +515,7 @@ def calculate_bleu_score(reference, candidate):
 
 def evaluate_llm(input, output):
     llama3_8b = initialize_evaluator()
-    metric = AnswerRelevancyMetric(model=llama3_8b, threshold=0.7, include_reason=True)
+    metric = AnswerRelevancyMetric(model=llama3_8b, threshold=0.5, include_reason=True)
     test_case = LLMTestCase(
     input=input,
     actual_output=output
@@ -613,7 +629,7 @@ if submit:
         start_time = time.time()
 
         # Generate career guidance using RAG with Mistral
-        guidance_gemma_2b, top_job_titles, score = generate_career_guidance(
+        guidance_gemma_2b, top_job_titles, score, reason = generate_career_guidance(
             skills=user_skills,
             academic_history=academic_history,
         )
@@ -631,6 +647,7 @@ if submit:
         st.write(guidance_gemma_2b)
         st.markdown("---")
         st.write(f"Score:{score} ")
+        st.write(f"Reason:{reason} ")
     
 
         
