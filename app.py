@@ -3,6 +3,7 @@ import spacy
 import pandas as pd
 from typing import List
 import nltk
+from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer
 import subprocess
@@ -20,46 +21,86 @@ from ollama import chat
 from pydantic import BaseModel
 from deepeval.metrics import AnswerRelevancyMetric
 from deepeval import evaluate
+from transformers import BitsAndBytesConfig
 from deepeval.metrics import AnswerRelevancyMetric
 from deepeval.test_case import LLMTestCase
-
+import transformers
+import torch
+from transformers import BitsAndBytesConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from deepeval.models import DeepEvalBaseLLM
+import json
+import transformers
+from pydantic import BaseModel
+from lmformatenforcer import JsonSchemaParser
+from lmformatenforcer.integrations.transformers import (
+    build_transformers_prefix_allowed_tokens_fn,
+)
 # LLM Evaluation Logic 
 
 class Gemma2_2B(DeepEvalBaseLLM):
-    def __init__(
-        self,
-        model,
-        tokenizer
-    ):
+    def __init__(self, model, tokenizer):
+
         self.model = model
         self.tokenizer = tokenizer
 
     def load_model(self):
         return self.model
 
-    def generate(self, prompt: str) -> str:
+    def generate(self, prompt: str, schema: BaseModel) -> BaseModel:
+        # Same as the previous example above
         model = self.load_model()
+        pipeline = transformers.pipeline(
+            "text-generation",
+            model=model,
+            tokenizer=self.tokenizer,
+            use_cache=True,
+            device_map="auto",
+            max_length=2500,
+            do_sample=True,
+            top_k=5,
+            num_return_sequences=1,
+            eos_token_id=self.tokenizer.eos_token_id,
+            pad_token_id=self.tokenizer.eos_token_id,
+        )
 
-        device = "cuda" # the device to load the model onto
+        # Create parser required for JSON confinement using lmformatenforcer
+        parser = JsonSchemaParser(schema.model_json_schema())
+        prefix_function = build_transformers_prefix_allowed_tokens_fn(
+            pipeline.tokenizer, parser
+        )
 
-        model_inputs = self.tokenizer([prompt], return_tensors="pt").to(device)
-        model.to(device)
+        # Output and load valid JSON
+        output_dict = pipeline(prompt, prefix_allowed_tokens_fn=prefix_function)
+        output = output_dict[0]["generated_text"][len(prompt) :]
+        json_result = json.loads(output)
 
-        generated_ids = model.generate(**model_inputs, max_new_tokens=100, do_sample=True)
-        return self.tokenizer.batch_decode(generated_ids)[0]
+        # Return valid JSON object according to the schema DeepEval supplied
+        return schema(**json_result)
 
-    async def a_generate(self, prompt: str) -> str:
-        return self.generate(prompt)
-
+    async def a_generate(self, prompt: str, schema: BaseModel) -> BaseModel:
+        return self.generate(prompt, schema)
+    
     def get_model_name(self):
-        return "Gemma 2 2B"
+        return "Gemma-2 2B"
 
 
 def initialize_evaluator():
-    tokenizer = AutoTokenizer.from_pretrained("google/gemma-2-2b")
-    model = AutoModelForCausalLM.from_pretrained("google/gemma-2-2b")
-    gemma2_2b = Gemma2_2B(model=model, tokenizer=tokenizer)
-    return gemma2_2b
+        quantization_config = BitsAndBytesConfig(
+        llm_int8_enable_fp32_cpu_offload=True
+    )
+
+        model = AutoModelForCausalLM.from_pretrained(
+            "google/gemma-2-2b-it",
+            device_map="auto",
+            quantization_config=quantization_config,
+        )
+        tokenizer = AutoTokenizer.from_pretrained(
+            "google/gemma-2-2b-it"
+        )
+
+        gemma2_2b = Gemma2_2B(model=model, tokenizer=tokenizer)
+        return gemma2_2b
 
 # Ensure NLTK data is downloaded
 nltk.download('stopwords')
@@ -355,43 +396,25 @@ Provide a comprehensive analysis including:
 
     try:
         with st.spinner("Generating personalized career guidance..."):
-            result_mistral = subprocess.run(
-                ["ollama", "run", "mistral", prompt],
-                capture_output=True,
-                text=True,
-                check=True
-            )
+
             result_gemma_2b = subprocess.run(
                 ["ollama", "run", "gemma2:2b", prompt],
                 capture_output=True,
                 text=True,
                 check=True
             )
-            result_gemma_9b = subprocess.run(
-                ["ollama", "run", "gemma2:9b", prompt],
-                capture_output=True,
-                text=True,
-                check=True
-            )
-            result_gpt35 = subprocess.run(
-                ["ollama", "run", "Eomer/gpt-3.5-turbo", prompt],
-                capture_output=True,
-                text=True,
-                check=True
-            )
-
-            guidance_mistral = result_mistral.stdout.strip()
-            guidance_gemma_2b = result_gemma_2b.stdout.strip()
-            guidance_gemma_9b = result_gemma_9b.stdout.strip()
-            guidance_gpt35 = result_gpt35.stdout.strip()
             
+
+            guidance_gemma_2b = result_gemma_2b.stdout.strip()
+
+            # gemma2_2b_score = calculate_bleu_score(context, guidance_gemma_2b)
             gemma2_2b_score, gemma2_2b_reason = evaluate_llm(prompt, guidance_gemma_2b)
 
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
 
 
-    return guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, guidance_gpt35, top_job_titles, gemma2_2b_score, gemma2_2b_reason
+    return  guidance_gemma_2b, top_job_titles, gemma2_2b_score, gemma2_2b_reason
 
 def google_jobs_search(job_title, location):
     load_dotenv()
@@ -478,10 +501,21 @@ def display_resume(resume_data):
     else:
         st.write("No extracurricular activities listed")
 
+def calculate_bleu_score(reference, candidate):
+    reference = [nltk.word_tokenize(reference.lower())]
+    candidate = nltk.word_tokenize(candidate.lower())
+    
+    # Use smoothing to handle brevity
+    smoothing = SmoothingFunction().method1
+    
+    # Calculate BLEU score
+    score = sentence_bleu(reference, candidate, smoothing_function=smoothing)
+    return score
+
 
 def evaluate_llm(input, output):
-    gemma2_2b = initialize_evaluator()
-    metric = AnswerRelevancyMetric(model=gemma2_2b, threshold=0.7, include_reason=True)
+    llama3_8b = initialize_evaluator()
+    metric = AnswerRelevancyMetric(model=llama3_8b, threshold=0.5, include_reason=True)
     test_case = LLMTestCase(
     input=input,
     actual_output=output
@@ -595,7 +629,7 @@ if submit:
         start_time = time.time()
 
         # Generate career guidance using RAG with Mistral
-        guidance_mistral, guidance_gemma_2b, guidance_gemma_9b, guidance_gpt35, top_job_titles, score, reason = generate_career_guidance(
+        guidance_gemma_2b, top_job_titles, score, reason = generate_career_guidance(
             skills=user_skills,
             academic_history=academic_history,
         )
@@ -607,20 +641,14 @@ if submit:
         minutes, seconds = divmod(elapsed_time, 60)
 # Scoring 
 
-        st.subheader("Career Guidance [Mistral]:")
-        st.write(guidance_mistral)
-        st.markdown("---")
-        st.write(f"Score:{score} ")
-        st.write(f"Reason:{reason}")
+
         
         st.subheader("Career Guidance [Gemma 2B]:")
         st.write(guidance_gemma_2b)
-
-        st.subheader("Career Guidance [Gemma 9B]:")
-        st.write(guidance_gemma_9b)
-
-        st.subheader("Career Guidance [GPT 3.5]:")
-        st.write(guidance_gpt35)
+        st.markdown("---")
+        st.write(f"Score:{score} ")
+        st.write(f"Reason:{reason} ")
+    
 
         
         st.write(f"Time taken for generation: {int(minutes)} minutes and {seconds:.2f} seconds")
@@ -631,7 +659,7 @@ if submit:
             st.write(title)
         
         st.title("Job Listings")
-        jobs_data = google_jobs_search(relevant_job_titles[0], location)
+        # jobs_data = google_jobs_search(relevant_job_titles[0], location)
         for job in jobs_data:
             st.subheader(job["Title"])
             st.write(f"**Company:** {job['Company']}")
