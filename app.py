@@ -642,7 +642,7 @@ if submit:
             st.write(title)
         
         st.title("Job Listings")
-        jobs_data = google_jobs_search(relevant_job_titles[0], location)
+        # jobs_data = google_jobs_search(relevant_job_titles[0], location)
         for job in jobs_data:
             st.subheader(job["Title"])
             st.write(f"**Company:** {job['Company']}")
