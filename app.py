@@ -365,6 +365,21 @@ Extract the requested information from the resume text and return only one valid
 
 # Function to generate career guidance using RAG with Mistral
 def generate_career_guidance(skills, academic_history):
+    
+    # Generations and Evaluations 
+    generations = {}
+    evaluations = {}
+    
+    for model in ["gemma2_2b", "gemma2_9b", "mistral"]:
+        if model not in evaluations:
+            evaluations[model] = {
+                "bleu": None,
+                "answer_relevancy": {
+                    "score": None,
+                    "reason": None
+                }
+            }
+            
     skills_text = ', '.join(skills) if skills else "No skills provided"
 
     # Create a comprehensive query based on user profile
@@ -397,24 +412,42 @@ Provide a comprehensive analysis including:
     try:
         with st.spinner("Generating personalized career guidance..."):
 
-            result_gemma_2b = subprocess.run(
+            generations["gemma2_2b"] = subprocess.run(
                 ["ollama", "run", "gemma2:2b", prompt],
                 capture_output=True,
                 text=True,
                 check=True
-            )
+            ).stdout.strip()
+            
+            generations["gemma2_9b"] = subprocess.run(
+                ["ollama", "run", "gemma2:9b", prompt],
+                capture_output=True,
+                text=True,
+                check=True
+            ).stdout.strip()
+            
+            generations["mistral"] = subprocess.run(
+                ["ollama", "run", "mistral", prompt],
+                capture_output=True,
+                text=True,
+                check=True
+            ).stdout.strip()
             
 
-            guidance_gemma_2b = result_gemma_2b.stdout.strip()
 
-            # gemma2_2b_score = calculate_bleu_score(context, guidance_gemma_2b)
-            gemma2_2b_score, gemma2_2b_reason = evaluate_llm(prompt, guidance_gemma_2b)
+            evaluations["gemma2_2b"]["bleu"] = calculate_bleu_score(context, generations["gemma2_2b"])
+            evaluations["gemma2_9b"]["bleu"]  = calculate_bleu_score(context, generations["gemma2_9b"])
+            evaluations["mistral"]["bleu"] = calculate_bleu_score(context, generations["mistral"])
 
+            evaluations["gemma2_2b"]["answer_relevancy"]["score"], evaluations["gemma2_2b"]["answer_relevancy"]["reason"]  = evaluate_llm(prompt, generations["gemma2_2b"])
+            evaluations["gemma2_9b"]["answer_relevancy"]["score"], evaluations["gemma2_9b"]["answer_relevancy"]["reason"]  = evaluate_llm(prompt, generations["gemma2_9b"])
+            evaluations["mistral"]["answer_relevancy"]["score"], evaluations["mistral"]["answer_relevancy"]["reason"]  = evaluate_llm(prompt, generations["mistral"])
+            
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
 
 
-    return  guidance_gemma_2b, top_job_titles, gemma2_2b_score, gemma2_2b_reason
+    return  generations, evaluations, top_job_titles 
 
 def google_jobs_search(job_title, location):
     load_dotenv()
@@ -514,8 +547,8 @@ def calculate_bleu_score(reference, candidate):
 
 
 def evaluate_llm(input, output):
-    llama3_8b = initialize_evaluator()
-    metric = AnswerRelevancyMetric(model=llama3_8b, threshold=0.5, include_reason=True)
+    gemma2_2b = initialize_evaluator()
+    metric = AnswerRelevancyMetric(model=gemma2_2b, threshold=0.5, include_reason=True)
     test_case = LLMTestCase(
     input=input,
     actual_output=output
@@ -629,7 +662,7 @@ if submit:
         start_time = time.time()
 
         # Generate career guidance using RAG with Mistral
-        guidance_gemma_2b, top_job_titles, score, reason = generate_career_guidance(
+        generations, evaluations, top_job_titles = generate_career_guidance(
             skills=user_skills,
             academic_history=academic_history,
         )
@@ -644,10 +677,24 @@ if submit:
 
         
         st.subheader("Career Guidance [Gemma 2B]:")
-        st.write(guidance_gemma_2b)
+        st.write(generations["gemma2_2b"])
         st.markdown("---")
-        st.write(f"Score:{score} ")
-        st.write(f"Reason:{reason} ")
+        st.write(f"Score:{evaluations['gemma2_2b']['answer_relevancy']['score']} ")
+        st.write(f"Reason:{evaluations['gemma2_2b']['answer_relevancy']['reason']} ")
+    
+        
+        st.subheader("Career Guidance [Gemma 9B]:")
+        st.write(generations["gemma2_9b"])
+        st.markdown("---")
+        st.write(f"Score:{evaluations['gemma2_9b']['answer_relevancy']['score']} ")
+        st.write(f"Reason:{evaluations['gemma2_9b']['answer_relevancy']['reason']} ")
+    
+        
+        st.subheader("Career Guidance [Mistral]:")
+        st.write(generations["mistral"])
+        st.markdown("---")
+        st.write(f"Score:{evaluations['mistral']['answer_relevancy']['score']} ")
+        st.write(f"Reason:{evaluations['mistral']['answer_relevancy']['reason']} ")
     
 
         
