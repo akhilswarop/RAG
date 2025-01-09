@@ -21,13 +21,11 @@ from ollama import chat
 from pydantic import BaseModel
 from deepeval.metrics import AnswerRelevancyMetric
 from deepeval import evaluate
-from transformers import BitsAndBytesConfig
 from deepeval.metrics import AnswerRelevancyMetric
 from deepeval.test_case import LLMTestCase
 import transformers
 import torch
-from transformers import BitsAndBytesConfig
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, QuantoConfig, BitsAndBytesConfig
 from deepeval.models import DeepEvalBaseLLM
 import json
 import transformers
@@ -86,21 +84,24 @@ class Gemma2_2B(DeepEvalBaseLLM):
 
 
 def initialize_evaluator():
-        quantization_config = BitsAndBytesConfig(
-        llm_int8_enable_fp32_cpu_offload=True
+    # Configure bitsandbytes quantization
+    quantization_config = QuantoConfig(weights="int8")
+
+    model = AutoModelForCausalLM.from_pretrained(
+        "google/gemma-2-2b-it",
+        device_map="cuda",            # automatically distribute layers across GPUs / CPU
+        quantization_config=quantization_config,
+        torch_dtype=torch.float16,     # float16 for weights outside the 4-bit layers
+        trust_remote_code=True,        # required if the Gemma-2 code is custom
     )
 
-        model = AutoModelForCausalLM.from_pretrained(
-            "google/gemma-2-2b-it",
-            device_map="auto",
-            quantization_config=quantization_config,
-        )
-        tokenizer = AutoTokenizer.from_pretrained(
-            "google/gemma-2-2b-it"
-        )
+    tokenizer = AutoTokenizer.from_pretrained(
+        "google/gemma-2-2b-it",
+        trust_remote_code=True,
+    )
 
-        gemma2_2b = Gemma2_2B(model=model, tokenizer=tokenizer)
-        return gemma2_2b
+    gemma2_2b = Gemma2_2B(model=model, tokenizer=tokenizer)
+    return gemma2_2b
 
 # Ensure NLTK data is downloaded
 nltk.download('stopwords')
