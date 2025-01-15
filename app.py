@@ -19,13 +19,11 @@ from serpapi import GoogleSearch
 from dotenv import load_dotenv
 from ollama import chat
 from pydantic import BaseModel
-from deepeval.metrics import AnswerRelevancyMetric
-from deepeval import evaluate
-from deepeval.metrics import AnswerRelevancyMetric
+from deepeval.metrics import AnswerRelevancyMetric, FaithfulnessMetric
 from deepeval.test_case import LLMTestCase
 import transformers
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, QuantoConfig, BitsAndBytesConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer, QuantoConfig
 from deepeval.models import DeepEvalBaseLLM
 import json
 import transformers
@@ -54,7 +52,7 @@ class Gemma2_2B(DeepEvalBaseLLM):
             tokenizer=self.tokenizer,
             use_cache=True,
             device_map="auto",
-            max_length=2500,
+            max_length=5000,
             do_sample=True,
             top_k=5,
             num_return_sequences=1,
@@ -378,6 +376,10 @@ def generate_career_guidance(skills, academic_history):
                 "answer_relevancy": {
                     "score": None,
                     "reason": None
+                }, 
+                "faithfulness": {
+                    "score": None,
+                    "reason": None
                 }
             }
             
@@ -440,15 +442,15 @@ Provide a comprehensive analysis including:
             evaluations["gemma2_9b"]["bleu"]  = calculate_bleu_score(context, generations["gemma2_9b"])
             evaluations["mistral"]["bleu"] = calculate_bleu_score(context, generations["mistral"])
 
-            evaluations["gemma2_2b"]["answer_relevancy"]["score"], evaluations["gemma2_2b"]["answer_relevancy"]["reason"]  = evaluate_llm(prompt, generations["gemma2_2b"])
-            evaluations["gemma2_9b"]["answer_relevancy"]["score"], evaluations["gemma2_9b"]["answer_relevancy"]["reason"]  = evaluate_llm(prompt, generations["gemma2_9b"])
-            evaluations["mistral"]["answer_relevancy"]["score"], evaluations["mistral"]["answer_relevancy"]["reason"]  = evaluate_llm(prompt, generations["mistral"])
+            evaluations["gemma2_2b"]["answer_relevancy"]["score"], evaluations["gemma2_2b"]["answer_relevancy"]["reason"], evaluations["gemma2_2b"]["faithfulness"]["score"], evaluations["gemma2_2b"]["faithfulness"]["reason"],   = evaluate_llm(prompt, context, generations["gemma2_2b"])
+            evaluations["gemma2_9b"]["answer_relevancy"]["score"], evaluations["gemma2_9b"]["answer_relevancy"]["reason"], evaluations["gemma2_2b"]["faithfulness"]["score"], evaluations["gemma2_2b"]["faithfulness"]["reason"],   = evaluate_llm(prompt, context, generations["gemma2_9b"])
+            evaluations["mistral"]["answer_relevancy"]["score"], evaluations["mistral"]["answer_relevancy"]["reason"], evaluations["gemma2_2b"]["faithfulness"]["score"], evaluations["gemma2_2b"]["faithfulness"]["reason"],   = evaluate_llm(prompt, context, generations["mistral"])
             
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
 
 
-    return  generations, evaluations, top_job_titles 
+    return  generations, evaluations
 
 def google_jobs_search(job_title, location):
     load_dotenv()
@@ -547,15 +549,28 @@ def calculate_bleu_score(reference, candidate):
     return score
 
 
-def evaluate_llm(input, output):
+def evaluate_llm(input, context, output):
     gemma2_2b = initialize_evaluator()
-    metric = AnswerRelevancyMetric(model=gemma2_2b, threshold=0.5, include_reason=True)
-    test_case = LLMTestCase(
+    answer_relevancy_metric = AnswerRelevancyMetric(model=gemma2_2b, threshold=0.5, include_reason=True)
+    answer_relevancy_test_case = LLMTestCase(
     input=input,
     actual_output=output
 )
-    metric.measure(test_case)
-    return metric.score, metric.reason
+    faithfulness_test_case = LLMTestCase(
+    input=input,
+    actual_output=output,
+    retrieval_context=list(context)
+)
+    faithfulness_metric = FaithfulnessMetric(
+    threshold=0.7,
+    model=gemma2_2b,
+    include_reason=True
+)
+    
+    answer_relevancy_metric.measure(answer_relevancy_test_case)
+    faithfulness_metric.measure(faithfulness_test_case)
+    
+    return answer_relevancy_metric.score, answer_relevancy_metric.reason, faithfulness_metric.score, faithfulness_metric.reason
 
 
     
@@ -680,8 +695,24 @@ if submit:
         st.subheader("Career Guidance [Gemma 2B]:")
         st.write(generations["gemma2_2b"])
         st.markdown("---")
-        st.write(f"Score:{evaluations['gemma2_2b']['answer_relevancy']['score']} ")
-        st.write(f"Reason:{evaluations['gemma2_2b']['answer_relevancy']['reason']} ")
+        
+        data = {
+            "Metric": ["Answer Relevancy", "Faithfulness"],
+            "Score": [
+                evaluations['gemma2_2b']['answer_relevancy']['score'],
+                evaluations['gemma2_2b']['faithfulness']['score']
+            ],
+            "Reason": [
+                evaluations['gemma2_2b']['answer_relevancy']['reason'],
+                evaluations['gemma2_2b']['faithfulness']['reason']
+            ]
+        }
+
+        df = pd.DataFrame(data)
+
+        # Display the table
+        st.markdown("---")
+        st.table(df)
     
         
         st.subheader("Career Guidance [Gemma 9B]:")
