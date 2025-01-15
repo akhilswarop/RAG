@@ -450,7 +450,7 @@ Provide a comprehensive analysis including:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
 
 
-    return  generations, evaluations
+    return  generations, evaluations, top_job_titles
 
 def google_jobs_search(job_title, location):
     load_dotenv()
