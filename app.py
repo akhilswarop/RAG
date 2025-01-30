@@ -443,8 +443,8 @@ Provide a comprehensive analysis including:
             evaluations["mistral"]["bleu"] = calculate_bleu_score(context, generations["mistral"])
 
             evaluations["gemma2_2b"]["answer_relevancy"]["score"], evaluations["gemma2_2b"]["answer_relevancy"]["reason"], evaluations["gemma2_2b"]["faithfulness"]["score"], evaluations["gemma2_2b"]["faithfulness"]["reason"],   = evaluate_llm(prompt, context, generations["gemma2_2b"])
-            evaluations["gemma2_9b"]["answer_relevancy"]["score"], evaluations["gemma2_9b"]["answer_relevancy"]["reason"], evaluations["gemma2_2b"]["faithfulness"]["score"], evaluations["gemma2_2b"]["faithfulness"]["reason"],   = evaluate_llm(prompt, context, generations["gemma2_9b"])
-            evaluations["mistral"]["answer_relevancy"]["score"], evaluations["mistral"]["answer_relevancy"]["reason"], evaluations["gemma2_2b"]["faithfulness"]["score"], evaluations["gemma2_2b"]["faithfulness"]["reason"],   = evaluate_llm(prompt, context, generations["mistral"])
+            evaluations["gemma2_9b"]["answer_relevancy"]["score"], evaluations["gemma2_9b"]["answer_relevancy"]["reason"], evaluations["gemma2_9b"]["faithfulness"]["score"], evaluations["gemma2_9b"]["faithfulness"]["reason"],   = evaluate_llm(prompt, context, generations["gemma2_9b"])
+            evaluations["mistral"]["answer_relevancy"]["score"], evaluations["mistral"]["answer_relevancy"]["reason"], evaluations["mistral"]["faithfulness"]["score"], evaluations["mistral"]["faithfulness"]["reason"],   = evaluate_llm(prompt, context, generations["mistral"])
             
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
@@ -718,15 +718,45 @@ if submit:
         st.subheader("Career Guidance [Gemma 9B]:")
         st.write(generations["gemma2_9b"])
         st.markdown("---")
-        st.write(f"Score:{evaluations['gemma2_9b']['answer_relevancy']['score']} ")
-        st.write(f"Reason:{evaluations['gemma2_9b']['answer_relevancy']['reason']} ")
+        data = {
+            "Metric": ["Answer Relevancy", "Faithfulness"],
+            "Score": [
+                evaluations['gemma2_9b']['answer_relevancy']['score'],
+                evaluations['gemma2_9b']['faithfulness']['score']
+            ],
+            "Reason": [
+                evaluations['gemma2_9b']['answer_relevancy']['reason'],
+                evaluations['gemma2_9b']['faithfulness']['reason']
+            ]
+        }
+
+        df = pd.DataFrame(data)
+
+        # Display the table
+        st.markdown("---")
+        st.table(df)
     
         
         st.subheader("Career Guidance [Mistral]:")
         st.write(generations["mistral"])
         st.markdown("---")
-        st.write(f"Score:{evaluations['mistral']['answer_relevancy']['score']} ")
-        st.write(f"Reason:{evaluations['mistral']['answer_relevancy']['reason']} ")
+        data = {
+            "Metric": ["Answer Relevancy", "Faithfulness"],
+            "Score": [
+                evaluations['mistral']['answer_relevancy']['score'],
+                evaluations['mistral']['faithfulness']['score']
+            ],
+            "Reason": [
+                evaluations['mistral']['answer_relevancy']['reason'],
+                evaluations['mistral']['faithfulness']['reason']
+            ]
+        }
+
+        df = pd.DataFrame(data)
+
+        # Display the table
+        st.markdown("---")
+        st.table(df)
     
 
         
