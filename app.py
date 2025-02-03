@@ -19,8 +19,8 @@ from serpapi import GoogleSearch
 from dotenv import load_dotenv
 from ollama import chat
 from pydantic import BaseModel
-from deepeval.metrics import AnswerRelevancyMetric, FaithfulnessMetric
-from deepeval.test_case import LLMTestCase
+from deepeval.metrics import AnswerRelevancyMetric, FaithfulnessMetric, JsonCorrectnessMetric, HallucinationMetric
+from deepeval.test_case import LLMTestCase, LLMTestCaseParams
 import transformers
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, QuantoConfig
@@ -52,7 +52,8 @@ class Gemma2_2B(DeepEvalBaseLLM):
             tokenizer=self.tokenizer,
             use_cache=True,
             device_map="auto",
-            max_length=5000,
+            max_length=10000,
+            truncation = True,
             do_sample=True,
             top_k=5,
             num_return_sequences=1,
@@ -346,7 +347,23 @@ Extract the requested information from the resume text and return only one valid
                     format=Resume.model_json_schema(),
                     )
             result = Resume.model_validate_json(response.message.content)
+            gemma2_2b = initialize_evaluator()
+            metric = JsonCorrectnessMetric(
+                expected_schema=Resume,
+                model=gemma2_2b,
+                include_reason=True
+            )
+            test_case = LLMTestCase(
+                input = "prompt",
+                actual_output = result
+            )
+
+            metric.measure(test_case)
             st.write(result)
+            st.markdown("---")
+            st.write(f"JSON Correctness Score: {metric.score}")
+            st.write(f"Reason: {metric.reason}")
+            st.markdown("---")
         except subprocess.CalledProcessError as e:
             print("Error running ollama:", e.stderr)
             return None
@@ -380,7 +397,13 @@ def generate_career_guidance(skills, academic_history):
                 "faithfulness": {
                     "score": None,
                     "reason": None
+                },
+                
+                "hallucination": {
+                    "score": None,
+                    "reason": None
                 }
+                
             }
             
     skills_text = ', '.join(skills) if skills else "No skills provided"
@@ -442,9 +465,36 @@ Provide a comprehensive analysis including:
             evaluations["gemma2_9b"]["bleu"]  = calculate_bleu_score(context, generations["gemma2_9b"])
             evaluations["mistral"]["bleu"] = calculate_bleu_score(context, generations["mistral"])
 
-            evaluations["gemma2_2b"]["answer_relevancy"]["score"], evaluations["gemma2_2b"]["answer_relevancy"]["reason"], evaluations["gemma2_2b"]["faithfulness"]["score"], evaluations["gemma2_2b"]["faithfulness"]["reason"],   = evaluate_llm(prompt, context, generations["gemma2_2b"])
-            evaluations["gemma2_9b"]["answer_relevancy"]["score"], evaluations["gemma2_9b"]["answer_relevancy"]["reason"], evaluations["gemma2_9b"]["faithfulness"]["score"], evaluations["gemma2_9b"]["faithfulness"]["reason"],   = evaluate_llm(prompt, context, generations["gemma2_9b"])
-            evaluations["mistral"]["answer_relevancy"]["score"], evaluations["mistral"]["answer_relevancy"]["reason"], evaluations["mistral"]["faithfulness"]["score"], evaluations["mistral"]["faithfulness"]["reason"],   = evaluate_llm(prompt, context, generations["mistral"])
+            # Evaluate the outputs for the gemma2_2b model
+            (
+                evaluations["gemma2_2b"]["answer_relevancy"]["score"],
+                evaluations["gemma2_2b"]["answer_relevancy"]["reason"],
+                evaluations["gemma2_2b"]["faithfulness"]["score"],
+                evaluations["gemma2_2b"]["faithfulness"]["reason"],
+                evaluations["gemma2_2b"]["hallucination"]["score"],
+                evaluations["gemma2_2b"]["hallucination"]["reason"]
+            ) = evaluate_llm(prompt, context, generations["gemma2_2b"])
+
+            # Evaluate the outputs for the gemma2_9b model
+            (
+                evaluations["gemma2_9b"]["answer_relevancy"]["score"],
+                evaluations["gemma2_9b"]["answer_relevancy"]["reason"],
+                evaluations["gemma2_9b"]["faithfulness"]["score"],
+                evaluations["gemma2_9b"]["faithfulness"]["reason"],
+                evaluations["gemma2_9b"]["hallucination"]["score"],
+                evaluations["gemma2_9b"]["hallucination"]["reason"]
+            ) = evaluate_llm(prompt, context, generations["gemma2_9b"])
+
+            # Evaluate the outputs for the mistral model
+            (
+                evaluations["mistral"]["answer_relevancy"]["score"],
+                evaluations["mistral"]["answer_relevancy"]["reason"],
+                evaluations["mistral"]["faithfulness"]["score"],
+                evaluations["mistral"]["faithfulness"]["reason"],
+                evaluations["mistral"]["hallucination"]["score"],
+                evaluations["mistral"]["hallucination"]["reason"]
+            ) = evaluate_llm(prompt, context, generations["mistral"])
+
             
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
@@ -551,7 +601,9 @@ def calculate_bleu_score(reference, candidate):
 
 def evaluate_llm(input, context, output):
     gemma2_2b = initialize_evaluator()
-    answer_relevancy_metric = AnswerRelevancyMetric(model=gemma2_2b, threshold=0.5, include_reason=True)
+    
+    # Test Cases
+    
     answer_relevancy_test_case = LLMTestCase(
     input=input,
     actual_output=output
@@ -561,16 +613,29 @@ def evaluate_llm(input, context, output):
     actual_output=output,
     retrieval_context=list(context)
 )
-    faithfulness_metric = FaithfulnessMetric(
-    threshold=0.7,
-    model=gemma2_2b,
-    include_reason=True
+    hallucination_test_case = LLMTestCase(
+    input=input,
+    actual_output=output,
+    context=list(context)
 )
+
+    
+    
+    # Metrics
+    
+    answer_relevancy_metric = AnswerRelevancyMetric(model=gemma2_2b, threshold=0.5, include_reason=True)
+
+    faithfulness_metric = FaithfulnessMetric(threshold=0.7, model=gemma2_2b, include_reason=True)
+    
+    hallucination_metric = HallucinationMetric(threshold= 0.7, model=gemma2_2b, include_reason= True)
+    
+ 
     
     answer_relevancy_metric.measure(answer_relevancy_test_case)
     faithfulness_metric.measure(faithfulness_test_case)
+    hallucination_metric.measure(hallucination_test_case)
     
-    return answer_relevancy_metric.score, answer_relevancy_metric.reason, faithfulness_metric.score, faithfulness_metric.reason
+    return answer_relevancy_metric.score, answer_relevancy_metric.reason, faithfulness_metric.score, faithfulness_metric.reason, hallucination_metric.score, hallucination_metric.reason
 
 
     
@@ -697,16 +762,18 @@ if submit:
         st.markdown("---")
         
         data = {
-            "Metric": ["Answer Relevancy", "Faithfulness"],
-            "Score": [
-                evaluations['gemma2_2b']['answer_relevancy']['score'],
-                evaluations['gemma2_2b']['faithfulness']['score']
-            ],
-            "Reason": [
-                evaluations['gemma2_2b']['answer_relevancy']['reason'],
-                evaluations['gemma2_2b']['faithfulness']['reason']
-            ]
-        }
+                "Metric": ["Answer Relevancy", "Faithfulness", "Hallucination"],
+                "Score": [
+                    evaluations["gemma2_2b"]["answer_relevancy"]["score"],
+                    evaluations["gemma2_2b"]["faithfulness"]["score"],
+                    evaluations["gemma2_2b"]["hallucination"]["score"]
+                ],
+                "Reason": [
+                    evaluations["gemma2_2b"]["answer_relevancy"]["reason"],
+                    evaluations["gemma2_2b"]["faithfulness"]["reason"],
+                    evaluations["gemma2_2b"]["hallucination"]["reason"]
+                ]
+                }
 
         df = pd.DataFrame(data)
 
@@ -719,16 +786,18 @@ if submit:
         st.write(generations["gemma2_9b"])
         st.markdown("---")
         data = {
-            "Metric": ["Answer Relevancy", "Faithfulness"],
-            "Score": [
-                evaluations['gemma2_9b']['answer_relevancy']['score'],
-                evaluations['gemma2_9b']['faithfulness']['score']
-            ],
-            "Reason": [
-                evaluations['gemma2_9b']['answer_relevancy']['reason'],
-                evaluations['gemma2_9b']['faithfulness']['reason']
-            ]
-        }
+                    "Metric": ["Answer Relevancy", "Faithfulness", "Hallucination"],
+                    "Score": [
+                        evaluations["gemma2_9b"]["answer_relevancy"]["score"],
+                        evaluations["gemma2_9b"]["faithfulness"]["score"],
+                        evaluations["gemma2_9b"]["hallucination"]["score"]
+                    ],
+                    "Reason": [
+                        evaluations["gemma2_9b"]["answer_relevancy"]["reason"],
+                        evaluations["gemma2_9b"]["faithfulness"]["reason"],
+                        evaluations["gemma2_9b"]["hallucination"]["reason"]
+                    ]
+                }
 
         df = pd.DataFrame(data)
 
@@ -741,16 +810,18 @@ if submit:
         st.write(generations["mistral"])
         st.markdown("---")
         data = {
-            "Metric": ["Answer Relevancy", "Faithfulness"],
-            "Score": [
-                evaluations['mistral']['answer_relevancy']['score'],
-                evaluations['mistral']['faithfulness']['score']
-            ],
-            "Reason": [
-                evaluations['mistral']['answer_relevancy']['reason'],
-                evaluations['mistral']['faithfulness']['reason']
-            ]
-        }
+                "Metric": ["Answer Relevancy", "Faithfulness", "Hallucination"],
+                "Score": [
+                    evaluations["mistral"]["answer_relevancy"]["score"],
+                    evaluations["mistral"]["faithfulness"]["score"],
+                    evaluations["mistral"]["hallucination"]["score"]
+                ],
+                "Reason": [
+                    evaluations["mistral"]["answer_relevancy"]["reason"],
+                    evaluations["mistral"]["faithfulness"]["reason"],
+                    evaluations["mistral"]["hallucination"]["reason"]
+                ]
+                }
 
         df = pd.DataFrame(data)
 
