@@ -53,7 +53,6 @@ class Gemma2_2B(DeepEvalBaseLLM):
             use_cache=True,
             device_map="auto",
             max_length=10000,
-            truncation = True,
             do_sample=True,
             top_k=5,
             num_return_sequences=1,
