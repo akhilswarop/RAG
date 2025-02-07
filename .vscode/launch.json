@@ -5,7 +5,7 @@
             "name": "Streamlit Debug",
             "type": "debugpy",
             "request": "launch",
-            "program": "C:\\Users\\swaro\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\streamlit",
+            "program": "C:\\Users\\hidesh\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\streamlit",
             "console": "integratedTerminal",
             "args": [
                 "run",
