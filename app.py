@@ -26,6 +26,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, QuantoConfig
 from deepeval.models import DeepEvalBaseLLM
 import json
+import winsound
 import transformers
 from pydantic import BaseModel
 from lmformatenforcer import JsonSchemaParser
@@ -629,15 +630,22 @@ def evaluate_llm(input, context, output):
     hallucination_metric = HallucinationMetric(threshold= 0.7, model=gemma2_2b, include_reason= True)
     
  
-    
+    hallucination_metric.measure(hallucination_test_case)
     answer_relevancy_metric.measure(answer_relevancy_test_case)
     faithfulness_metric.measure(faithfulness_test_case)
-    hallucination_metric.measure(hallucination_test_case)
+    
     
     return answer_relevancy_metric.score, answer_relevancy_metric.reason, faithfulness_metric.score, faithfulness_metric.reason, hallucination_metric.score, hallucination_metric.reason
 
+def play_beeps():
+    # Play a simple beep sound
+    frequency = 2500  # Set frequency to 2500 Hertz
+    duration = 1000  # Set duration to 1000 milliseconds (1 second)
 
-    
+    while True:
+        winsound.Beep(frequency, duration)
+        
+           
 # Main application logic
 
 # File Upload and Automatic Resume Processing
@@ -828,7 +836,8 @@ if submit:
         st.markdown("---")
         st.table(df)
     
-
+        # Play beeps
+        play_beeps()
         
         st.write(f"Time taken for generation: {int(minutes)} minutes and {seconds:.2f} seconds")
 
