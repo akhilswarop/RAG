@@ -30,6 +30,10 @@ import winsound
 import transformers
 from pydantic import BaseModel
 from lmformatenforcer import JsonSchemaParser
+from rouge_score import rouge_scorer
+from bert_score import score
+
+
 from lmformatenforcer.integrations.transformers import (
     build_transformers_prefix_allowed_tokens_fn,
 )
@@ -347,23 +351,6 @@ Extract the requested information from the resume text and return only one valid
                     format=Resume.model_json_schema(),
                     )
             result = Resume.model_validate_json(response.message.content)
-            gemma2_2b = initialize_evaluator()
-            metric = JsonCorrectnessMetric(
-                expected_schema=Resume,
-                model=gemma2_2b,
-                include_reason=True
-            )
-            test_case = LLMTestCase(
-                input = "prompt",
-                actual_output = result
-            )
-
-            metric.measure(test_case)
-            st.write(result)
-            st.markdown("---")
-            st.write(f"JSON Correctness Score: {metric.score}")
-            st.write(f"Reason: {metric.reason}")
-            st.markdown("---")
         except subprocess.CalledProcessError as e:
             print("Error running ollama:", e.stderr)
             return None
@@ -390,6 +377,8 @@ def generate_career_guidance(skills, academic_history):
         if model not in evaluations:
             evaluations[model] = {
                 "bleu": None,
+                "rouge": None, 
+                "bert": None,
                 "answer_relevancy": {
                     "score": None,
                     "reason": None
@@ -402,7 +391,8 @@ def generate_career_guidance(skills, academic_history):
                 "hallucination": {
                     "score": None,
                     "reason": None
-                }
+                }, 
+                
                 
             }
             
@@ -459,12 +449,32 @@ Provide a comprehensive analysis including:
                 check=True
             ).stdout.strip()
             
+            generations["deepseek-r1:14b"] = subprocess.run(
+                ["ollama", "run", "mistral", prompt],
+                capture_output=True,
+                text=True,
+                check=True
+            ).stdout.strip()
+            
 
 
-            evaluations["gemma2_2b"]["bleu"] = calculate_bleu_score(context, generations["gemma2_2b"])
-            evaluations["gemma2_9b"]["bleu"]  = calculate_bleu_score(context, generations["gemma2_9b"])
-            evaluations["mistral"]["bleu"] = calculate_bleu_score(context, generations["mistral"])
+            evaluations["gemma2_2b"]["bleu"] = calculate_bleu_score(generations["deepseek-r1:14b"], generations["gemma2_2b"])
+            evaluations["gemma2_9b"]["bleu"]  = calculate_bleu_score(generations["deepseek-r1:14b"], generations["gemma2_9b"])
+            evaluations["mistral"]["bleu"] = calculate_bleu_score(generations["deepseek-r1:14b"], generations["mistral"])
+            
+            evaluations["gemma2_2b"]["rouge"] = calculate_rouge_score(generations["deepseek-r1:14b"], generations["gemma2_2b"])
+            evaluations["gemma2_9b"]["rouge"] = calculate_rouge_score(generations["deepseek-r1:14b"], generations["gemma2_9b"])
+            evaluations["mistral"]["rouge"] = calculate_rouge_score(generations["deepseek-r1:14b"], generations["mistral"])
 
+            evaluations["gemma2_2b"]["bert"] = calculate_bertscore(generations["deepseek-r1:14b"], generations["gemma2_2b"])
+            evaluations["gemma2_9b"]["bert"] = calculate_bertscore(generations["deepseek-r1:14b"], generations["gemma2_9b"])
+            evaluations["mistral"]["bert"] = calculate_bertscore(generations["deepseek-r1:14b"], generations["mistral"])
+            
+
+            print(evaluations["gemma2_2b"]["bleu"])
+            print(evaluations["gemma2_2b"]["rouge"])
+            print(evaluations["gemma2_2b"]["bert"])
+            
             # Evaluate the outputs for the gemma2_2b model
             (
                 evaluations["gemma2_2b"]["answer_relevancy"]["score"],
@@ -532,60 +542,6 @@ def google_jobs_search(job_title, location):
     return jobs_data
 
 
-def display_resume(resume_data):
-    st.title("Resume Details")
-
-    # Display personal information
-    st.header("Personal Information")
-    st.write(f"**Name:** {resume_data.name if resume_data.name else 'Not specified'}")
-    st.write(f"**Email:** {resume_data.email if resume_data.email else 'Not specified'}")
-    st.write(f"**Phone:** {resume_data.phone if resume_data.phone else 'Not specified'}")
-    st.write(f"**Location:** {resume_data.location if resume_data.location else 'Not specified'}")
-    st.write(f"**LinkedIn:** {resume_data.linkedin if resume_data.linkedin else 'Not specified'}")
-
-    # Display skills
-    st.header("Skills")
-    if resume_data.skills:
-        st.write(", ".join(resume_data.skills))
-    else:
-        st.write("No skills specified")
-
-    # Display experience
-    st.header("Experience")
-    if resume_data.experience:
-        for exp in resume_data.experience:
-            st.subheader(exp.role)
-            st.write(f"**Company:** {exp.company}")
-            st.write(f"**Description:** {exp.description}")
-    else:
-        st.write("No experience listed")
-
-    # Display projects
-    st.header("Projects")
-    if resume_data.projects:
-        for proj in resume_data.projects:
-            st.subheader(proj.title)
-            st.write(f"**Description:** {proj.description}")
-    else:
-        st.write("No projects listed")
-
-    # Display education
-    st.header("Education")
-    if resume_data.education:
-        for edu in resume_data.education:
-            st.subheader(edu.degree)
-            st.write(f"**Institution:** {edu.institution}")
-    else:
-        st.write("No education details available")
-
-    # Display extracurricular activities
-    st.header("Extracurricular Activities")
-    if resume_data.extracurricular_activities:
-        for activity in resume_data.extracurricular_activities:
-            st.subheader(activity.activity)
-            st.write(f"**Description:** {activity.description}")
-    else:
-        st.write("No extracurricular activities listed")
 
 def calculate_bleu_score(reference, candidate):
     reference = [nltk.word_tokenize(reference.lower())]
@@ -597,6 +553,15 @@ def calculate_bleu_score(reference, candidate):
     # Calculate BLEU score
     score = sentence_bleu(reference, candidate, smoothing_function=smoothing)
     return score
+
+def calculate_rouge_score(reference, candidate):
+    scorer = rouge_scorer.RougeScorer(["rougeL"], use_stemmer=True)
+    scores = scorer.score(reference, candidate)
+    return scores["rougeL"].fmeasure
+
+def calculate_bertscore(reference, candidate):
+    P, R, F1 = score([candidate], [reference], lang="en")
+    return F1.item()
 
 
 def evaluate_llm(input, context, output):
@@ -688,9 +653,6 @@ if uploaded_file:
         # Extract resume data
         resume_data = parse_resume_with_ollama(uploaded_file.name)
 
-        # DEBUG LINE: Print the resume data. DELETE IF PRODUCTION. 
-        display_resume(resume_data)
-
         if resume_data:
             st.session_state.resume_data = resume_data
             st.session_state.resume_file = uploaded_file.name  
@@ -769,18 +731,25 @@ if submit:
         st.markdown("---")
         
         data = {
-                "Metric": ["Answer Relevancy", "Faithfulness", "Hallucination"],
+                "Metric": ["Answer Relevancy", "Faithfulness", "Hallucination", "BLEU", "ROUGE", "BERT"],
                 "Score": [
                     evaluations["gemma2_2b"]["answer_relevancy"]["score"],
                     evaluations["gemma2_2b"]["faithfulness"]["score"],
-                    evaluations["gemma2_2b"]["hallucination"]["score"]
+                    evaluations["gemma2_2b"]["hallucination"]["score"],
+                    evaluations["gemma2_2b"]["bleu"],   # BLEU has a score
+                    evaluations["gemma2_2b"]["rouge"],  # ROUGE has a score
+                    evaluations["gemma2_2b"]["bert"]    # BERT has a score
                 ],
                 "Reason": [
                     evaluations["gemma2_2b"]["answer_relevancy"]["reason"],
                     evaluations["gemma2_2b"]["faithfulness"]["reason"],
-                    evaluations["gemma2_2b"]["hallucination"]["reason"]
+                    evaluations["gemma2_2b"]["hallucination"]["reason"],
+                    None,  # BLEU does not have a reason field
+                    None,  # ROUGE does not have a reason field
+                    None   # BERT does not have a reason field
                 ]
-                }
+            }
+
 
         df = pd.DataFrame(data)
 
@@ -793,18 +762,24 @@ if submit:
         st.write(generations["gemma2_9b"])
         st.markdown("---")
         data = {
-                    "Metric": ["Answer Relevancy", "Faithfulness", "Hallucination"],
-                    "Score": [
-                        evaluations["gemma2_9b"]["answer_relevancy"]["score"],
-                        evaluations["gemma2_9b"]["faithfulness"]["score"],
-                        evaluations["gemma2_9b"]["hallucination"]["score"]
-                    ],
-                    "Reason": [
-                        evaluations["gemma2_9b"]["answer_relevancy"]["reason"],
-                        evaluations["gemma2_9b"]["faithfulness"]["reason"],
-                        evaluations["gemma2_9b"]["hallucination"]["reason"]
-                    ]
-                }
+                "Metric": ["Answer Relevancy", "Faithfulness", "Hallucination", "BLEU", "ROUGE", "BERT"],
+                "Score": [
+                    evaluations["gemma2_9b"]["answer_relevancy"]["score"],
+                    evaluations["gemma2_9b"]["faithfulness"]["score"],
+                    evaluations["gemma2_9b"]["hallucination"]["score"],
+                    evaluations["gemma2_9b"]["bleu"],   # BLEU has a score
+                    evaluations["gemma2_9b"]["rouge"],  # ROUGE has a score
+                    evaluations["gemma2_9b"]["bert"]    # BERT has a score
+                ],
+                "Reason": [
+                    evaluations["gemma2_9b"]["answer_relevancy"]["reason"],
+                    evaluations["gemma2_9b"]["faithfulness"]["reason"],
+                    evaluations["gemma2_9b"]["hallucination"]["reason"],
+                    None,  # BLEU does not have a reason field
+                    None,  # ROUGE does not have a reason field
+                    None   # BERT does not have a reason field
+                ]
+            }
 
         df = pd.DataFrame(data)
 
@@ -817,18 +792,24 @@ if submit:
         st.write(generations["mistral"])
         st.markdown("---")
         data = {
-                "Metric": ["Answer Relevancy", "Faithfulness", "Hallucination"],
+                "Metric": ["Answer Relevancy", "Faithfulness", "Hallucination", "BLEU", "ROUGE", "BERT"],
                 "Score": [
                     evaluations["mistral"]["answer_relevancy"]["score"],
                     evaluations["mistral"]["faithfulness"]["score"],
-                    evaluations["mistral"]["hallucination"]["score"]
+                    evaluations["mistral"]["hallucination"]["score"],
+                    evaluations["mistral"]["bleu"],   # BLEU has a score
+                    evaluations["mistral"]["rouge"],  # ROUGE has a score
+                    evaluations["mistral"]["bert"]    # BERT has a score
                 ],
                 "Reason": [
                     evaluations["mistral"]["answer_relevancy"]["reason"],
                     evaluations["mistral"]["faithfulness"]["reason"],
-                    evaluations["mistral"]["hallucination"]["reason"]
+                    evaluations["mistral"]["hallucination"]["reason"],
+                    None,  # BLEU does not have a reason field
+                    None,  # ROUGE does not have a reason field
+                    None   # BERT does not have a reason field
                 ]
-                }
+            }
 
         df = pd.DataFrame(data)
 
