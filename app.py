@@ -16,7 +16,6 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from deepeval.models.base_model import DeepEvalBaseLLM
 from pdfminer.high_level import extract_text
 from serpapi import GoogleSearch
-from dotenv import load_dotenv
 from ollama import chat
 from pydantic import BaseModel
 from deepeval.metrics import AnswerRelevancyMetric, FaithfulnessMetric, JsonCorrectnessMetric, HallucinationMetric
