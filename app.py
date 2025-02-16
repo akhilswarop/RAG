@@ -5,7 +5,7 @@ from typing import List
 import nltk
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from nltk.tokenize import sent_tokenize
-from sentence_transformers import SentenceTransformer
+from sentence_transformers import SentenceTransformer, util
 import subprocess
 import faiss
 import numpy as np
@@ -457,53 +457,31 @@ Provide a comprehensive analysis including:
             
 
 
-            evaluations["gemma2_2b"]["bleu"] = calculate_bleu_score(generations["deepseek-r1:14b"], generations["gemma2_2b"])
-            evaluations["gemma2_9b"]["bleu"]  = calculate_bleu_score(generations["deepseek-r1:14b"], generations["gemma2_9b"])
-            evaluations["mistral"]["bleu"] = calculate_bleu_score(generations["deepseek-r1:14b"], generations["mistral"])
-            
-            evaluations["gemma2_2b"]["rouge"] = calculate_rouge_score(generations["deepseek-r1:14b"], generations["gemma2_2b"])
-            evaluations["gemma2_9b"]["rouge"] = calculate_rouge_score(generations["deepseek-r1:14b"], generations["gemma2_9b"])
-            evaluations["mistral"]["rouge"] = calculate_rouge_score(generations["deepseek-r1:14b"], generations["mistral"])
+        models = ["gemma2_2b", "gemma2_9b", "mistral"]
+        reference_model = "deepseek-r1:14b"
 
-            evaluations["gemma2_2b"]["bert"] = calculate_bertscore(generations["deepseek-r1:14b"], generations["gemma2_2b"])
-            evaluations["gemma2_9b"]["bert"] = calculate_bertscore(generations["deepseek-r1:14b"], generations["gemma2_9b"])
-            evaluations["mistral"]["bert"] = calculate_bertscore(generations["deepseek-r1:14b"], generations["mistral"])
-            
+        # Compute BLEU, ROUGE, and BERTScore for each model
+        for model in models:
+            evaluations[model]["bleu"] = calculate_bleu_score(generations[reference_model], generations[model])
+            evaluations[model]["rouge"] = calculate_rouge_score(generations[reference_model], generations[model])
+            evaluations[model]["bert"] = calculate_bertscore(generations[reference_model], generations[model])
+            evaluations[model]["sentence_mover_similarity"] = sentence_movers_similarity(generations[reference_model], generations[model])
 
-            print(evaluations["gemma2_2b"]["bleu"])
-            print(evaluations["gemma2_2b"]["rouge"])
-            print(evaluations["gemma2_2b"]["bert"])
-            
-            # Evaluate the outputs for the gemma2_2b model
+            # Print evaluation scores
+            print(f"{model.upper()} - BLEU: {evaluations[model]['bleu']}")
+            print(f"{model.upper()} - ROUGE: {evaluations[model]['rouge']}")
+            print(f"{model.upper()} - BERT: {evaluations[model]['bert']}")
+
+        # Evaluate LLM outputs for each model
+        for model in models:
             (
-                evaluations["gemma2_2b"]["answer_relevancy"]["score"],
-                evaluations["gemma2_2b"]["answer_relevancy"]["reason"],
-                evaluations["gemma2_2b"]["faithfulness"]["score"],
-                evaluations["gemma2_2b"]["faithfulness"]["reason"],
-                evaluations["gemma2_2b"]["hallucination"]["score"],
-                evaluations["gemma2_2b"]["hallucination"]["reason"]
-            ) = evaluate_llm(prompt, context, generations["gemma2_2b"])
-
-            # Evaluate the outputs for the gemma2_9b model
-            (
-                evaluations["gemma2_9b"]["answer_relevancy"]["score"],
-                evaluations["gemma2_9b"]["answer_relevancy"]["reason"],
-                evaluations["gemma2_9b"]["faithfulness"]["score"],
-                evaluations["gemma2_9b"]["faithfulness"]["reason"],
-                evaluations["gemma2_9b"]["hallucination"]["score"],
-                evaluations["gemma2_9b"]["hallucination"]["reason"]
-            ) = evaluate_llm(prompt, context, generations["gemma2_9b"])
-
-            # Evaluate the outputs for the mistral model
-            (
-                evaluations["mistral"]["answer_relevancy"]["score"],
-                evaluations["mistral"]["answer_relevancy"]["reason"],
-                evaluations["mistral"]["faithfulness"]["score"],
-                evaluations["mistral"]["faithfulness"]["reason"],
-                evaluations["mistral"]["hallucination"]["score"],
-                evaluations["mistral"]["hallucination"]["reason"]
-            ) = evaluate_llm(prompt, context, generations["mistral"])
-
+                evaluations[model]["answer_relevancy"]["score"],
+                evaluations[model]["answer_relevancy"]["reason"],
+                evaluations[model]["faithfulness"]["score"],
+                evaluations[model]["faithfulness"]["reason"],
+                evaluations[model]["hallucination"]["score"],
+                evaluations[model]["hallucination"]["reason"]
+            ) = evaluate_llm(prompt, context, generations[model]) 
             
     except subprocess.CalledProcessError as e:
         st.error(f"An error occurred while generating guidance: {e.stderr}")
@@ -512,7 +490,6 @@ Provide a comprehensive analysis including:
     return  generations, evaluations, top_job_titles
 
 def google_jobs_search(job_title, location):
-    load_dotenv()
 
     params = {
     "engine": "google_jobs",
@@ -541,7 +518,9 @@ def google_jobs_search(job_title, location):
     return jobs_data
 
 
-
+##########################################################################
+# Evaluation Functions
+##########################################################################
 def calculate_bleu_score(reference, candidate):
     reference = [nltk.word_tokenize(reference.lower())]
     candidate = nltk.word_tokenize(candidate.lower())
@@ -551,17 +530,50 @@ def calculate_bleu_score(reference, candidate):
     
     # Calculate BLEU score
     score = sentence_bleu(reference, candidate, smoothing_function=smoothing)
-    return score
+    print(f"BLEU SCORE: {round(score, 2)}")
+    return round(score, 2)
 
 def calculate_rouge_score(reference, candidate):
+    """
+    Compute ROUGE-L score between reference and candidate text.
+    """
     scorer = rouge_scorer.RougeScorer(["rougeL"], use_stemmer=True)
     scores = scorer.score(reference, candidate)
-    return scores["rougeL"].fmeasure
+    
+    rouge_score = scores["rougeL"].fmeasure
+    
+    # Announce and print the ROUGE score
+    print(f"ROUGE SCORE: {round(rouge_score, 2)}")
+    
+    return round(rouge_score, 2)
 
 def calculate_bertscore(reference, candidate):
+    """
+    Compute BERTScore (F1) between reference and candidate text.
+    """
     P, R, F1 = score([candidate], [reference], lang="en")
-    return F1.item()
+    bert_score = F1.item()
+    
+    # Announce and print the BERTScore
+    print(f"BERT SCORE: {round(bert_score, 2)}")
+    
+    return round(bert_score, 2)
 
+def sentence_movers_similarity(reference, hypothesis):
+    """
+    Compute Sentence Mover’s Similarity (SMS) using contextual embeddings.
+    """
+    
+    sentence_model = SentenceTransformer('all-MiniLM-L6-v2')
+    emb1 = sentence_model.encode(reference, convert_to_tensor=True)
+    emb2 = sentence_model.encode(hypothesis, convert_to_tensor=True)
+
+    similarity = util.pytorch_cos_sim(emb1, emb2).item()
+    
+    # Announce and print the Sentence Mover’s Similarity
+    print(f"SMS SCORE: {round(similarity, 2)}")
+    
+    return round(similarity, 2)
 
 def evaluate_llm(input, context, output):
     gemma2_2b = initialize_evaluator()
