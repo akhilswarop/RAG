@@ -30,7 +30,8 @@ import transformers
 from pydantic import BaseModel
 from lmformatenforcer import JsonSchemaParser
 from rouge_score import rouge_scorer
-from bert_score import score
+from bert_score import score as score_bert
+from bleurt import score as score_bleurt
 
 
 from lmformatenforcer.integrations.transformers import (
@@ -378,6 +379,8 @@ def generate_career_guidance(skills, academic_history):
                 "bleu": None,
                 "rouge": None, 
                 "bert": None,
+                "sentence_movers_similarity": None,
+                "bleurt": None,
                 "answer_relevancy": {
                     "score": None,
                     "reason": None
@@ -391,6 +394,7 @@ def generate_career_guidance(skills, academic_history):
                     "score": None,
                     "reason": None
                 }, 
+                
                 
                 
             }
@@ -465,7 +469,8 @@ Provide a comprehensive analysis including:
             evaluations[model]["bleu"] = calculate_bleu_score(generations[reference_model], generations[model])
             evaluations[model]["rouge"] = calculate_rouge_score(generations[reference_model], generations[model])
             evaluations[model]["bert"] = calculate_bertscore(generations[reference_model], generations[model])
-            evaluations[model]["sentence_mover_similarity"] = sentence_movers_similarity(generations[reference_model], generations[model])
+            evaluations[model]["sentence_movers_similarity"] = sentence_movers_similarity(generations[reference_model], generations[model])
+            evaluations[model]["bleurt"] = compute_bleurt(generations[reference_model], generations[model])
 
             # Print evaluation scores
             print(f"{model.upper()} - BLEU: {evaluations[model]['bleu']}")
@@ -551,14 +556,15 @@ def calculate_bertscore(reference, candidate):
     """
     Compute BERTScore (F1) between reference and candidate text.
     """
-    P, R, F1 = score([candidate], [reference], lang="en")
-    bert_score = F1.item()
+    P, R, F1 = score_bert([candidate], [reference], lang="en")
+    precision = P.item()
+    recall = R.item()
+    f1 = F1.item()
     
-    # Announce and print the BERTScore
-    print(f"BERT SCORE: {round(bert_score, 2)}")
+    # Announce and print the BERTScore components
+    print(f"BERT SCORE - Precision: {round(precision, 2)}, Recall: {round(recall, 2)}, F1: {round(f1, 2)}")
     
-    return round(bert_score, 2)
-
+    return round(f1, 2)
 def sentence_movers_similarity(reference, hypothesis):
     """
     Compute Sentence Mover’s Similarity (SMS) using contextual embeddings.
@@ -574,6 +580,19 @@ def sentence_movers_similarity(reference, hypothesis):
     print(f"SMS SCORE: {round(similarity, 2)}")
     
     return round(similarity, 2)
+
+
+def compute_bleurt(candidate, reference):
+    # Initialize the BLEURT scorer (this may download the default model if not cached)
+    scorer = score_bleurt.BleurtScorer()
+    
+    # BLEURT expects lists of candidates and references
+    scores = scorer.score(
+        references=[reference], 
+        candidates=[candidate]
+    )
+    print(f"BLEURT SCORE: {np.mean(scores)}")
+    return np.mean(scores)  # BLEURT returns a list of scores, one per candidate
 
 def evaluate_llm(input, context, output):
     gemma2_2b = initialize_evaluator()
@@ -621,7 +640,7 @@ def play_beeps():
     while True:
         winsound.Beep(frequency, duration)
         
-           
+            
 # Main application logic
 
 # File Upload and Automatic Resume Processing
@@ -749,7 +768,9 @@ if submit:
                     evaluations["gemma2_2b"]["hallucination"]["score"],
                     evaluations["gemma2_2b"]["bleu"],   # BLEU has a score
                     evaluations["gemma2_2b"]["rouge"],  # ROUGE has a score
-                    evaluations["gemma2_2b"]["bert"]    # BERT has a score
+                    evaluations["gemma2_2b"]["bert"],    # BERT has a score
+                    evaluations["gemma2_2b"]["sentence_movers_similarity"],
+                    evaluations["gemma2_2b"]["bleurt"]# BERT has a score
                 ],
                 "Reason": [
                     evaluations["gemma2_2b"]["answer_relevancy"]["reason"],
@@ -780,7 +801,9 @@ if submit:
                     evaluations["gemma2_9b"]["hallucination"]["score"],
                     evaluations["gemma2_9b"]["bleu"],   # BLEU has a score
                     evaluations["gemma2_9b"]["rouge"],  # ROUGE has a score
-                    evaluations["gemma2_9b"]["bert"]    # BERT has a score
+                    evaluations["gemma2_9b"]["bert"],
+                    evaluations["gemma2_9b"]["sentence_movers_similarity"],# BERT has a score
+                    evaluations["gemma2_9b"]["bleurt"]# BERT has a score
                 ],
                 "Reason": [
                     evaluations["gemma2_9b"]["answer_relevancy"]["reason"],
@@ -810,7 +833,9 @@ if submit:
                     evaluations["mistral"]["hallucination"]["score"],
                     evaluations["mistral"]["bleu"],   # BLEU has a score
                     evaluations["mistral"]["rouge"],  # ROUGE has a score
-                    evaluations["mistral"]["bert"]    # BERT has a score
+                    evaluations["mistral"]["bert"],
+                    evaluations["mistral"]["sentence_movers_similarity"],
+                    evaluations["mistral"]["bleurt"]
                 ],
                 "Reason": [
                     evaluations["mistral"]["answer_relevancy"]["reason"],
