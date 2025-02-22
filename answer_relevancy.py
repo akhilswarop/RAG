@@ -464,7 +464,7 @@ Provide a comprehensive analysis including:
             print(evaluation_results)
             print("=" * 40)
                 
-        output_filename = "evaluation_results.txt"
+        output_filename = "answer_relevancy_results.txt"
         with open(output_filename, "a", encoding="utf-8") as file:
             file.write("Evaluation Results Over 10 Epochs (Appended)\n")
             file.write("=" * 40 + "\n\n")
