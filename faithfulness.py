@@ -505,12 +505,14 @@ def evaluate_llm(input, context, output):
     
     faithfulness_test_case = LLMTestCase(
     input=input,
-    actual_output=output
+    actual_output=output,
+    retrieval_context=list(context)
+
 )
 
     # Metrics
     
-    faithfulness_metric = FaithfulnessMetric(model=gemma2_2b, threshold=0.5, include_reason=True)
+    faithfulness_metric = FaithfulnessMetric(model=gemma2_2b, threshold=0.5, include_reason=True, )
     faithfulness_metric.measure(faithfulness_test_case)
     
     

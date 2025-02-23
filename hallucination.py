@@ -505,7 +505,9 @@ def evaluate_llm(input, context, output):
     
     hallucination_test_case = LLMTestCase(
     input=input,
-    actual_output=output
+    actual_output=output,
+    retrieval_context=list(context)
+
 )
 
     # Metrics
