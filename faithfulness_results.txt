@@ -1,0 +1,45 @@
+Evaluation Results Over 10 Epochs (Appended)
+========================================
+
+Model: gemma2_2b
+Epoch     Score     Reason
+----------------------------------------
+0         1.0       The model's output is perfectly aligned with the retrieval context.
+1         1         The faithfulness score is 1.00 because there were no contradictions found.
+2         1.0       The actual output is perfectly aligned with the retrieval context and is completely faithful to its information.
+3         1.0       The score is 1.00 because the actual output perfectly matches the retrieval context.
+4         0.9230769230769231The score is 0.92 because the actual output is likely a good response to a prompt, but does not include the required qualification information. 
+5         1         The score is 1.00 because there are no contradictions in the actual output and it is faithful to the retrieval context.
+6         1         The actual output is perfectly faithful to the retrieval context, with a score of 1.00.
+7         1         The actual output is completely faithful to the provided retrieval context. 
+8         1.0       The faithfulness score of 1.00 indicates the output is completely aligned with the retrieval context, demonstrating perfect accuracy.
+9         1         The faithfulness score is 1.00 as there were no contradictions.
+
+Model: gemma2_9b
+Epoch     Score     Reason
+----------------------------------------
+0         1.0       The faithfulness score is 1.00 because there are no contradictions.
+1         1.0       The faithfulness score is 1.00 because there are no contradictions found in the actual output.
+2         0.7777777777777778The score is 0.78 because the claims are not directly contradictory, but they do differ slightly in specificity. The claims are more general advice, which is a good thing but doesn't directly contradict the retrieval context.
+3         1.0       The actual output is perfectly aligned with the retrieval context.
+4         1.0       The faithfulness score of 1.00 indicates that the actual output aligns perfectly with the retrieval context.
+5         1.0       The actual output is entirely consistent with the retrieval context. 
+6         1.0       The actual output is completely aligned with the retrieval context, as there's no information about the output itself in this context. 
+7         1         The faithfulness score is 1.00 because the provided information aligns perfectly with the retrieval context.
+8         0.8571428571428571The score is 0.86 because the provided context describes the need to target specific roles and identify key requirements and qualifications, but does not explicitly mention the process of finding job postings.
+9         1.0       The faithfulness score is 1.00 because the actual output aligns perfectly with the retrieval context.
+
+Model: mistral
+Epoch     Score     Reason
+----------------------------------------
+0         1.0       The model provided accurate output based on the provided context.
+1         1.0       The actual output fully aligns with the retrieval context, and the faithfulness score reflects that.
+2         None      Expecting property name enclosed in double quotes: line 5 column 5 (char 52)
+3         1         The actual output perfectly aligns with the retrieval context, making a score of 1.00 very achievable.
+4         1         The actual output is a perfectly faithful match to the retrieval context.
+5         1         All of the information presented in the `retrieval context` is accurately reflected in the `actual output` which makes for a perfect score.
+6         1.0       The score is 1.00 because the retrieval context and actual output perfectly align, demonstrating excellent faithfulness.
+7         1.0       The faithfulness score is 1.00 because the provided context and actual output perfectly align.
+8         1.0       The actual output was completely faithful to the retrieval context.
+9         1         The faithfulness score is 1.00 because all provided information is consistent.
+
