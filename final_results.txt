@@ -1,0 +1,102 @@
+ANSWER RELEVANCY
+
+
+Evaluation Results Over 10 Epochs (Appended)
+========================================
+
+Model: gemma2_2b
+Epoch     Score     Reason
+----------------------------------------
+0         1.0000    The score is 1.00 because the provided user profile doesn't explicitly express interest in any of the healthcare roles mentioned in the context. While the user has skills that are transferable, the input is highly specialized, and the profile is lacking specific career aspirations. 
+Evaluation Results Over 10 Epochs (Appended)
+========================================
+
+Model: gemma2_2b
+Epoch     Score     Reason
+----------------------------------------
+0         1.0       The score is 1.00 because the provided user profile doesn't explicitly express interest in any of the healthcare roles mentioned in the context. While the user has skills that are transferable, the input is highly specialized, and the profile is lacking specific career aspirations. 
+1         None      Expecting property name enclosed in double quotes: line 21 column 9 (char 1000)
+2         1.0       The score is 1.00 because the user's profile suggests a strong background in healthcare but lacks specific skills and knowledge in medical fields.  It's recommended to delve deeper into specific medical fields and consider a career path that matches their interests and skills.  The AI can provide further guidance on relevant SOC codes, potential industries, and career paths.
+3         1.0       The score is 1.00 because the user's skillset is well-aligned with several career paths in healthcare but lacks specific expertise needed for some higher-paying roles like physician or advanced nurse practitioners. The user should consider further specialized education or professional certifications for those roles, and explore industries where those specific skills are in high demand. This is a good starting point for a career exploration but requires additional steps to become a specialist or high-paying role.
+4         1         The score is 1 because the input provided focuses on the SOC codes, titles and descriptions and does not offer any personalized guidance or insights based on the user profile.
+5         1.0       The score is 1.00 because the provided skills and academic history are very relevant to many healthcare careers and the user could explore multiple options within that domain. However, the specific SOC codes and titles provided do not offer a very clear direction. The user needs to be more specific in defining career goals. 
+6         1.0       The score is 1.00 because the user profile doesn't provide specific details about their interest, skills and desired career. The provided context is helpful in identifying relevant SOC codes and titles for the user profile, but it lacks specific information about the user's career interests, desired salary range, preferred work settings and career goals. The context is also not tailored specifically to the user's background and skillset.
+7         1.0       The score is 1.00 because the user provided skills, but the AI doesn't have enough information about their desired field, education background, or career aspirations to give tailored recommendations. 
+8         1.0       The provided context focuses on various healthcare professions and their required qualifications, but does not directly address the user's skills and interests. Therefore, a personalized analysis cannot be given.
+9         1.0       The score is 1.00 because the input provided is a comprehensive list of healthcare professions and does not directly address specific career guidance or the user's profile. While the provided information is relevant to healthcare, it doesn't offer personalized recommendations based on the individual's skills, experience, and career aspirations.
+
+Model: gemma2_9b
+Epoch     Score     Reason
+----------------------------------------
+0         1.0       The score is 1.00 because the provided information on SOC codes and titles is a good starting point for understanding different healthcare professions. However, this information alone does not address specific career paths, skill development, or potential industries for the user.  A comprehensive analysis would need to be tailored to the user's specific skills and interests.
+1         1.0       The score is 1.00 because the user profile's skills and background are quite broad, and the provided context is focused on healthcare professionals. The information provided does not offer specific insights on how to apply the user’s skills and background to those professions within the context provided, and therefore, the output is not highly relevant.
+2         1.0       The score is 1 because the user profile has strong clinical research and patient assessment skills, which could lead to a career as a medical scientist, but the user profile does not specify any interest in the medical field.
+3         1.0       The score is 1.00 because the user profile's skills and background are very general and lack the specifics needed to tailor recommendations. Additionally, it does not explicitly mention specific career interests or goals that the AI can use to provide targeted advice.
+4         1.0       The user's skillset aligns well with healthcare management, but the provided SOC codes are too broad and lack specific career opportunities. The user has a good academic background but should explore career paths in medical records, healthcare administration, or research.
+5         1.0       The score is 1.00 because the user's skills are not well-aligned with the provided SOC codes, which are all related to healthcare professions and do not specifically address the areas of patient assessment, clinical research, HIPAA compliance, and training, which the user possesses. While the user has a Bachelor of Science in Healthcare Management, which is relevant for a variety of industries, the provided context does not specifically highlight any career paths that leverage the user's skills and experience within the SOC codes.
+6         1.0       The user's skills and academic background align well with the healthcare field.  The user's strong skills in patient assessment, clinical research, and HIPAA compliance make them suitable for various roles within the healthcare industry, including those listed above.
+7         1.0       The score is 1.00 because the input provided does not include any specific career interests or goals for the user.
+8         0.8571428571428571While the provided input is relevant to the user's skills and background, it focuses on specific healthcare roles and doesn't offer a comprehensive career exploration strategy beyond listing potential career paths. This results in a limited score.
+9         1.0       The score is 1.00 because the user profile does not provide any specific career interests or goals. The provided information focuses on the SOC codes and titles for healthcare professions. While the profile mentions skills relevant to healthcare, the actual output lacks a personalized response that connects these skills with career paths and industries based on the user's specific interests.
+
+Model: mistral
+Epoch     Score     Reason
+----------------------------------------
+0         1.0       The score is 1.00 because the provided context offers a list of medical professions and their descriptions, and does not explicitly provide guidance on a user profile's skills, interests, and career goals.
+1         1.0       The score is 1.00 because the user profile and context provide a strong foundation for exploring careers in healthcare, but the user's skillset is broad and doesn't immediately align with any specific SOC codes, and the user has not mentioned any specific career aspirations.  The AI can help by suggesting potential career paths and providing more targeted recommendations based on the user's interests and skills.
+2         1.0       The score is 1.00 because the user profile and skills are not directly aligned with the provided SOC codes and descriptions. The input focuses on medical professions requiring graduate degrees, while the user profile suggests skills relevant to healthcare management.
+3         1.0       The score is 1.00 because the user's profile suggests an inclination toward healthcare administration, research, compliance, and teaching, and the provided list of SOC codes focuses on clinical roles. While the context offers information about various healthcare professions, it doesn't provide any specific guidance on career paths aligned with the user's skills and interest.
+4         1.0       The score is 1.00 because the input provided does not contain any specific career guidance questions or information, and the response provided is a list of job descriptions with their respective SOC codes. 
+5         0.8333333333333334The score is 0.83 because the user provided relevant context about their skills and academic background, which can be used to recommend suitable career paths, and there are relevant SOC codes and descriptions for the given skills. However, the AI career advisor could have expanded upon the user's profile by considering other relevant factors, including the user's interests and career aspirations.
+6         1.0       The score is 1.00 because the user's skills and background align well with the SOC codes for Registered Nurses, Medical Assistant roles, and Medical Records Specialists.  While the user has skills in Patient Assessment and Research, the provided context doesn't offer enough information about those to be directly translated into specific career paths or recommendations. Additionally, the context does not offer any specific guidance on training or industry development in those areas.
+7         1.0       The user profile and the provided context suggest a career in healthcare. The AI can offer recommendations on career paths, but a more detailed assessment of the individual's skills and experience is necessary for a personalized career guide.
+8         1.0       The score is 1.00 because the provided input does not specify a particular career path, desired industry, or job title. Therefore, the AI could not offer personalized career guidance based on the provided information. 
+9         1.0       The score is 1.00 because the AI has provided a comprehensive overview of healthcare-related occupations, including their required education and responsibilities. The output is well-aligned with the user's skills and academic background.
+
+FAITHFULNESS
+
+Evaluation Results Over 10 Epochs (Appended)
+========================================
+
+Model: gemma2_2b
+Epoch     Score     Reason
+----------------------------------------
+0         1.0       The model's output is perfectly aligned with the retrieval context.
+1         1         The faithfulness score is 1.00 because there were no contradictions found.
+2         1.0       The actual output is perfectly aligned with the retrieval context and is completely faithful to its information.
+3         1.0       The score is 1.00 because the actual output perfectly matches the retrieval context.
+4         0.9230769230769231The score is 0.92 because the actual output is likely a good response to a prompt, but does not include the required qualification information. 
+5         1         The score is 1.00 because there are no contradictions in the actual output and it is faithful to the retrieval context.
+6         1         The actual output is perfectly faithful to the retrieval context, with a score of 1.00.
+7         1         The actual output is completely faithful to the provided retrieval context. 
+8         1.0       The faithfulness score of 1.00 indicates the output is completely aligned with the retrieval context, demonstrating perfect accuracy.
+9         1         The faithfulness score is 1.00 as there were no contradictions.
+
+Model: gemma2_9b
+Epoch     Score     Reason
+----------------------------------------
+0         1.0       The faithfulness score is 1.00 because there are no contradictions.
+1         1.0       The faithfulness score is 1.00 because there are no contradictions found in the actual output.
+2         0.7777777777777778The score is 0.78 because the claims are not directly contradictory, but they do differ slightly in specificity. The claims are more general advice, which is a good thing but doesn't directly contradict the retrieval context.
+3         1.0       The actual output is perfectly aligned with the retrieval context.
+4         1.0       The faithfulness score of 1.00 indicates that the actual output aligns perfectly with the retrieval context.
+5         1.0       The actual output is entirely consistent with the retrieval context. 
+6         1.0       The actual output is completely aligned with the retrieval context, as there's no information about the output itself in this context. 
+7         1         The faithfulness score is 1.00 because the provided information aligns perfectly with the retrieval context.
+8         0.8571428571428571The score is 0.86 because the provided context describes the need to target specific roles and identify key requirements and qualifications, but does not explicitly mention the process of finding job postings.
+9         1.0       The faithfulness score is 1.00 because the actual output aligns perfectly with the retrieval context.
+
+Model: mistral
+Epoch     Score     Reason
+----------------------------------------
+0         1.0       The model provided accurate output based on the provided context.
+1         1.0       The actual output fully aligns with the retrieval context, and the faithfulness score reflects that.
+2         None      Expecting property name enclosed in double quotes: line 5 column 5 (char 52)
+3         1         The actual output perfectly aligns with the retrieval context, making a score of 1.00 very achievable.
+4         1         The actual output is a perfectly faithful match to the retrieval context.
+5         1         All of the information presented in the `retrieval context` is accurately reflected in the `actual output` which makes for a perfect score.
+6         1.0       The score is 1.00 because the retrieval context and actual output perfectly align, demonstrating excellent faithfulness.
+7         1.0       The faithfulness score is 1.00 because the provided context and actual output perfectly align.
+8         1.0       The actual output was completely faithful to the retrieval context.
+9         1         The faithfulness score is 1.00 because all provided information is consistent.
+
