@@ -439,7 +439,7 @@ Provide a comprehensive analysis including:
 
         evaluation_results = {model: [] for model in models}
 
-        for epoch in range(10):
+        for epoch in range(35):
             
             play_beeps()
 
