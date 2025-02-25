@@ -1,0 +1,120 @@
+Evaluation Results Over 10 Epochs (Appended)
+========================================
+
+Model: gemma2_2b
+Epoch     Score     Reason
+----------------------------------------
+0         0.0       The score is 0.00 because the actual output provides no evidence of hallucination.
+1         0.0       The hallucination score is 0.00 because the output aligns perfectly with the prompt.
+2         0.0       The hallucination score is 0.00 because the factual alignments and the context provided show a strong alignment between the provided background and the potential career paths suggested.
+3         0.5       The hallucination score is 0.50 because the actual output is missing, and the context and alignment are not sufficient to determine the hallucination.
+4         0.0       The hallucination score is 0.00 because all factual alignments and no contradictions were found, and the provided context is consistent with the candidate's suitability for multiple healthcare professions and related roles.
+5         0.0       The score is 0.00 because the provided factual alignments and contradictions demonstrate no direct hallucination.
+6         0.0       The hallucination score is 0.00 because the provided factual alignments and contradictions do not contain any information about a hallucination score.
+7         0.0       No hallucination found.
+8         0.5       The hallucination score is 0.50 because the context provides an overall picture of the user but fails to provide concrete information about their goals, making their aspirations ambiguous.
+9         0.0       Hallucination score is 0.0 because all the factual alignments are true, and no contradictions are present.
+10        0.0       The hallucination score is 0.00 because the provided text describes the potential career path based on user's skills and background.
+11        0.3333333333333333The hallucination score is 0.33 because the text suggests a potential interest in forensic science, but it does not provide details about specific skills or experience in this field, indicating a potential hallucination.
+12        0.0       The hallucinations score is 0.00 because the output aligns well with the provided information and provides personalized career suggestions and actionable steps. 
+13        0.0       The hallucinations score is 0 because all provided facts align with each other, and with the provided context.
+14        0.0       No hallucination.
+15        0.0       No hallucination.
+16        0.0       No hallucination found.
+17        0.0       The hallucination score is 0.00 because the input text does not contain any information about hallucinations, making it impossible to assess the score.
+18        0.0       None
+19        0.0       The hallucination score is 0.00 as the actual output aligns completely with the provided context in terms of content and analysis.
+20        0.0       The hallucination score is 0.0. This model accurately aligns with the factual information provided. 
+21        0.0       No hallucinations observed.
+22        0.0       The hallucination score is 0.00 because the provided factual alignment and contradiction lists show no discrepancies between the 'actual output' and the 'contexts' provided.
+23        0.0       Hallucination Score: 0.00 because the model accurately reflects the context provided in the factual alignments.
+24        0.0       The hallucination score is 0.00 because there is no evidence of hallucination in the provided context.
+25        0.0       The hallucination score is 0.00 because all provided factual alignments and context match the actual output.
+26        0.0       The hallucination score is 0.00 because the provided text aligns with the provided context and does not exhibit any hallucinatory outputs.
+27        0.0       The hallucination score is 0.00 because the provided factual alignments and contradictions suggest a perfect alignment with the context, user experience, and skillset, resulting in no hallucination.
+28        0.0       The hallucination score is 0.00 because no hallucinated information was detected.
+29        0.0       The hallucination score is 0.00 because the output provides relevant information that aligns with the context, and offers advice on improving skills.
+30        0.0       No hallucination, as there was no information provided that suggests the model hallucinated.
+31        0.5       The provided context aligns with the given list of strings and provides a detailed analysis of the user's potential career paths in healthcare. It suggests specific career choices, skill development, and steps to take for job applications. The hallucination score is 0.50 because the response is a text response and not a list of strings.
+32        0.0       The hallucination score is 0.00 because there are no factual alignments or contradictions found between the actual output and the provided contexts.
+33        0.5       The hallucination score of 0.50 is because the provided response lacks specific guidance on leveraging existing skills for career exploration.
+34        0.0       The hallucination score is 0.0 because there are no contradictions in the input data, therefore no hallucination has taken place.
+
+Model: gemma2_9b
+Epoch     Score     Reason
+----------------------------------------
+0         0.0       The hallucination score is 0.00 because the output accurately reflects the provided factual information and aligns with it.
+1         0.0       The hallucination score is 0.00 because the response accurately aligns with the given context and provides valuable career advice based on the user's provided skills and experience.
+2         0.0       The hallucination score is 0.00 because the provided output accurately aligns with the given context, and the output is a comprehensive list of career paths.
+3         0.0       None. The provided text accurately reflects the actual output and aligns with the provided contexts.
+4         0.0       The hallucination score of 0.00 is justified because all provided text aligns with factual information about the text's potential career path in healthcare.
+5         0.0       The hallucination score is 0.0 because the provided text accurately reflects the user's needs and offers relevant advice on job search strategies.
+6         0.0       The hallucination score is 0.00 because the text provides relevant and helpful guidance regarding job searching and interview preparation, based on your skills and experience.
+7         0.0       The hallucination score is 0.0 because there is no information on hallucinated outputs or the actual output provided.
+8         0.2       The hallucination score is 0.20 because the text is a response and not a specific output. 
+9         0.0       The hallucination score is 0.00 because there is no factual alignment or contradiction.
+10        0.0       The hallucination score is 0.00 because the actual output aligns with the context provided, and does not hallucinate.
+11        0.0       The hallucination score is 0.00 because the output aligns with the provided context.
+12        0.0       The hallucination score is 0.00 because the output aligns strongly with the provided context and recommendations.
+13        0.0       The score is 0.00 because the output is entirely factual and directly aligned with the provided context.
+14        0.0       No hallucinations were detected in the provided text and output.
+15        0.0       The hallucination score is 0.0 because the output aligns perfectly with the context.
+16        0.0       The hallucination score is 0.00 because the output strongly aligns with the context.
+17        0.0       The hallucination score is 0.00 because all factual alignments between the actual output, contexts, and SOC codes are present and the provided text offers a breakdown of suitable careers based on a user profile. There are no contradictions.
+18        0.0       Hallucination Score is 0.0 because the provided context and actual output are aligned, suggesting accurate information.
+19        0.0       No hallucination occurred. The output aligns with the input and context provided.
+20        0.0       The hallucination score is 0.00 because there is no hallucination in this example.
+21        0.0       The score is 0 because the output is aligned with the factual information given in the prompt. 
+22        0.0       The hallucination score is 0 because all factual alignments and contradictions are aligned.  
+23        0.0       The hallucination score is 0.00 because the provided factual alignments demonstrate no contradictions with the actual output.
+24        0.0       The hallucination score is 0.0 because there are no contradictions between the actual output and contexts.
+25        0.0       No hallucination was found. 
+26        0.0       No hallucination was identified.
+27        0.0       The hallucination score of 0.00 is because the output is accurate and consistent with the expected career path suggestions based on the given skills and experience.
+28        0.0       No hallucinations detected.
+29        0.0       The provided text is entirely factual and does not present any halluciations
+30        0.0       The hallucination score is 0.00 because there is no evidence of hallucination in the provided information.
+31        0.0       The hallucination score is 0.00 because the output aligns with the provided contexts, suggesting that the provided skills are applicable to these career pathways.
+32        0.5       The hallucination score is 0.50 because the output lacks direct mention of specific career paths despite the factual alignment regarding healthcare careers.
+33        0.0       The hallucination score is 0.00 because the output aligns perfectly with the provided context.
+34        0.0       The hallucination score is 0.00 because the provided text aligns with the context given.
+
+Model: mistral
+Epoch     Score     Reason
+----------------------------------------
+0         0.0       The score is 0.00 because the model accurately reflected the context provided.
+1         0.0       No hallucination occurred.
+2         0.0       The hallucination score is 0.00 because all provided information is aligned and does not suggest any hallucination.
+3         0.0       Hallucination Score: 0 because there are no contradictions.
+4         0.0       The score is 0.00 because the provided outputs align perfectly with the context and are comprehensive and informative. No hallucinations or inconsistencies were found.
+5         0.0       The model hallucinated nothing.
+6         0.0       The provided text aligns with both given contexts and provides factual information. The hallucination score is zero.
+7         0.0       The hallucination score is 0.00 because the response accurately reflects the provided context and aligns with the given job descriptions.
+8         0.0       The output aligns with the provided contexts and provides a comprehensive list of relevant career options with detailed information, resulting in a hallucination score of 0.00.
+9         0.0       The score is 0.00 because the output is helpful and aligns with user's context.
+10        0.0       No hallucinations were observed.
+11        0         The model provided factual and coherent responses to the provided contexts and queries, resulting in a hallucination score of 0.00.
+12        0.0       The provided factual alignments demonstrate strong alignment between the user's interests and potential career paths, making it unlikely that the model would hallucinate.
+13        0.0       The hallucination score is 0.00 because all provided facts align with the context.
+14        0.0       No hallucinations present.
+15        0.0       The hallucination score is 0.00 because the provided output matches perfectly with the provided context, suggesting a strong alignment.
+16        0.3333333333333333The hallucinations score is 0.33 because the output focuses on suggested career paths based on assumed background, but it doesn't directly confirm any specific career paths.
+17        0.0       The hallucination score is 0.00 because the provided text aligns perfectly with the provided context and addresses all of the user's questions.
+18        0.0       The hallucination score is 0.00 because there is no evidence of hallucination in the provided text.
+19        0.0       The provided factual alignments and contradictions suggest the output aligns well with the context and there are no significant deviations from the provided information.
+20        0.0       0.00 because the provided context is a comprehensive overview of career choices and the requested analysis is a specific task. The context aligns well with the request.
+21        0.0       The hallucination score is 0.00 because there is no evidence of hallucination.
+22        0.0       The hallucination score is 0.0. The actual output aligns perfectly with the context.
+23        0.0       The hallucination score is 0.00 because the actual output perfectly aligns with the factual alignments provided.
+24        0.0       No hallucinated content detected.
+25        0.0       None
+26        0.0       The hallucination score is 0.0.  This is a general recommendation based on the provided text, making it a match.
+27        0.0       The hallucination score is 0.00 because the provided context aligns perfectly with the requested analysis, and I provide a response in JSON format as per instructions, with all necessary details
+28        0.3333333333333333The hallucination score is 0.33 due to the actual output being a response and not a list of JSON objects.
+29        0.5       The provided output hallucinated a career path when the user provided no specific information or context about a career path.
+30        0.0       No hallucination was observed.  The output directly aligns with the provided context and provides specific career suggestions.
+31        0.0       The hallucination score is 0.0 because the actual output is consistent with the context provided.
+32        0.0       The hallucination score is 0.00 because there are no contradictions in the provided context and factual alignments.
+33        0.0       The hallucination score is 0.00 because the provided text aligns perfectly with the given context and offers relevant career advice.
+34        0.5       The score is 0.50 because the output deviates from the provided context. 
+
