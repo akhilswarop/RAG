@@ -43,3 +43,93 @@ Epoch     Score     Reason
 8         1.0       The actual output was completely faithful to the retrieval context.
 9         1         The faithfulness score is 1.00 because all provided information is consistent.
 
+Evaluation Results Over 10 Epochs (Appended)
+========================================
+
+Model: gemma2_2b
+Epoch     Score     Reason
+----------------------------------------
+0         1.0       The output is a perfect match to the retrieval context, so the score is 1.00.
+1         1.0       The score is 1.00 because there are no contradictions in the actual output compared to the retrieval context.
+2         1.0       The faithfulness score is excellent because the output is entirely in line with the provided retrieval context.
+3         0.875     The claims are vague and lack concrete information which could be used to evaluate the truthfulness of the statements.
+4         1.0       The score is 1.0 because there are no contradictions found in the actual output.
+5         1.0       The actual output is perfectly aligned with the retrieval context.
+6         1.0       The score is 1.00 because the actual output perfectly matches the retrieval context.
+7         1         The faithfulness score is 1.00 because the provided context is perfect for the actual output.
+8         1.0       The faithfulness is 1.00 because the actual output aligns perfectly with the retrieval context.
+9         0.8461538461538461The score is 0.85 because the actual output generally aligns well with the retrieval context, showing good understanding.
+10        1.0       The model's output was perfectly aligned with the retrieval context, and therefore the faithfulness score is 1.00
+11        1.0       The faithfulness score of 1.00 indicates that the actual output is entirely consistent with the retrieval context. No contradictions have been found.
+12        1         The faithfulness score is 1.0 because the actual output completely aligns with the retrieval context.
+13        1.0       The faithfulness score is 1.00 because there are no contradictions in the actual output.
+14        1.0       The faithfulness score of 1.00 is justified by the lack of any contradictions in the provided text. 
+15        1         ...the faithfulness score is 1.00 because...
+16        0.9230769230769231The score is 0.92 because the provided claims do not mention the specific tasks mentioned in the context.
+17        1         The score is 1.00 because there was no discrepancy between the retrieval context and the actual output.
+18        1         The score is 1.00 because there were no contradictions found between the provided retrieval context and the actual output.
+19        None      Invalid control character at: line 4 column 64 (char 83)
+20        0.8       The actual output is less accurate because the context does not provide information on the specific role of the person being assessed, so the actual output is not entirely accurate to the provided context.
+21        None      Expecting property name enclosed in double quotes: line 8 column 9 (char 114)
+22        1         All the provided information is perfectly aligned with the retrieval context.  The faithfulness score is a 1.00.
+23        0.8       The score is 0.80 because the actual output suggests medical assistance is a suitable career path for individuals with experience in patient assessment. However, the context does not explicitly mention it as a recommended career path.
+24        1.0       The score is 1.00 because the actual output is a perfect match to the retrieval context.
+
+Model: gemma2_9b
+Epoch     Score     Reason
+----------------------------------------
+0         0.9333333333333333The score is 0.93 because there are no contradictions.
+1         None      Expecting property name enclosed in double quotes: line 17 column 9 (char 275)
+2         1.0       The score is 1.00 because the actual output perfectly aligns with the retrieval context.
+3         1.0       The faithfulness score is 1.0 because the provided context is completely aligned with the actual output.
+4         1.0       The faithfulness score is 1.0 because all provided context and retrieval information are consistent and accurate.
+5         None      Expecting property name enclosed in double quotes: line 5 column 9 (char 66)
+6         1         The actual output is perfectly aligned with the retrieval context, making it a very faithful model output.
+7         1.0       The faithfulness score is 1.00 because the actual output aligns perfectly with the retrieval context. 
+8         1         The faithfulness score is 1.00 because the actual output is a perfect match for the retrieval context.
+9         1         The score is 1.00 because there are no contradictions.
+10        1         Since the provided 'actual output' perfectly aligned with the'retrieval context', it is a perfect match.
+11        1.0       All provided information indicates that the actual output aligns well with the retrieval context.
+12        1         The faithfulness score of 1.00 is justified based on the absence of any contradictions.
+13        None      Expecting property name enclosed in double quotes: line 5 column 8 (char 68)
+14        1         The faithfulness score is 1.0 because the output perfectly matches the retrieved context. There are no contradictions.
+15        1         The faithfulness score is 1.00 because there were no contradictions found.  This indicates that the actual output aligns perfectly with the retrieval context.
+16        1.0       The faithfulness score is 1.00, because the output aligns perfectly with the retrieval context.
+17        None      Invalid control character at: line 13 column 5 (char 221)
+18        None      Expecting property name enclosed in double quotes: line 11 column 9 (char 165)
+19        1.0       The faithfulness score is 1.00 as the actual output aligns perfectly with the retrieval context.
+20        None      Invalid control character at: line 13 column 9 (char 1211)
+21        0.6       The faithfulness score is 0.60 because the actual output contradicts the retrieval context by mentioning medical assistants taking medication without a physician's direction, while the retrieval context states they only take medication under physician's direction.
+22        1.0       The score is 1.00 because there are no contradictions.
+23        0.9       The score is 0.90 because the actual output may be slightly misleading in stating that medical history and HIPAA compliance experience are necessary for the role.
+24        1.0       The output is completely aligned with the retrieval context.
+
+Model: mistral
+Epoch     Score     Reason
+----------------------------------------
+0         1.0       The score is 1.00 because the actual output perfectly aligns with the retrieval context.
+1         1         The score is 1.00 because all the provided information is aligned with the actual output and the retrieval context.
+2         None      Expecting property name enclosed in double quotes: line 8 column 9 (char 114)
+3         1         The faithfulness score is 1.00 because the actual output is a perfect match to the retrieval context.
+4         1.0       The faithfulness score of 1.00 reflects the model's excellent ability to accurately match the retrieval context, as indicated by a perfect score.
+5         0.8       The score is 0.80 because the actual output claims to have the patient medical history, when the retrieval context only lists clinical duties and doesn't mention patient history recording requirements.
+6         None      Invalid control character at: line 6 column 60 (char 250)
+7         1         The actual output perfectly matches the retrieval context.
+8         1.0       All retrieved information matches with the output.
+9         1.0       The faithfulness score of 1.00 indicates the actual output perfectly aligns with the retrieval context.
+10        1.0       ...
+11        1.0       The model provided an excellent output that perfectly aligns with the retrieval context.
+12        1.0       The faithfulness score of 1 indicates that the actual output aligns perfectly with the retrieval context, with no contradictions.
+13        1.0       The faithfulness score of 1.00 indicates the output aligns perfectly with the retrieval context. 
+14        1         The actual output is completely faithful to the retrieval context, and therefore deserves a perfect score
+15        1.0       The faithfulness score is 1.0 due to the lack of contradictions, which means the actual output is perfectly aligned with the retrieval context.
+16        1         The faithfulness score of 1.00 indicates that the output perfectly aligned with the retrieval context.
+17        1.0       The faithfulness score is 1.0 because the provided context and output perfectly align.
+18        1.0       The model provided a perfect retrieval of the information from the retrieval context. 
+19        1         The actual output is perfectly aligned with the retrieval context.
+20        1.0       The actual output perfectly aligned with the retrieval context.
+21        None      Expecting property name enclosed in double quotes: line 16 column 7 (char 440)
+22        0.875     The score is 0.88 because the actual output is very close to the retrieval context.  There were no significant discrepancies.
+23        1.0       The output aligns perfectly with the retrieval context.
+24        1.0       The faithfulness score is 1.0 because there are no contradictions.
+
