@@ -9,4 +9,5 @@ myenv
 .myenv/
 models
 .vscode
-
+client/node_modules
+server/uploads
