@@ -20,68 +20,20 @@ CORS(app)  # Enable CORS for all origins
 # Temporary storage for emails (use a database in production)
 emails = []
 UPLOAD_FOLDER = "uploads"
+
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-@app.route('/store-email', methods=['POST'])
-def store_email():
-    data = request.json
-    email = data.get("email")
-    
-    if email:
-        emails.append(email)  # Store email
-        print("Stored Emails:", emails)  # Debugging print statement
-        return jsonify({"message": "Email stored successfully"}), 200
-    
-    return jsonify({"error": "Invalid email"}), 400
 
-@app.route("/upload", methods=["POST"])
-def upload_file():
-    if "file" not in request.files:
-        return jsonify({"error": "No file part"}), 400
+def get_first_file():
+    """Get the first PDF file in the uploads folder."""
+    print(f"Checking directory: {os.path.abspath(UPLOAD_FOLDER)}")
+    print("Folder exists:", os.path.exists(UPLOAD_FOLDER))
+    print("Files in folder:", os.listdir(UPLOAD_FOLDER) if os.path.exists(UPLOAD_FOLDER) else "Folder does not exist")
+    files = [f for f in os.listdir(UPLOAD_FOLDER)]
+    print("Files in uploads folder:", files)
+    return os.path.join(UPLOAD_FOLDER, files[0]) if files else None
 
-    file = request.files["file"]
-
-    if file.filename == "":
-        return jsonify({"error": "No selected file"}), 400
-
-    if file and file.filename.lower().endswith(".pdf"):
-        # Delete any existing file in uploads/
-        for existing_file in os.listdir(UPLOAD_FOLDER):
-            os.remove(os.path.join(UPLOAD_FOLDER, existing_file))
-
-        # Save the new file
-        file_path = os.path.join(UPLOAD_FOLDER, secure_filename(file.filename))
-        file.save(file_path)
-
-        return jsonify({"message": "File uploaded successfully", "filename": file.filename}), 200
-
-    return jsonify({"error": "Unsupported file format. Only .pdf is allowed."}), 400
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@app.route("/process-resume", methods=["POST"])
 def clean_text(text: str) -> str:
             """
             Cleans the input text by normalizing and removing unwanted characters.
@@ -105,6 +57,11 @@ def get_resume_text(file_path: str) -> str:
             Returns:
             - str: Cleaned text extracted from the PDF.
             """
+            print("File Path:", file_path)
+            print(f"Checking file: {file_path}")
+            print(f"Normalized path: {os.path.normpath(file_path)}")
+            print(f"File exists: {os.path.exists(file_path)}")
+            
             if file_path.lower().endswith('.pdf'):
                 try:
                     # Extract text using pdfminer.high_level.extract_text
@@ -164,7 +121,7 @@ def parse_resume_with_ollama(resume_text):
 
    
             # Use pyresparser to extract data from the resume text
-    extracted_data = get_resume_text(resume_text)
+    extracted_data = resume_text
     # Define the prompt with strict instructions
     prompt = f"""
 You are a helpful assistant that extracts structured data from the given resume text.
@@ -197,8 +154,7 @@ Extract the requested information from the resume text and return only one valid
 """
 
     # Call Ollama's gemma2:2b model via subprocess
-    with st.spinner('Parsing resume...'):
-        try:
+    try:
             response = chat(
                     messages=[
                         {
@@ -210,7 +166,7 @@ Extract the requested information from the resume text and return only one valid
                     format=Resume.model_json_schema(),
                     )
             result = Resume.model_validate_json(response.message.content)
-        except subprocess.CalledProcessError as e:
+    except subprocess.CalledProcessError as e:
             print("Error running ollama:", e.stderr)
             return None
     # Try to parse the cleaned JSON
@@ -220,6 +176,73 @@ Extract the requested information from the resume text and return only one valid
     except json.JSONDecodeError as e:
         print("JSON parsing failed:")
         print(e)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+@app.route("/upload", methods=["POST"])
+def upload_file():
+    if "file" not in request.files:
+        return jsonify({"error": "No file part"}), 400
+
+    file = request.files["file"]
+
+    if file.filename == "":
+        return jsonify({"error": "No selected file"}), 400
+
+    if file and file.filename.lower().endswith(".pdf"):
+        # Delete any existing file in uploads/
+        for existing_file in os.listdir(UPLOAD_FOLDER):
+            os.remove(os.path.join(UPLOAD_FOLDER, existing_file))
+
+        # Save the new file
+        file_path = os.path.join(UPLOAD_FOLDER, secure_filename(file.filename))
+        file.save(file_path)
+
+        return jsonify({"message": "File uploaded successfully", "filename": file.filename}), 200
+
+    return jsonify({"error": "Unsupported file format. Only .pdf is allowed."}), 400
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@app.route("/process-resume", methods=["POST"])
+def process_resume():
+    """Finds the first resume in 'uploads' folder and processes it."""
+    resume_file = get_first_file()
+    print("Resume file:", resume_file)
+    if not resume_file:
+        return jsonify({"error": "No files found in uploads folder"}), 400
+
+    resume_text = get_resume_text(resume_file)
+
+    if not resume_text:
+        return jsonify({"error": "Failed to extract text from resume"}), 500
+
+    parsed_resume = parse_resume_with_ollama(resume_text)
+
+    print("Parsed resume:", parsed_resume)
+    
+    return jsonify(parsed_resume.model_dump() if parsed_resume else {"error": "Failed to parse resume"}), 200
+
         
         
 if __name__ == '__main__':

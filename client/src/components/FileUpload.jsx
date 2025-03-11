@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { terminal } from 'virtual:terminal'
 import { CheckCircle, XCircle, Upload } from "lucide-react"; // Import icons
+import FileProcess from "./FileProcess"; 
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadMessage, setUploadMessage] = useState("");
+  const [showFileProcess, setShowFileProcess] = useState(false); // New state
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -32,6 +34,8 @@ const FileUpload = () => {
       if (response.ok) {
         setUploadMessage("File uploaded successfully!");
         console.log("Uploaded file:", data.filename);
+        setShowFileProcess(true); // Show FileProcess after upload
+
       } else {
         setUploadMessage("Failed to upload file.");
       }
@@ -90,6 +94,7 @@ const FileUpload = () => {
     )}
   </button>
 )}
+      {showFileProcess && <FileProcess />}
 
     </div>
   );
