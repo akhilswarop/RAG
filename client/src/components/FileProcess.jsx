@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import GuidanceGenerator from "./GuidanceGenerator";
 
 const FileProcess = () => {
   const [parsedResume, setParsedResume] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [showGuidance, setShowGuidance] = useState(false);
 
   const handleProcessResume = async () => {
     setLoading(true);
@@ -25,6 +27,10 @@ const FileProcess = () => {
       setLoading(false);
     }
   };
+
+  if (showGuidance) {
+    return <GuidanceGenerator parsedResume={parsedResume} />;
+  }
 
   return (
     <div className="p-8 bg-white rounded-lg shadow-lg max-w-3xl mx-auto">
@@ -96,10 +102,10 @@ const FileProcess = () => {
           </div>
 
           <button
-            onClick={() => setParsedResume(null)}
-            className="bg-red-500 text-white px-4 py-2 rounded w-full"
+            onClick={() => setShowGuidance(true)}
+            className="bg-green-600 text-white px-4 py-2 rounded w-full"
           >
-            Clear Data
+            Generate Guidance
           </button>
         </div>
       ) : (

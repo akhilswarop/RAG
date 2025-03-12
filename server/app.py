@@ -12,7 +12,40 @@ from werkzeug.utils import secure_filename
 from pdfminer.high_level import extract_text
 import streamlit as st  # Assuming you are using Streamlit for some UI interactions
 from ollama import chat  # Assuming you are using Ollama's API for LLM interaction
-
+import streamlit as st
+import spacy
+import pandas as pd
+from typing import List
+import nltk
+from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
+from nltk.tokenize import sent_tokenize
+from sentence_transformers import SentenceTransformer, util
+import subprocess
+import faiss
+import numpy as np
+import time
+import json
+import unicodedata
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from deepeval.models.base_model import DeepEvalBaseLLM
+from pdfminer.high_level import extract_text
+from serpapi import GoogleSearch
+from ollama import chat
+from pydantic import BaseModel
+from deepeval.metrics import AnswerRelevancyMetric, FaithfulnessMetric, JsonCorrectnessMetric, HallucinationMetric
+from deepeval.test_case import LLMTestCase, LLMTestCaseParams
+import transformers
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer, QuantoConfig
+from deepeval.models import DeepEvalBaseLLM
+import json
+import winsound
+import transformers
+from pydantic import BaseModel
+from lmformatenforcer import JsonSchemaParser
+from rouge_score import rouge_scorer
+from bert_score import score as score_bert
+from bleurt import score as score_bleurt
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all origins
@@ -177,15 +210,218 @@ Extract the requested information from the resume text and return only one valid
         print("JSON parsing failed:")
         print(e)
         
+
+def load_spacy_model():
+    return spacy.load('en_core_web_sm')
+
+nlp = load_spacy_model()
+
+# Load Sentence Transformer model for embeddings
+def load_sentence_transformer():
+    return SentenceTransformer('all-MiniLM-L6-v2')
+
+model = load_sentence_transformer()
+
+# Load O*NET job titles and descriptions
+def load_onet_data():
+    try:
+        df = pd.read_csv('../Occupation Data.csv')
+        return df
+# Ensure this file contains 'Title' and 'Description' columns        return df
+    except FileNotFoundError:
+        st.error("The file 'Occupation Data.csv' was not found. Please ensure it's in the correct directory.")
+        return pd.DataFrame()
+
+onet_titles_df = load_onet_data()
+onet_titles = onet_titles_df['Title'].tolist()
+
+# Function to preprocess documents for FAISS
+def preprocess_documents(df, text_column='Description'):
+    documents = []
+    for idx, row in df.iterrows():
+        text = row[text_column]
+        sentences = sent_tokenize(text)
+        for sentence in sentences:
+            documents.append({
+                'job_title': row['Title'],
+                'soc_code': row['O*NET-SOC Code'],  # Include the SOC code
+                'text': sentence
+            })
+
+    return pd.DataFrame(documents)
+
+def prepare_faiss_index():
+    documents_df = preprocess_documents(onet_titles_df)
+    if documents_df.empty:
+        st.error("No documents available for indexing.")
+        return None, None
+
+    # Initialize the Sentence Transformer model
+    retrieval_model = SentenceTransformer('all-MiniLM-L6-v2')
+
+    # Generate embeddings
+    embeddings = retrieval_model.encode(documents_df['text'].tolist(), convert_to_tensor=False, show_progress_bar=True)
+    embeddings = np.array(embeddings).astype('float32')
+
+    # Normalize embeddings for cosine similarity
+    faiss.normalize_L2(embeddings)
+
+    # Initialize FAISS index
+    dimension = embeddings.shape[1]
+    index = faiss.IndexFlatIP(dimension)  # Inner Product for cosine similarity after normalization
+
+    # Add embeddings to the index
+    index.add(embeddings)
+
+    return index, documents_df
+
+# Load or prepare FAISS index and documents
+index, documents_df = prepare_faiss_index()
+
+# Function to retrieve relevant documents using FAISS
+def retrieve_relevant_documents(query, top_k=10):
+    if index is None or documents_df is None:
+        st.error("The FAISS index or documents dataframe is not available.")
+        return []
+
+    # Encode the query
+    query_embedding = model.encode([query], convert_to_tensor=False)
+    query_embedding = np.array(query_embedding).astype('float32')
+    faiss.normalize_L2(query_embedding)
+
+    # Search the index
+    distances, indices = index.search(query_embedding, top_k)
+    retrieved_docs = documents_df.iloc[indices[0]]
+        # Collect the SOC Code, Title, and Text
+    print("==========RETRIEVED DOCUMENTS===============")
+    print(retrieved_docs)
+    results = []
+    results_json = []
+    for _, row in retrieved_docs.iterrows():
+        results.append(
+        f"SOC Code: {row['soc_code']}, Title: {row['job_title']}, Description: {row['text']}"
+        )
+        results_json.append({
+            "soc_code": row['soc_code'],
+            "title": row['job_title'],
+            "description": row['text']
+        })
+    print("==========TOP K CLOSEST DOCUMENTS===============")
+    print(results_json)
+    return results, results_json
+
+def generate_career_guidance(skills, academic_history):
+    
+    # Generations and Evaluations 
+    generations = {}
+            
+    skills_text = ', '.join(skills) if skills else "No skills provided"
+
+    # Create a comprehensive query based on user profile
+    query = f"Skills: {skills_text}. Academic History: {academic_history}."
+
+    # Retrieve relevant documents
+    retrieved_docs, top_job_titles = retrieve_relevant_documents(query, top_k=10)
+    context = "\n".join(retrieved_docs)
+    print("=============== CONTEXT ================")
+    print(context)
+    # Construct the prompt for Mistral
+    prompt = f"""
+You are an AI career advisor. Use the following context to provide personalized career guidance.
+
+Context:
+{context}
+
+User Profile:
+Skills: {skills_text}
+Academic History: {academic_history}
+
+
+Provide a comprehensive analysis including:
+- Recommended career paths with SOC codes and titles
+- Skill development suggestions
+- Potential industries to explore
+- Next steps for job applications
+"""
+
+    try:
+            generations["gemma2_2b"] = subprocess.run(
+                ["ollama", "run", "gemma2:2b", prompt],
+                capture_output=True,
+                text=True,
+                check=True
+            ).stdout.strip()
+            
+            generations["gemma2_9b"] = subprocess.run(
+                ["ollama", "run", "gemma2:9b", prompt],
+                capture_output=True,
+                text=True,
+                check=True
+            ).stdout.strip()
+            
+            generations["mistral"] = subprocess.run(
+                ["ollama", "run", "mistral", prompt],
+                capture_output=True,
+                text=True,
+                check=True
+            ).stdout.strip()
+            
+            generations["deepseek-r1:14b"] = subprocess.run(
+                ["ollama", "run", "mistral", prompt],
+                capture_output=True,
+                text=True,
+                check=True
+            ).stdout.strip()
+            
+
+
+        
+            
+    except subprocess.CalledProcessError as e:
+        st.error(f"An error occurred while generating guidance: {e.stderr}")
+        
+    return  generations     
         
         
         
         
         
         
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
 
 @app.route("/upload", methods=["POST"])
@@ -243,7 +479,32 @@ def process_resume():
     
     return jsonify(parsed_resume.model_dump() if parsed_resume else {"error": "Failed to parse resume"}), 200
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+@app.route("/generate-guidance", methods=["POST"])
+
+def generate_guidance():
+    
+    data = request.json
+    skills = data.get("skills", [])
+    academic_history = data.get("academic_history", "")
+
+    generations = generate_career_guidance(skills, academic_history)
         
+    return jsonify(generations)
+
         
+    
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
