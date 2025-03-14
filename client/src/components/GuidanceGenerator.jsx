@@ -1,9 +1,12 @@
+import { terminal } from 'virtual:terminal'
 import React, { useState } from "react";
+import ReactMarkdown from 'react-markdown'
+import JobRetriever from "./JobRetriever";
 
 const GuidanceGenerator = ({ parsedResume }) => {
   const [guidance, setGuidance] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  const [showJobRetriever, setShowJobRetriever] = useState(false)
   const generateGuidance = async () => {
     if (!parsedResume || !parsedResume.skills || !parsedResume.education) {
       alert("No valid resume data found.");
@@ -26,32 +29,40 @@ const GuidanceGenerator = ({ parsedResume }) => {
       const data = await response.json();
       if (response.ok) {
         setGuidance(data);
-      } else {
-        console.error("Error:", data.error);
-      }
-    } catch (error) {
+        
+                
+        
+        } 
+    } catch (error) { 
       console.error("Request failed:", error);
     } finally {
       setLoading(false);
     }
   };
-
+  if (showJobRetriever) {
+    return <JobRetriever jobs={guidance.top_job_titles.map(job => job.title).join(",")} />
+    ;
+  }
   return (
-    <div className="p-8 bg-white rounded-lg shadow-lg max-w-3xl mx-auto mt-6">
+    <div className="bg-white p-8 rounded-xl shadow-md">
       <h2 className="text-2xl font-semibold mb-4 text-blue-800">Career Guidance</h2>
 
       {loading ? (
         <p className="text-blue-600">Generating guidance, please wait...</p>
       ) : guidance ? (
-        <div className="space-y-6">
-          {Object.entries(guidance).map(([model, response]) => (
+        <div className="space-y-8">
+          {Object.entries(guidance.generations).map(([model, response]) => (            
             <div key={model} className="p-4 border rounded-lg">
-              <h3 className="text-lg font-semibold text-gray-700">{model.toUpperCase()}'s Advice</h3>
-              <p>{response || "No response"}</p>
+              <h3 className="text-lg font-semibold text-gray-700 text-center">{model.toUpperCase()}'s Advice</h3>
+              <hr className="pt-4 pb-6"></hr>              
+              <p><ReactMarkdown>{response}</ReactMarkdown></p>
             </div>
           ))}
-          <button onClick={() => setGuidance(null)} className="bg-red-500 text-white px-4 py-2 rounded w-full">
-            Clear Guidance
+          <button 
+            onClick={() => setShowJobRetriever(true)} 
+            className="bg-blue-600 text-white px-4 py-2 rounded w-full"
+          >
+            Search for Jobs
           </button>
         </div>
       ) : (

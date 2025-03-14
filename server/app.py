@@ -10,9 +10,7 @@ from pydantic import BaseModel
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 from pdfminer.high_level import extract_text
-import streamlit as st  # Assuming you are using Streamlit for some UI interactions
 from ollama import chat  # Assuming you are using Ollama's API for LLM interaction
-import streamlit as st
 import spacy
 import pandas as pd
 from typing import List
@@ -226,10 +224,10 @@ model = load_sentence_transformer()
 def load_onet_data():
     try:
         df = pd.read_csv('../Occupation Data.csv')
+        print(df)
         return df
 # Ensure this file contains 'Title' and 'Description' columns        return df
     except FileNotFoundError:
-        st.error("The file 'Occupation Data.csv' was not found. Please ensure it's in the correct directory.")
         return pd.DataFrame()
 
 onet_titles_df = load_onet_data()
@@ -253,7 +251,6 @@ def preprocess_documents(df, text_column='Description'):
 def prepare_faiss_index():
     documents_df = preprocess_documents(onet_titles_df)
     if documents_df.empty:
-        st.error("No documents available for indexing.")
         return None, None
 
     # Initialize the Sentence Transformer model
@@ -281,7 +278,6 @@ index, documents_df = prepare_faiss_index()
 # Function to retrieve relevant documents using FAISS
 def retrieve_relevant_documents(query, top_k=10):
     if index is None or documents_df is None:
-        st.error("The FAISS index or documents dataframe is not available.")
         return []
 
     # Encode the query
@@ -352,6 +348,8 @@ Provide a comprehensive analysis including:
                 check=True
             ).stdout.strip()
             
+            
+            
             generations["gemma2_9b"] = subprocess.run(
                 ["ollama", "run", "gemma2:9b", prompt],
                 capture_output=True,
@@ -378,16 +376,39 @@ Provide a comprehensive analysis including:
         
             
     except subprocess.CalledProcessError as e:
-        st.error(f"An error occurred while generating guidance: {e.stderr}")
-        
-    return  generations     
-        
-        
+        print(f"Error: {e.stderr}")  # Print the actual error message
+                
+    return  generations, top_job_titles   
         
         
         
-        
+def google_jobs_search(job_title, location = "Remote"):
 
+    params = {
+    "engine": "google_jobs",
+    "q": f"{job_title} jobs in {location}",
+    "hl": "en",
+    "api_key": "22c744e7201db68cce330bf72f58d1c9a81529af3361865d333daa41a32e1551" 
+    }
+
+    
+
+    search = GoogleSearch(params)
+    results = search.get_dict()
+    search_results = results["jobs_results"]
+
+    jobs_data = []
+    for job in search_results:
+        jobs_data.append({
+            "Title": job.get("title", ""),
+            "Company": job.get("company_name", ""),
+            "Location": job.get("location", ""),
+            "Via": job.get("via", ""),
+            "Description (truncated)": job.get("description", "")[:100] + "...",
+            "Apply Options": job.get("apply_options", "")
+        })
+
+    return jobs_data
 
 
 
@@ -500,11 +521,30 @@ def generate_guidance():
     skills = data.get("skills", [])
     academic_history = data.get("academic_history", "")
 
-    generations = generate_career_guidance(skills, academic_history)
+    generations, top_job_titles = generate_career_guidance(skills, academic_history)
         
-    return jsonify(generations)
+    return jsonify({"generations": generations, "top_job_titles": top_job_titles})
 
-        
+
+
+
+
+
+
+
+
+
+
+@app.route("/job-search", methods=["POST"])
+
+def search_jobs():
+    data = request.json
+    job_titles = data.get("jobs")
+    print("Job Titles", job_titles)
+    postings = []
+    postings.append(google_jobs_search(job_titles[0]))
+    print("Postings", postings)
+    return jsonify(postings)  
     
 if __name__ == '__main__':
     app.run(debug=True, port=5000, use_reloader=False)
