@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import GuidanceGenerator from "./GuidanceGenerator";
+import BeatLoader from "react-spinners/BeatLoader";
 
 const FileProcess = () => {
   const [parsedResume, setParsedResume] = useState(null);
@@ -31,14 +32,11 @@ const FileProcess = () => {
   if (showGuidance) {
     return <GuidanceGenerator parsedResume={parsedResume} />;
   }
-
   return (
-    <div className="p-8 bg-white rounded-lg shadow-lg max-w-3xl mx-auto">
+    <div className="pt-10">
       <h2 className="text-2xl font-semibold mb-4 text-blue-800">Process Resume</h2>
-
-      {loading ? (
-        <p className="text-blue-600">Processing file, please wait...</p>
-      ) : parsedResume ? (
+  
+      {parsedResume ? (
         <div className="space-y-6">
           <div className="p-4 border rounded-lg">
             <h3 className="text-lg font-semibold text-gray-700">Personal Details</h3>
@@ -48,18 +46,18 @@ const FileProcess = () => {
             <p><strong>Location:</strong> {parsedResume.location || "N/A"}</p>
             <p><strong>LinkedIn:</strong> {parsedResume.linkedin || "N/A"}</p>
           </div>
-
+  
           <div className="p-4 border rounded-lg">
             <h3 className="text-lg font-semibold text-gray-700">Skills</h3>
             <ul className="list-disc pl-5">
               {parsedResume.skills.length > 0 ? (
                 parsedResume.skills.map((skill, index) => <li key={index}>{skill}</li>)
               ) : (
-                <p>N/A</p>
+                <li>N/A</li>
               )}
             </ul>
           </div>
-
+  
           <div className="p-4 border rounded-lg">
             <h3 className="text-lg font-semibold text-gray-700">Experience</h3>
             {parsedResume.experience.length > 0 ? (
@@ -73,7 +71,7 @@ const FileProcess = () => {
               <p>N/A</p>
             )}
           </div>
-
+  
           <div className="p-4 border rounded-lg">
             <h3 className="text-lg font-semibold text-gray-700">Education</h3>
             {parsedResume.education.length > 0 ? (
@@ -86,7 +84,7 @@ const FileProcess = () => {
               <p>N/A</p>
             )}
           </div>
-
+  
           <div className="p-4 border rounded-lg">
             <h3 className="text-lg font-semibold text-gray-700">Projects</h3>
             {parsedResume.projects.length > 0 ? (
@@ -100,7 +98,7 @@ const FileProcess = () => {
               <p>N/A</p>
             )}
           </div>
-
+  
           <button
             onClick={() => setShowGuidance(true)}
             className="bg-green-600 text-white px-4 py-2 rounded w-full"
@@ -111,14 +109,15 @@ const FileProcess = () => {
       ) : (
         <button
           onClick={handleProcessResume}
-          className="bg-blue-600 text-white p-2 rounded w-full"
+          className="mt-6 w-full flex items-center justify-center gap-2 text-white py-3 rounded-lg transition bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
           disabled={loading}
         >
-          Process Resume
+          {loading ? <BeatLoader color="#ffffff" size={8} /> : "Process Resume"}
         </button>
       )}
     </div>
   );
+  
 };
 
 export default FileProcess;
