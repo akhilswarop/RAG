@@ -545,6 +545,13 @@ def search_jobs():
     postings.append(google_jobs_search(job_titles[0]))
     print("Postings", postings)
     return jsonify(postings)  
+
+
+@app.route("/healthcheck", methods=["GET"])
+def healthcheck():
+    return jsonify({"status": "ready"}), 200
     
 if __name__ == '__main__':
     app.run(debug=True, port=5000, use_reloader=False)
+
+
