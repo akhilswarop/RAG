@@ -364,12 +364,12 @@ Provide a comprehensive analysis including:
                 check=True
             ).stdout.strip()
             
-            generations["deepseek-r1:14b"] = subprocess.run(
-                ["ollama", "run", "mistral", prompt],
-                capture_output=True,
-                text=True,
-                check=True
-            ).stdout.strip()
+            # generations["deepseek-r1:14b"] = subprocess.run(
+            #     ["ollama", "run", "mistral", prompt],
+            #     capture_output=True,
+            #     text=True,
+            #     check=True
+            # ).stdout.strip()
             
 
 
