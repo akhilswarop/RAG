@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { terminal } from 'virtual:terminal'
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { terminal } from "virtual:terminal";
 import { CheckCircle, XCircle, Upload } from "lucide-react"; // Import icons
-import FileProcess from "./FileProcess"; 
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadMessage, setUploadMessage] = useState("");
-  const [showFileProcess, setShowFileProcess] = useState(false); // New state
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -29,13 +29,13 @@ const FileUpload = () => {
       });
 
       const data = await response.json();
-      terminal.log(data)
+      terminal.log(data);
 
       if (response.ok) {
         setUploadMessage("File uploaded successfully!");
         console.log("Uploaded file:", data.filename);
-        setShowFileProcess(true); // Show FileProcess after upload
 
+        navigate("/file-process");
       } else {
         setUploadMessage("Failed to upload file.");
       }
@@ -67,35 +67,33 @@ const FileUpload = () => {
           </p>
         </label>
       </div>
-      
-      {selectedFile && (
-  <button
-    onClick={handleUpload}
-    className={`mt-6 w-full flex items-center justify-center gap-2 text-white py-3 rounded-lg transition ${
-      uploadMessage === "File uploaded successfully!"
-        ? "bg-green-600 hover:bg-green-700"
-        : uploadMessage
-        ? "bg-red-600 hover:bg-red-700"
-        : "bg-blue-600 hover:bg-blue-700"
-    }`}
-  >
-    {uploadMessage === "File uploaded successfully!" ? (
-      <>
-        <CheckCircle size={20} /> Uploaded Successfully!
-      </>
-    ) : uploadMessage ? (
-      <>
-        <XCircle size={20} /> Upload Failed
-      </>
-    ) : (
-      <>
-        <Upload size={20} /> Upload Document
-      </>
-    )}
-  </button>
-)}
-      {showFileProcess && <FileProcess />}
 
+      {selectedFile && (
+        <button
+          onClick={handleUpload}
+          className={`mt-6 w-full flex items-center justify-center gap-2 text-white py-3 rounded-lg transition ${
+            uploadMessage === "File uploaded successfully!"
+              ? "bg-green-600 hover:bg-green-700"
+              : uploadMessage
+              ? "bg-red-600 hover:bg-red-700"
+              : "bg-blue-600 hover:bg-blue-700"
+          }`}
+        >
+          {uploadMessage === "File uploaded successfully!" ? (
+            <>
+              <CheckCircle size={20} /> Uploaded Successfully!
+            </>
+          ) : uploadMessage ? (
+            <>
+              <XCircle size={20} /> Upload Failed
+            </>
+          ) : (
+            <>
+              <Upload size={20} /> Upload Document
+            </>
+          )}
+        </button>
+      )}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { terminal } from 'virtual:terminal';
 import JobListingsDashboard from "./JobListingsDashboard";
 
+
 const JobRetriever = ({ jobs }) => {
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);

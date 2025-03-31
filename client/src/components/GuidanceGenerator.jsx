@@ -2,19 +2,25 @@ import { terminal } from 'virtual:terminal'
 import React, { useState } from "react";
 import ReactMarkdown from 'react-markdown'
 import JobRetriever from "./JobRetriever";
+import { useNavigate } from 'react-router-dom';
+
+
 
 const GuidanceGenerator = ({ parsedResume }) => {
   const [guidance, setGuidance] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showJobRetriever, setShowJobRetriever] = useState(false)
+  const navigate = useNavigate()
+
   const generateGuidance = async () => {
     if (!parsedResume || !parsedResume.skills || !parsedResume.education) {
       alert("No valid resume data found.");
       return;
     }
-
     
-    setLoading(true);
+    terminal.log(parsedResume)
+
+    setLoading(true)
 
     try {
       const response = await fetch("http://localhost:5000/generate-guidance", {
@@ -40,9 +46,8 @@ const GuidanceGenerator = ({ parsedResume }) => {
     }
   };
   if (showJobRetriever) {
-    return <JobRetriever jobs={guidance.top_job_titles.map(job => job.title).join(",")} />
-    ;
-  }
+    navigate('/retrieve-jobs', { state: { jobs: guidance.top_job_titles.map(job => job.title).join(",") } });
+    }
   return (
     <div className="bg-white p-8 rounded-xl shadow-md">
       <h2 className="text-2xl font-semibold mb-4 text-blue-800">Career Guidance</h2>
