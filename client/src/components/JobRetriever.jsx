@@ -8,6 +8,7 @@ const JobRetriever = ( {jobs} ) => {
   const [error, setError] = useState(null);
   const [searchedJobs, setSearchedJobs] = useState([]);
   const [location, setLocation] = useState("");
+  const [showSelectionPanel, setShowSelectionPanel] = useState(true);
 
   // Mocked from resume — replace this with dynamic resume-matched jobs
   const suggestedJobs = [...new Set(jobs.split(",").map((j) => j.trim()))];
@@ -17,6 +18,7 @@ const JobRetriever = ( {jobs} ) => {
   const [selectedJobs, setSelectedJobs] = useState([]);
 
   const searchJobs = async () => {
+    setShowSelectionPanel(false)
     if (selectedJobs.length === 0) {
       setError("Please select at least one job title");
       return;
@@ -64,7 +66,7 @@ const JobRetriever = ( {jobs} ) => {
       <h2 className="text-2xl font-semibold mb-4 text-gray-800">Job Retriever</h2>
 
       {/* Suggested Job Selection */}
-      {suggestedJobs.length > 0 && (
+      {showSelectionPanel && suggestedJobs.length > 0 && (
         <div className="mb-4">
           <h3 className="text-sm font-medium text-gray-700 mb-2">
             Based on your resume, select jobs you want to search:
@@ -93,10 +95,7 @@ const JobRetriever = ( {jobs} ) => {
               );
             })}
           </div>
-        </div>
-      )}
-
-      {/* Location Input */}
+          {/* Location Input */}
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700 mb-1">
           Preferred Job Location
@@ -128,9 +127,11 @@ const JobRetriever = ( {jobs} ) => {
           {error}
         </div>
       )}
+        </div>
+      )}
 
       {/* Loading Spinner */}
-      {loading && (
+        {loading && (
         <div className="flex justify-center items-center p-8">
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-600"></div>
           <p className="ml-3 text-blue-600">Searching for jobs, please wait...</p>
