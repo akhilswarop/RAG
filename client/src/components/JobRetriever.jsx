@@ -97,7 +97,7 @@ const JobRetriever = ( {jobs} ) => {
           </div>
           {/* Location Input */}
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="pt-4 pb-2  block text-sm font-medium text-gray-700 mb-1">
           Preferred Job Location
         </label>
         <input
@@ -111,7 +111,7 @@ const JobRetriever = ( {jobs} ) => {
       </div>
 
       {/* Search Button */}
-      <div className="mb-4">
+      <div className="flex justify-center items-center">
         <button
           onClick={searchJobs}
           disabled={loading}
