@@ -75,23 +75,31 @@ const FileProcess = () => {
               <h3 className="text-xl font-bold text-gray-800">Personal Details</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="flex items-center">
-                <Mail className="h-5 w-5 text-gray-500 mr-2" />
-                <span className="text-gray-700">{parsedResume.email || "N/A"}</span>
-              </div>
-              <div className="flex items-center">
-                <Phone className="h-5 w-5 text-gray-500 mr-2" />
-                <span className="text-gray-700">{parsedResume.phone || "N/A"}</span>
-              </div>
-              <div className="flex items-center">
-                <MapPin className="h-5 w-5 text-gray-500 mr-2" />
-                <span className="text-gray-700">{parsedResume.location || "N/A"}</span>
-              </div>
-              <div className="flex items-center">
-                <Linkedin className="h-5 w-5 text-gray-500 mr-2" />
-                <span className="text-gray-700">{parsedResume.linkedin || "N/A"}</span>
-              </div>
-            </div>
+              {parsedResume.email && parsedResume.email!="N/A" && (
+                <div className="flex items-center">
+                  <Mail className="h-5 w-5 text-gray-500 mr-2" />
+                  <span className="text-gray-700">{parsedResume.email}</span>
+                </div>
+              )}
+              {parsedResume.phone && parsedResume.phone!="N/A" && (
+                <div className="flex items-center">
+                  <Phone className="h-5 w-5 text-gray-500 mr-2" />
+                  <span className="text-gray-700">{parsedResume.phone}</span>
+                </div>
+              )}
+              {parsedResume.location && parsedResume.location != "N/A" && (
+                <div className="flex items-center">
+                  <MapPin className="h-5 w-5 text-gray-500 mr-2" />
+                  <span className="text-gray-700">{parsedResume.location}</span>
+                </div>
+              )}
+              {parsedResume.linkedin && parsedResume.linkedin != "N/A"  && (
+                <div className="flex items-center">
+                  <Linkedin className="h-5 w-5 text-gray-500 mr-2" />
+                  <span className="text-gray-700">{parsedResume.linkedin}</span>
+                </div>
+              )}
+            </div>          
           </div>
 
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
